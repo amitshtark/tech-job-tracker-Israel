@@ -1,0 +1,6 @@
+.env
+my_private_referrals.json
+master_companies_with_referrals
+seen_jobs.json
+progress_checkpoint.json
+*.xlsx

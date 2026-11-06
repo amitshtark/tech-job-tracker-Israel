@@ -1,0 +1,2370 @@
+[
+  {
+    "name": "Akamai",
+    "career_url": "https://jobs.akamai.com/",
+    "referral_contact": "Inbar",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "apple",
+    "career_url": "https://jobs.apple.com/en-il/search?location=israel-ISR",
+    "referral_contact": "Yoav zilberboim",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "AppsFlyer",
+    "career_url": "https://careers.appsflyer.com/",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Bridgewise",
+    "career_url": "https://bridgewise.com/careers/",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Buildots",
+    "career_url": "https://buildots.com/careers/",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "ChargeAfter",
+    "career_url": "https://chargeafter.com/careers/",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Daylight",
+    "career_url": "https://job-boards.greenhouse.io/daylightsecurity",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Dell",
+    "career_url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/careers/jobs?lastSelectedFacet=LOCATIONS&selectedLocationsFacet=300000000471047&selectedTitlesFacet=ENGREDEV%3BENGINEERING+SERVICES",
+    "referral_contact": "Dolev David",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "deloitte",
+    "career_url": "https://careers.deloitte.co.il/he/positions-he/",
+    "referral_contact": "Sharon",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Gong",
+    "career_url": "https://www.gong.io/careers/",
+    "referral_contact": "Inbar",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Google",
+    "career_url": "https://www.google.com/about/careers/applications/",
+    "referral_contact": "Elishai",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Harel",
+    "career_url": "https://www.harel-group.co.il/careers",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Healthee",
+    "career_url": "https://healthee.com/who-we-are/healthee-career/",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "hiBob",
+    "career_url": "https://www.hibob.com/careers/#careers-board",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "intel",
+    "career_url": "https://intel.wd1.myworkdayjobs.com/en-US/External?shared_id=NTA3OGJmNzQtNjNiOS00MWYyLWJlNDItYjdhMDAyM2I2OWVh&locations=1e4a4eb3adf101aaeda8a474bf818ecd&locations=1e4a4eb3adf101f41cd29774bf8184cd&locations=1e4a4eb3adf101cb242c9e74bf8189cd&locations=1e4a4eb3adf1013563ba9174bf817fcd&jobFamilyGroup=ace7a3d23b7e01a0544279031a0ec85c",
+    "referral_contact": "Yotam",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "intuit",
+    "career_url": "https://www.intuit.com/careers/locations/israel/#jobs",
+    "referral_contact": "Akerman",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Island",
+    "career_url": "https://www.island.io/careers",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Lemonade",
+    "career_url": "https://makers.lemonade.com/",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Lendbuzz",
+    "career_url": "https://www.lendbuzz.com/careers",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Manpower",
+    "career_url": "https://www.manpower.co.il/",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Meta",
+    "career_url": "https://www.metacareers.com/",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Microsoft",
+    "career_url": "https://careers.microsoft.com/",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "monday.com",
+    "career_url": "https://monday.com/careers",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Moon Active",
+    "career_url": "https://www.moonactive.com/careers/",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Natural Intelligence",
+    "career_url": "https://www.naturalint.com/jobs/co/tel-aviv/4B",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "nice",
+    "career_url": "https://www.nice.com/careers/apply?location=Israel+-+Raanana",
+    "referral_contact": "Rotem",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Nvidia",
+    "career_url": "https://jobs.nvidia.com/careers?start=0&location=Israel&pid=893393381930&sort_by=distance&filter_include_remote=1&filter_include_relocation=0&filter_job_type=new+college+graduate%2Cintern+%28fixed+term%29",
+    "referral_contact": "Roy",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Palo Alto Networks",
+    "career_url": "https://jobs.paloaltonetworks.com/en",
+    "referral_contact": "Guy Vaknish",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "playtika",
+    "career_url": "https://www.playtika.com/careers/research-development/",
+    "referral_contact": "Yoav zilberboim",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "SciPlay",
+    "career_url": "https://www.sciplay.com/careers",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Sierra",
+    "career_url": "https://sierra.ai/careers",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Sygnia",
+    "career_url": "https://www.sygnia.co/careers/",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "TikTok",
+    "career_url": "https://lifeattiktok.com/",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "upwind",
+    "career_url": "https://www.upwind.io/careers",
+    "referral_contact": "Yoav zilberboim",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "VAST Data",
+    "career_url": "https://www.vastdata.com/careers",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Voyantis",
+    "career_url": "https://www.voyantis.ai/careers",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Wix",
+    "career_url": "https://careers.wix.com/",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "Wiz",
+    "career_url": "https://www.wiz.io/careers",
+    "referral_contact": "Roy",
+    "referral_type": "איש קשר אישי",
+    "location": ""
+  },
+  {
+    "name": "abra",
+    "career_url": "https://www.abra-it.com/en/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "adama",
+    "career_url": "https://www.adama.com/en/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "adMaven",
+    "career_url": "https://ad-maven.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Agora",
+    "career_url": "https://agorareal.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "AI21 Labs",
+    "career_url": "https://www.ai21.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Akamai Technologies",
+    "career_url": "https://jobs.akamai.com/en/sites/CX_1/jobs?location=Israel&locationId=300000000469279&locationLevel=country&mode=location",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Alice (Formerly ActiveFence)",
+    "career_url": "https://alice.io/careers#open-positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "AllCloud",
+    "career_url": "https://allcloud.io/careers/?_gl=1*1ml028f*_up*MQ..&gclid=Cj0KCQjwlqTRBhCBARIsANrkrxi-r9lXNL7HBAMkHFbW-udh-MBqYMmOMQUHd8ZzZNCAG9DiCEG6HVoaAji-EALw_wcB&gbraid=0AAAAADRW_Gj0TLX6qBwy7JUJcXuKEleRE",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "AllJobs",
+    "career_url": "https://www.alljobs.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Alpha Omega",
+    "career_url": "https://www.alphaomega-eng.com/Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Altshuler Shaham",
+    "career_url": "https://careers.topmatch.co.il/AltshulerShaham/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Aman Group",
+    "career_url": "https://www.aman-global.com/careers/all/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Amarel",
+    "career_url": "https://www.amarel.net/careers1/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Amazon",
+    "career_url": "https://www.amazon.jobs/en/search?base_query=&loc_query=Israel&country=ISR",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Anzu",
+    "career_url": "https://www.anzu.io/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "apollo",
+    "career_url": "https://www.linkedin.com/in/shiran-fogel-94b5212b/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center",
+    "official_scrape_url": "https://www.apollo.io/careers"
+  },
+  {
+    "name": "Ardom Telecomputing",
+    "career_url": "https://site.ardom.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "arplus (Startup)",
+    "career_url": "https://www.arpalus.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Astrix Security",
+    "career_url": "https://astrix.security/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "AT&T",
+    "career_url": "https://www.linkedin.com/in/ella-shelef-aharoni-16009a3/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center",
+    "official_scrape_url": "https://www.att.jobs/"
+  },
+  {
+    "name": "Atera",
+    "career_url": "https://www.atera.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Bank Leumi",
+    "career_url": "https://www.leumi.co.il/he/about-leumi/Career",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Baran group",
+    "career_url": "https://www.linkedin.com/in/oranit-barak-b33874221/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev",
+    "official_scrape_url": "https://www.barangroup.com/careers/"
+  },
+  {
+    "name": "BDO",
+    "career_url": "https://www.bdo.co.il/he-il/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Ben-Gurion University of the Negev",
+    "career_url": "http://bgu.wanted.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Better",
+    "career_url": "https://www.comeet.com/jobs/allbetter/F8.00E",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Bilton Tech",
+    "career_url": "https://careers.bilton.tech/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "biocatch",
+    "career_url": "https://www.biocatch.com/cybersecurity-careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Bluevoyant",
+    "career_url": "https://www.bluevoyant.com/company/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Boston Scientific",
+    "career_url": "https://www.linkedin.com/in/alex--kornev/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.bostonscientific.com/en-US/careers.html"
+  },
+  {
+    "name": "Bringup",
+    "career_url": "https://bringup.io/come-work-with-us/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Buyme",
+    "career_url": "https://www.comeet.com/jobs/buyme/B2.008",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "CallMarker‎‏",
+    "career_url": "https://callmarker.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Cambium",
+    "career_url": "https://cambium.co.il/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev"
+  },
+  {
+    "name": "Capow",
+    "career_url": "https://employer.dueto.io/capow/career-website/positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "CBC ISRAEL",
+    "career_url": "https://career.adamtotal.co.il/?token=4fiBEcF763Em2UKTVQ4OPb1hiX9SxJtoMHssWX",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev"
+  },
+  {
+    "name": "Check Point",
+    "career_url": "https://careers.checkpoint.com/index.php?m=cpcareers&a=search",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "checkmarx",
+    "career_url": "https://checkmarx.com/company/careers/#jobs-table",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Cisco",
+    "career_url": "http://linkedin.com/in/hila-gradus-b773346",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://jobs.cisco.com/jobs/SearchJobs/Israel"
+  },
+  {
+    "name": "Classiq.io",
+    "career_url": "https://www.comeet.com/jobs/classiq/F7.008",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "co-impact",
+    "career_url": "https://co-impact.org.il/%D7%9E%D7%95%D7%A2%D7%9E%D7%93%D7%99%D7%9D/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Comblack",
+    "career_url": "https://comblack.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "commit",
+    "career_url": "https://www.comm-it.com/commit-jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Commtact",
+    "career_url": "https://commtact-systems.com/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Compie Technologies",
+    "career_url": "http://www.compie.co.il",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Connecteam",
+    "career_url": "https://connecteam.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Crusoe AI",
+    "career_url": "https://www.crusoe.ai/about/careers?location=Tel+Aviv+-+IL#open-roles",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "CyberArk (Palo Alto Networks)",
+    "career_url": "https://www.cyberark.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Cyera",
+    "career_url": "https://www.cyera.com/careers#open-positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Cymotive Technologies",
+    "career_url": "https://www.comeet.com/jobs/cymotive/F1.008",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Datwise",
+    "career_url": "https://www.linkedin.com/company/d-b-datwise-ltd/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Deel",
+    "career_url": "https://www.deel.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Dentsu",
+    "career_url": "https://www.linkedin.com/company/dentsuil/about/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Depoint",
+    "career_url": "https://www.linkedin.com/company/depoint/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Dialog",
+    "career_url": "https://www.dialog.co.il/high-tech/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Dig",
+    "career_url": "https://employer.dueto.io/dig-ai/career-website/positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "DRS Rada",
+    "career_url": "https://www.drsrada.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "duda",
+    "career_url": "https://www.duda.co/careers?countrycode=IL",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Earnix",
+    "career_url": "https://earnix.com/our-story/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Elad Software Systems",
+    "career_url": "https://www.linkedin.com/in/keren-hadad-50ba8612/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.elad.co.il/careers/"
+  },
+  {
+    "name": "Elbit Systems Ltd",
+    "career_url": "https://elbitsystemscareer.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Electra",
+    "career_url": "https://www.electra.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "EnergyTeam",
+    "career_url": "https://www.energyteam.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Engineering Software Lab (ESL)",
+    "career_url": "https://www.linkedin.com/company/engineering-software-lab-esl-/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "eToro",
+    "career_url": "https://www.etoro.com/about/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "EverC (part of G2 Risk Solutions)",
+    "career_url": "https://www.everc.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Experis (Manpower)",
+    "career_url": "https://www.linkedin.com/in/liel-rashcovan-%F0%9F%8C%9Fi-m-hiring%F0%9F%8C%9F-3b30351b0/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.experis.co.il/careers"
+  },
+  {
+    "name": "Extreme",
+    "career_url": "https://www.extreme.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "EY ISRAEL",
+    "career_url": "https://www.ey.com/en_gl/careers/technology",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Facetrom",
+    "career_url": "https://www.facetrom.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Fetcherr",
+    "career_url": "https://www.fetcherr.io/career",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Firefly Neuroscience",
+    "career_url": "https://fireflyneuro.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Fiverr",
+    "career_url": "https://www.fiverr.com/jobs/teams",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "FLEX",
+    "career_url": "https://flextronics.wd1.myworkdayjobs.com/Careers?source=Flex_Career_Site",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Fullpath",
+    "career_url": "https://www.fullpath.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "G stat",
+    "career_url": "https://g-stat.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "G-stat",
+    "career_url": "https://g-stat.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Gavish",
+    "career_url": "https://gavish.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Gett",
+    "career_url": "https://www.gett.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Global-e",
+    "career_url": "https://www.global-e.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "באר שבע"
+  },
+  {
+    "name": "Gong.io",
+    "career_url": "https://www.gong.io/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "GotFriends",
+    "career_url": "https://www.gotfriends.co.il/jobslobby/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "group 19",
+    "career_url": "https://www.group19.org.il/career",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Gtech",
+    "career_url": "https://gtech.co.il/%d7%9e%d7%a9%d7%a8%d7%95%d7%aa/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Haat",
+    "career_url": "https://careers.haat.delivery/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "haifa university",
+    "career_url": "https://hr.haifa.ac.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "hailo.ai",
+    "career_url": "https://hailo.ai/company-overview/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Harel Insurance & Finance",
+    "career_url": "https://career.adamtotal.co.il/?token=6675d401-0dee-428a-a776-5d41885d16b0-harel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "high lander",
+    "career_url": "https://www.highlander.io/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "HMS",
+    "career_url": "https://hms.co.il/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "HMS - Halperin Consulting Group",
+    "career_url": "https://hms.co.il/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Horizon Technologies (EMET group)",
+    "career_url": "https://horizontech.co.il/%d7%a9%d7%99%d7%a8%d7%95%d7%aa%d7%99%d7%9d/%d7%a7%d7%a8%d7%99%d7%99%d7%a8%d7%94/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Humanz",
+    "career_url": "https://www.humanz.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Hyro",
+    "career_url": "https://www.hyro.ai/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "IAI",
+    "career_url": "https://jobs.iai.co.il/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "IBM",
+    "career_url": "https://www.ibm.com/careers/search?q=israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "IBM- Two connections",
+    "career_url": "https://www.ibm.com/careers/search?q=israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "ICL Group",
+    "career_url": "https://careers.icl-group.com/search/?createNewAlert=false&q=&locationsearch=israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "North"
+  },
+  {
+    "name": "inManage",
+    "career_url": "https://www.inmanage.co.il/%D7%93%D7%A8%D7%95%D7%A9%D7%99%D7%9D",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Intuition Robotics",
+    "career_url": "https://www.intuitionrobotics.com/career",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Iron community",
+    "career_url": "https://www.iron-community.com/positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Ironsource (Unity)",
+    "career_url": "https://unity.com/careers/positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Israel Discount Bank",
+    "career_url": "https://www.comeet.com/jobs/dbank/F8.004?coref=1.10.sD6_642",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Jedify",
+    "career_url": "https://jedify.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "תל אביב"
+  },
+  {
+    "name": "JET (Just Eat Takeaway) - 10bis",
+    "career_url": "https://careers.justeattakeaway.com/global/en",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "JFrog",
+    "career_url": "https://join.jfrog.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "נגב"
+  },
+  {
+    "name": "jifiti",
+    "career_url": "https://www.jifiti.com/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "jobmaster",
+    "career_url": "https://www.jobmaster.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Kaltura",
+    "career_url": "https://corp.kaltura.com/company/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Kendago",
+    "career_url": "https://www.kendago.com/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "KPMG",
+    "career_url": "https://kpmg.co.il/technologyconsulting/careers/jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Leidos",
+    "career_url": "https://careers.leidos.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "נגב"
+  },
+  {
+    "name": "Lightricks",
+    "career_url": "https://careers.lightricks.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "North"
+  },
+  {
+    "name": "linkedin",
+    "career_url": "https://www.linkedin.com/in/liat-netanel/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://careers.linkedin.com/"
+  },
+  {
+    "name": "LiveU",
+    "career_url": "https://www.comeet.com/jobs/liveu/90.00C",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Log-On Software",
+    "career_url": "https://www.linkedin.com/company/log-on/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Logica-it",
+    "career_url": "https://www.logica-it.com/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Lumenis",
+    "career_url": "https://lumenis.com/about/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "M:AD (Part of K Group)",
+    "career_url": "https://www.kverse.co.il/career-comeet/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "maccabi health",
+    "career_url": "maccabi4u.co.il/careers/search-job-positions/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Malam Team",
+    "career_url": "https://www.linkedin.com/in/dorit-bar-yosef-0945532b/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center",
+    "official_scrape_url": "https://www.malamteam.com/careers/"
+  },
+  {
+    "name": "Manpower Israel",
+    "career_url": "https://www.manpower.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Manufacturers Association of Israel",
+    "career_url": "https://industry.org.il/industry-job-map",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Maof Group (cps הייטק)",
+    "career_url": "https://www.maof-hr.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Marketeam",
+    "career_url": "https://www.linkedin.com/in/naama-manova-twito-7b634b13/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev",
+    "official_scrape_url": "https://marketeam.io/careers/"
+  },
+  {
+    "name": "Mastercard",
+    "career_url": "https://careers.mastercard.com/us/en/tel-aviv-israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "MatchPointIT",
+    "career_url": "https://matchpointit.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "matrix",
+    "career_url": "https://www.linkedin.com/in/karolin-nissani-%E2%9C%A8i-m-hiring%E2%9C%A8-a4b199190/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.matrix.co.il/careers/"
+  },
+  {
+    "name": "mccann valley",
+    "career_url": "https://www.linkedin.com/in/shir-marom-741960226/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Medtronic",
+    "career_url": "https://medtronic.wd1.myworkdayjobs.com/he-IL/MedtronicCareers?redirect=/en-US/MedtronicCareers/&locationCountry=084562884af243748dad7c84c304d89a",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "MEMO Global",
+    "career_url": "https://www.memoglobal.com/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Menora Mivtachim",
+    "career_url": "https://www.menoramivt.co.il/job-posting/open-position",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev"
+  },
+  {
+    "name": "Mertens (Malamteam)",
+    "career_url": "https://mertens.malam.com/%d7%a7%d7%a8%d7%99%d7%99%d7%a8%d7%94-%d7%91%d7%9e%d7%a8%d7%98%d7%a0%d7%a1-%d7%a8%d7%92%d7%99%d7%9c/?jid=35164",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Mgroup",
+    "career_url": "https://www.linkedin.com/company/mgroupbpo/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Mobileye",
+    "career_url": "https://careers.mobileye.com/jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Morphisec",
+    "career_url": "https://www.linkedin.com/company/morphisec/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev"
+  },
+  {
+    "name": "Moveo group",
+    "career_url": "https://www.moveo.group/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Moveo source",
+    "career_url": "https://www.moveosource.com/#jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Ms Bit",
+    "career_url": "https://www.msbitsoftware.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "My Heritage",
+    "career_url": "https://careers.myheritage.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Navina",
+    "career_url": "https://www.navina.ai/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Nayax",
+    "career_url": "https://www.nayax.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Ness",
+    "career_url": "https://www.ness-tech.co.il/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Nexxen",
+    "career_url": "https://nexxen.com/careers/careers-opportunities/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "nilus",
+    "career_url": "https://www.nilus.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Nisha Group",
+    "career_url": "https://www.nisha.co.il/job_cat/high-tech/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "nsKnox",
+    "career_url": "https://nsknox.net/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "ת\"א/ב\"ש"
+  },
+  {
+    "name": "OMC cloud",
+    "career_url": "https://omc.cloud/career/he",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev"
+  },
+  {
+    "name": "One technologies",
+    "career_url": "https://one1.global/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "opisoft",
+    "career_url": "https://opisoft.com/job/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Optimove",
+    "career_url": "https://www.optimove.com/careers#location=Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "North"
+  },
+  {
+    "name": "ORS",
+    "career_url": "https://www.ors.co.il/search/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Osem Nestle",
+    "career_url": "https://www.osem-nestle.co.il/career/open-positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Outbrain ( teads )",
+    "career_url": "https://www.outbrain.com/careers/success/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Padagis",
+    "career_url": "https://padagis.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Pango",
+    "career_url": "https://www.comeet.com/jobs/pango/59.002",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Pantera",
+    "career_url": "https://www.linkedin.com/in/dganit-roth-feller/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://pantera.co.il/careers/"
+  },
+  {
+    "name": "Papaya Gaming",
+    "career_url": "https://www.papaya.com/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Papaya Global",
+    "career_url": "https://www.papayaglobal.com/careers/?_gl=1*1iq06zf*_up*MQ..*_ga*NDY4Mzk3Njc0LjE3ODQwNTQxNTk.*_ga_GSH9QPV469*czE3ODQwNTQxNTkkbzEkZzAkdDE3ODQwNTQxNTkkajYwJGwwJGgxNzA0NTA5MTYz",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Partner company",
+    "career_url": "https://www.linkedin.com/company/partner-israel/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Jerusalem"
+  },
+  {
+    "name": "Peax software (EMET group)",
+    "career_url": "https://peax.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "philips",
+    "career_url": "https://www.linkedin.com/in/michal-arama/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.careers.philips.com/il/en"
+  },
+  {
+    "name": "PivotHR",
+    "career_url": "https://pivot-hr.co.il/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "PlainID",
+    "career_url": "https://www.plainid.com/company/work-with-us/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Plus500",
+    "career_url": "https://careers.plus500.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "PointFive",
+    "career_url": "https://www.pointfive.co/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Prelysis",
+    "career_url": "https://www.linkedin.com/company/prelysis/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Prologic",
+    "career_url": "https://www.prologic.co.il/High-tech-jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Jerusalem, Israel"
+  },
+  {
+    "name": "Qualitest",
+    "career_url": "https://www.qualitestgroup.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Radware",
+    "career_url": "https://radware.taleo.net/careersection/ex/moresearch.ftl",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Rafael",
+    "career_url": "https://career.rafael.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Rapyd",
+    "career_url": "https://www.rapyd.net/company/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Rayzon group",
+    "career_url": "https://rayzone.com/about-us/career-main/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Negev"
+  },
+  {
+    "name": "Recruitx",
+    "career_url": "https://www.recruitx.co.il/jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Red Hat",
+    "career_url": "https://www.linkedin.com/in/omeravi/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.redhat.com/en/jobs"
+  },
+  {
+    "name": "Retama Software Solutions",
+    "career_url": "https://retama.co.il/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Ribbon communications",
+    "career_url": "https://ribboncommunications.com/company/careers/career-development-opportunities",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Rony Come",
+    "career_url": "https://app.civi.co.il/promos/id=A3M56Q5WCH&src=1486",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "RSecurity",
+    "career_url": "https://rsecurity.tech/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Salesforce",
+    "career_url": "https://careers.salesforce.com/en/jobs/?search=&country=Argentina&pagesize=20#results",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Samsung",
+    "career_url": "https://www.samsung.com/il/about-us/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "SB0",
+    "career_url": "https://sb0.tech/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "חדרה"
+  },
+  {
+    "name": "Schemathics",
+    "career_url": "https://schemathics.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Shavit Software",
+    "career_url": "https://www.shavit-soft.co.il/%d7%9e%d7%a9%d7%a8%d7%95%d7%aa",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Sheba hospital",
+    "career_url": "https://www.sheba.co.il/89400",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "SHVA",
+    "career_url": "https://www.shva.co.il/%d7%a7%d7%a8%d7%99%d7%99%d7%a8%d7%94-%d7%97%d7%93%d7%a9/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "SimilarWeb LTD",
+    "career_url": "https://www.similarweb.com/corp/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "SITE 123",
+    "career_url": "https://he.site123.com/jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "SodaStream",
+    "career_url": "https://www.pepsicojobs.com/main/jobs?keywords=sodastream",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Strauss Group",
+    "career_url": "https://www.strauss-group.co.il/career/jobs/?user_page=1&freeText=",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "SVT.jobs",
+    "career_url": "https://www.svt.jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Taboola",
+    "career_url": "https://www.taboola.com/careers/jobs#team=&location=18982",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "Taldor Consultants",
+    "career_url": "https://www.linkedin.com/in/sapir-pekhovich-b47559149/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.taldor.co.il/careers"
+  },
+  {
+    "name": "Tango",
+    "career_url": "https://www.comeet.com/jobs/tango/B7.007?location=Tel%20Aviv",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Tap",
+    "career_url": "https://tap.pm/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Team8",
+    "career_url": "https://team8.vc/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "tech19",
+    "career_url": "https://www.linkedin.com/company/tech-19/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "TEFEN",
+    "career_url": "https://www.tefen.co.il/carrer-page/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "TeraCyte",
+    "career_url": "https://www.teracyte.ai/careers",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Teva",
+    "career_url": "https://www.linkedin.com/jobs/search/?currentJobId=3423919227&f_C=5239%2C42818&geoId=106880832&location=South%20District%2C%20Israel&refresh=true",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Tipalti",
+    "career_url": "https://tipalti.com/en-eu/company/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Titan",
+    "career_url": "https://titandxp.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Tnuva",
+    "career_url": "https://www.linkedin.com/company/tnuva/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "Torq",
+    "career_url": "https://job-boards.greenhouse.io/torq?offices%5B%5D=4003830004",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "tower",
+    "career_url": "https://careers.towersemi.com/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Tranzila",
+    "career_url": "https://www.linkedin.com/company/tranzila-ltd/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Travelier (Bookaway)",
+    "career_url": "https://www.linkedin.com/in/meital-duani-652b98130/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "",
+    "official_scrape_url": "https://www.travelier.com/careers/"
+  },
+  {
+    "name": "TriEye",
+    "career_url": "https://trieye.tech/careers/co/tel-aviv/B0.724/camera-software-qa-engineer/?coref=1.11.p35_775",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "TSG IT Advanced Systems",
+    "career_url": "https://www.tsgitsystems.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Unilink Ltd",
+    "career_url": "https://www.unilink.co.il/%D7%A7%D7%A8%D7%99%D7%99%D7%A8%D7%94",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Union group",
+    "career_url": "https://unioncareer.co.il/%d7%a7%d7%a8%d7%99%d7%99%d7%a8%d7%94/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "USR Electronic Systems",
+    "career_url": "https://usr.co.il/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Verint",
+    "career_url": "https://www.verint.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "VIA",
+    "career_url": "https://ridewithvia.com/careers/jobs",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "מרכז"
+  },
+  {
+    "name": "Walnut",
+    "career_url": "https://www.walnut.io/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "webz.io",
+    "career_url": "https://webz.io/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "center"
+  },
+  {
+    "name": "wolt",
+    "career_url": "https://careers.wolt.com/en/jobs?location=Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "WSC Sports",
+    "career_url": "https://wsc-sports.com/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Yad2",
+    "career_url": "https://employer.dueto.io/yad_2/career-website/positions",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "yael group",
+    "career_url": "https://yaelgroup.com/jobs/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "youcc",
+    "career_url": "https://youcc.co.il/outsourcing",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Zap group",
+    "career_url": "https://zapgroup.co.il/careers/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Zeiss",
+    "career_url": "https://www.zeiss.com/career/en/home.html?vaURL=www.zeiss.com/career",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Zota",
+    "career_url": "https://careers.zota.com/?_gl=1*1tn6389*_gcl_au*NDkyNTQ0NzY5LjE3NjgzODczNzQ.",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Center"
+  },
+  {
+    "name": "חברת בינת bynet software",
+    "career_url": "https://www.bynet.co.il/career/",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": ""
+  },
+  {
+    "name": "Anodot",
+    "career_url": "https://www.anodot.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Aqua Security",
+    "career_url": "https://www.aquasec.com/about-us/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Armis",
+    "career_url": "https://www.armis.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Axonius",
+    "career_url": "https://www.axonius.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "BigPanda",
+    "career_url": "https://www.bigpanda.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Bria AI",
+    "career_url": "https://bria.ai/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Broadcom Israel",
+    "career_url": "https://broadcom.wd1.myworkdayjobs.com/External_Career",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Cadence Israel",
+    "career_url": "https://cadence.wd1.myworkdayjobs.com/CADENCE",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Capitolis",
+    "career_url": "https://capitolis.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Cato Networks",
+    "career_url": "https://www.catonetworks.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Claroty",
+    "career_url": "https://claroty.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Crazy Labs",
+    "career_url": "https://www.crazylabs.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Cybereason",
+    "career_url": "https://www.cybereason.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Dazz",
+    "career_url": "https://www.dazz.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Deci AI",
+    "career_url": "https://deci.ai/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Deep Instinct",
+    "career_url": "https://www.deepinstinct.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Descope",
+    "career_url": "https://www.descope.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "eBay Israel",
+    "career_url": "https://jobs.ebayinc.com/search-jobs/Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Firefly",
+    "career_url": "https://www.gofirefly.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Fundbox",
+    "career_url": "https://fundbox.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Granulate (Intel)",
+    "career_url": "https://granulate.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Habana Labs (Intel)",
+    "career_url": "https://habana.ai/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "HoneyBook",
+    "career_url": "https://www.honeybook.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Jit",
+    "career_url": "https://www.jit.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Komodor",
+    "career_url": "https://komodor.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Legit Security",
+    "career_url": "https://www.legitsecurity.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "LinearB",
+    "career_url": "https://linearb.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "M:AD",
+    "career_url": "https://madgrowth.com/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Marvell Israel",
+    "career_url": "https://marvell.wd1.myworkdayjobs.com/MarvellCareers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Melio",
+    "career_url": "https://www.meliopayments.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Mesh Payments",
+    "career_url": "https://meshpayments.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "morning (Green Invoice)",
+    "career_url": "https://www.comeet.com/jobs/morning/67.000",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Nanox.vision",
+    "career_url": "https://www.comeet.com/jobs/nanox/43.00F",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "NeuReality",
+    "career_url": "https://neureality.ai/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Next Insurance",
+    "career_url": "https://job-boards.greenhouse.io/nextinsurance66",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "NextSilicon",
+    "career_url": "https://www.nextsilicon.com/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Noname Security",
+    "career_url": "https://nonamesecurity.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Novu",
+    "career_url": "https://novu.co/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Oasis Security",
+    "career_url": "https://www.oasis.security/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Oracle Israel",
+    "career_url": "https://www.oracle.com/corporate/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Orca Security",
+    "career_url": "https://orca.security/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Overwolf",
+    "career_url": "https://www.overwolf.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Pagaya",
+    "career_url": "https://pagaya.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Palantir Israel",
+    "career_url": "https://jobs.lever.co/palantir",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Payoneer",
+    "career_url": "https://www.payoneer.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "PayPal Israel",
+    "career_url": "https://paypal.wd1.myworkdayjobs.com/jobs",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Pecan AI",
+    "career_url": "https://www.pecan.ai/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Pentera",
+    "career_url": "https://pentera.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Permit.io",
+    "career_url": "https://www.permit.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Pinecone",
+    "career_url": "https://www.pinecone.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Qualcomm Israel",
+    "career_url": "https://qualcomm.wd5.myworkdayjobs.com/External",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Redis",
+    "career_url": "https://redis.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Riskified",
+    "career_url": "https://www.riskified.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Run:ai",
+    "career_url": "https://www.run.ai/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "SAP Israel",
+    "career_url": "https://jobs.sap.com/search/?q=Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "SentinelOne",
+    "career_url": "https://www.sentinelone.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "ServiceNow Israel",
+    "career_url": "https://careers.servicenow.com/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Silverfort",
+    "career_url": "https://www.silverfort.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Sisense",
+    "career_url": "https://www.sisense.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Snyk",
+    "career_url": "https://snyk.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Sony Semiconductor Israel",
+    "career_url": "https://www.sony-semicon.com/en/company/careers.html",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Speedata",
+    "career_url": "https://www.speedata.io/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Sunbit",
+    "career_url": "https://sunbit.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Sweet Security",
+    "career_url": "https://sweet.security/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Swimm",
+    "career_url": "https://swimm.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Synopsys Israel",
+    "career_url": "https://synopsys.wd1.myworkdayjobs.com/Synopsys_Careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Talon Cyber Security",
+    "career_url": "https://talon-sec.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Unit",
+    "career_url": "https://www.unit.co/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "WalkMe",
+    "career_url": "https://www.walkme.com/careers/",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "WeDev",
+    "career_url": "https://job-boards.eu.greenhouse.io/wedev",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Western Digital Israel",
+    "career_url": "https://jobs.smartrecruiters.com/WesternDigital",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Wing Security",
+    "career_url": "https://wing.security/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  },
+  {
+    "name": "Zafran Security",
+    "career_url": "https://www.zafran.io/careers",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "ישראל"
+  }
+]
