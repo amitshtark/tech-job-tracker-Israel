@@ -1,0 +1,4173 @@
+[
+  {
+    "company": "Dell Technologies",
+    "title": "Junior MLOps Engineer",
+    "url": "https://enterpriseplatform.dell.com/hcmUI/CandidateExperience/en/sites/CX_1/job/299259"
+  },
+  {
+    "company": "Amazon",
+    "title": "2027 Software Dev Engineer Intern",
+    "url": "https://amazon.jobs/en/jobs/10592105/2027-software-dev-engineer-intern-haifa-israel"
+  },
+  {
+    "company": "Amazon",
+    "title": "Software Automation Student – Annapurna Labs",
+    "url": "https://amazon.jobs/jobs/10582178"
+  },
+  {
+    "company": "Mobileye",
+    "title": "Junior Embedded Software & Integration Engineer",
+    "url": "https://careers.mobileye.com/jobs/junior-embedded-software-integration-engineer/1B.470"
+  },
+  {
+    "company": "Mobileye",
+    "title": "Deep Learning Algorithm Developer – M.Sc. Graduate",
+    "url": "https://careers.mobileye.com/jobs/deep-learning-algorithm-developer-msc-graduate/be730214-2c22-4acf-aff9-422fb6823f3e"
+  },
+  {
+    "company": "Rafael",
+    "title": "סטודנט.ית למדמ\"ח / הנדסת תוכנה",
+    "url": "https://career.rafael.co.il/job/6354/"
+  },
+  {
+    "company": "Rafael",
+    "title": "סטודנט.ית למחלקת אלגוריתמים",
+    "url": "https://career.rafael.co.il/job/12323"
+  },
+  {
+    "company": "Elbit Systems",
+    "title": "סטודנט/ית לאלגוריתמים – ראייה ממוחשבת ועיבוד תמונה",
+    "url": "https://elbitsystemscareer.com/job/?jid=21093"
+  },
+  {
+    "company": "Elbit Systems",
+    "title": "Software Engineer Student",
+    "url": "https://elbitsystemscareer.com/jobs/"
+  },
+  {
+    "company": "NVIDIA",
+    "title": "AI Developer Intern – Interconnect Hardware Frontend",
+    "url": "https://jobs.nvidia.com/careers/job/893398228863"
+  },
+  {
+    "company": "NVIDIA",
+    "title": "Research Software Engineering Student – AI & GPU Networking",
+    "url": "https://jobs.nvidia.com/careers/job/893398004014"
+  },
+  {
+    "company": "eToro",
+    "title": "BizOps Developer (Agentic AI)",
+    "url": "https://www.etoro.com/about/careers/position/f2.963/"
+  },
+  {
+    "company": "Palo Alto Networks",
+    "title": "R&D Intern – Alero Backend & APIs",
+    "url": "https://jobs.paloaltonetworks.com/en/job/petah-tiqwa/r-and-d-intern-alero-idira/47263/102245668912"
+  },
+  {
+    "company": "Palo Alto Networks",
+    "title": "R&D Intern – Windows Agent",
+    "url": "https://jobs.paloaltonetworks.com/en/job/petah-tiqwa/r-and-d-intern-for-windows-agent-endpoint-privilege-management/47263/102245669408"
+  },
+  {
+    "company": "Earnix",
+    "title": "Junior Frontend & Automation Developer",
+    "url": "https://earnix.com/career/b7.372/junior-frontend-and-automation-developer-maternity-leave-replacement-(6-months)/"
+  },
+  {
+    "company": "Red Hat",
+    "title": "Software Engineering Internship",
+    "url": "https://devjobs.co.il/job-details/4038684632"
+  },
+  {
+    "company": "Ribbon Communications",
+    "title": "AI & Intelligent Automation – Student Position",
+    "url": "https://devjobs.co.il/job-details/4377760292"
+  },
+  {
+    "company": "Ribbon Communications",
+    "title": "C/C++ Junior Software Engineer",
+    "url": "https://www.devjobs.co.il/job-details/3995442451"
+  },
+  {
+    "company": "Radware",
+    "title": "Software Development Student",
+    "url": "https://radware.taleo.net/careersection/ex/jobdetail.ftl?job=26000040"
+  },
+  {
+    "company": "Intel",
+    "title": "Software Development student",
+    "url": "https://intel.wd1.myworkdayjobs.com/External/job/Israel-Haifa/Software-Development-student_JR0287581"
+  },
+  {
+    "company": "Google",
+    "title": "Part-Time Software Engineering PhD Intern",
+    "url": "https://www.google.com/about/careers/applications/jobs/results/74922616988541638-parttime-software-engineering-phd-intern-2027"
+  },
+  {
+    "company": "Google",
+    "title": "Part-Time Research Scientist PhD Intern",
+    "url": "https://www.google.com/about/careers/applications/jobs/results/88486192428786374-parttime-research-scientist-phd-intern"
+  },
+  {
+    "company": "Google",
+    "title": "Software Engineer II, CPU Performance Modelling",
+    "url": "https://careers.google.com/jobs/results/98148480496607942-software-engineer-ii/"
+  },
+  {
+    "company": "Google",
+    "title": "Software Engineer II, Search AI Answers Quality",
+    "url": "https://careers.google.com/jobs/results/111957608612405958-software-engineer-ii/"
+  },
+  {
+    "company": "Google",
+    "title": "Software Engineer III, Infrastructure, Chronicle SOAR",
+    "url": "https://careers.google.com/jobs/results/86418779856085702-software-engineer-iii/"
+  },
+  {
+    "company": "Google",
+    "title": "Software Engineer III, Cloud Machine Learning Compute",
+    "url": "https://careers.google.com/jobs/results/113828324567851718-software-engineer-lll/"
+  },
+  {
+    "company": "VAST Data",
+    "title": "Software Engineer – New College Grad (Tel Aviv)",
+    "url": "https://www.comeet.com/jobs/vastdata/43.001/software-engineer--new-college-grad/A8.D05"
+  },
+  {
+    "company": "VAST Data",
+    "title": "Software Engineer – New College Grad (Haifa)",
+    "url": "https://www.comeet.com/jobs/vastdata/43.001/software-engineer--new-college-grad/A8.D05-17.10C"
+  },
+  {
+    "company": "monday.com",
+    "title": "AI Engineer (render.ai)",
+    "url": "https://monday.com/careers/077675a8-bfb6-47f4-a466-347561c26258"
+  },
+  {
+    "company": "Apple",
+    "title": "Software Engineering Student (Herzliya)",
+    "url": "https://jobs.apple.com/en-il/details/200676939-0865/software-engineering-student?team=HRDWR"
+  },
+  {
+    "company": "Apple",
+    "title": "Software Engineering Student (Haifa)",
+    "url": "https://jobs.apple.com/en-il/details/200676939-1451/software-engineering-student"
+  },
+  {
+    "company": "Apple",
+    "title": "Machine Learning Student – Agentic AI",
+    "url": "https://jobs.apple.com/en-il/details/200691529-0865/machine-learning-ph-d-student-agentic-ai?team=MLAI"
+  },
+  {
+    "company": "Apple",
+    "title": "C/C++ Software Engineer",
+    "url": "https://jobs.apple.com/en-il/details/200627584/c-c-software-engineer"
+  },
+  {
+    "company": "SciPlay",
+    "title": "Data Science and AI Builder",
+    "url": "https://lnw.wd5.myworkdayjobs.com/SciPlayExternalCareersSite/job/ISRAEL-Tel-Aviv-2A-Jabotinsky/Data-Science-and-AI-builder_R323041"
+  },
+  {
+    "company": "Moveo Group",
+    "title": "Full-Stack Web Developer (Junior)",
+    "url": "https://www.moveo.group/careers"
+  },
+  {
+    "company": "abra",
+    "title": "Priority Developer (Junior)",
+    "url": "https://www.abra-it.com/en/career/abra-north/priority-developer-junior-required-priority-development-course/"
+  },
+  {
+    "company": "MatchPointIT",
+    "title": ".NET Web Developer",
+    "url": "https://matchpointit.com/"
+  },
+  {
+    "company": "SVT.jobs",
+    "title": "Junior Frontend Developer",
+    "url": "https://www.svt.jobs/position/711707/share/?enc=TkI4blhjYWcxYUpRSWxzZmRLbGpQMWlKbDBmNWZDRzFNZ3FxTkJyZG9QRkQ4TGZSMUFYSkkrOGxjMEFQNWFybWxXd1V4dDBNMk5HMTNFK3NPdnZEeWc9PQ,,"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Junior Fullstack Developer (#100627)",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/full-stack-developer/junior-fullstack-developer/"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Full Stack Developer - Junior Position (#120707)",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/full-stack-developer/%D7%9E%D7%A4%D7%AA%D7%97%D7%AA-full-stack-%D7%9C%D7%9E%D7%A9%D7%A8%D7%AA-%D7%92%D7%95%D7%A0%D7%99%D7%95%D7%A8/"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Junior Developer (Algo-Trading Startup)",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/graduate-with-high-honors/junior-developer-%D7%9C%D7%9C%D7%90-%D7%A0%D7%99%D7%A1%D7%99%D7%95%D7%9F-%D7%9C%D7%97%D7%91%D7%A8%D7%AA-%D7%A1%D7%98%D7%90%D7%A8%D7%98%D7%90%D7%A4-%D7%91%D7%A2%D7%95%D7%9C%D7%9D-%D7%94%D7%90%D7%9C%D7%92%D7%95%D7%98%D7%A8%D7%99%D7%99%D7%93%D7%99%D7%A0%D7%92/"
+  },
+  {
+    "company": "Dialog",
+    "title": "Junior Full Stack Developer (#85126)",
+    "url": "https://www.dialog.co.il/high-tech/jobs/jobpage?positionId=85126"
+  },
+  {
+    "company": "Dialog",
+    "title": "Junior Backend Developer (#85590)",
+    "url": "https://www.dialog.co.il/high-tech/jobs/jobpage?positionId=85590"
+  },
+  {
+    "company": "Dialog",
+    "title": "Junior Full Stack Engineer (#94783)",
+    "url": "https://www.dialog.co.il/high-tech/jobs/jobpage?positionId=94783"
+  },
+  {
+    "company": "AllJobs",
+    "title": "Full Stack Developer Junior",
+    "url": "https://www.alljobs.co.il/"
+  },
+  {
+    "company": "apple",
+    "title": "Software Engineer, Tools & Infrastructure - Q",
+    "url": "https://jobs.apple.com/en-il/details/200693131-0865/software-engineer-tools-infrastructure-q?team=SFTWR",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:34.182346"
+  },
+  {
+    "company": "apple",
+    "title": "Physics & Optical Simulation Software Engineer - Q",
+    "url": "https://jobs.apple.com/en-il/details/200692526-0865/physics-optical-simulation-software-engineer-q?team=HRDWR",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:36.618018"
+  },
+  {
+    "company": "apple",
+    "title": "AI Research Engineer - Chip Design",
+    "url": "https://jobs.apple.com/en-il/details/200693100-1451/ai-research-engineer-chip-design?team=MLAI",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:40.141024"
+  },
+  {
+    "company": "apple",
+    "title": "AI Research Engineer - Chip Design",
+    "url": "https://jobs.apple.com/en-il/details/200693100-0865/ai-research-engineer-chip-design?team=MLAI",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:43.304968"
+  },
+  {
+    "company": "apple",
+    "title": "ML Deployment Engineer, Edge AI - Q",
+    "url": "https://jobs.apple.com/en-il/details/200692788-0865/ml-deployment-engineer-edge-ai-q?team=SFTWR",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:45.680005"
+  },
+  {
+    "company": "apple",
+    "title": "Deep Learning Research Engineer - ML & Physics - Q",
+    "url": "https://jobs.apple.com/en-il/details/200692511-0865/deep-learning-research-engineer-ml-physics-q?team=MLAI",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:47.895670"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "Bridget™Compliant AI chat that takes investors from question to trade",
+    "url": "https://bridgewise.com/bridget/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:49.379894"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "pAIThe AI wealth agent that builds and rebalances individual portfolios",
+    "url": "https://bridgewise.com/pai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:50.621320"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "Retail BrokeragesGive investors a reason to return with embedded AI solutions",
+    "url": "https://bridgewise.com/trading-platform/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:51.773078"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "Case StudiesHow brokers, banks, and wealth platforms put Bridgewise AI to work",
+    "url": "https://bridgewise.com/category/case-study/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:52.767043"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "BlogPerspectives on AI, investing, and the future of the investor experience",
+    "url": "https://bridgewise.com/category/blog/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:53.796923"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "Data Reports: The State of Wealth AIOriginal research on how investors and institutions adopt AI",
+    "url": "https://bridgewise.com/resources/state-of-ai-for-wealth-report/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:55.325364"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "About usThe mission, team, and story behind our investment AI",
+    "url": "https://bridgewise.com/about/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:56.543221"
+  },
+  {
+    "company": "Bridgewise",
+    "title": "CareersJoin the team building industry-leading investment AI",
+    "url": "https://bridgewise.com/careers/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:57.682490"
+  },
+  {
+    "company": "Buildots",
+    "title": "Construction’s first AI-powered research hubGet the insights",
+    "url": "https://buildots.com/lab/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:58.023743"
+  },
+  {
+    "company": "Gong",
+    "title": "Gong AI",
+    "url": "https://www.gong.io/platform/revenue-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:50:59.397785"
+  },
+  {
+    "company": "Gong",
+    "title": "Gong AI Agents",
+    "url": "https://www.gong.io/platform/ai-agents-for-revenue-teams",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:00.319652"
+  },
+  {
+    "company": "Gong",
+    "title": "Revenue AI glossary",
+    "url": "https://www.gong.io/revenue-intelligence-sales-glossary",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:01.328194"
+  },
+  {
+    "company": "Healthee",
+    "title": "AI virtual assistantMeet Zoe, your personal health agent",
+    "url": "https://healthee.com/what-we-do/ai-virtual-assistant/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:03.524882"
+  },
+  {
+    "company": "Healthee",
+    "title": "AI claims analyticsProactive claims intelligence",
+    "url": "https://healthee.com/what-we-do/ai-claims-analytics/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:04.908738"
+  },
+  {
+    "company": "Healthee",
+    "title": "Benefits advisorsHelp clients succeed with AI-powered benefits",
+    "url": "https://healthee.com/who-we-serve/benefits-advisors/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:05.377958"
+  },
+  {
+    "company": "Healthee",
+    "title": "AI virtual assistant",
+    "url": "https://healthee.com/what-we-do/ai-virtual-assistant/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:05.671324"
+  },
+  {
+    "company": "Healthee",
+    "title": "AI claims analytics",
+    "url": "https://healthee.com/what-we-do/ai-claims-analytics/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:05.961144"
+  },
+  {
+    "company": "Healthee",
+    "title": "AI benefits navigator guide",
+    "url": "https://healthee.com/ai-benefits-navigator-guide/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:07.471702"
+  },
+  {
+    "company": "hiBob",
+    "title": "Bob AIEmbedded AI across your people platform",
+    "url": "https://www.hibob.com/platform/core/ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:08.283325"
+  },
+  {
+    "company": "hiBob",
+    "title": "AI TrustSecurity, privacy, and responsible AI",
+    "url": "https://www.hibob.com/privacy/ai-trust-center/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:09.820309"
+  },
+  {
+    "company": "hiBob",
+    "title": "MCPLive people context for AI",
+    "url": "https://www.hibob.com/platform/core/ai/mcp/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:10.680433"
+  },
+  {
+    "company": "hiBob",
+    "title": "Technology & Software",
+    "url": "https://www.hibob.com/solutions/industries/technology/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:11.518719"
+  },
+  {
+    "company": "hiBob",
+    "title": "AI Assessment Tool",
+    "url": "https://www.hibob.com/hr-tools/ai-skills-assessment-tool/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:12.283201"
+  },
+  {
+    "company": "hiBob",
+    "title": "AI Backend EngineerPermanent | Israel",
+    "url": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/9010e73d-8849-4c6c-b0de-aecaa27add51",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:13.233686"
+  },
+  {
+    "company": "hiBob",
+    "title": "AI Platform Product ManagerPermanent | Israel",
+    "url": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/7f8b464c-f0b0-43a7-8092-f10515206edd",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:13.554187"
+  },
+  {
+    "company": "hiBob",
+    "title": "Bob AI",
+    "url": "https://www.hibob.com/platform/core/ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:14.219859"
+  },
+  {
+    "company": "hiBob",
+    "title": "AI trust",
+    "url": "https://www.hibob.com/privacy/ai-trust-center/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:14.850546"
+  },
+  {
+    "company": "intuit",
+    "title": "Software Engineering",
+    "url": "https://www.intuit.com/careers/teams/software-engineering/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:15.525434"
+  },
+  {
+    "company": "intuit",
+    "title": "Entry-Level Careers",
+    "url": "https://www.intuit.com/careers/programs/entry-level-careers/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:16.155751"
+  },
+  {
+    "company": "intuit",
+    "title": "Data Science",
+    "url": "https://www.intuit.com/careers/teams/data-science/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:16.610207"
+  },
+  {
+    "company": "Island",
+    "title": "Enterprise AISecure, accessible, and built for how the workplace actually uses AI",
+    "url": "https://www.island.io/product/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:17.066940"
+  },
+  {
+    "company": "Island",
+    "title": "Enable AI at Work",
+    "url": "https://www.island.io/product/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:17.431639"
+  },
+  {
+    "company": "Island",
+    "title": "NewsIsland Makes AI Work for the Enterprise",
+    "url": "https://www.island.io/press/island-makes-ai-work-for-the-enterprise",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:17.790516"
+  },
+  {
+    "company": "Island",
+    "title": "ML Ops EngineerTel Aviv",
+    "url": "https://www.island.io/careers#see-open-positions",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:18.180860"
+  },
+  {
+    "company": "Island",
+    "title": "AI Implementation Specialist - AI Governance, Gateways, Platform ControlDallas",
+    "url": "https://www.island.io/careers#see-open-positions",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:18.579821"
+  },
+  {
+    "company": "Island",
+    "title": "AI Implementation Specialist - AI Governance, Gateways, Platform ControlDallas",
+    "url": "https://www.island.io/open-positions/position-4412445009",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:18.929968"
+  },
+  {
+    "company": "Island",
+    "title": "Enterprise AI",
+    "url": "https://www.island.io/product/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:19.719296"
+  },
+  {
+    "company": "Island",
+    "title": "Enable AI at Work",
+    "url": "https://www.island.io/product/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:20.116577"
+  },
+  {
+    "company": "monday.com",
+    "title": "AI Engineer (render.ai)Tel-Aviv, IL",
+    "url": "https://monday.com/careers/077675a8-bfb6-47f4-a466-347561c26258",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:21.331280"
+  },
+  {
+    "company": "monday.com",
+    "title": "How to use AI in our hiring process ✦",
+    "url": "https://monday.com/lp/our-ai-interview-guide",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:26.351754"
+  },
+  {
+    "company": "monday.com",
+    "title": "Hey AI, learn about us",
+    "url": "https://monday.com/w/ai-info",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:26.940620"
+  },
+  {
+    "company": "monday.com",
+    "title": "AI assistant",
+    "url": "https://monday.com/w/sidekick",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:27.508862"
+  },
+  {
+    "company": "monday.com",
+    "title": "AI workflows",
+    "url": "https://monday.com/features/workflows",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:28.717719"
+  },
+  {
+    "company": "nice",
+    "title": "Enterprise CX AIOperationalize agentic AI with connected intelligence",
+    "url": "https://www.nice.com/platform/ai-for-cx",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:30.838779"
+  },
+  {
+    "company": "nice",
+    "title": "Integrations​Seamlessly connect business systems with an open and flexible AI platform​",
+    "url": "https://www.nice.com/platform/integrations",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:31.305521"
+  },
+  {
+    "company": "nice",
+    "title": "Trust Center​Reliability, security, and compliance that drives enterprise AI innovation​",
+    "url": "https://www.nice.com/company/trust-center",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:31.747808"
+  },
+  {
+    "company": "nice",
+    "title": "Agentic Experience Automation​AI that resolves customer needs instantly and proactively​",
+    "url": "https://www.nice.com/products/agentic-experience-automation",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:32.391611"
+  },
+  {
+    "company": "nice",
+    "title": "Engagement Orchestration​AI-driven orchestration that streamlines service journeys across the enterprise​",
+    "url": "https://www.nice.com/products/engagement-orchestration",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:32.986691"
+  },
+  {
+    "company": "nice",
+    "title": "Workforce Empowerment​Real-time AI assistance that makes every employee faster and smarter​",
+    "url": "https://www.nice.com/products/workforce-empowerment",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:33.565821"
+  },
+  {
+    "company": "nice",
+    "title": "AI Agentsfor Process AutomationAI agents that act instantly, work across systems, and help your business run smarter.",
+    "url": "https://www.nice.com/products/ai-agents-for-process-automation",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:34.030797"
+  },
+  {
+    "company": "nice",
+    "title": "Knowledge ManagementActivate AI-powered enterprise knowledge to increase self-resolution rates and loyalty.",
+    "url": "https://www.nice.com/products/knowledge-management",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:34.690391"
+  },
+  {
+    "company": "nice",
+    "title": "Voice Services​Cloud voice and data services on the world's most resilient, AI-ready network.",
+    "url": "https://www.nice.com/products/voice-services",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:35.184099"
+  },
+  {
+    "company": "nice",
+    "title": "Workforce Management​Powerful AI-based forecasting and scheduling to keep SLAs up and costs down​.",
+    "url": "https://www.nice.com/products/workforce-management",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:35.721429"
+  },
+  {
+    "company": "nice",
+    "title": "Quality Management​Evaluate 100% of interactions with AI and deliver effective coaching to agents.​",
+    "url": "https://www.nice.com/products/quality-management",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:36.237880"
+  },
+  {
+    "company": "nice",
+    "title": "Interaction AnalyticsGain AI-powered insights from 100% of interactions to drive continuous improvement.​",
+    "url": "https://www.nice.com/products/interaction-analytics",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:36.762729"
+  },
+  {
+    "company": "nice",
+    "title": "Copilot for Agents​Empower customer service agents with an AI companion to drive productivity and engagement.​",
+    "url": "https://www.nice.com/products/copilot-for-agents",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:37.232596"
+  },
+  {
+    "company": "nice",
+    "title": "Reduce Operational CostsLeverage AI and automation to increase agent retention",
+    "url": "https://www.nice.com/solutions/increase-operational-efficiency",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:37.672780"
+  },
+  {
+    "company": "nice",
+    "title": "Operationalize AI for CXElevate experiences by moving operations to the cloud",
+    "url": "https://www.nice.com/solutions/move-to-the-cloud",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:38.112088"
+  },
+  {
+    "company": "nice",
+    "title": "Engage Customers ProactivelyElevate customer satisfaction with proactive conversational AI",
+    "url": "https://www.nice.com/solutions/proactive-customer-engagement",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:38.554350"
+  },
+  {
+    "company": "nice",
+    "title": "Strategic Technology PartnersExtend CXone with leading technologies to scale AI-powered CX",
+    "url": "https://www.nice.com/partners/strategic-technology-partners",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:38.994332"
+  },
+  {
+    "company": "nice",
+    "title": "Developer Tools & APIsEndless customization options with RESTful APIs and robust SDKs",
+    "url": "https://www.nice.com/products/integrations-developer-tools-apis",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:40.873265"
+  },
+  {
+    "company": "nice",
+    "title": "EducationFrictionless student journey",
+    "url": "https://www.nice.com/industries/education",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:41.334014"
+  },
+  {
+    "company": "nice",
+    "title": "Why NiCE? Video SeriesStep Inside The Room Where It Happened to see CX AI in action",
+    "url": "https://www.nice.com/resources/why-nice-the-room-where-it-happened-video-series",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:41.853290"
+  },
+  {
+    "company": "nice",
+    "title": "NiCE LabsWe connect research, innovation, and advocacy to turn AI advances into real CX outcomes.",
+    "url": "https://www.nice.com/nice-labs",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:43.725163"
+  },
+  {
+    "company": "nice",
+    "title": "Employer Branding Student (Temporary )Israel - Raanana",
+    "url": "https://boards.eu.greenhouse.io/nice/jobs/4912601101?gh_jid=4912601101",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:44.679951"
+  },
+  {
+    "company": "nice",
+    "title": "Developer Partners (DEVone)",
+    "url": "https://developer.niceincontact.com/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:46.102369"
+  },
+  {
+    "company": "nice",
+    "title": "Information for AI Assistants",
+    "url": "https://www.nice.com/information-for-ai-assistants",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:46.569984"
+  },
+  {
+    "company": "nice",
+    "title": "State of Agentic AI in CX",
+    "url": "https://www.nice.com/agentic-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:47.178493"
+  },
+  {
+    "company": "nice",
+    "title": "Conversational AI Platform",
+    "url": "https://www.nice.com/conversational-ai-platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:47.624485"
+  },
+  {
+    "company": "nice",
+    "title": "Customer Service AI",
+    "url": "https://www.nice.com/customer-service-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:48.132466"
+  },
+  {
+    "company": "nice",
+    "title": "AI Virtual Agent Platform",
+    "url": "https://www.nice.com/ai-virtual-agent-platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:48.574556"
+  },
+  {
+    "company": "nice",
+    "title": "AI Contact Center Platform",
+    "url": "https://www.nice.com/ai-contact-center-platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:49.028065"
+  },
+  {
+    "company": "nice",
+    "title": "Enterprise AI Platform",
+    "url": "https://www.nice.com/enterprise-ai-platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:49.463495"
+  },
+  {
+    "company": "nice",
+    "title": "AI Automation Platform",
+    "url": "https://www.nice.com/ai-automation-platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:49.902552"
+  },
+  {
+    "company": "nice",
+    "title": "Call Center AI",
+    "url": "https://www.nice.com/call-center-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:50.336194"
+  },
+  {
+    "company": "nice",
+    "title": "AI Chatbot for Business",
+    "url": "https://www.nice.com/ai-chatbot-business",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:50.812788"
+  },
+  {
+    "company": "nice",
+    "title": "AI Workflow Optimization",
+    "url": "https://www.nice.com/ai-workflow-automation",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:51.254622"
+  },
+  {
+    "company": "nice",
+    "title": "Generative AI in Customer Service",
+    "url": "https://www.nice.com/generative-ai-in-customer-service",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:51.702768"
+  },
+  {
+    "company": "nice",
+    "title": "AI Voice Agents",
+    "url": "https://www.nice.com/ai-voice-agents",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:52.146938"
+  },
+  {
+    "company": "Palo Alto Networks",
+    "title": "Search Internships and New Grad Jobs",
+    "url": "https://jobs.paloaltonetworks.com/early-in-career",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:53.352300"
+  },
+  {
+    "company": "Palo Alto Networks",
+    "title": "今後 サイバー攻撃 や AI の悪用による攻撃を防ぐために重要なものとは一体？！代表取締役会長兼社長　アリイ・ヒロシThursday, September 26, 2024",
+    "url": "https://www.youtube.com/watch?v=Y_1XVCgUAUs",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:54.296200"
+  },
+  {
+    "company": "playtika",
+    "title": "Data & Ai",
+    "url": "https://www.playtika.com/careers/data-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:51:54.690029"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (New Grad 2027)San Francisco, CA•New York, NY",
+    "url": "https://jobs.ashbyhq.com/Sierra/149f368c-52d5-408f-ba26-ad888f318a00",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:55.603918"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (New Grad 2027)Singapore",
+    "url": "https://jobs.ashbyhq.com/Sierra/79953d72-60d4-43e0-8c8c-6eccda422dce",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:56.376527"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (New Grad 2027)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/d0e78ab0-92ac-4fec-a667-837fa371b1db",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:58.519314"
+  },
+  {
+    "company": "Sierra",
+    "title": "APX (New Grad 2027)San Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/d9c445da-c7b4-43a3-8d71-d367681c3015",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:59.189894"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer Intern, Agent (London 2027)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/7af8aa4e-ba84-49ba-bc53-19358f4564ff",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:51:59.803027"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer Intern, Agent (Summer 2027)San Francisco, CA•New York, NY",
+    "url": "https://jobs.ashbyhq.com/Sierra/34b31b67-268c-4270-b48f-72e59064c96e",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:00.708994"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer Intern, Agent (Summer 2027)Singapore",
+    "url": "https://jobs.ashbyhq.com/Sierra/eb8e8b58-394b-43f0-b9bd-4f1407d9aa17",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:01.083963"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentLondon",
+    "url": "https://jobs.ashbyhq.com/Sierra/b7d1dbcd-ca72-472f-b15e-5b4b0f886be0",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:01.746119"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentSan Francisco, CA•New York, NY•Atlanta, GA",
+    "url": "https://jobs.ashbyhq.com/Sierra/e9f5fdb6-91ee-4c55-9230-41ec8865650e",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:02.391228"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentMadrid",
+    "url": "https://jobs.ashbyhq.com/Sierra/df431e56-56f5-42ed-bc62-7d6f7041bd27",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:03.122513"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentParis",
+    "url": "https://jobs.ashbyhq.com/Sierra/b89816c1-80b2-449b-b69e-2c261b8e9e23",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:03.996244"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentMunich",
+    "url": "https://jobs.ashbyhq.com/Sierra/8646493c-93a6-482e-a810-4a0aa6e3438f",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:04.587516"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentToronto",
+    "url": "https://jobs.ashbyhq.com/Sierra/631848ec-1a74-4067-8b9f-cd04a71aab6d",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:05.225697"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentSydney",
+    "url": "https://jobs.ashbyhq.com/Sierra/787c1efd-2327-46e7-9335-59a20ad4be18",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:06.052050"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, AgentSouth Korea",
+    "url": "https://jobs.ashbyhq.com/Sierra/3cdeb98c-a25c-4f3b-a704-1418556454bc",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:06.868968"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - Financial ServicesSan Francisco, CA•New York, NY•Atlanta, GA",
+    "url": "https://jobs.ashbyhq.com/Sierra/33dbd62f-8212-4ea8-9b59-74370c1f2803",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:07.585667"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - HealthcareNew York, NY•San Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/f3308520-6d7d-45ac-b96d-3f5a5012e6c9",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:08.225264"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - InsuranceSan Francisco, CA•New York, NY•Atlanta, GA",
+    "url": "https://jobs.ashbyhq.com/Sierra/b9b9b5e0-7304-4265-aa71-d71d80d29402",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:09.017203"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - Public SectorSan Francisco, CA•New York, NY•Washington, D.C.",
+    "url": "https://jobs.ashbyhq.com/Sierra/7dae2e7c-6556-438c-bf60-509931d8188c",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:09.734666"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - RetailSan Francisco, CA•New York, NY•Atlanta, GA•Toronto",
+    "url": "https://jobs.ashbyhq.com/Sierra/c729c633-0376-436e-8f2b-1501088b85b0",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:10.655202"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - Tech, Media & TelecomSan Francisco, CA•New York, NY",
+    "url": "https://jobs.ashbyhq.com/Sierra/fd5df98a-e2c8-4d47-a803-daee5cccb36f",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:11.372554"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent - Travel , Transportation & HospitalitySan Francisco, CA•New York, NY•Atlanta, GA",
+    "url": "https://jobs.ashbyhq.com/Sierra/d2dc9baf-30d4-4708-9227-62a946b4b37e",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:12.029804"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Arabic speaking)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/ce463311-0c6c-43d9-ab79-dd751743104f",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:12.704100"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Brazilian Portuguese speaking)San Francisco, CA•New York, NY",
+    "url": "https://jobs.ashbyhq.com/Sierra/f51d6c09-d767-4e86-bc62-216b2051e318",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:13.420904"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Dutch speaking)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/ae8840cd-f46e-4c96-87b1-53fedf40f94d",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:14.036025"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (French speaking)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/9d9e7d4a-2a27-4f64-9b1f-d79c5d3f129a",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:14.485878"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (German speaking)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/9ebc3a79-82bf-478d-bd98-d473d41bdeaf",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:15.105240"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Italian speaking)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/6207b02d-d334-4000-b84e-2af779171838",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:15.838471"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Mandarin Speaking)Singapore",
+    "url": "https://jobs.ashbyhq.com/Sierra/b37a6f9e-53c7-4c47-beb5-1ab4451f3001",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:16.231476"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Spanish speaking)London",
+    "url": "https://jobs.ashbyhq.com/Sierra/aadfc0a0-93f6-454b-9767-c24793fa3eff",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:17.467399"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent (Spanish speaking)San Francisco, CA•New York, NY•Toronto",
+    "url": "https://jobs.ashbyhq.com/Sierra/9d59c96e-e7f7-43cc-8069-bcdf3798fe2b",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:18.390681"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Admin ExperienceSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/688d4d59-23d8-4100-9e2b-2fb11544753e",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:19.152934"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent BuilderSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/200df475-2175-45ce-9510-7d04afabd08d",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:19.932217"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Agent RuntimeSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/0cb4da3e-3c67-4f14-a84d-956042669275",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:20.697363"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Channels and ExperiencesSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/2f372b6b-d163-48bd-b5df-84f9bf2b4dbc",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:21.609660"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Cloud InfrastructureSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/4b28305d-e601-4328-a8f5-9f236bd718bd",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:22.328896"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Context EngineSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/ae8a501d-7f79-4398-b858-3d793756dd25",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:23.153733"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, HorizonSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/0dfe7805-aa81-4b8c-88e0-f93a7f80ecee",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:24.947466"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, InferenceSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/b8666a78-fcb1-47bb-ad07-5edb6cd3ad71",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:25.760914"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, InfrastructureSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/802d17c5-fe47-4b44-90e5-65e5e731ff88",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:26.498889"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, InsightsSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/43fe3ab5-60ce-4d2c-b3bb-90c201968de2",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:27.141116"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, Payments InfrastructureSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/50ec6f9a-25f9-44b4-b8cc-50c897e698b3",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:27.898496"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, PlatformSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/d77487f9-bab3-44c6-be18-744e7125c8b3",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:28.495288"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, ProductSan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/5ae78769-a3a1-491c-8b4b-95472f1fb36c",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:29.193514"
+  },
+  {
+    "company": "Sierra",
+    "title": "Software Engineer, SecuritySan Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/201c6046-acb5-4fd4-a685-e993f34ec0d1",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:29.908601"
+  },
+  {
+    "company": "Sierra",
+    "title": "Developer Relations EngineerNew York, NY•San Francisco, CA",
+    "url": "https://jobs.ashbyhq.com/Sierra/06453dd1-a29f-4aea-bb06-2d49862860e8",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:30.509356"
+  },
+  {
+    "company": "Sierra",
+    "title": "Strategist, Agent Development (MBA Grad 2027)San Francisco, CA•New York, NY",
+    "url": "https://jobs.ashbyhq.com/Sierra/6c3fa1ef-5eea-4afc-967e-2d3bb920ad96",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:31.181599"
+  },
+  {
+    "company": "Sygnia",
+    "title": "AI Security",
+    "url": "https://www.sygnia.co/solutions/artificial-intelligence-cybersecurity-services/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:31.604492"
+  },
+  {
+    "company": "upwind",
+    "title": "AI Security",
+    "url": "https://www.upwind.io/ai-security-platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:32.114119"
+  },
+  {
+    "company": "upwind",
+    "title": "AI Security Posture \nManagement (AI-SPM)",
+    "url": "https://www.upwind.io/ai-spm",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:33.338469"
+  },
+  {
+    "company": "upwind",
+    "title": "AI Security",
+    "url": "https://www.upwind.io/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:33.750233"
+  },
+  {
+    "company": "upwind",
+    "title": "AI Engineering LeadTel Aviv  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/tel-aviv/4C.C69/ai-engineering-lead/all",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:33.900885"
+  },
+  {
+    "company": "upwind",
+    "title": "Backend EngineerIceland  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/iceland/D6.27F/backend-engineer/all",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:34.249239"
+  },
+  {
+    "company": "upwind",
+    "title": "Backend Software EngineerTel Aviv  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/tel-aviv/BA.04A/backend-software-engineer/all",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:34.403654"
+  },
+  {
+    "company": "upwind",
+    "title": "Backend Software EngineerBelfast, Northern Ireland  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/belfast-northern-ireland/BA.04E/backend-software-engineer/all",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:34.778962"
+  },
+  {
+    "company": "upwind",
+    "title": "Junior Cloud Security Validation EngineerIndia  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/india/A9.F58/junior-cloud-security-validation-engineer/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:35.645849"
+  },
+  {
+    "company": "upwind",
+    "title": "Junior Cloud Security Validation EngineerUkraine",
+    "url": "https://www.upwind.io/careers/co/ukraine/25.A68/junior-cloud-security-validation-engineer/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:35.795619"
+  },
+  {
+    "company": "upwind",
+    "title": "Research Software EngineerTel Aviv  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/tel-aviv/5C.D67/research-software-engineer/all",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:36.351736"
+  },
+  {
+    "company": "upwind",
+    "title": "Cloud Monitoring Engineer (Student Position)Tel Aviv  ·  Hourly  ·  Entry-level",
+    "url": "https://www.upwind.io/careers/co/tel-aviv/63.053/cloud-monitoring-engineer-student-position/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:36.811786"
+  },
+  {
+    "company": "upwind",
+    "title": "Security Analyst (Student Position)Tel Aviv  ·  Full-time",
+    "url": "https://www.upwind.io/careers/co/tel-aviv/A1.543/security-analyst-student-position/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:37.168614"
+  },
+  {
+    "company": "upwind",
+    "title": "Technical Support Engineer – Student PositionTel Aviv  ·  Hourly  ·  Entry-level",
+    "url": "https://www.upwind.io/careers/co/tel-aviv/78.E65/technical-support-engineer-student-position/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:37.597355"
+  },
+  {
+    "company": "VAST Data",
+    "title": "AI Operating System",
+    "url": "https://www.vastdata.com/platform/ai-os",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:37.948507"
+  },
+  {
+    "company": "VAST Data",
+    "title": "The VAST AI OS White Paper",
+    "url": "https://www.vastdata.com/vast-data-platform-explained",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:38.752093"
+  },
+  {
+    "company": "Voyantis",
+    "title": "AcquireOptimize paid campaigns with AI-powered predictive signals.",
+    "url": "https://www.voyantis.ai/product/acquire",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:39.256005"
+  },
+  {
+    "company": "Voyantis",
+    "title": "AI-Native Software EngineerTel Aviv, IsraelApply Now",
+    "url": "https://www.comeet.com/jobs/voyantis/86.00B/ai-native-software-engineer/89.E6C",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:40.036443"
+  },
+  {
+    "company": "Wiz",
+    "title": "Cloud & AI Security",
+    "url": "https://www.wiz.io/platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:40.514891"
+  },
+  {
+    "company": "Morphisec",
+    "title": "CyberArkIT System Custom Software DevelopmentNewton, MA",
+    "url": "https://www.linkedin.com/company/cyber-ark-software?trk=similar-pages",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:41.636041"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Student jobs634,404 open jobs",
+    "url": "https://www.linkedin.com/jobs/student-jobs?trk=organization_guest-browse_jobs",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:42.427034"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Developer jobs258,935 open jobs",
+    "url": "https://www.linkedin.com/jobs/developer-jobs?trk=organization_guest-browse_jobs",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:43.386746"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Developer jobs",
+    "url": "https://www.linkedin.com/jobs/developer-jobs?trk=organization_guest_linkster_link",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:44.393533"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Junior Software Engineer jobs",
+    "url": "https://www.linkedin.com/jobs/junior-software-engineer-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:45.375388"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Student jobs",
+    "url": "https://www.linkedin.com/jobs/student-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:46.316879"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Junior Developer jobs",
+    "url": "https://www.linkedin.com/jobs/junior-developer-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:52:47.333895"
+  },
+  {
+    "company": "Morphisec",
+    "title": "Software Validation Engineer jobs",
+    "url": "https://www.linkedin.com/jobs/software-validation-engineer-jobs?trk=organization_guest_linkster_link",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:48.452998"
+  },
+  {
+    "company": "OMC cloud",
+    "title": "GPU Cloudכרטיסי NVIDIA ל-AI, ML ורנדרינג",
+    "url": "https://omc.cloud/products/gpu/he",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:49.154360"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Traffic Checker",
+    "url": "https://www.similarweb.com/ai-traffic/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:51.199523"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Leaderboard",
+    "url": "https://aisearch.similarweb.com/ai-leaderboard/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:52.680227"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "Similarweb AI Search Intelligence",
+    "url": "https://aisearch.similarweb.com/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:53.842369"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Citation Analysis",
+    "url": "https://aisearch.similarweb.com/ai-brand-visibility/citation-analysis/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:54.949344"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Prompt Analysis",
+    "url": "https://aisearch.similarweb.com/ai-brand-visibility/prompt-analysis/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:56.086581"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Sentiment Analysis",
+    "url": "https://aisearch.similarweb.com/ai-brand-visibility/sentiment-analysis/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:57.262725"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Optimization Recommendations",
+    "url": "https://aisearch.similarweb.com/ai-optimization-recommendations/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:58.440146"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Trend Analyzer",
+    "url": "https://www.similarweb.com/corp/ai/agents/trend-analyzer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:52:59.244589"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI SEO Strategy Agent",
+    "url": "https://www.similarweb.com/corp/ai/agents/seo-strategist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:00.118452"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Advertising",
+    "url": "https://www.similarweb.com/corp/web/ai-ads/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:00.500272"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Prospecting Agent",
+    "url": "https://www.similarweb.com/corp/ai/agents/prospecting/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:00.792457"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Outreach Agent",
+    "url": "https://www.similarweb.com/corp/ai/agents/sales-outreach/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:01.181644"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Meeting Prep Agent",
+    "url": "https://www.similarweb.com/corp/ai/agents/meeting-prep/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:01.484792"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "Own the Shopper Journey AI is Hiding",
+    "url": "https://www.similarweb.com/corp/reports/retail-planning/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:01.769556"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "B2B Software & Services",
+    "url": "https://www.similarweb.com/corp/industry/b2b-services/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:02.079925"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Studio",
+    "url": "https://www.similarweb.com/corp/ai/ai-studio/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:02.480793"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "AI Agents",
+    "url": "https://www.similarweb.com/corp/ai/ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:03.355013"
+  },
+  {
+    "company": "SimilarWeb LTD",
+    "title": "Data for AI",
+    "url": "https://www.similarweb.com/corp/ai/data-for-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:03.797515"
+  },
+  {
+    "company": "abra",
+    "title": "Data & AI Solutions",
+    "url": "https://www.abra-it.com/en/solutions/data-ai-solutions/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:05.658121"
+  },
+  {
+    "company": "abra",
+    "title": "Data & AI Solutions",
+    "url": "https://www.abra-it.com/en/career/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:07.488223"
+  },
+  {
+    "company": "abra",
+    "title": "AI Solutions",
+    "url": "https://www.abra-it.com/en/solutions/ai-solutions/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:09.497914"
+  },
+  {
+    "company": "abra",
+    "title": "Data & AI Solutions",
+    "url": "https://www.abra-it.com/en/data-ai-solutions/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:15.122100"
+  },
+  {
+    "company": "abra",
+    "title": "AI Solutions",
+    "url": "https://www.abra-it.com/en/solutions/ai-solutions/?customize_changeset_uuid=25920783-a2bb-4fea-99f0-a87842413cd5",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:16.186913"
+  },
+  {
+    "company": "Compie Technologies",
+    "title": "Compie CloudInfrastructures, DevSecOps, Xaas, AI/ML ...",
+    "url": "http://www.compie.co.il/en/whatwedo/cloud/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:16.837289"
+  },
+  {
+    "company": "Compie Technologies",
+    "title": "SolugenAIGenerative AI solutions",
+    "url": "https://www.solugen.ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:17.425953"
+  },
+  {
+    "company": "Compie Technologies",
+    "title": "AI/ML Cloud SolutionsBoost your product capabilities and reve...",
+    "url": "http://www.compie.co.il/en/gamechangers/cloudsolutions/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:17.880179"
+  },
+  {
+    "company": "Compie Technologies",
+    "title": "AI/ML Cloud SolutionsBoost your product capabilities and revenue with our AI/ML servicesMore from Gal",
+    "url": "http://www.compie.co.il/en/gamechangers/cloudsolutions/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:18.086288"
+  },
+  {
+    "company": "Team8",
+    "title": "Software InfraBuilding the backbone of tomorrow’s enterprise.",
+    "url": "https://team8.vc/software-infra/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:18.834072"
+  },
+  {
+    "company": "Team8",
+    "title": "Digital HealthTransforming care with data, AI, and human insight.",
+    "url": "https://team8.vc/digital-health/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:19.706164"
+  },
+  {
+    "company": "Team8",
+    "title": "AI Infrastructure's Big Opportunity: The Reliability Layer",
+    "url": "https://team8.vc/the-missing-layer-in-ai-infrastructure/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:20.222091"
+  },
+  {
+    "company": "Team8",
+    "title": "Software Infra",
+    "url": "https://team8.vc/software-infra/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:20.827105"
+  },
+  {
+    "company": "Team8",
+    "title": "Software Infrastructure",
+    "url": "https://team8.vc/Software-infra/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:22.336919"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "AI Insights",
+    "url": "https://www.ey.com/en_gl/services/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:23.774154"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "AI Strategy",
+    "url": "https://www.ey.com/en_gl/services/strategy/ai-strategy-consulting-mergers-acquisitions",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:26.541446"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "Software Strategy",
+    "url": "https://www.ey.com/en_gl/services/strategy/software-strategy-consulting",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:28.353983"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "AI and Digital Law",
+    "url": "https://www.ey.com/en_gl/services/law/digital",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:29.392166"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "ey.ai The Reimagination Engine",
+    "url": "https://www.ey.com/en_gl/services/ai/platform",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:32.206390"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "M&A AI-powered Technology",
+    "url": "https://www.ey.com/en_gl/services/strategy-transactions/connected-capital-technologies",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:33.100988"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "Students and entry-level",
+    "url": "https://eyglobal.yello.co/job_boards/c1riT--B2O-KySgYWsZO1Q?locale=en",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:53:33.907811"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "How Lion reimagines employee journeys for an AI future",
+    "url": "https://www.ey.com/en_gl/alliances/lion-shapes-employee-journeys-for-ai-future",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:35.984749"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "Student and entry level programs",
+    "url": "https://eyglobal.yello.co/job_boards/c1riT--B2O-KySgYWsZO1Q?locale=en",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:53:36.567540"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "Learn about AI-empowered career experiences at EY",
+    "url": "https://www.ey.com/en_gl/careers/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:38.008351"
+  },
+  {
+    "company": "EY ISRAEL",
+    "title": "How AI drove data optimization for oil and gas capital projects",
+    "url": "https://www.ey.com/en_gl/insights/energy-resources/how-ai-drove-data-optimization-for-oil-and-gas-capital-projects",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:40.683501"
+  },
+  {
+    "company": "commit",
+    "title": "Generative AI&ML",
+    "url": "https://www.comm-it.com/ai-services",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:41.170061"
+  },
+  {
+    "company": "commit",
+    "title": "Software Development",
+    "url": "https://www.comm-it.com/services/software-development",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:41.500902"
+  },
+  {
+    "company": "commit",
+    "title": "Embedded & RT Application",
+    "url": "https://www.comm-it.com/services/iot-embedded",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:41.865113"
+  },
+  {
+    "company": "commit",
+    "title": "Embedded & IoT",
+    "url": "https://www.comm-it.com/services/iot-embedded",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:42.173444"
+  },
+  {
+    "company": "Kaltura",
+    "title": "AI Work Genie",
+    "url": "https://corp.kaltura.com/work-genie/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:42.947284"
+  },
+  {
+    "company": "Kaltura",
+    "title": "AI Content Lab",
+    "url": "https://corp.kaltura.com/landing_pages/kaltura-ai/content-lab/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:43.111093"
+  },
+  {
+    "company": "Kaltura",
+    "title": "AI Class Genie",
+    "url": "https://corp.kaltura.com/landing_pages/genie/class-genie/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:43.237291"
+  },
+  {
+    "company": "Kaltura",
+    "title": "Kaltura developer suite",
+    "url": "https://corp.kaltura.com/developer-suite/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:43.466643"
+  },
+  {
+    "company": "Kaltura",
+    "title": "AI video suite",
+    "url": "https://corp.kaltura.com/kaltura-ai-suite/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:43.696572"
+  },
+  {
+    "company": "Kaltura",
+    "title": "Developer center",
+    "url": "https://developer.kaltura.com/api-docs/Overview",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:44.988446"
+  },
+  {
+    "company": "Kaltura",
+    "title": "AI Avatars",
+    "url": "https://corp.kaltura.com/blog/ai-avatars/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:45.209286"
+  },
+  {
+    "company": "Kaltura",
+    "title": "The future of events in the age of AI agents",
+    "url": "https://corp.kaltura.com/blog/the-future-of-events-in-the-age-of-ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:45.414173"
+  },
+  {
+    "company": "Kaltura",
+    "title": "Best Agentic AI Tools: 20 Solutions to Know in 2026",
+    "url": "https://corp.kaltura.com/blog/agentic-ai-tools/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:45.691426"
+  },
+  {
+    "company": "Kaltura",
+    "title": "When AI starts making decisions: Rethinking the customer journey",
+    "url": "https://corp.kaltura.com/blog/rethinking-customer-journeys-with-ai-decision-making/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:45.896276"
+  },
+  {
+    "company": "Kaltura",
+    "title": "Aug. 11, 2026The AI Confession Booth: What Employees Don’t Talk To You AboutLearn more",
+    "url": "https://corp.kaltura.com/news/the-ai-confession-booth-what-employees-dont-talk-to-you-about/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:47.802102"
+  },
+  {
+    "company": "Kaltura",
+    "title": "Apr. 06, 2026For Marketers, AI ROI Is No Longer Abstract—It’s Embedded In EngagementLearn more",
+    "url": "https://corp.kaltura.com/news/for-marketers-ai-roi-is-no-longer-abstract-its-embedded-in-engagement/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:49.000710"
+  },
+  {
+    "company": "Connecteam",
+    "title": "AI-poweredNew",
+    "url": "https://connecteam.com/ai-capabilities/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:49.712880"
+  },
+  {
+    "company": "Connecteam",
+    "title": "AI poweredNew",
+    "url": "https://connecteam.com/ai-capabilities/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:50.381042"
+  },
+  {
+    "company": "Ironsource (Unity)",
+    "title": "Human Machine Interfaces (HMI)Develop interactive 3D embedded systems",
+    "url": "https://unity.com/solutions/human-machine-interface-hmi",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:51.061621"
+  },
+  {
+    "company": "Ironsource (Unity)",
+    "title": "Developer toolsRelease versions and issue tracker",
+    "url": "https://unity.com/developer-tools",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:51.554681"
+  },
+  {
+    "company": "Ironsource (Unity)",
+    "title": "Developer tools",
+    "url": "https://unity.com/developer-tools",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:52.084232"
+  },
+  {
+    "company": "wolt",
+    "title": "Retail Enterprise Development Specialist - ML ReplacementSales & Merchant OperationsFull-timeRamat Gan, Israel",
+    "url": "https://careers.wolt.com/en/jobs/1/8119266",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:52.340362"
+  },
+  {
+    "company": "eToro",
+    "title": "BizOps Developer (Agentic AI)",
+    "url": "https://www.etoro.com/about/careers/position/5003081101/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:53.581331"
+  },
+  {
+    "company": "eToro",
+    "title": "Junior Dealer",
+    "url": "https://www.etoro.com/about/careers/position/5002888101/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:53:54.967173"
+  },
+  {
+    "company": "inManage",
+    "title": "PHP developer",
+    "url": "https://www.inmanage.co.il/××©×¨×ª_php",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:55.368091"
+  },
+  {
+    "company": "G stat",
+    "title": "Machine Learning",
+    "url": "https://g-stat.com/service/machine-learning/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:55.820004"
+  },
+  {
+    "company": "G stat",
+    "title": "Automated ML",
+    "url": "https://g-stat.com/service/automated-ml/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:55.937821"
+  },
+  {
+    "company": "Optimove",
+    "title": "OrchestrateBuild and optimize multichannel journeys with AI decisioning",
+    "url": "https://www.optimove.com/platform/orchestrate",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:56.774581"
+  },
+  {
+    "company": "Optimove",
+    "title": "The Complete AI Suite",
+    "url": "https://www.optimove.com/platform/optimove-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:57.611574"
+  },
+  {
+    "company": "Optimove",
+    "title": "AI Hub",
+    "url": "https://www.optimove.com/resources/ai-marketing-tools",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:58.766191"
+  },
+  {
+    "company": "Optimove",
+    "title": "Developer Hub",
+    "url": "https://developer.optimove.com",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:53:59.293723"
+  },
+  {
+    "company": "Samsung",
+    "title": "AI LivingAI Living",
+    "url": "https://www.samsung.com/il/ai-living/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:00.977099"
+  },
+  {
+    "company": "Samsung",
+    "title": "Galaxy AIGalaxy AI",
+    "url": "https://www.samsung.com/il/galaxy-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:02.084478"
+  },
+  {
+    "company": "Samsung",
+    "title": "Samsung Vision AI",
+    "url": "https://www.samsung.com/il/tvs/vision-ai-tv/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:03.564610"
+  },
+  {
+    "company": "Samsung",
+    "title": "Bespoke AIBespoke AI",
+    "url": "https://www.samsung.com/il/home-appliances/bespoke-home/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:04.616485"
+  },
+  {
+    "company": "Samsung",
+    "title": "AI Living",
+    "url": "https://www.samsung.com/il/ai-living/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:06.014244"
+  },
+  {
+    "company": "Samsung",
+    "title": "סוכן AI סמסונג",
+    "url": "https://www.samsung.com/il/ai-agent/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:07.788235"
+  },
+  {
+    "company": "Fullpath",
+    "title": "Omni AI AgentData-driven Intelligence",
+    "url": "https://www.fullpath.com/omni-ai-agent-for-dealers/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:09.253057"
+  },
+  {
+    "company": "Fullpath",
+    "title": "AI Learning Hub",
+    "url": "https://www.fullpath.com/fullpath-automotive-learning-hub/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:10.918793"
+  },
+  {
+    "company": "Fullpath",
+    "title": "The AI-Powered Dealership",
+    "url": "https://www.fullpath.com/ai-solutions-for-car-dealerships/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:11.463792"
+  },
+  {
+    "company": "Unilink Ltd",
+    "title": "פתרונות AI",
+    "url": "https://www.unilink.co.il/copy-of-פרויקטים-בינלאומיים",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:14.363239"
+  },
+  {
+    "company": "Unilink Ltd",
+    "title": "AI Solutions",
+    "url": "https://www.unilink.co.il/ai-solutions",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:14.636316"
+  },
+  {
+    "company": "Zeiss",
+    "title": "Digital Solutions & Software Development",
+    "url": "https://www.zeiss.com/digital-innovation/home.html",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:15.627726"
+  },
+  {
+    "company": "Verint",
+    "title": "Agentic OrchestrationOrchestrate your hybrid workforce of humans and AI agents",
+    "url": "https://www.verint.com/agent-factory/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:21.605903"
+  },
+  {
+    "company": "Verint",
+    "title": "Da Vinci AIGovernance, guardrails, and model management for enterprise AI",
+    "url": "https://www.verint.com/open-da-vinci-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:26.363654"
+  },
+  {
+    "company": "Verint",
+    "title": "AI Agents & Agent Assist",
+    "url": "https://www.verint.com/ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:28.210453"
+  },
+  {
+    "company": "Verint",
+    "title": "Conversational AI AgentsAutomate tasks end-to-end",
+    "url": "https://www.verint.com/conversational-ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:32.518752"
+  },
+  {
+    "company": "Verint",
+    "title": "AI Agent AssistIn the moment assistance during an interaction",
+    "url": "https://www.verint.com/copilots-agent-assist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:36.101897"
+  },
+  {
+    "company": "Verint",
+    "title": "AI Agents & Agent Assist Overview",
+    "url": "https://www.verint.com/ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:36.625718"
+  },
+  {
+    "company": "Verint",
+    "title": "Access AI Innovations NowAvoid a lengthy rip and replace project",
+    "url": "https://www.verint.com/hybrid-cloud/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:38.429885"
+  },
+  {
+    "company": "Verint",
+    "title": "Increase CX AutomationDrive ROI with specialized AI agents",
+    "url": "https://www.verint.com/cx-automation/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:40.479121"
+  },
+  {
+    "company": "Verint",
+    "title": "AXA Health Shaves 60 Seconds from AHT Across 50,000 Calls per Week with AI-Powered Verint Platform",
+    "url": "https://www.verint.com/case-studies/axa-health-shaves-60-seconds-from-aht-with-ai-powered-verint-platform/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:42.405015"
+  },
+  {
+    "company": "Verint",
+    "title": "The State of Contact Center AI 2026",
+    "url": "https://www.verint.com/resources/?_resource_types=analyst-report",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:46.179076"
+  },
+  {
+    "company": "Verint",
+    "title": "Six Elements of Resilient AI Orchestration Platforms",
+    "url": "https://www.infoworld.com/article/4240704/six-elements-of-resilient-ai-orchestration-platforms.html",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:47.548415"
+  },
+  {
+    "company": "duda",
+    "title": "AI Widget BuilderBuild custom website elements with AI",
+    "url": "https://www.duda.co/widget-builder",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:48.314971"
+  },
+  {
+    "company": "duda",
+    "title": "AEOMonitor and grow your clients’ AI Visibility",
+    "url": "https://www.duda.co/AEO",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:48.948259"
+  },
+  {
+    "company": "duda",
+    "title": "AI Stack",
+    "url": "https://www.duda.co/ai-stack",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:49.379843"
+  },
+  {
+    "company": "duda",
+    "title": "AI Visibility",
+    "url": "https://www.duda.co/ai-visibility",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:49.634977"
+  },
+  {
+    "company": "duda",
+    "title": "AI Widget Builder",
+    "url": "https://www.duda.co/widget-builder",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:49.907215"
+  },
+  {
+    "company": "duda",
+    "title": "Developer Portal",
+    "url": "https://developer.duda.co/docs/partner-api-introduction",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:52.262586"
+  },
+  {
+    "company": "JFrog",
+    "title": "JFrog ML",
+    "url": "https://jfrog.com/jfrog-ml/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:52.711392"
+  },
+  {
+    "company": "Fiverr",
+    "title": "AI Services",
+    "url": "https://www.fiverr.com/categories/ai-services",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:54.103862"
+  },
+  {
+    "company": "Fiverr",
+    "title": "Digis-Software Development",
+    "url": "https://digiscorp.com/?source=footer",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:56.809691"
+  },
+  {
+    "company": "Fiverr",
+    "title": "AI store builder",
+    "url": "https://www.fiverr.com/ai-store-builder/shopify?source=footer",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:58.212716"
+  },
+  {
+    "company": "Engineering Software Lab (ESL)",
+    "title": "Engineering Software Lab (ESL)",
+    "url": "https://il.linkedin.com/company/engineering-software-lab-esl-?trk=organization_guest_main-feed-card_feed-actor-name",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:54:59.542445"
+  },
+  {
+    "company": "Engineering Software Lab (ESL)",
+    "title": "Engineering Software Lab (ESL)",
+    "url": "https://il.linkedin.com/company/engineering-software-lab-esl-?trk=organization_guest_main-feed-card_feed-reaction-header",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:00.699129"
+  },
+  {
+    "company": "Engineering Software Lab (ESL)",
+    "title": "Everyone Is “Learning AI”, But Nobody Really Understands This One Thing.ai.plainenglish.io",
+    "url": "https://www.linkedin.com/redir/redirect?url=https%3A%2F%2Fai%2Eplainenglish%2Eio%2Feveryone-is-learning-ai-but-nobody-really-understands-this-one-thing-fb7fbb9a2e08&urlhash=cr0e&trk=organization_guest_main-feed-card_reshare_feed-article-content",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:01.384486"
+  },
+  {
+    "company": "Walnut",
+    "title": "Interactive DemosCapture your product once, then create, personalize, and embed guided demos with AI — no engineering.",
+    "url": "https://www.walnut.io/personalized-interactive-demos/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:04.553560"
+  },
+  {
+    "company": "Walnut",
+    "title": "Buyer XpertThe AI buyer agent that answers product questions inside the demo.",
+    "url": "https://www.walnut.io/personalized-interactive-demos/ai-buyer-xpert/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:04.865086"
+  },
+  {
+    "company": "Bringup",
+    "title": "אפיון והטמעת סוכני AI",
+    "url": "https://bringup.io/integration-services/ai-agents-in-business/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:05.553781"
+  },
+  {
+    "company": "Bringup",
+    "title": "איך בוחרים מערכת AI שתתאים לעסק שלך ולא להיפך",
+    "url": "https://bringup.io/ai-system-for-business/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:06.024379"
+  },
+  {
+    "company": "Bringup",
+    "title": "הטמעת AI בארגונים: 5 הטעויות שכולם עושים ואיך להימנע מהן",
+    "url": "https://bringup.io/mistakes-in-ai-implementation/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:06.512905"
+  },
+  {
+    "company": "Bringup",
+    "title": "Intelligent agents in AI הכלי שעסקים בישראל מתחילים להכיר",
+    "url": "https://bringup.io/intelligent-agents-in-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:07.009314"
+  },
+  {
+    "company": "Bringup",
+    "title": "סוכן AI קולי",
+    "url": "https://bringup.io/voice-ai-agent/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:07.524309"
+  },
+  {
+    "company": "Bringup",
+    "title": "AI לעסקים מאיפה מתחילים ומה שווה את הזמן",
+    "url": "https://bringup.io/technological-solutions/ai-for-business/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:08.003472"
+  },
+  {
+    "company": "Bringup",
+    "title": "איך סוכני AI יכולים לעשות בשבילך את העבודה השחורה",
+    "url": "https://bringup.io/technological-solutions/ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:08.475134"
+  },
+  {
+    "company": "Bringup",
+    "title": "אבחון AI לארגון שלכם",
+    "url": "https://bringup.io/ai-2/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:08.767635"
+  },
+  {
+    "company": "Bringup",
+    "title": "AI בינה מלאכותית",
+    "url": "https://bringup.io/integration-services/ai-artificial-intelligence/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:09.183453"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-8L Entry-Level AI Accelerator",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-8l-ai-accelerator-for-ai-light-applications/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:09.972592"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-8L M.2 Entry-Level Acceleration Module",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-8l-m-2-ai-acceleration-module-for-ai-light-applications/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:10.384512"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-8 AI Accelerator",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-8-ai-accelerator/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:10.895091"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-8 M.2 AI Acceleration Module",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:11.271121"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-8R mPCIe AI Acceleration Module",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-8r-mpcie-ai-acceleration-module/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:11.619639"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-10H AI Accelerator",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-10h-ai-accelerator/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:12.038718"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-10H M.2 AI Acceleration Module",
+    "url": "https://hailo.ai/products/ai-accelerators/hailo-10h-m-2-ai-acceleration-module/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:12.426220"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-15L AI Vision Processors for Mass Market Cameras",
+    "url": "https://hailo.ai/products/ai-vision-processors/hailo-15-ai-vision-processor/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:12.860718"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-15H AI Vision Processors for High-End Cameras",
+    "url": "https://hailo.ai/products/ai-vision-processors/hailo-15h-ai-vision-processor/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:13.286042"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Software",
+    "url": "https://hailo.ai/company-overview/careers/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:13.698632"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo AI Software Suite",
+    "url": "https://hailo.ai/products/hailo-software/hailo-ai-software-suite/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:14.384221"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Vision Processor Software  Package",
+    "url": "https://hailo.ai/products/hailo-software/vision-processor-software-package/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:14.882268"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Software Partners",
+    "url": "https://hailo.ai/products/partners-ecosystem/#software-partners",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:15.462133"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Generative AI",
+    "url": "https://hailo.ai/applications/automotive/hailo-generative-ai-processors-for-automotive/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:15.849638"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Generative AI for smart cockpit / IVI",
+    "url": "https://hailo.ai/applications/automotive/hailo-generative-ai-processors-for-automotive/#Generative%20AI%20for%20smart%20cockpit%20/%20IVI",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:16.229237"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Generative AI on the edge",
+    "url": "https://hailo.ai/applications/automotive/hailo-generative-ai-processors-for-automotive/#Generative%20AI%20on%20the%20edge",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:16.582347"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Generative AI",
+    "url": "https://hailo.ai/applications/personal-compute/generative-ai/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:17.026340"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Developer Zone",
+    "url": "https://hailo.ai/developer-zone",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:17.602600"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Developer Zone",
+    "url": "https://hailo.ai/authorization/?action=logout&redirect_to=%2Fdeveloper-zone%2F&_wpnonce=63fd59366b",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:17.913636"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "AI Vision Processors",
+    "url": "https://hailo.ai/products/ai-vision-processors/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:18.461673"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-15L AI Vision Processor",
+    "url": "https://hailo.ai/products/ai-vision-processors/hailo-15-ai-vision-processor/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:18.955540"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Hailo-15H AI Vision Processor",
+    "url": "https://hailo.ai/products/ai-vision-processors/hailo-15h-ai-vision-processor/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:19.358228"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "AI Accelerators",
+    "url": "https://hailo.ai/products/ai-accelerators/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:19.809184"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Software",
+    "url": "https://hailo.ai/products/hailo-software/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:20.198960"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Software Suite",
+    "url": "https://hailo.ai/products/hailo-software/hailo-ai-software-suite/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:20.649955"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Vision Processor Software Package",
+    "url": "https://hailo.ai/products/hailo-software/vision-processor-software-package/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:21.048219"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Physical AI",
+    "url": "https://hailo.ai/applications/physical-ai/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:21.391522"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Generative AI",
+    "url": "https://hailo.ai/applications/automotive/hailo-generative-ai-processors-for-automotive",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:21.671070"
+  },
+  {
+    "company": "checkmarx",
+    "title": "Developer Assist",
+    "url": "https://checkmarx.com/product/developer-assist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:22.246390"
+  },
+  {
+    "company": "checkmarx",
+    "title": "AI Inventory",
+    "url": "https://checkmarx.com/ai-bom/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:22.531438"
+  },
+  {
+    "company": "checkmarx",
+    "title": "DAST for AI",
+    "url": "https://checkmarx.com/checkmarx-dast/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:22.816060"
+  },
+  {
+    "company": "checkmarx",
+    "title": "AI Security",
+    "url": "https://checkmarx.com/learn/ai-security/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:23.068676"
+  },
+  {
+    "company": "checkmarx",
+    "title": "Checkmarx One Developer Assist",
+    "url": "https://checkmarx.com/product/developer-assist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:23.855683"
+  },
+  {
+    "company": "checkmarx",
+    "title": "AI Supply Chain Security",
+    "url": "https://checkmarx.com/resources/products/ai-supply-chain-security/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:24.440383"
+  },
+  {
+    "company": "checkmarx",
+    "title": "AI-BOM",
+    "url": "https://checkmarx.com/ai-bom/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:24.893165"
+  },
+  {
+    "company": "checkmarx",
+    "title": "Developer Experience",
+    "url": "https://checkmarx.com/solutions/developer-experience/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:25.243739"
+  },
+  {
+    "company": "checkmarx",
+    "title": "Software Supply Chain Security",
+    "url": "https://checkmarx.com/solutions/software-supply-chain-security/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:25.535738"
+  },
+  {
+    "company": "Rapyd",
+    "title": "Embedded Fintech",
+    "url": "https://www.rapyd.net/solutions/embedded-fintech/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:26.058119"
+  },
+  {
+    "company": "Rapyd",
+    "title": "Developer Center",
+    "url": "https://www.rapyd.net/developers/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:26.437454"
+  },
+  {
+    "company": "webz.io",
+    "title": "AI Info",
+    "url": "https://webz.io/ai-info-page/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:28.306931"
+  },
+  {
+    "company": "Zota",
+    "title": "Listen in English (AI voiceover)",
+    "url": "https://www.youtube.com/watch?v=_Fm97LozKFE&ab_channel=Zota",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:29.302318"
+  },
+  {
+    "company": "Zota",
+    "title": "Junior Compliance Representative | TLV",
+    "url": "https://careers.zota.com/o/junior-compliance-representative-tlv",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:29.862218"
+  },
+  {
+    "company": "Zota",
+    "title": "Junior Financial Operator | Israel",
+    "url": "https://careers.zota.com/o/junior-financial-operator-israel",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:30.270245"
+  },
+  {
+    "company": "Zota",
+    "title": "Junior Risk Team Representative | Tel Aviv",
+    "url": "https://careers.zota.com/o/junior-risk-team-representative-tel-aviv",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:30.746857"
+  },
+  {
+    "company": "Zota",
+    "title": "Junior Financial Operator (Fintech) - Training Provided | Day Shifts | Singapore",
+    "url": "https://careers.zota.com/o/junior-financial-operator-fintech-training-provided-day-shifts-singapore-1",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:31.236034"
+  },
+  {
+    "company": "Zota",
+    "title": "Junior Risk Team Representative | Singapore",
+    "url": "https://careers.zota.com/o/junior-risk-team-representative-singapore",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:31.717085"
+  },
+  {
+    "company": "SodaStream",
+    "title": "Data Science & Analytics",
+    "url": "https://www.pepsicojobs.com/main/jobs?keywords=Data%20Science%20%26%20Analytics",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:33.446304"
+  },
+  {
+    "company": "SodaStream",
+    "title": "Software Engineering",
+    "url": "https://www.pepsicojobs.com/main/jobs?keywords=Software%20Engineer",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:34.960246"
+  },
+  {
+    "company": "high lander",
+    "title": "Software Engineer All Levels",
+    "url": "https://www.highlander.io/copy-of-software-engineer-all-levels-1",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:35.250423"
+  },
+  {
+    "company": "Gong.io",
+    "title": "Gong AI",
+    "url": "https://www.gong.io/platform/revenue-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:36.158579"
+  },
+  {
+    "company": "Gong.io",
+    "title": "Gong AI Agents",
+    "url": "https://www.gong.io/platform/ai-agents-for-revenue-teams",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:36.853349"
+  },
+  {
+    "company": "Gong.io",
+    "title": "Revenue AI glossary",
+    "url": "https://www.gong.io/revenue-intelligence-sales-glossary",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:37.840797"
+  },
+  {
+    "company": "חברת בינת bynet software",
+    "title": "AI 360",
+    "url": "https://www.bynet.co.il/solutions/ai-360/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:39.334664"
+  },
+  {
+    "company": "חברת בינת bynet software",
+    "title": "AI וביג דאטה",
+    "url": "https://www.bynet.co.il/solutions/kaleidoo/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:40.596348"
+  },
+  {
+    "company": "חברת בינת bynet software",
+    "title": "Kaleidoo AI and Data",
+    "url": "https://www.bynet.co.il/solutions/kaleidoo/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:40.787514"
+  },
+  {
+    "company": "Global-e",
+    "title": "Software Engineer Team LeaderR&DRomania, Bucharest",
+    "url": "https://www.global-e.com/careers/b9-e6e/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:42.250728"
+  },
+  {
+    "company": "Global-e",
+    "title": "NOC Engineer- Student PositionTechnical OperationsIsrael, Petah Tikva",
+    "url": "https://www.global-e.com/careers/bc-84d/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:42.612251"
+  },
+  {
+    "company": "Global-e",
+    "title": "FP&A Analyst – Student PositionFinanceIsrael, Petah Tikva",
+    "url": "https://www.global-e.com/careers/86-d6e/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:42.947634"
+  },
+  {
+    "company": "HMS",
+    "title": "פתרונות סוכנים מבוססי AI ו- RPA",
+    "url": "https://hms.co.il/services/%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%a6%d7%99%d7%94/%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%a6%d7%99%d7%99%d7%aa-%d7%aa%d7%94%d7%9c%d7%99%d7%9b%d7%99%d7%9d-%d7%90%d7%a8%d7%92%d7%95%d7%a0%d7%99%d7%99%d7%9d/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:43.740265"
+  },
+  {
+    "company": "KPMG",
+    "title": "Data & MLHarness data and ML to enable new business opportunities",
+    "url": "https://kpmg.co.il/technologyconsulting/our-offerings/data",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:43.878964"
+  },
+  {
+    "company": "KPMG",
+    "title": "WE MAKE AI WORK.",
+    "url": "https://kpmg.co.il/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:44.072317"
+  },
+  {
+    "company": "KPMG",
+    "title": "Generative AI Engineerתל אביבTechnology consultingMore details",
+    "url": "https://kpmg.co.il/technologyconsulting/careers/jobs/generative-ai-engineer",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:44.205668"
+  },
+  {
+    "company": "KPMG",
+    "title": "AI & Data Consultantתל אביבTechnology consultingMore details",
+    "url": "https://kpmg.co.il/technologyconsulting/careers/jobs/ai-data-consultant",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:55:44.328012"
+  },
+  {
+    "company": "KPMG",
+    "title": "Data & ML",
+    "url": "https://kpmg.co.il/technologyconsulting/our-offerings/data",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:44.455666"
+  },
+  {
+    "company": "KPMG",
+    "title": "Digital & AI",
+    "url": "https://kpmg.co.il/technologyconsulting/our-offerings/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:44.625818"
+  },
+  {
+    "company": "KPMG",
+    "title": "WE MAKE AI WORK.",
+    "url": "https://kpmg.co.il/technologyconsulting/careers/jobs",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:44.755759"
+  },
+  {
+    "company": "nsKnox",
+    "title": "AI Agent CallerReplacing manual, error-prone vendor callbacks with an autonomous, multilingual agent",
+    "url": "https://nsknox.net/ai-agent-caller/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:47.710027"
+  },
+  {
+    "company": "nsKnox",
+    "title": "AI Agent Caller",
+    "url": "https://nsknox.net/ai-agent-caller/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:48.792270"
+  },
+  {
+    "company": "Agora",
+    "title": "Two years running: Agora earns spot on G2’s 2026 Best Software Awards for Real Estate",
+    "url": "https://agorareal.com/blog/two-years-running-agora-earns-spot-on-g2s-2026-best-software-awards-for-real-estate/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:49.699625"
+  },
+  {
+    "company": "Agora",
+    "title": "Software",
+    "url": "https://agorareal.com/software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:50.345586"
+  },
+  {
+    "company": "Agora",
+    "title": "Real estate syndication software",
+    "url": "https://agorareal.com/real-estate-syndication-software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:50.972799"
+  },
+  {
+    "company": "Agora",
+    "title": "Investor relations management software",
+    "url": "https://agorareal.com/investor-relations-management-software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:51.569635"
+  },
+  {
+    "company": "Agora",
+    "title": "Investor onboarding software",
+    "url": "https://agorareal.com/investor-onboarding-software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:52.275489"
+  },
+  {
+    "company": "Agora",
+    "title": "CRE management software",
+    "url": "https://agorareal.com/cre-management-software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:52.868741"
+  },
+  {
+    "company": "Agora",
+    "title": "Private equity fundraising software",
+    "url": "https://agorareal.com/private-equity-fundraising-software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:53.567668"
+  },
+  {
+    "company": "Agora",
+    "title": "Commercial real estate software",
+    "url": "https://agorareal.com/commercial-real-estate-software/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:54.258674"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Access & Lifecycle Management for AI AgentsManage AI agents and their NHIs from provisioning to decommissioning.",
+    "url": "https://astrix.security/use-cases/ai-agent-access-and-lifecycle-management/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:55:55.574004"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "About UsThe industry leader in AI Agent and Non-Human Identity security",
+    "url": "https://astrix.security/company/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:01.122388"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "BlogThe latest on AI agent & NHI threats, products stories and more",
+    "url": "https://astrix.security/learn/blog/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:01.768449"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Agentic AIWhat is Agentic AI and related NHI risks",
+    "url": "https://astrix.security/glossary/agentic-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:04.618217"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "AI Agent Security AcademyBecome Certified Agentic Security Professional (CASP)",
+    "url": "https://astrix.security/learn/ai-agent-training-program/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:05.953678"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Meet Astrix’s AI Agent Control Plane (ACP)",
+    "url": "https://astrix.security/learn/blog/meet-ai-agent-control-plane/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:07.079713"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Astrix’s Agent Control Plane (ACP): Secure AI Agents from Day One",
+    "url": "https://astrix.security/learn/blog/astrixs-agent-control-plane-acp-secure-ai-agents-from-day-one/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:10.935501"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "NHI Governance for AI Agent Security in the Age of ChatGPT-5",
+    "url": "https://astrix.security/learn/blog/secure-chat-gpt5-with-astrix-security/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:13.314307"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "How a Major Enterprise Implemented a Control Plane Layer for AI Agents Using NHI Security",
+    "url": "https://astrix.security/learn/blog/case-study-how-a-major-brand-scaled-ai-agent-governance-with-astrix-nhi-security/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:17.897980"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Discover AI agents & NHIs",
+    "url": "https://astrix.security/product/ai-agent-discovery/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:18.895994"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Secure AI agents & NHIs",
+    "url": "https://astrix.security/product/secure-ai-agents/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:19.765350"
+  },
+  {
+    "company": "Astrix Security",
+    "title": "Deploy secure AI agents",
+    "url": "https://astrix.security/product/deploy-and-provisions-ai-agent-discovery/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:20.725614"
+  },
+  {
+    "company": "VIA",
+    "title": "Developer",
+    "url": "https://ridewithvia.com/developer?hsLang=en",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:56:21.339557"
+  },
+  {
+    "company": "Jedify",
+    "title": "Semantic Fusion™AI-ready contextual data layer",
+    "url": "https://jedify.com/platform/semantic-fusion/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:23.059895"
+  },
+  {
+    "company": "Jedify",
+    "title": "Embedded AI AnalyticsGive your customers AI superpowers",
+    "url": "https://jedify.com/platform/embedded-ai-analytics/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:24.414796"
+  },
+  {
+    "company": "Jedify",
+    "title": "Financial ServicesAccurate, auditable, compliant AI solutions",
+    "url": "https://jedify.com/solutions/financial-services/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:25.893646"
+  },
+  {
+    "company": "Jedify",
+    "title": "AI BuildersBuild AI powered data driven applications",
+    "url": "https://jedify.com/solutions/data-teams-app-builders/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:27.592098"
+  },
+  {
+    "company": "Jedify",
+    "title": "Jedify formally launches Data Agents for building AI analysts in plain languageSiliconANGLE28 Oct, 2026",
+    "url": "https://siliconangle.com/2026/10/28/jedify-formally-launches-data-agents-for-building-ai-analysts-in-plain-language/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:29.484830"
+  },
+  {
+    "company": "Jedify",
+    "title": "Embedded AI Analytics",
+    "url": "https://jedify.com/platform/embedded-ai-analytics/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:31.146063"
+  },
+  {
+    "company": "Jedify",
+    "title": "AI Builders",
+    "url": "https://jedify.com/solutions/data-teams-app-builders/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:32.714584"
+  },
+  {
+    "company": "Jedify",
+    "title": "AI Solutions EngineerSales· NYC (Hybrid)",
+    "url": "https://jedify.com/careers/ai-solutions-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:34.438524"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Frontend Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/frontend-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:36.988750"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Fullstack Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/full-stack-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:37.836088"
+  },
+  {
+    "company": "GotFriends",
+    "title": "NodeJS Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/nodejs-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:38.671358"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Mobile Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/mobile-programmer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:39.378138"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Big Data Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/big-data-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:39.968688"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Backend Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/backend-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:40.673809"
+  },
+  {
+    "company": "GotFriends",
+    "title": "GO Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/go-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:41.487137"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Embedded Engineer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/real-time-engineerembedded-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:42.320432"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Angular Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/angular-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:43.185711"
+  },
+  {
+    "company": "GotFriends",
+    "title": "iOS Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/ios-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:43.969412"
+  },
+  {
+    "company": "GotFriends",
+    "title": "ראש צוות Front-end",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/head-of-front-end-team/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:44.543692"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Android Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/android-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:45.466792"
+  },
+  {
+    "company": "GotFriends",
+    "title": "AI Engineer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/ai-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:46.320109"
+  },
+  {
+    "company": "GotFriends",
+    "title": "משרות דרושים AI",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:47.019206"
+  },
+  {
+    "company": "GotFriends",
+    "title": "AI Engineer",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/ai-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:47.614736"
+  },
+  {
+    "company": "GotFriends",
+    "title": "AI Cyber Researcher",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/ai-cyber-researcher/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:48.238760"
+  },
+  {
+    "company": "GotFriends",
+    "title": "AI Cyber Researcher",
+    "url": "https://www.gotfriends.co.il/jobslobby/datasecurity/ai-cyber-researcher/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:48.817103"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Data Scientist Jobs",
+    "url": "https://www.gotfriends.co.il/jobslobby/algorithm/data-scientist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:49.719784"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Machine Learning Engineer",
+    "url": "https://www.gotfriends.co.il/jobslobby/algorithm/machine-learning/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:50.404079"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Computer Vision",
+    "url": "https://www.gotfriends.co.il/jobslobby/algorithm/computer-vision/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:51.011206"
+  },
+  {
+    "company": "GotFriends",
+    "title": "חברות AI בישראל 2026",
+    "url": "https://www.gotfriends.co.il/jobslobby/area/ai-companies/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:51.607967"
+  },
+  {
+    "company": "GotFriends",
+    "title": "JAVA Developer",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/java-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:52.255824"
+  },
+  {
+    "company": "GotFriends",
+    "title": "משרות AI",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:52.925682"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Data Scientist",
+    "url": "https://www.gotfriends.co.il/jobslobby/algorithm/data-scientist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:53.741066"
+  },
+  {
+    "company": "GotFriends",
+    "title": "15 משרות למנהלי פיתוח ב- 2026: מה חברות מחפשות בעידן ה-AI?",
+    "url": "https://www.gotfriends.co.il/בלוגים/15-development-manager-jobs-2026-ai-era/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:54.327448"
+  },
+  {
+    "company": "GotFriends",
+    "title": "מפוטרי הייטק ב-2026: המדריך המלא לחיפוש עבודה בעידן ה-AI",
+    "url": "https://www.gotfriends.co.il/בלוגים/tech-layoffs-job-search-guide-2026/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:54.999762"
+  },
+  {
+    "company": "GotFriends",
+    "title": "משרות AI חמות בישראל: 12 משרות חדשות + מגמות שוק 2026",
+    "url": "https://www.gotfriends.co.il/בלוגים/12-ai-jobs-israel-2026/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:55.730440"
+  },
+  {
+    "company": "GotFriends",
+    "title": "מהנדס AI",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/ai-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:57.018085"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Machine Learning לחברת סטארטאפ בעולם הרפואי",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/ai-engineer/118511/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:57.912686"
+  },
+  {
+    "company": "GotFriends",
+    "title": "NLP Data Scientist בחברת סטארט-אפ ממומנת ויציבה",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/llm-engineer/142628/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:58.566793"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Data Scientist בחברת Cybersecurity",
+    "url": "https://www.gotfriends.co.il/jobslobby/algorithm/data-scientist/151164/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:56:59.188796"
+  },
+  {
+    "company": "GotFriends",
+    "title": "11 משרות שוות וחדשות בעולמות ה-AI שכדאי להכיר",
+    "url": "https://www.gotfriends.co.il/%D7%91%D7%9C%D7%95%D7%92%D7%99%D7%9D/11-new-ai-jobs-you-should-know/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:00.219145"
+  },
+  {
+    "company": "GotFriends",
+    "title": "איך כותבים קורות חיים בעידן ה- AI? אלה הטיפים שלנו",
+    "url": "https://www.gotfriends.co.il/%D7%91%D7%9C%D7%95%D7%92%D7%99%D7%9D/writing-resumes-for-ai-related-positions/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:00.813565"
+  },
+  {
+    "company": "Dialog",
+    "title": "Backend Developer",
+    "url": "https://www.dialog.co.il/high-tech/jobs/software/backend",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:02.404364"
+  },
+  {
+    "company": "Dialog",
+    "title": "C# developer",
+    "url": "https://www.dialog.co.il/high-tech/jobs/software/c-desktop",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:03.882480"
+  },
+  {
+    "company": "Dialog",
+    "title": "מהנדס BackEnd",
+    "url": "https://www.dialog.co.il/high-tech/jobs/hardware/backend",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:05.313687"
+  },
+  {
+    "company": "Dialog",
+    "title": "Data Scientist",
+    "url": "https://www.dialog.co.il/high-tech/jobs/research/data-scientist",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:06.686628"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "RT Embedded",
+    "url": "https://www.nisha.co.il/positions/rt-embedded/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:07.083449"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Java Developer",
+    "url": "https://www.nisha.co.il/positions/java-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:07.305755"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "C++ Developer",
+    "url": "https://www.nisha.co.il/positions/c-developer-2/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:07.532391"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Python Developer",
+    "url": "https://www.nisha.co.il/positions/python-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:07.766652"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Full Stack Developer",
+    "url": "https://www.nisha.co.il/positions/full-stack-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:08.045847"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "React Developer",
+    "url": "https://www.nisha.co.il/positions/react-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:08.277535"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Android Developer",
+    "url": "https://www.nisha.co.il/positions/android-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:08.575452"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Angular Developer",
+    "url": "https://www.nisha.co.il/positions/angular-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:08.804607"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Backend Engineer",
+    "url": "https://www.nisha.co.il/positions/backend-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:09.029999"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Machine Learning",
+    "url": "https://www.nisha.co.il/positions/machine-learning/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:09.258337"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Data Scientist",
+    "url": "https://www.nisha.co.il/positions/data-scientist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:09.507463"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "BI Developer",
+    "url": "https://www.nisha.co.il/positions/bi-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:09.751938"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "איך נכנסים לתחום ה-AI מבחינת קריירה? אסטרטגיה לפי שלב בקריירה",
+    "url": "https://www.nisha.co.il/%d7%9b%d7%a0%d7%99%d7%a1%d7%94-%d7%9c%d7%aa%d7%97%d7%95%d7%9d-%d7%91%d7%99%d7%a0%d7%94-%d7%9e%d7%9c%d7%90%d7%9b%d7%95%d7%aa%d7%99%d7%aa/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:09.949764"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "מה זה AI Engineer ומה השכר בתפקיד?",
+    "url": "https://www.nisha.co.il/%d7%9e%d7%94-%d7%96%d7%94-%d7%9e%d7%94%d7%a0%d7%93%d7%a1-%d7%91%d7%99%d7%a0%d7%94/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:10.218020"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "אילו מקצועות AI חדשים נפתחו בישראל? מפת התפקידים שלא היו קיימים לפני שלוש שנים",
+    "url": "https://www.nisha.co.il/%d7%9e%d7%a7%d7%a6%d7%95%d7%a2%d7%95%d7%aa-ai-%d7%97%d7%93%d7%a9%d7%99%d7%9d/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:10.408357"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "שכר Embedded ו-RT: מדריך השכר המלא למפתחי מערכות משובצות בישראל",
+    "url": "https://www.nisha.co.il/%d7%a9%d7%9b%d7%a8-%d7%90%d7%9e%d7%91%d7%93%d7%93-rt/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:10.593601"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "דרושים data scientist",
+    "url": "https://www.nisha.co.il/positions/data-scientist/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:10.848926"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Front End Developer",
+    "url": "https://www.nisha.co.il/positions/frontend-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:11.080056"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Fullstack Developer",
+    "url": "https://www.nisha.co.il/positions/full-stack-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:11.383673"
+  },
+  {
+    "company": "Shavit Software",
+    "title": "AI Platform Developer",
+    "url": "https://shavit-soft.co.il/jobs/ai-platform-developer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:12.479085"
+  },
+  {
+    "company": "Shavit Software",
+    "title": "ראש צוות AI",
+    "url": "https://shavit-soft.co.il/jobs/%d7%a8%d7%90%d7%a9-%d7%a6%d7%95%d7%95%d7%aa-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:13.299806"
+  },
+  {
+    "company": "Log-On Software",
+    "title": "Log-On Software",
+    "url": "https://il.linkedin.com/company/log-on?trk=organization_guest_main-feed-card_feed-actor-name",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:14.701149"
+  },
+  {
+    "company": "One technologies",
+    "title": "Data, AI & Analytics",
+    "url": "https://one1.global/service/data-bi-analytics/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:17.708137"
+  },
+  {
+    "company": "Logica-it",
+    "title": "AI Product & Transformation Leadניהול מוצרגוש דן",
+    "url": "https://logica-it.com/jobs/21355/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:19.960356"
+  },
+  {
+    "company": "Logica-it",
+    "title": "Junior Full Stack DeveloperJUNIORגוש דן",
+    "url": "https://logica-it.com/jobs/21184/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:26.315452"
+  },
+  {
+    "company": "Logica-it",
+    "title": "Software Development EngineerDEVOPSגוש דן",
+    "url": "https://logica-it.com/jobs/21145/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:28.446109"
+  },
+  {
+    "company": "Logica-it",
+    "title": "מחפשים את ה-Data Engineer הבא שלנו – להוביל את מהפכת ה-AI שלנו!BIG DATAהשפלה",
+    "url": "https://logica-it.com/jobs/20877/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:32.727851"
+  },
+  {
+    "company": "Logica-it",
+    "title": "מפתח/ת AI Full Stack DeveloperFULL STACKגוש דן",
+    "url": "https://logica-it.com/jobs/17544/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:38.667142"
+  },
+  {
+    "company": "Extreme",
+    "title": "AI ואוטומציה",
+    "url": "https://www.extreme.co.il/solutions#technology",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:39.126279"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Developer jobs258,935 open jobs",
+    "url": "https://www.linkedin.com/jobs/developer-jobs?trk=organization_guest-browse_jobs",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:40.295508"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Junior Software Engineer jobs233,545 open jobs",
+    "url": "https://www.linkedin.com/jobs/junior-software-engineer-jobs?trk=organization_guest-browse_jobs",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:41.512486"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Student jobs634,404 open jobs",
+    "url": "https://www.linkedin.com/jobs/student-jobs?trk=organization_guest-browse_jobs",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:42.368307"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Software Engineer jobs300,699 open jobs",
+    "url": "https://www.linkedin.com/jobs/software-engineer-jobs?trk=organization_guest-browse_jobs",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:43.465832"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Frontend Developer jobs17,238 open jobs",
+    "url": "https://www.linkedin.com/jobs/frontend-developer-jobs?trk=organization_guest-browse_jobs",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:44.487058"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Developer jobs",
+    "url": "https://www.linkedin.com/jobs/developer-jobs?trk=organization_guest_linkster_link",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:45.628605"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Graduate Software Engineer jobs",
+    "url": "https://www.linkedin.com/jobs/graduate-software-engineer-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:46.837655"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Junior Software Engineer jobs",
+    "url": "https://www.linkedin.com/jobs/junior-software-engineer-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:47.884148"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Graduate jobs",
+    "url": "https://www.linkedin.com/jobs/graduate-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:48.759781"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Software Engineer jobs",
+    "url": "https://www.linkedin.com/jobs/software-engineer-jobs?trk=organization_guest_linkster_link",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:49.993656"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Intern jobs",
+    "url": "https://www.linkedin.com/jobs/intern-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:51.156322"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Student jobs",
+    "url": "https://www.linkedin.com/jobs/student-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:52.225941"
+  },
+  {
+    "company": "Mgroup",
+    "title": "Junior Analyst jobs",
+    "url": "https://www.linkedin.com/jobs/junior-analyst-jobs?trk=organization_guest_linkster_link",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:53.176119"
+  },
+  {
+    "company": "jobmaster",
+    "title": "דרושים AI",
+    "url": "https://www.jobmaster.co.il/jobs/?headcatnum=112",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:53.934039"
+  },
+  {
+    "company": "AllJobs",
+    "title": "יועץ AI",
+    "url": "https://www.alljobs.co.il/user/ai/default.aspx",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:54.317431"
+  },
+  {
+    "company": "AllJobs",
+    "title": "דרושים Data Scientist",
+    "url": "https://www.alljobs.co.il/SearchResultsGuest.aspx?page=1&position=1733&type=&city=®ion=",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:54.702425"
+  },
+  {
+    "company": "AllJobs",
+    "title": "דרושים מפתחי FullStack",
+    "url": "https://www.alljobs.co.il/SearchResultsGuest.aspx?page=1&position=1712&type=&city=®ion=",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:57:55.086961"
+  },
+  {
+    "company": "Peax software (EMET group)",
+    "title": "להעמיק בפתרונות AI",
+    "url": "https://peax.co.il/solutions/ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:55.847791"
+  },
+  {
+    "company": "Peax software (EMET group)",
+    "title": "AIמהפיילוט הראשון ועד לסוכן הארגוני היציב – אנחנו בונים לכם את התשתית, הממשל והאבטחה שעומדים מאחורי כל פתרון AI.",
+    "url": "https://peax.co.il/solutions/ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:56.483004"
+  },
+  {
+    "company": "G-stat",
+    "title": "Machine Learning",
+    "url": "https://g-stat.com/service/machine-learning/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:56.627066"
+  },
+  {
+    "company": "G-stat",
+    "title": "Automated ML",
+    "url": "https://g-stat.com/service/automated-ml/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:56.759083"
+  },
+  {
+    "company": "HMS - Halperin Consulting Group",
+    "title": "פתרונות סוכנים מבוססי AI ו- RPA",
+    "url": "https://hms.co.il/services/%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%a6%d7%99%d7%94/%d7%90%d7%95%d7%98%d7%95%d7%9e%d7%a6%d7%99%d7%99%d7%aa-%d7%aa%d7%94%d7%9c%d7%99%d7%9b%d7%99%d7%9d-%d7%90%d7%a8%d7%92%d7%95%d7%a0%d7%99%d7%99%d7%9d/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:57.421125"
+  },
+  {
+    "company": "nilus",
+    "title": "R&DStaff Full-Stack EngineerNew York, NYFull-Time$180K-$250K→",
+    "url": "https://nilus.bamboohr.com/careers/72",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:58.821424"
+  },
+  {
+    "company": "Navina",
+    "title": "Core TechnologyDiscover the power of Navina’s proprietary AI engine",
+    "url": "https://www.navina.ai/core-technology",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:59.246806"
+  },
+  {
+    "company": "Navina",
+    "title": "careers@navina.ai",
+    "url": "mailto:careers@navina.ai?subject=New%20CV",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:59.247339"
+  },
+  {
+    "company": "Navina",
+    "title": "info@navina.ai",
+    "url": "mailto:info@navina.ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:59.247692"
+  },
+  {
+    "company": "Navina",
+    "title": "navina.ai",
+    "url": "https://www.navina.ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:57:59.597210"
+  },
+  {
+    "company": "PlainID",
+    "title": "Developer Portal",
+    "url": "https://docs.plainid.io/v1-api",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:00.364279"
+  },
+  {
+    "company": "PlainID",
+    "title": "Hey AI- Learn about PlainID",
+    "url": "https://www.plainid.com/llm-info/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:01.044936"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Activity Tracking",
+    "url": "https://www.cyera.com/platform/ai-activity-tracking",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:01.544659"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI SPM",
+    "url": "https://www.cyera.com/platform/ai-spm",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:01.943328"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Runtime Protection",
+    "url": "https://www.cyera.com/platform/ai-runtime-protection",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:02.350508"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Readiness Assessment",
+    "url": "https://www.cyera.com/ai-security-readiness-assessment",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:02.753789"
+  },
+  {
+    "company": "Cyera",
+    "title": "Securely Enable AI",
+    "url": "https://www.cyera.com/solutions/securely-enable-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:03.132445"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Employee Security",
+    "url": "https://www.cyera.com/solutions/ai-employee-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:03.529298"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Prompt Security",
+    "url": "https://www.cyera.com/solutions/ai-prompt-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:03.964352"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Maturity Pulse Check",
+    "url": "https://www.cyera.com/pulse-check/ai-maturity",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:04.396084"
+  },
+  {
+    "company": "Cyera",
+    "title": "CareersWe're redefining how the world secures its data in the AI era.Join Cyera",
+    "url": "https://www.cyera.com/careers",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:04.947248"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Activity Tracking",
+    "url": "https://www.cyera.com/platform/ai-activity-tracking",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:05.323816"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Runtime Protection",
+    "url": "https://www.cyera.com/platform/ai-runtime-protection",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:05.732822"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Employee Security",
+    "url": "https://www.cyera.com/solutions/ai-employee-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:06.144305"
+  },
+  {
+    "company": "Cyera",
+    "title": "Cyera’s AI Security Platform Is Now Available in Claude Marketplace",
+    "url": "https://www.cyera.com/press-releases/cyeras-ai-security-platform-is-now-available-in-claude-marketplace",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:06.539804"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Security",
+    "url": "https://www.cyera.com/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:06.970306"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Security Pulse Check",
+    "url": "https://www.cyera.com/pulse-check/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:07.385683"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Security School",
+    "url": "https://www.cyera.com/ai-security-school",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:07.832794"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Risk Assessment",
+    "url": "https://www.cyera.com/pulse-check/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:08.349282"
+  },
+  {
+    "company": "Cyera",
+    "title": "AI Data Security Assessment",
+    "url": "https://www.cyera.com/pulse-check/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:08.829903"
+  },
+  {
+    "company": "Cyera",
+    "title": "Ai Security School",
+    "url": "https://www.cyera.com/ai-security-school",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:09.277135"
+  },
+  {
+    "company": "MatchPointIT",
+    "title": "Software Development",
+    "url": "https://matchpointit.com/software_development",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:09.494982"
+  },
+  {
+    "company": "Intuition Robotics",
+    "title": "AI Ethics",
+    "url": "https://www.intuitionrobotics.com/information/ai-ethics",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:13.011805"
+  },
+  {
+    "company": "jifiti",
+    "title": "Embedded FinancingYour financial product at someone else’s point of sale",
+    "url": "https://www.jifiti.com/embedded-lending/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:13.623913"
+  },
+  {
+    "company": "jifiti",
+    "title": "Global Embedded Lending",
+    "url": "https://www.jifiti.com/use-cases/sector/global-embedded-lending/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:14.056669"
+  },
+  {
+    "company": "jifiti",
+    "title": "Embedded Lending",
+    "url": "https://www.jifiti.com/embedded-lending/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:14.652826"
+  },
+  {
+    "company": "jifiti",
+    "title": "Technical Delivery Project ManagerIsrael, Modiin  ·  Full time  ·  Junior- Mid",
+    "url": "https://www.jifiti.com/jobs/co/israel-modiin/64.F6F/technical-delivery-project-manager/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:58:16.623072"
+  },
+  {
+    "company": "jifiti",
+    "title": "Tier 2 Customer Software Support - Student PositionIsrael, Modiin  ·  Part -time",
+    "url": "https://www.jifiti.com/jobs/co/israel-modiin/E0.372/tier-2-customer-software-support-student-position/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:58:17.626517"
+  },
+  {
+    "company": "jifiti",
+    "title": "Lenders - Embedded Lending API",
+    "url": "https://www.jifiti.com/lending-api/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:18.224193"
+  },
+  {
+    "company": "jifiti",
+    "title": "White Paper - B2B Embedded Lending",
+    "url": "https://www.jifiti.com/whitepapers/b2b-embedded-lending-guide/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:18.702010"
+  },
+  {
+    "company": "jifiti",
+    "title": "FIS & Jifiti Embedded Lending Partnership",
+    "url": "https://www.jifiti.com/partners-customers/fis/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:20.822347"
+  },
+  {
+    "company": "jifiti",
+    "title": "AI Lending",
+    "url": "https://www.jifiti.com/glossary/ai-lending/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:21.943239"
+  },
+  {
+    "company": "jifiti",
+    "title": "Embedded Lending",
+    "url": "https://www.jifiti.com/glossary/embedded-lending/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:23.088000"
+  },
+  {
+    "company": "Deel",
+    "title": "AI at Deel",
+    "url": "https://www.deel.com/solutions/ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:23.806395"
+  },
+  {
+    "company": "Deel",
+    "title": "Deel Embedded",
+    "url": "https://www.deel.com/solutions/embedded/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:24.153302"
+  },
+  {
+    "company": "Qualitest",
+    "title": "BLOGThe Evidence Bottleneck: Where AI Is Actually Delivering Value in Healthcare and Life Sciences",
+    "url": "https://www.qualitestgroup.com/insights/blogs/ai-delivering-value-healthcare-lifesciences",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:24.896006"
+  },
+  {
+    "company": "Qualitest",
+    "title": "BLOGAMP8, Ofwat, and the Shift in AI from Emerging Technology to True Capability",
+    "url": "https://www.qualitestgroup.com/insights/blogs/amp8-ofwat-and-the-shift-in-ai-from-emerging-technology-to-true-capability",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:25.521130"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Applyfor Full-Stack Web Developer  (opens in a new tab)",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:27.689434"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Applyfor Mobile Developer (opens in a new tab)",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:28.816102"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Applyfor Junior Full-Stack AI Engineer (opens in a new tab)",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:58:29.837071"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Applyfor Full-Stack AI Engineer (Mid-level) (opens in a new tab)",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:32.500680"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI and Cloud Managed Services",
+    "url": "https://allcloud.io/engage/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:33.449450"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI Solutions",
+    "url": "https://allcloud.io/careers/?_gl=1*1ml028f*_up*MQ..&gclid=Cj0KCQjwlqTRBhCBARIsANrkrxi-r9lXNL7HBAMkHFbW-udh-MBqYMmOMQUHd8ZzZNCAG9DiCEG6HVoaAji-EALw_wcB&gbraid=0AAAAADRW_Gj0TLX6qBwy7JUJcXuKEleRE",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:34.257149"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI Strategy",
+    "url": "https://allcloud.io/services/ai-strategy-services/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:34.568167"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI on AWS",
+    "url": "https://allcloud.io/services/ai-for-aws/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:34.947184"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI on Salesforce",
+    "url": "https://allcloud.io/services/salesforce-services/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:35.256842"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI on Anthropic",
+    "url": "https://allcloud.io/services/ai-on-anthropic/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:35.582604"
+  },
+  {
+    "company": "AllCloud",
+    "title": "Junior Office & Operations AssistantEmployee Success  ·  Part-time  ·  Entry-level",
+    "url": "https://allcloud.io/careers/co/israel/1F.27B/junior-office-operations-assistant/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:58:37.185837"
+  },
+  {
+    "company": "AllCloud",
+    "title": "Paralegal Law StudentLegal  ·  Part-time  ·  Entry-level",
+    "url": "https://allcloud.io/careers/co/israel/D4.476/paralegal-law-student/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:58:38.132030"
+  },
+  {
+    "company": "AllCloud",
+    "title": "Backend Developer Gen AIProfessional Services  ·  Full-time  ·  Intermediate",
+    "url": "https://allcloud.io/careers/co/romania/67.378/backend-developer-gen-ai/all",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:38.640724"
+  },
+  {
+    "company": "AllCloud",
+    "title": "Machine Learning EngineerProfessional Services  ·  Full-time  ·  Intermediate",
+    "url": "https://allcloud.io/careers/co/romania/CC.37F/machine-learning-engineer/all",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:58:39.849977"
+  },
+  {
+    "company": "AllCloud",
+    "title": "AI Reference",
+    "url": "https://allcloud.io/llms.txt",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:40.128785"
+  },
+  {
+    "company": "Hyro",
+    "title": "Epic#1 on Epic's AI Agent Showroom",
+    "url": "https://www.hyro.ai/integrations/epic/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:40.935454"
+  },
+  {
+    "company": "Hyro",
+    "title": "GenesysOmnichannel contact center AI",
+    "url": "https://www.hyro.ai/integrations/genesys/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:41.614214"
+  },
+  {
+    "company": "SITE 123",
+    "title": "Full Stack Web Developer",
+    "url": "https://he.site123.com/jobs/full-stack-web-developer",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:41.867668"
+  },
+  {
+    "company": "TEFEN",
+    "title": "Tefen AI",
+    "url": "https://www.tefen.co.il/carrer-page/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:42.066399"
+  },
+  {
+    "company": "TEFEN",
+    "title": "מערכות מידע AI ו BI",
+    "url": "https://www.tefen.co.il/%d7%91%d7%99%d7%a0%d7%94-%d7%9e%d7%9c%d7%90%d7%9b%d7%95%d7%aa%d7%99%d7%aa/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:42.182042"
+  },
+  {
+    "company": "Crusoe AI",
+    "title": "Physical AI",
+    "url": "https://www.crusoe.ai/cloud/solutions/physical-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:42.800410"
+  },
+  {
+    "company": "Crusoe AI",
+    "title": "Developer Hub",
+    "url": "https://www.crusoe.ai/developers",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:43.464448"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "WhitepaperSecuring Agentic AI: Identity as the Emerging Foundation for Defense",
+    "url": "https://www.cyberark.com/idira/idira-the-roadmap-to-securing-agentic-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:44.749131"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "AI-Powered Network Security Platform",
+    "url": "https://www.cyberark.com/network-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:45.786955"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "Secure AI by Design",
+    "url": "https://www.cyberark.com/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:46.738453"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "AI Access Security",
+    "url": "https://www.cyberark.com/sase/ai-access-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:48.155959"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "Software Firewalls",
+    "url": "https://www.cyberark.com/network-security/software-firewalls",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:49.093991"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "AI-Driven Security Operations Platform",
+    "url": "https://www.cyberark.com/cortex",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:50.047636"
+  },
+  {
+    "company": "CyberArk (Palo Alto Networks)",
+    "title": "AI-Driven SOC",
+    "url": "https://www.cyberark.com/cortex",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:50.951216"
+  },
+  {
+    "company": "Alice (Formerly ActiveFence)",
+    "title": "EU AI Act",
+    "url": "https://alice.io/blog/eu-ai-act-compliance-genai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:51.248772"
+  },
+  {
+    "company": "Alice (Formerly ActiveFence)",
+    "title": "AI skills scanner",
+    "url": "https://caterpillar.alice.io/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:52.179353"
+  },
+  {
+    "company": "youcc",
+    "title": "Data AI",
+    "url": "https://youcc.co.il/data-ai",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:52.682697"
+  },
+  {
+    "company": "youcc",
+    "title": "AI Security",
+    "url": "https://youcc.co.il/ai-security",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:53.187503"
+  },
+  {
+    "company": "PointFive",
+    "title": "AI Efficiency Engineer",
+    "url": "https://www.pointfive.co/products/pointfive-os#ai-efficiency-engineer",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:54.800549"
+  },
+  {
+    "company": "PointFive",
+    "title": "AI providers",
+    "url": "https://www.pointfive.co/coverage#ai-providers",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:55.261546"
+  },
+  {
+    "company": "PointFive",
+    "title": "AI agents",
+    "url": "https://www.pointfive.co/coverage#ai-agents",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:55.577337"
+  },
+  {
+    "company": "PointFive",
+    "title": "Cloud & AI efficiency",
+    "url": "https://www.pointfive.co/cloud-ai-efficiency",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:55.910297"
+  },
+  {
+    "company": "PointFive",
+    "title": "Backend Tech LeadEngineeringTel AvivHybridFull-time",
+    "url": "https://www.pointfive.co/careers/f3e101d7-7ce7-4280-8eb4-f6ccde097472",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:56.252372"
+  },
+  {
+    "company": "Alpha Omega",
+    "title": "Data analysis software",
+    "url": "https://www.alphaomega-eng.com/Data-analysis-software",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:56.875092"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "AI dataassistantCoreAI-powered data validation",
+    "url": "https://www.papayaglobal.com/data-validation/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:57.343743"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "Embedded AI",
+    "url": "https://www.papayaglobal.com/embedded-ai/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:57.750676"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "AI Expense agentStreamlined expense reporting",
+    "url": "https://www.papayaglobal.com/expense-management-solution/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:58.129620"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "AI data assistantCore",
+    "url": "https://www.papayaglobal.com/data-validation/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:58:58.427486"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "AI EngineerLocationKraków",
+    "url": "https://www.papayaglobal.com/positions/ai-engineer-2/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-04T17:59:04.309842"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "AI GTM EngineerLocationSpain",
+    "url": "https://www.papayaglobal.com/positions/ai-gtm-engineer/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:59:10.437255"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "Hey AI, learn about us",
+    "url": "https://www.papayaglobal.com/llms.txt",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:59:11.863847"
+  },
+  {
+    "company": "Papaya Global",
+    "title": "AI for Global Compliance",
+    "url": "https://www.papayaglobal.com/papaya-one/",
+    "experience": "Junior/Candidate (Title match)",
+    "discovered_at": "2026-11-04T17:59:12.329583"
+  },
+  {
+    "company": "Earnix",
+    "title": "Automation Engineer - Student PositionRamat Gan, Israel",
+    "location": "Israel",
+    "url": "https://earnix.com/career/79.47a/automation-engineer-student-position/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-05T12:52:30.541199"
+  },
+  {
+    "company": "Earnix",
+    "title": "Full-Stack Developer  - Maternity Leave Replacement (8 months)Ramat Gan, Israel",
+    "location": "Israel",
+    "url": "https://earnix.com/career/e5.470/full-stack-developer-maternity-leave-replacement-8-months/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-05T12:52:30.926212"
+  },
+  {
+    "company": "Earnix",
+    "title": "Junior Automation and Frontend  Developer - Maternity Leave Replacement (6 months)Ramat Gan, Israel",
+    "location": "Israel",
+    "url": "https://earnix.com/career/b7.372/junior-automation-and-frontend-developer-maternity-leave-replacement-6-months/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-05T12:52:31.322124"
+  },
+  {
+    "company": "AllJobs",
+    "title": "ה-AI לא יחליף אתכם, אבל מי ששולט בו- כן. מדריך הכשרות וכלים ל-2026",
+    "location": "Israel",
+    "url": "https://www.alljobs.co.il/ArticlePage.aspx?LinkWord=free-ai-skills",
+    "experience": "המודעה מיועדת להכשרות וכלים לכלל העובדים ואינה מציינת דרישת ניסיון מינימלית, ולכן פתוחה גם למתחילים ולרמות כניסה.",
+    "discovered_at": "2026-11-05T12:53:09.597493"
+  },
+  {
+    "company": "hailo.ai",
+    "title": "Developer Zone",
+    "location": "Israel",
+    "url": "https://hailo.ai/authorization/?action=logout&redirect_to=%2Fdeveloper-zone%2F&_wpnonce=450debc50f",
+    "experience": "The job description is empty, therefore entry-level and 0-2 years candidates are not explicitly excluded.",
+    "discovered_at": "2026-11-06T11:59:11.238268"
+  }
+]
