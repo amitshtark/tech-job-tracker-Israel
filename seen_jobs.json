@@ -4529,5 +4529,115 @@
     "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4871703101",
     "experience": "Junior Fullstack Software Developer",
     "discovered_at": "2026-11-07T15:08:56.449040"
+  },
+  {
+    "company": "Experis (Manpower)",
+    "title": "Automation Engineer",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://experis.co.il/search?search=Automation",
+    "experience": "Automation Engineer / General tech search page",
+    "discovered_at": "2026-11-07T18:25:12.741887"
+  },
+  {
+    "company": "GotFriends",
+    "title": "מפתח REACT",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/react-developer/",
+    "experience": "React Developer role, fits junior/entry level tracking",
+    "discovered_at": "2026-11-07T18:25:20.515629"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Data Engineer",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.gotfriends.co.il/jobslobby/software/data-engineer/",
+    "experience": "Data Engineer role, fits junior/entry level tracking",
+    "discovered_at": "2026-11-07T18:25:20.515645"
+  },
+  {
+    "company": "GotFriends",
+    "title": "LLM Engineer",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.gotfriends.co.il/jobslobby/ai/llm-engineer/",
+    "experience": "LLM Engineer AI role, fits junior/entry level tracking",
+    "discovered_at": "2026-11-07T18:25:20.515649"
+  },
+  {
+    "company": "GotFriends",
+    "title": "Reverse Engineer",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.gotfriends.co.il/jobslobby/datasecurity/reverse-engineer/",
+    "experience": "Reverse Engineer / Cyber role, fits junior/entry level tracking",
+    "discovered_at": "2026-11-07T18:25:20.515652"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Apply for Full-Stack Web Developer  (opens in a new tab)",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "Full-Stack Web Developer Entry Level / Junior",
+    "discovered_at": "2026-11-07T18:25:44.333040"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Apply for Mobile Developer (opens in a new tab)",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "Mobile Developer Entry Level / Junior",
+    "discovered_at": "2026-11-07T18:25:44.333052"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "דרושים Java",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.nisha.co.il/positions/java-developer/",
+    "experience": "Junior/General Java developer with focus on OOP and Git",
+    "discovered_at": "2026-11-07T18:25:49.715072"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Data Engineer",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.nisha.co.il/positions/data-engineer/",
+    "experience": "Data Engineer position via Nisha recruitment",
+    "discovered_at": "2026-11-07T18:25:49.715089"
+  },
+  {
+    "company": "Logica-it",
+    "title": "iOS Developer MOBILE גוש דן",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Gush Dan",
+    "url": "https://logica-it.com/jobs/17689/",
+    "experience": "iOS Mobile Developer",
+    "discovered_at": "2026-11-07T18:25:56.494819"
+  },
+  {
+    "company": "Logica-it",
+    "title": "מפתח/ת AI Full Stack Developer FULL STACK גוש דן",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Gush Dan / Shephelah",
+    "url": "https://logica-it.com/jobs/17544/",
+    "experience": "AI Full Stack Developer",
+    "discovered_at": "2026-11-07T18:25:56.494829"
   }
 ]
