@@ -4169,5 +4169,75 @@
     "url": "https://hailo.ai/authorization/?action=logout&redirect_to=%2Fdeveloper-zone%2F&_wpnonce=450debc50f",
     "experience": "The job description is empty, therefore entry-level and 0-2 years candidates are not explicitly excluded.",
     "discovered_at": "2026-11-06T11:59:11.238268"
+  },
+  {
+    "company": "linkedin",
+    "title": "Entry-Level Roles",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://careers.linkedin.com/pathways-programs/entry-level",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-06T22:34:27.409622"
+  },
+  {
+    "company": "Travelier (Bookaway)",
+    "title": "Junior Supply Operation Specialist (Bangkok-based)Bangkok, ThailandSupply Operations",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.travelier.com/careers/co/bangkok-thailand/41.371/junior-supply-operation-specialist-bangkok-based/all/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-06T22:34:48.759303"
+  },
+  {
+    "company": "Travelier (Bookaway)",
+    "title": "Junior Supply Operation Specialist - PhilippinesBangkok, ThailandSupply Operations",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.travelier.com/careers/co/bangkok-thailand/52.374/junior-supply-operation-specialist-philippines/all/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-06T22:34:48.928984"
+  },
+  {
+    "company": "Mesh Payments",
+    "title": "Junior Customer Success Manager(Tel Aviv)",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://meshpayments.com/careers/junior-customer-success-manager/",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-06T23:48:20.690435"
+  },
+  {
+    "company": "Next Insurance",
+    "title": "Frontend EngineerKfar Saba, Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://job-boards.greenhouse.io/nextinsurance66/jobs/7805602003",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-06T23:48:22.974887"
+  },
+  {
+    "company": "Next Insurance",
+    "title": "Graduate Frontend / Full Stack Software Engineer – UpNEXT ProgramKfar Saba, Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://job-boards.greenhouse.io/nextinsurance66/jobs/7979090003",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-06T23:48:23.346356"
+  },
+  {
+    "company": "WeDev",
+    "title": "Junior Fullstack Software DeveloperHolon, Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4871703101",
+    "experience": "0-2 YOE (Deterministic match)",
+    "discovered_at": "2026-11-07T00:01:58.165180"
   }
 ]
