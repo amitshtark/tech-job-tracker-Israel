@@ -4239,5 +4239,295 @@
     "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4871703101",
     "experience": "0-2 YOE (Deterministic match)",
     "discovered_at": "2026-11-07T00:01:58.165180"
+  },
+  {
+    "company": "Buildots",
+    "title": "GTM AI Engineer Full-time Tel-Aviv Read more",
+    "referral_contact": "noa",
+    "referral_type": "איש קשר אישי",
+    "location": "Tel Aviv",
+    "url": "https://buildots.com/careers/BD.271/",
+    "experience": "AI Engineer (Implied junior/general)",
+    "discovered_at": "2026-11-07T15:03:56.799620"
+  },
+  {
+    "company": "monday.com",
+    "title": "AI Engineer (render.ai) Tel-Aviv, IL",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": "Tel-Aviv, IL",
+    "url": "https://monday.com/careers/077675a8-bfb6-47f4-a466-347561c26258",
+    "experience": "AI Engineer (TypeScript and Python)",
+    "discovered_at": "2026-11-07T15:04:55.903642"
+  },
+  {
+    "company": "Aman Group",
+    "title": "מפתח/ת  React Native",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Petah Tikva / Israel",
+    "url": "https://www.aman-global.com/careers/%d7%a4%d7%99%d7%aa%d7%95%d7%97-%d7%aa%d7%95%d7%9b%d7%a0%d7%94/%d7%9e%d7%a4%d7%aa%d7%97-%d7%aa-react-native/",
+    "experience": "React Native Developer",
+    "discovered_at": "2026-11-07T15:05:09.298583"
+  },
+  {
+    "company": "AllJobs",
+    "title": "דרושים Data Analyst",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.alljobs.co.il/SearchResultsGuest.aspx?page=1&position=1732&type=&city=®ion=",
+    "experience": "Data Analyst / Entry Level",
+    "discovered_at": "2026-11-07T15:05:09.298603"
+  },
+  {
+    "company": "AllJobs",
+    "title": "דרושים מפתחי Java",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.alljobs.co.il/SearchResultsGuest.aspx?page=1&position=1153&type=&city=®ion=",
+    "experience": "Java Developer",
+    "discovered_at": "2026-11-07T15:05:09.298610"
+  },
+  {
+    "company": "AllJobs",
+    "title": "דרושים מפתחי Python",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.alljobs.co.il/SearchResultsGuest.aspx?page=1&position=1694&type=&city=®ion=",
+    "experience": "Python Developer",
+    "discovered_at": "2026-11-07T15:05:09.298615"
+  },
+  {
+    "company": "commit",
+    "title": "BSP Engineer READ MORE",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.comm-it.com/jobs/bsp-engineer",
+    "experience": "Embedded / C/C++ Developer with flexible experience levels",
+    "discovered_at": "2026-11-07T15:05:15.280551"
+  },
+  {
+    "company": "Dialog",
+    "title": "מתכנת Python",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.dialog.co.il/high-tech/jobs/software/python-developer",
+    "experience": "Python Developer",
+    "discovered_at": "2026-11-07T15:05:27.589451"
+  },
+  {
+    "company": "co-impact",
+    "title": "Algorithm Development Engineer – Qualitest",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://co-impact.org.il/jobs/5753-2/",
+    "experience": "Algorithm Development Engineer",
+    "discovered_at": "2026-11-07T15:05:27.589469"
+  },
+  {
+    "company": "Earnix",
+    "title": "Automation Engineer - Student Position Ramat Gan, Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Ramat Gan",
+    "url": "https://earnix.com/career/79.47a/automation-engineer-student-position/",
+    "experience": "Student Position Automation Engineer",
+    "discovered_at": "2026-11-07T15:05:27.589498"
+  },
+  {
+    "company": "Earnix",
+    "title": "Full-Stack Developer  - Maternity Leave Replacement (8 months) Ramat Gan, Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Ramat Gan",
+    "url": "https://earnix.com/career/e5.470/full-stack-developer-maternity-leave-replacement-8-months/",
+    "experience": "1-2 years of hands-on software development experience",
+    "discovered_at": "2026-11-07T15:05:27.589504"
+  },
+  {
+    "company": "Earnix",
+    "title": "Junior Automation and Frontend  Developer - Maternity Leave Replacement (6 months) Ramat Gan, Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Ramat Gan",
+    "url": "https://earnix.com/career/b7.372/junior-automation-and-frontend-developer-maternity-leave-replacement-6-months/",
+    "experience": "1+ years of proven experience",
+    "discovered_at": "2026-11-07T15:05:27.589509"
+  },
+  {
+    "company": "Comblack",
+    "title": "Ai לתחום >>",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://comblack.co.il/categories/ai/",
+    "experience": "Entry level / AI tech role",
+    "discovered_at": "2026-11-07T15:05:32.164516"
+  },
+  {
+    "company": "Datwise",
+    "title": "monday.com Software Development Tel Aviv, Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Tel Aviv, Israel",
+    "url": "https://il.linkedin.com/company/mondaydotcom?trk=similar-pages",
+    "experience": "Software Development role in Israel",
+    "discovered_at": "2026-11-07T15:05:32.164532"
+  },
+  {
+    "company": "Engineering Software Lab (ESL)",
+    "title": "Cyber Security Engineer Bright Data, Netanya, Center District, Israel",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Netanya, Israel",
+    "url": "https://il.linkedin.com/jobs/view/cyber-security-engineer-at-bright-data-4418355867?trk=organization_guest_main-feed-card_reshare_feed-job-posting-content",
+    "experience": "Entry level / Cyber Security Engineer",
+    "discovered_at": "2026-11-07T15:05:32.164555"
+  },
+  {
+    "company": "Fetcherr",
+    "title": "Support Engineer Support Netanya Full-time Apply Now",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Netanya",
+    "url": "https://www.fetcherr.io/careers/position-40_f62",
+    "experience": "1-2 years experience",
+    "discovered_at": "2026-11-07T15:05:34.733704"
+  },
+  {
+    "company": "Extreme",
+    "title": "Development משרה פתוחה Full Stack Developer רמת גן Development לפרטים ←",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Ramat Gan",
+    "url": "https://www.extreme.co.il/jobs/full-stack-developer-23154",
+    "experience": "At least 2 years experience (fits 0-2 YOE)",
+    "discovered_at": "2026-11-07T15:05:38.236897"
+  },
+  {
+    "company": "inManage",
+    "title": "××¤×ª×/×ª REACT ××ª×××/×",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.inmanage.co.il/××©×¨×ª_××¤×ª×_React_××ª×××",
+    "experience": "Junior React Developer",
+    "discovered_at": "2026-11-07T15:05:50.240190"
+  },
+  {
+    "company": "inManage",
+    "title": "××¤×ª×/×ª React Native ××ª×××/×",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://www.inmanage.co.il/××¤×ª×/×ª_React_Native_××ª×××/×",
+    "experience": "Junior React Native Developer",
+    "discovered_at": "2026-11-07T15:05:50.240212"
+  },
+  {
+    "company": "Moveo group",
+    "title": "Apply for Junior Full-Stack AI Engineer (opens in a new tab)",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://forms.monday.com/forms/887015da14cd8f19ac195c11bf56607e?r=use1",
+    "experience": "Junior Full-Stack AI Engineer",
+    "discovered_at": "2026-11-07T15:05:59.467295"
+  },
+  {
+    "company": "Logica-it",
+    "title": "Junior Full Stack Developer JUNIOR גוש דן",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Gush Dan",
+    "url": "https://logica-it.com/jobs/21184/",
+    "experience": "Junior Full Stack Developer",
+    "discovered_at": "2026-11-07T15:06:08.250194"
+  },
+  {
+    "company": "Logica-it",
+    "title": "מפתח/ת תוכנה BACKEND ירושלים יו\"ש",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Jerusalem",
+    "url": "https://logica-it.com/jobs/21015/",
+    "experience": "Backend Developer",
+    "discovered_at": "2026-11-07T15:06:08.250221"
+  },
+  {
+    "company": "Logica-it",
+    "title": "PROMPT ENGINEER AI גוש דן",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Gush Dan",
+    "url": "https://logica-it.com/jobs/20982/",
+    "experience": "Prompt Engineer",
+    "discovered_at": "2026-11-07T15:06:08.250225"
+  },
+  {
+    "company": "tower",
+    "title": "Students & Internship",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://careers.towersemi.com/career-opportunities/students-internship/",
+    "experience": "Student & Internship Engineering",
+    "discovered_at": "2026-11-07T15:06:35.891994"
+  },
+  {
+    "company": "tower",
+    "title": "Students &\nInternship",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://careers.towersemi.com/career-opportunities/students-internship/",
+    "experience": "Student & Internship Engineering",
+    "discovered_at": "2026-11-07T15:06:35.892012"
+  },
+  {
+    "company": "Next Insurance",
+    "title": "Frontend Engineer Kfar Saba, Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Kfar Saba, Israel",
+    "url": "https://job-boards.greenhouse.io/nextinsurance66/jobs/7805602003",
+    "experience": "A minimum of 2 years of hands-on experience",
+    "discovered_at": "2026-11-07T15:07:54.893511"
+  },
+  {
+    "company": "Next Insurance",
+    "title": "Graduate Frontend / Full Stack Software Engineer – UpNEXT Program Kfar Saba, Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Kfar Saba, Israel",
+    "url": "https://job-boards.greenhouse.io/nextinsurance66/jobs/7979090003",
+    "experience": "Graduate Frontend / Full Stack Software Engineer (UpNEXT Program)",
+    "discovered_at": "2026-11-07T15:07:54.893535"
+  },
+  {
+    "company": "SAP Israel",
+    "title": "SAP Labs iXp Intern - Software Developer",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.sap.com/en/jobs/744000160236955/sap-labs-ixp-intern-software-developer/",
+    "experience": "Intern / Student (0-1 YOE Software Developer)",
+    "discovered_at": "2026-11-07T15:08:43.603806"
+  },
+  {
+    "company": "WeDev",
+    "title": "Junior Fullstack Software Developer Holon, Israel",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Holon, Israel",
+    "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4871703101",
+    "experience": "Junior Fullstack Software Developer",
+    "discovered_at": "2026-11-07T15:08:56.449040"
   }
 ]
