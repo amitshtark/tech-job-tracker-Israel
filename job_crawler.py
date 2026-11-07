@@ -1,18 +1,21 @@
 #!/usr/bin/env python3
 """
-Autonomous Israeli Tech Job Crawler (v3.0 - High-Speed Parallel & Batch AI).
+Autonomous Israeli Tech Job Crawler (v3.1 - Enhanced Link & Category Validation).
 
-Key Highlights:
-1. High-Speed Parallel Scraping: ThreadPoolExecutor across 336 companies reduces scan time from 25m to ~2m.
-2. Smart Pre-Filtering: Eliminates obvious non-tech (Customer Success, Operations, Sales, HR, Manual QA)
-   and explicit foreign locations (Bangkok, London, NYC, Poland, etc.) before AI review.
-3. Batch AI Verification: Groups candidate jobs into batches (10-12 per prompt) to evaluate:
-   - Tech Role: Software Engineering, AI/ML, Data Science, Algorithms, Junior MLOps.
-   - Experience: 0-2 YOE (Junior, Entry Level, Graduate, Student).
-   - Location: Strictly Israel (Tel Aviv, Haifa, Herzliya, etc. or Remote Israel).
-4. No API Quota Issues: Batching reduces 50 API calls to 3-5 calls, completely avoiding RPM/RPD limits.
-5. Preserves Referral Mapping: Outputs exactly who to contact for referral (Personal contact, Dana, or Direct).
-6. Real-time Checkpointing & Excel Export.
+Key Features:
+1. High-Speed Parallel Scraping: ThreadPoolExecutor across 336 companies reduces scan time to ~2 minutes.
+2. Deterministic Category & Search Rejection:
+   - Strictly rejects search query URLs (e.g. `search?search=...`, `SearchResults`).
+   - Strictly rejects placement agency category lobbies (e.g. GotFriends `/jobslobby/`, Nisha generic `/positions/`).
+   - Strictly rejects generic category hubs (e.g. `/categories/`, `/all-jobs/`).
+3. Strict 4-Way AI Verification (Batch Processing with Gemini):
+   - Rule 1: `is_single_specific_job`: MUST be a single, distinct job vacancy (REJECTS lobbies, category landing pages, talent pools).
+   - Rule 2: `is_tech_role`: Software Development, AI/ML, Data Science, Algorithms, Junior MLOps (REJECTS CSM, Operations, Sales, Manual QA).
+   - Rule 3: `is_0_2_yoe`: 0 to 2 years of experience / Junior / Graduate / Student.
+   - Rule 4: `is_israel`: Strictly Israel-based (REJECTS Bangkok, London, NYC, Poland, etc.).
+4. No API Quota Issues: Batching 10-12 jobs per prompt prevents hitting 15 RPM limits.
+5. Referral Contact Attribution: Maps exact referral pathways (Personal contact, Dana/Elevation, or Direct).
+6. Real-time Checkpointing & Formatted Excel Export.
 """
 
 import os
@@ -59,7 +62,33 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9,he;q=0.8",
 }
 
-# --- Strict Filtering Rules ---
+# --- Strict Deterministic Regex Rules ---
+
+# Rejection of Search Results, Placement Agency Category Lobbies, and General Portals
+NON_JOB_URL_PATTERNS = re.compile(
+    r"("
+    r"[?&]search="
+    r"|/search\?"
+    r"|searchresults"
+    r"|/jobslobby/"
+    r"|/categories/"
+    r"|/all-jobs/"
+    r"|/all_jobs/"
+    r"|/alljobs"
+    r"|/career-opportunities/students-internship"
+    r"|developer-zone|developer_zone|developers|documentation|/docs/|/blog/|/resources/|/community/|/about/|/contact/|/news/"
+    r")",
+    re.IGNORECASE
+)
+
+# Reject URLs from known placement agencies that are general category landing pages without a specific job ID
+AGENCY_CATEGORY_REGEX = re.compile(
+    r"(gotfriends\.co\.il/jobslobby/|"
+    r"nisha\.co\.il/positions/[a-z\-]+/?$|"
+    r"alljobs\.co\.il/search|"
+    r"experis\.co\.il/search)",
+    re.IGNORECASE
+)
 
 # Explicit Foreign Locations in Title or URL (Instant Rejection)
 FOREIGN_LOCATION_REGEX = re.compile(
@@ -80,10 +109,10 @@ ISRAEL_LOCATION_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Reject Non-Tech Roles and Senior Levels
+# Reject Non-Tech Roles, Senior Levels, and Support
 REJECT_TITLE_REGEX = re.compile(
     r"\b("
-    r"customer success|csm\b|support specialist|it support|helpdesk|"
+    r"customer success|csm\b|support engineer|support specialist|it support|helpdesk|technical support|"
     r"operations|supply chain|logistics|procurement|supply operation|"
     r"sales|account executive|bdr\b|sdr\b|business development|"
     r"marketing|content writer|growth|copywriter|seo\b|"
@@ -98,16 +127,11 @@ REJECT_TITLE_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Reject Navigation, Community & Non-Job Links
+# Reject Navigation Links
 NAV_EXCLUDE_REGEX = re.compile(
     r"^(developer zone|developer portal|developer community|developer guide|developer hub|"
     r"developers|for developers|developer docs|documentation|api documentation|resources|"
-    r"community|blog|news|about us|contact us|sign in|log in|sign up|products|solutions|privacy policy|terms)$",
-    re.IGNORECASE
-)
-
-NON_JOB_URL_PATTERNS = re.compile(
-    r"(developer-zone|developer_zone|developers|documentation|/docs/|/blog/|/resources/|/community/|/about/|/contact/|/news/)",
+    r"community|blog|news|about us|contact us|sign in|log in|sign up|products|solutions|privacy policy|terms|view all jobs|search jobs)$",
     re.IGNORECASE
 )
 
@@ -214,6 +238,8 @@ def is_title_candidate(title, url=""):
         return False
     if NON_JOB_URL_PATTERNS.search(url):
         return False
+    if AGENCY_CATEGORY_REGEX.search(url):
+        return False
     # Reject explicit foreign locations in URL or Title immediately
     if FOREIGN_LOCATION_REGEX.search(f"{t} {url}") and not ISRAEL_LOCATION_REGEX.search(f"{t} {url}"):
         return False
@@ -236,8 +262,8 @@ def scrape_single_company(company_info):
 
     if not url:
         return name, False, [], "Missing career URL", company_info
-    if "linkedin.com/in/" in url:
-        return name, False, [], "LinkedIn recruiter profile (direct outreach recommended)", company_info
+    if "linkedin.com/in/" in url or "linkedin.com/company/" in url:
+        return name, False, [], "LinkedIn profile/company page (direct outreach recommended)", company_info
 
     try:
         resp = requests.get(url, headers=HEADERS, timeout=8)
@@ -327,7 +353,6 @@ def fetch_job_details(job):
             if req_parts:
                 extracted["text"] = "\n".join(req_parts)[:2500]
             else:
-                # Fallback to list items or page text
                 lis = [li.get_text(strip=True) for li in soup.find_all("li")]
                 if lis:
                     extracted["text"] = "\n".join(lis[:30])[:2500]
@@ -342,18 +367,20 @@ def fetch_job_details(job):
     return job
 
 
-# --- Batch AI Evaluation ---
+# --- Strict 4-Way Batch AI Evaluation ---
 
 def batch_verify_jobs_with_ai(jobs_batch):
     """
-    Evaluates up to 10-15 candidate jobs in a single structured Gemini prompt.
-    Evaluates 3 strict rules:
-    1. is_tech_role: Software Engineering, AI/ML, Data Science, Algorithms, Junior MLOps, Software Automation.
-       (Rejects Customer Success, Operations, Sales, Marketing, HR, Finance, Manual QA, DevOps).
-    2. is_0_2_yoe: 0 to 2 years of experience (Junior, Graduate, Student, Entry-level, No experience).
-       (Rejects positions strictly requiring 3+ years).
-    3. is_israel: Located in Israel (Tel Aviv, Haifa, Herzliya, Remote Israel, or Israeli HQ without foreign office).
-       (Rejects positions located outside Israel, e.g., Bangkok, London, New York).
+    Evaluates up to 10-12 candidate jobs in a single structured Gemini prompt.
+    Evaluates 4 mandatory criteria:
+    1. is_single_specific_job: MUST be a distinct individual job vacancy with actual job description.
+       (STRICTLY REJECTS category lobbies, search query result pages, general CV submission pages, blogs).
+    2. is_tech_role: Software Engineering, AI/ML, Data Science, Algorithms, Junior MLOps, Software Automation.
+       (STRICTLY REJECTS Customer Success, Operations, Technical Support, Sales, Marketing, HR, Finance, Manual QA).
+    3. is_0_2_yoe: 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, No experience).
+       (STRICTLY REJECTS positions requiring 3+ years).
+    4. is_israel: Located in Israel (Tel Aviv, Haifa, Herzliya, etc., or Israeli HQ without foreign office).
+       (STRICTLY REJECTS foreign offices like Bangkok, London, NYC, Poland, India).
     """
     items_text = []
     for idx, j in enumerate(jobs_batch, 1):
@@ -369,31 +396,36 @@ def batch_verify_jobs_with_ai(jobs_batch):
         )
 
     prompt = (
-        "You are an expert technical recruiter specializing in the Israeli high-tech ecosystem.\n"
-        "Evaluate each of the following candidate job postings based strictly on 3 mandatory criteria:\n\n"
-        "1. Tech Role (is_tech_role):\n"
+        "You are an expert technical hiring validator for the Israeli high-tech ecosystem.\n"
+        "Evaluate each of the following candidate links strictly based on 4 mandatory criteria:\n\n"
+        "1. Single Specific Job Vacancy (is_single_specific_job):\n"
+        "   - MUST be an actual, individual, open job vacancy posting with a distinct description.\n"
+        "   - STRICTLY REJECT: Category lobbies, search results pages (e.g. search?search=), recruitment agency general hubs (e.g. /jobslobby/, /categories/), generic 'Send CV / Join Talent Pool' forms, or informational articles.\n\n"
+        "2. Tech Software Role (is_tech_role):\n"
         "   - MUST be Software Development (Backend, Frontend, Fullstack, Mobile), AI/ML, Data Science, Algorithms, Junior MLOps, or Software Automation.\n"
-        "   - REJECT: Customer Success (CSM), Operations / Supply, Sales, Marketing, Recruiting/HR, Finance, Manual QA, or pure DevOps.\n\n"
-        "2. Experience Level 0-2 YOE (is_0_2_yoe):\n"
+        "   - STRICTLY REJECT: Customer Success (CSM), Operations / Supply, Technical Support, Helpdesk, Sales, Marketing, Recruiting/HR, Finance, Manual QA, or pure DevOps.\n\n"
+        "3. Experience Level 0-2 YOE (is_0_2_yoe):\n"
         "   - MUST accept 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, 0-2 YOE, or no experience required).\n"
-        "   - REJECT: Any posting that explicitly demands a strict minimum of 3+ years of professional industry experience.\n\n"
-        "3. Israel Location (is_israel):\n"
-        "   - The position MUST be located in Israel (Tel Aviv, Haifa, Herzliya, Jerusalem, etc., Hybrid, Remote Israel, or an Israeli company with no foreign office mentioned).\n"
-        "   - STRICTLY REJECT any position located outside Israel (e.g. Bangkok, London, New York, Poland, India, Germany, etc.).\n\n"
+        "   - STRICTLY REJECT: Any posting that explicitly demands a strict minimum of 3+ years of professional industry experience.\n\n"
+        "4. Israel Location (is_israel):\n"
+        "   - MUST be located in Israel (Tel Aviv, Haifa, Herzliya, Jerusalem, etc., Hybrid, Remote Israel, or an Israeli company with no foreign office mentioned).\n"
+        "   - STRICTLY REJECT: Any position located outside Israel (e.g. Bangkok, London, New York, Poland, India, Germany, etc.).\n\n"
         "Candidate Postings:\n"
         f"{''.join(items_text)}\n"
-        "Output strictly valid JSON with the following structure:\n"
+        "A job is APPROVED only if ALL FOUR criteria are strictly TRUE.\n\n"
+        "Output strictly valid JSON with this exact structure:\n"
         "{\n"
         '  "evaluations": [\n'
         "    {\n"
         '      "job_index": 1,\n'
+        '      "is_single_specific_job": true/false,\n'
         '      "is_tech_role": true/false,\n'
         '      "is_0_2_yoe": true/false,\n'
         '      "is_israel": true/false,\n'
         '      "approved": true/false,\n'
         '      "experience_summary": "e.g. 0-1 YOE Junior Backend",\n'
         '      "detected_city": "e.g. Tel Aviv / Israel",\n'
-        '      "rejection_reason": "e.g. Outside Israel (Bangkok) / Not a tech role (CSM)"\n'
+        '      "rejection_reason": "e.g. Category lobby / Not single job / Technical Support / Outside Israel"\n'
         "    }\n"
         "  ]\n"
         "}"
@@ -544,7 +576,7 @@ def main():
         export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
 
     print(f"\n[Stage 1 Summary] Successful: {len(companies) - len(failed_companies)} | Un-scraped/LinkedIn: {len(failed_companies)}")
-    print(f"[*] Total candidate links collected for verification: {len(direct_candidates)}")
+    print(f"[*] Total candidate links collected: {len(direct_candidates)}")
 
     # Deduplicate candidate links against seen_hashes
     unique_candidates = []
@@ -563,8 +595,8 @@ def main():
         with ThreadPoolExecutor(max_workers=8) as executor:
             fetched_candidates = list(executor.map(fetch_job_details, unique_candidates))
 
-        # --- STAGE 3: Batch AI Verification with Gemini ---
-        print(f"\n=== STAGE 3: Batch AI Verification with Gemini ({len(fetched_candidates)} jobs) ===")
+        # --- STAGE 3: Strict 4-Way Batch AI Verification with Gemini ---
+        print(f"\n=== STAGE 3: Strict Batch AI Verification with Gemini ({len(fetched_candidates)} jobs) ===")
         batch_size = 10
         batches = [fetched_candidates[i:i + batch_size] for i in range(0, len(fetched_candidates), batch_size)]
         print(f"[*] Grouped into {len(batches)} batches of up to {batch_size} jobs each.\n")
@@ -573,7 +605,6 @@ def main():
             print(f"[*] Sending Batch {b_idx}/{len(batches)} ({len(batch)} jobs) to Gemini...")
             evaluations = batch_verify_jobs_with_ai(batch)
 
-            # Map evaluations back to jobs
             eval_map = {ev.get("job_index"): ev for ev in evaluations}
 
             for idx, job in enumerate(batch, 1):
