@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>לוח משרות ג'וניור ופיתוח תוכנה בישראל | Job Tracker</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #1e293b;
+      --bg-card-hover: #283548;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-blue: #38bdf8;
+      --accent-green: #10b981;
+      --accent-purple: #a855f7;
+      --accent-amber: #f59e0b;
+      --accent-red: #ef4444;
+      --border-color: #334155;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Assistant', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Metrics Summary Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+
+    .stat-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    .stat-card.active {
+      border-color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .stat-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .stat-new .stat-icon { background: rgba(56, 189, 248, 0.15); color: var(--accent-blue); }
+    .stat-applied .stat-icon { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+    .stat-saved .stat-icon { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
+    .stat-dismissed .stat-icon { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+
+    .stat-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-val {
+      font-size: 1.6rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Controls & Search */
+    .controls-panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 42px 12px 16px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent-blue);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .filter-select {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
+      border-color: var(--accent-blue);
+    }
+
+    /* Navigation Tabs */
+    .tabs-row {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .tab-btn.active {
+      color: var(--accent-blue);
+      background: rgba(56, 189, 248, 0.1);
+    }
+
+    .tab-badge {
+      background: var(--bg-card-hover);
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: var(--text-main);
+    }
+
+    .tab-btn.active .tab-badge {
+      background: var(--accent-blue);
+      color: #0f172a;
+    }
+
+    /* Jobs Grid */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .jobs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Job Card */
+    .job-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .job-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: #475569;
+    }
+
+    .job-card.is-applied {
+      border-right: 4px solid var(--accent-green);
+    }
+
+    .job-card.is-saved {
+      border-right: 4px solid var(--accent-amber);
+    }
+
+    .job-card.is-dismissed {
+      opacity: 0.6;
+      border-right: 4px solid var(--accent-red);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .company-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .referral-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .ref-personal {
+      background: rgba(168, 85, 247, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+
+    .ref-dana {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .ref-direct {
+      background: rgba(148, 163, 184, 0.15);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .job-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .meta-tag {
+      background: var(--bg-primary);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .action-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #0f172a;
+    }
+
+    .btn-primary:hover {
+      background: #7dd3fc;
+    }
+
+    .btn-applied {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-green);
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .btn-applied:hover, .btn-applied.active {
+      background: var(--accent-green);
+      color: #0f172a;
+    }
+
+    .btn-icon {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      padding: 8px;
+    }
+
+    .btn-icon:hover {
+      color: var(--text-main);
+      background: var(--bg-card-hover);
+    }
+
+    .btn-icon.active-star {
+      color: var(--accent-amber);
+      border-color: var(--accent-amber);
+    }
+
+    .btn-icon.active-dismiss {
+      color: var(--accent-red);
+      border-color: var(--accent-red);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--bg-secondary);
+      border: 1px solid var(--accent-blue);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Referral Modal or Tooltip */
+    .ref-person-highlight {
+      font-weight: 800;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="brand">
+        <div class="brand-icon">🚀</div>
+        <div>
+          <div class="brand-title">Israel Tech Junior Jobs</div>
+          <div class="brand-subtitle">לוח מעקב אישי למשרות ג'וניור, סטודנט ובוגרים טריים (0–2 שנות ניסיון)</div>
+        </div>
+      </div>
+      <div>
+        <button id="refreshBtn" class="btn btn-icon" title="טען נתונים מחדש">🔄 רענן נתונים</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- Metrics Cards / Quick Filter -->
+    <div class="stats-bar">
+      <div class="stat-card stat-new active" data-tab="new">
+        <div class="stat-icon">✨</div>
+        <div class="stat-info">
+          <div class="stat-val" id="countNew">0</div>
+          <div class="stat-label">משרות חדשות לבדיקה</div>
+        </div>
+      </div>
+      <div class="stat-card stat-applied" data-tab="applied">
+        <div class="stat-icon">✅</div>
+        <div class="stat-info">
+          <div class="stat-val" id="countApplied">0</div>
+          <div class="stat-label">משרות שהגשתי</div>
+        </div>
+      </div>
+      <div class="stat-card stat-saved" data-tab="saved">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-info">
+          <div class="stat-val" id="countSaved">0</div>
+          <div class="stat-label">שמורות להמשך</div>
+        </div>
+      </div>
+      <div class="stat-card stat-dismissed" data-tab="dismissed">
+        <div class="stat-icon">🗑️</div>
+        <div class="stat-info">
+          <div class="stat-val" id="countDismissed">0</div>
+          <div class="stat-label">הוסרו / לא מתאימות</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls, Filter & Search -->
+    <div class="controls-panel">
+      <div class="search-row">
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" placeholder="חיפוש לפי חברה, תפקיד, טכנולוגיה, עיר...">
+        </div>
+        <select id="referralFilter" class="filter-select">
+          <option value="all">כל סוגי הרפרל</option>
+          <option value="personal">איש קשר אישי (Roy, Inbar, Idan...)</option>
+          <option value="dana">דנה (Elevation)</option>
+          <option value="direct">הגשה ישירה באתר</option>
+        </select>
+        <select id="roleFilter" class="filter-select">
+          <option value="all">כל התפקידים</option>
+          <option value="fullstack">Fullstack</option>
+          <option value="backend">Backend</option>
+          <option value="frontend">Frontend</option>
+          <option value="ai">AI / ML / Data</option>
+          <option value="student">משרות סטודנט / מתמחה</option>
+        </select>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="tabs-row">
+        <button class="tab-btn active" data-tab="new">
+          ✨ משרות חדשות <span class="tab-badge" id="badgeNew">0</span>
+        </button>
+        <button class="tab-btn" data-tab="applied">
+          ✅ הגשתי <span class="tab-badge" id="badgeApplied">0</span>
+        </button>
+        <button class="tab-btn" data-tab="saved">
+          ⭐ שמורות <span class="tab-badge" id="badgeSaved">0</span>
+        </button>
+        <button class="tab-btn" data-tab="dismissed">
+          🗑️ הוסרו <span class="tab-badge" id="badgeDismissed">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Jobs Grid Container -->
+    <div id="jobsGrid" class="jobs-grid">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">הודעת מערכת</div>
+
+  <!-- Client-side Logic -->
+  <script>
+    // State management
+    let allJobs = [];
+    let currentTab = 'new';
+    let userStates = JSON.parse(localStorage.getItem('job_tracker_states') || '{}');
+
+    // DOM Elements
+    const jobsGrid = document.getElementById('jobsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const referralFilter = document.getElementById('referralFilter');
+    const roleFilter = document.getElementById('roleFilter');
+    const toast = document.getElementById('toast');
+    const refreshBtn = document.getElementById('refreshBtn');
+
+    // Generate hash identical to python crawler
+    function computeHash(company, title, url) {
+      const str = `${(company || '').trim().toLowerCase()}::${(title || '').trim().toLowerCase()}::${(url || '').trim().toLowerCase()}`;
+      let hash = 0;
+      for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash) + str.charCodeAt(i);
+        hash |= 0;
+      }
+      return 'h_' + Math.abs(hash).toString(16);
+    }
+
+    // Save states to local storage
+    function saveUserStates() {
+      localStorage.setItem('job_tracker_states', JSON.stringify(userStates));
+      updateCounts();
+      renderJobs();
+    }
+
+    // Show toast notification
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // Load jobs from seen_jobs.json
+    async function fetchJobs() {
+      try {
+        const resp = await fetch('seen_jobs.json?t=' + Date.now());
+        if (!resp.ok) throw new Error('Could not load seen_jobs.json');
+        const data = await resp.json();
+        
+        // Reverse to show newest jobs first
+        allJobs = Array.isArray(data) ? data.slice().reverse() : [];
+        updateCounts();
+        renderJobs();
+      } catch (err) {
+        console.warn('seen_jobs.json not loaded directly, checking sample fallback:', err);
+        // Show graceful error state if running offline
+        jobsGrid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">📂</div>
+            <h3>לא נמצא קובץ seen_jobs.json</h3>
+            <p>וודא שהקובץ <code>seen_jobs.json</code> נמצא באותה תיקייה של האתר ב-GitHub.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Update metrics and badges
+    function updateCounts() {
+      let counts = { new: 0, applied: 0, saved: 0, dismissed: 0 };
+
+      allJobs.forEach(job => {
+        const h = computeHash(job.company, job.title, job.url);
+        const state = userStates[h]?.status || 'new';
+        if (counts[state] !== undefined) {
+          counts[state]++;
+        } else {
+          counts.new++;
+        }
+      });
+
+      document.getElementById('countNew').textContent = counts.new;
+      document.getElementById('countApplied').textContent = counts.applied;
+      document.getElementById('countSaved').textContent = counts.saved;
+      document.getElementById('countDismissed').textContent = counts.dismissed;
+
+      document.getElementById('badgeNew').textContent = counts.new;
+      document.getElementById('badgeApplied').textContent = counts.applied;
+      document.getElementById('badgeSaved').textContent = counts.saved;
+      document.getElementById('badgeDismissed').textContent = counts.dismissed;
+    }
+
+    // Render job cards
+    function renderJobs() {
+      const q = searchInput.value.trim().toLowerCase();
+      const refFilter = referralFilter.value;
+      const role = roleFilter.value;
+
+      const filtered = allJobs.filter(job => {
+        const h = computeHash(job.company, job.title, job.url);
+        const state = userStates[h]?.status || 'new';
+
+        // Tab match
+        if (state !== currentTab) return false;
+
+        // Search match
+        const fullText = `${job.company} ${job.title} ${job.referral_contact || ''} ${job.location || ''} ${job.experience || ''}`.toLowerCase();
+        if (q && !fullText.includes(q)) return false;
+
+        // Referral filter
+        if (refFilter !== 'all') {
+          const type = (job.referral_type || '').toLowerCase();
+          const contact = (job.referral_contact || '').toLowerCase();
+          if (refFilter === 'personal' && !type.includes('אישי') && !contact.includes('אישי')) return false;
+          if (refFilter === 'dana' && !contact.includes('דנה') && !type.includes('דנה')) return false;
+          if (refFilter === 'direct' && !type.includes('ישיר')) return false;
+        }
+
+        // Role filter
+        if (role !== 'all') {
+          const title = job.title.toLowerCase();
+          if (role === 'fullstack' && !title.includes('fullstack') && !title.includes('full-stack') && !title.includes('full stack')) return false;
+          if (role === 'backend' && !title.includes('backend') && !title.includes('back-end') && !title.includes('back end')) return false;
+          if (role === 'frontend' && !title.includes('frontend') && !title.includes('front-end') && !title.includes('react')) return false;
+          if (role === 'ai' && !title.includes('ai') && !title.includes('ml') && !title.includes('data') && !title.includes('learning')) return false;
+          if (role === 'student' && !title.includes('student') && !title.includes('intern') && !title.includes('סטודנט')) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        jobsGrid.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">🔍</div>
+            <h3>אין משרות להצגה בקטגוריה זו</h3>
+            <p>נסה לשנות את הסינון או לעבור ללשונית אחרת.</p>
+          </div>
+        `;
+        return;
+      }
+
+      jobsGrid.innerHTML = filtered.map(job => {
+        const h = computeHash(job.company, job.title, job.url);
+        const state = userStates[h]?.status || 'new';
+        const contact = job.referral_contact || 'הגשה ישירה באתר';
+        const refType = job.referral_type || 'הגשה ישירה';
+
+        let pillClass = 'ref-direct';
+        let pillText = `🏢 ${contact}`;
+        if (refType.includes('אישי') || (!contact.includes('דנה') && !contact.includes('הגשה ישירה'))) {
+          pillClass = 'ref-personal';
+          pillText = `⭐ רפרל אישי: ${contact}`;
+        } else if (contact.includes('דנה') || refType.includes('דנה')) {
+          pillClass = 'ref-dana';
+          pillText = `🤝 דנה (Elevation)`;
+        }
+
+        const isApplied = state === 'applied';
+        const isSaved = state === 'saved';
+        const isDismissed = state === 'dismissed';
+
+        return `
+          <div class="job-card ${isApplied ? 'is-applied' : ''} ${isSaved ? 'is-saved' : ''} ${isDismissed ? 'is-dismissed' : ''}">
+            <div>
+              <div class="card-top">
+                <div class="company-name">${escapeHtml(job.company)}</div>
+                <span class="referral-pill ${pillClass}">${escapeHtml(pillText)}</span>
+              </div>
+              
+              <div class="job-title">${escapeHtml(job.title)}</div>
+              
+              <div class="job-meta">
+                <span class="meta-tag">📍 ${escapeHtml(job.location || 'ישראל')}</span>
+                <span class="meta-tag">🎓 ${escapeHtml(job.experience || '0-2 YOE')}</span>
+                ${job.discovered_at ? `<span class="meta-tag">📅 ${formatDate(job.discovered_at)}</span>` : ''}
+              </div>
+            </div>
+
+            <div class="card-actions">
+              <div class="action-group">
+                <a href="${escapeHtml(job.url)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  הגש עכשיו ↗
+                </a>
+                <button onclick="markStatus('${h}', 'applied')" class="btn btn-applied ${isApplied ? 'active' : ''}" title="סמן שהגשת מועמדות">
+                  ${isApplied ? 'הוגש ✅' : 'הגשתי'}
+                </button>
+              </div>
+
+              <div class="action-group">
+                <button onclick="toggleSave('${h}')" class="btn btn-icon ${isSaved ? 'active-star' : ''}" title="שמור משרה">
+                  ${isSaved ? '⭐' : '☆'}
+                </button>
+                ${isDismissed ? `
+                  <button onclick="markStatus('${h}', 'new')" class="btn btn-icon" title="החזר למשרות חדשות">
+                    ↩️
+                  </button>
+                ` : `
+                  <button onclick="markStatus('${h}', 'dismissed')" class="btn btn-icon" title="הסר מהלוח (לא מתאים)">
+                    ❌
+                  </button>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Action handlers
+    window.markStatus = function(h, status) {
+      if (!userStates[h]) userStates[h] = {};
+      const prev = userStates[h].status;
+      userStates[h].status = (prev === status && status === 'applied') ? 'new' : status;
+      userStates[h].updated_at = new Date().toISOString();
+      
+      const msgs = {
+        applied: 'המשרה סומנה כהוגשה ועברה ללשונית "הגשתי" ✅',
+        dismissed: 'המשרה הוסרה מהלוח והועברה לארכיון 🗑️',
+        new: 'המשרה הוחזרה למשרות החדשות ✨'
+      };
+      showToast(msgs[userStates[h].status] || 'עודכן בהצלחה');
+      saveUserStates();
+    };
+
+    window.toggleSave = function(h) {
+      if (!userStates[h]) userStates[h] = {};
+      const isSaved = userStates[h].status === 'saved';
+      userStates[h].status = isSaved ? 'new' : 'saved';
+      showToast(isSaved ? 'המשרה הוסרה מהשמורים' : 'המשרה נשמרה בלשונית שמורות ⭐');
+      saveUserStates();
+    };
+
+    // Helper: Escape HTML
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Helper: Format Date
+    function formatDate(isoStr) {
+      try {
+        const d = new Date(isoStr);
+        return `${d.getDate()}/${d.getMonth() + 1}`;
+      } catch (e) {
+        return '';
+      }
+    }
+
+    // Tab Switching
+    function setTab(tab) {
+      currentTab = tab;
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tab);
+      });
+      document.querySelectorAll('.stat-card').forEach(card => {
+        card.classList.toggle('active', card.dataset.tab === tab);
+      });
+      renderJobs();
+    }
+
+    document.querySelectorAll('.tab-btn, .stat-card').forEach(el => {
+      el.addEventListener('click', () => setTab(el.dataset.tab));
+    });
+
+    searchInput.addEventListener('input', renderJobs);
+    referralFilter.addEventListener('change', renderJobs);
+    roleFilter.addEventListener('change', renderJobs);
+    refreshBtn.addEventListener('click', () => {
+      fetchJobs();
+      showToast('הנתונים רועננו בהצלחה 🔄');
+    });
+
+    // Initial Fetch
+    fetchJobs();
+  </script>
+</body>
+</html>
