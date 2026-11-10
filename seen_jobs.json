@@ -4709,5 +4709,65 @@
     "url": "https://jobs.sap.com/en/jobs/744000160583458/working-student-mfd-cloud-development/",
     "experience": "Working Student / Student Developer Cloud Development",
     "discovered_at": "2026-11-09T14:33:46.823630"
+  },
+  {
+    "company": "hiBob",
+    "title": "Frontend Engineer Permanent | Israel",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": "Israel",
+    "url": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/53939773-777e-4976-a34c-8d79ee5f8f8f",
+    "experience": "Frontend Engineer role in Israel accepting various levels",
+    "discovered_at": "2026-11-10T13:53:29.485959"
+  },
+  {
+    "company": "hiBob",
+    "title": "AI Backend Engineer Permanent | Israel",
+    "referral_contact": "Idan",
+    "referral_type": "איש קשר אישי",
+    "location": "Israel",
+    "url": "https://hibob-fa0ad69d0cb34a.careers.hibob.com/jobs/9010e73d-8849-4c6c-b0de-aecaa27add51",
+    "experience": "AI Backend Engineer role in Israel",
+    "discovered_at": "2026-11-10T13:53:29.485975"
+  },
+  {
+    "company": "Voyantis",
+    "title": "Forward Deployed Engineer Tel Aviv, Israel Apply Now",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": "Tel Aviv, Israel",
+    "url": "https://www.comeet.com/jobs/voyantis/86.00B/forward-deployed-engineer/23.C6B",
+    "experience": "Entry level / Forward Deployed Engineer",
+    "discovered_at": "2026-11-10T13:53:49.924223"
+  },
+  {
+    "company": "Voyantis",
+    "title": "AI-Native Software Engineer Tel Aviv, Israel Apply Now",
+    "referral_contact": "Ilona",
+    "referral_type": "איש קשר אישי",
+    "location": "Tel Aviv, Israel",
+    "url": "https://www.comeet.com/jobs/voyantis/86.00B/ai-native-software-engineer/89.E6C",
+    "experience": "AI-Native Software Engineer",
+    "discovered_at": "2026-11-10T13:53:49.924238"
+  },
+  {
+    "company": "TSG IT Advanced Systems",
+    "title": "Integration Engineer -1871 Engineering Full Time Beer Ya'acov More Details",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Beer Ya'acov",
+    "url": "https://www.tsgitsystems.com/jobs/integration-engineer-1871/",
+    "experience": "Junior/Entry Level Integration Engineer",
+    "discovered_at": "2026-11-10T13:57:11.761277"
+  },
+  {
+    "company": "SAP Israel",
+    "title": "SAP iXP Intern Developer in Cloud Lifecycle Engeneering",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.sap.com/en/jobs/744000160865649/sap-ixp-intern-developer-in-cloud-lifecycle-engeneering/",
+    "experience": "0-2 YOE Student / Intern Developer",
+    "discovered_at": "2026-11-10T14:02:36.999032"
   }
 ]
