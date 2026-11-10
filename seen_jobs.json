@@ -4769,5 +4769,55 @@
     "url": "https://jobs.sap.com/en/jobs/744000160865649/sap-ixp-intern-developer-in-cloud-lifecycle-engeneering/",
     "experience": "0-2 YOE Student / Intern Developer",
     "discovered_at": "2026-11-10T14:02:36.999032"
+  },
+  {
+    "company": "webz.io",
+    "title": "R&D Backend Developer Full-time",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Israel",
+    "url": "https://webz.io/job/backend-developer/",
+    "experience": "Backend Developer",
+    "discovered_at": "2026-11-10T20:42:00.706380"
+  },
+  {
+    "company": "Shavit Software",
+    "title": "Prompt Engineer",
+    "referral_contact": "דנה (Elevation)",
+    "referral_type": "רפרל דרך דנה",
+    "location": "Bnei Brak / Center",
+    "url": "https://shavit-soft.co.il/jobs/prompt-engineer/",
+    "experience": "Prompt Engineer / Entry level",
+    "discovered_at": "2026-11-10T20:42:00.706420"
+  },
+  {
+    "company": "SAP Israel",
+    "title": "SAP iXp Intern – Concur Travel Core & AI Software Developer",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.sap.com/en/jobs/744000160955034/sap-ixp-intern-concur-travel-core-ai-software-developer/",
+    "experience": "Intern / Student Developer",
+    "discovered_at": "2026-11-10T20:43:58.682595"
+  },
+  {
+    "company": "SAP Israel",
+    "title": "SAP iXp Intern - AI Developer",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.sap.com/en/jobs/744000160905751/sap-ixp-intern-ai-developer/",
+    "experience": "Intern / Student AI Developer",
+    "discovered_at": "2026-11-10T20:43:58.682617"
+  },
+  {
+    "company": "SAP Israel",
+    "title": "AI Developer — Student Internship",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.sap.com/en/jobs/744000160896559/ai-developer-student-internship/",
+    "experience": "Student Internship / 0 YOE",
+    "discovered_at": "2026-11-10T20:43:58.682645"
   }
 ]
