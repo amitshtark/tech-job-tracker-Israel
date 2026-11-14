@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 """
-Autonomous Israeli Tech Job Crawler (v3.1 - Enhanced Link & Category Validation).
+Autonomous Israeli Tech Job Crawler (v3.2 - Full Context & Deep Extraction).
 
-Key Features:
-1. High-Speed Parallel Scraping: ThreadPoolExecutor across 336 companies reduces scan time to ~2 minutes.
-2. Deterministic Category & Search Rejection:
-   - Strictly rejects search query URLs (e.g. `search?search=...`, `SearchResults`).
-   - Strictly rejects placement agency category lobbies (e.g. GotFriends `/jobslobby/`, Nisha generic `/positions/`).
-   - Strictly rejects generic category hubs (e.g. `/categories/`, `/all-jobs/`).
-3. Strict 4-Way AI Verification (Batch Processing with Gemini):
-   - Rule 1: `is_single_specific_job`: MUST be a single, distinct job vacancy (REJECTS lobbies, category landing pages, talent pools).
-   - Rule 2: `is_tech_role`: Software Development, AI/ML, Data Science, Algorithms, Junior MLOps (REJECTS CSM, Operations, Sales, Manual QA).
-   - Rule 3: `is_0_2_yoe`: 0 to 2 years of experience / Junior / Graduate / Student.
-   - Rule 4: `is_israel`: Strictly Israel-based (REJECTS Bangkok, London, NYC, Poland, etc.).
-4. No API Quota Issues: Batching 10-12 jobs per prompt prevents hitting 15 RPM limits.
-5. Referral Contact Attribution: Maps exact referral pathways (Personal contact, Dana/Elevation, or Direct).
-6. Real-time Checkpointing & Formatted Excel Export.
+Key Upgrades:
+1. Deep Context Window (No Truncation):
+   - Extracted text expanded from 1,200 to 5,500+ characters per job.
+   - Strips noisy nav/footer/script elements to feed AI pure job descriptions and requirements.
+   - Catches experience requirements (e.g. "5+ years") even when located at the very bottom of the page.
+2. Structured Metadata Sniffer (Schema.org / JSON-LD):
+   - Inspects `application/ld+json` for `JobPosting` data (locates official `addressCountry`, `addressLocality`).
+3. European / German Job Disqualification:
+   - Identifies gender equality indicators like `(m/f/d)`, `(m/w/d)`, `(d/m/w)` to reject European postings.
+4. High-Speed Parallel Scraping & Batch AI:
+   - ThreadPoolExecutor across 336 companies.
+   - 4-Way strict AI verification (Single Job, Tech Role, 0-2 YOE, Strictly Israel).
+5. Referral Mapping & State Tracking:
+   - Keeps track of seen jobs in `seen_jobs.json`.
 """
 
 import os
@@ -64,7 +64,33 @@ HEADERS = {
 
 # --- Strict Deterministic Regex Rules ---
 
-# Rejection of Search Results, Placement Agency Category Lobbies, and General Portals
+# European / German labor law gender identifiers
+EUROPE_GENDER_REGEX = re.compile(
+    r"\b(m/f/d|m/w/d|d/m/w|m/f/x|w/m/d)\b",
+    re.IGNORECASE
+)
+
+# Explicit Foreign Locations in Title or URL (Instant Rejection)
+FOREIGN_LOCATION_REGEX = re.compile(
+    r"\b(bangkok|thailand|singapore|australia|sydney|melbourne|london|uk\b|united kingdom|"
+    r"germany|deutschland|berlin|munich|walldorf|potsdam|frankfurt|dresden|hamburg|"
+    r"poland|warsaw|krakow|india|bangalore|bengaluru|hyderabad|pune|gurgaon|"
+    r"canada|toronto|vancouver|new[\s\-_]+york|nyc\b|san[\s\-_]+francisco|california|seattle|"
+    r"chicago|austin|texas|boston|paris|france|amsterdam|netherlands|dublin|ireland|"
+    r"tokyo|japan|spain|madrid|barcelona|brazil|mexico|colombia|philippines|vietnam)\b",
+    re.IGNORECASE
+)
+
+# Definite Israel Locations
+ISRAEL_LOCATION_REGEX = re.compile(
+    r"\b(israel|ישראל|tel[\s\-_]+aviv|תל[\s\-_]+אביב|haifa|חיפה|herzliya|הרצליה|jerusalem|ירושלים|"
+    r"beer[\s\-_]+sheva|באר[\s\-_]+שבע|petah[\s\-_]+tikva|פתח[\s\-_]+תקווה|raanana|רעננה|rehovot|רחובות|"
+    r"ramat[\s\-_]+gan|רמת[\s\-_]+גן|yokneam|יוקנעם|glil[\s\-_]+yam|גליל[\s\-_]+ים|netanya|נתניה|"
+    r"kfar[\s\-_]+saba|כפר[\s\-_]+סבא|holon|חולון|remote\s*\(?israel\)?)\b",
+    re.IGNORECASE
+)
+
+# Reject Non-Job, Search, and Category URLs
 NON_JOB_URL_PATTERNS = re.compile(
     r"("
     r"[?&]search="
@@ -81,31 +107,11 @@ NON_JOB_URL_PATTERNS = re.compile(
     re.IGNORECASE
 )
 
-# Reject URLs from known placement agencies that are general category landing pages without a specific job ID
 AGENCY_CATEGORY_REGEX = re.compile(
     r"(gotfriends\.co\.il/jobslobby/|"
     r"nisha\.co\.il/positions/[a-z\-]+/?$|"
     r"alljobs\.co\.il/search|"
     r"experis\.co\.il/search)",
-    re.IGNORECASE
-)
-
-# Explicit Foreign Locations in Title or URL (Instant Rejection)
-FOREIGN_LOCATION_REGEX = re.compile(
-    r"\b(bangkok|thailand|singapore|australia|sydney|melbourne|london|uk\b|united kingdom|"
-    r"berlin|munich|germany|poland|warsaw|krakow|india|bangalore|bengaluru|hyderabad|pune|gurgaon|"
-    r"canada|toronto|vancouver|new[\s\-_]+york|nyc\b|san[\s\-_]+francisco|california|seattle|"
-    r"chicago|austin|texas|boston|paris|france|amsterdam|netherlands|dublin|ireland|"
-    r"tokyo|japan|spain|madrid|barcelona|brazil|mexico|colombia|philippines|vietnam)\b",
-    re.IGNORECASE
-)
-
-# Definite Israel Locations
-ISRAEL_LOCATION_REGEX = re.compile(
-    r"\b(israel|ישראל|tel[\s\-_]+aviv|תל[\s\-_]+אביב|haifa|חיפה|herzliya|הרצליה|jerusalem|ירושלים|"
-    r"beer[\s\-_]+sheva|באר[\s\-_]+שבע|petah[\s\-_]+tikva|פתח[\s\-_]+תקווה|raanana|רעננה|rehovot|רחובות|"
-    r"ramat[\s\-_]+gan|רמת[\s\-_]+גן|yokneam|יוקנעם|glil[\s\-_]+yam|גליל[\s\-_]+ים|netanya|נתניה|"
-    r"kfar[\s\-_]+saba|כפר[\s\-_]+סבא|holon|חולון|remote\s*\(?israel\)?)\b",
     re.IGNORECASE
 )
 
@@ -127,7 +133,6 @@ REJECT_TITLE_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Reject Navigation Links
 NAV_EXCLUDE_REGEX = re.compile(
     r"^(developer zone|developer portal|developer community|developer guide|developer hub|"
     r"developers|for developers|developer docs|documentation|api documentation|resources|"
@@ -135,13 +140,13 @@ NAV_EXCLUDE_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Broad Tech Roles & Entry Keywords (For initial link candidacy)
 CANDIDATE_TITLE_REGEX = re.compile(
     r"\b("
     r"software|developer|engineer|fullstack|full-stack|backend|back-end|frontend|front-end|"
     r"ai\b|ml\b|machine learning|deep learning|data scientist|data science|data analyst|algorithms?|"
     r"computer vision|nlp\b|mlops|embedded|firmware|python|java\b|c\+\+|golang|react|node|"
     r"automation|tools developer|"
+    r"product engineer|"
     r"intern\b|internship|student|graduate|grad\b|junior|entry[\s\-_]*level"
     r")\b",
     re.IGNORECASE
@@ -240,6 +245,9 @@ def is_title_candidate(title, url=""):
         return False
     if AGENCY_CATEGORY_REGEX.search(url):
         return False
+    # Reject German / European gender markers (e.g. m/f/d)
+    if EUROPE_GENDER_REGEX.search(t):
+        return False
     # Reject explicit foreign locations in URL or Title immediately
     if FOREIGN_LOCATION_REGEX.search(f"{t} {url}") and not ISRAEL_LOCATION_REGEX.search(f"{t} {url}"):
         return False
@@ -289,7 +297,7 @@ def scrape_single_company(company_info):
                 parent_context = a.parent.get_text(separator=" ", strip=True) if a.parent else ""
                 
                 # If parent context mentions a foreign location without Israel, skip
-                if FOREIGN_LOCATION_REGEX.search(parent_context) and not ISRAEL_LOCATION_REGEX.search(parent_context):
+                if (FOREIGN_LOCATION_REGEX.search(parent_context) or EUROPE_GENDER_REGEX.search(parent_context)) and not ISRAEL_LOCATION_REGEX.search(parent_context):
                     continue
 
                 found_candidates.append({
@@ -312,7 +320,12 @@ def scrape_single_company(company_info):
 
 
 def fetch_job_details(job):
-    """Fetches job description text and detects location indicators."""
+    """
+    Fetches comprehensive job page details:
+    1. Extracts Schema.org JobPosting structured JSON-LD (country, locality, title, requirements).
+    2. Strips noisy nav/footer/script elements to isolate the actual job posting body.
+    3. Retains up to 6,000 characters of clean text to ensure bottom-of-page requirements are fully captured.
+    """
     url = job["url"]
     extracted = {
         "text": "",
@@ -320,44 +333,54 @@ def fetch_job_details(job):
     }
 
     try:
-        r = requests.get(url, headers=HEADERS, timeout=6)
+        r = requests.get(url, headers=HEADERS, timeout=7)
         if r.status_code == 200:
             soup = BeautifulSoup(r.text, "html.parser")
-            
-            # Detect location tags if present
-            loc_candidates = []
-            for tag in soup.find_all(["span", "div", "p", "li"], class_=re.compile(r"locat|workplace|city|country", re.I)):
-                txt = tag.get_text(strip=True)
-                if 2 < len(txt) < 50:
-                    loc_candidates.append(txt)
-            if loc_candidates:
-                extracted["detected_location"] = " / ".join(loc_candidates[:2])
 
-            # Extract requirements / qualifications block
-            req_parts = []
-            for h in soup.find_all(re.compile(r"^h[1-6]$")):
-                htext = h.get_text(strip=True).lower()
-                if any(k in htext for k in ["requirement", "qualification", "what you need", "what you'll bring", "דרישות", "כישורים"]):
-                    curr = h.next_sibling
-                    while curr:
-                        if getattr(curr, "name", None) and re.match(r"^h[1-6]$", curr.name):
-                            break
-                        if hasattr(curr, "get_text"):
-                            chunk = curr.get_text(strip=True)
-                            if chunk:
-                                req_parts.append(chunk)
-                        curr = curr.next_sibling
-                    if req_parts:
-                        break
+            # 1. Try to find Schema.org structured JobPosting metadata
+            for script_tag in soup.find_all("script", type="application/ld+json"):
+                try:
+                    js_data = json.loads(script_tag.string or "{}")
+                    if isinstance(js_data, list):
+                        js_data = js_data[0] if js_data else {}
+                    if js_data.get("@type") == "JobPosting":
+                        loc_obj = js_data.get("jobLocation", {})
+                        if isinstance(loc_obj, list):
+                            loc_obj = loc_obj[0] if loc_obj else {}
+                        addr = loc_obj.get("address", {})
+                        locality = addr.get("addressLocality") or ""
+                        country = addr.get("addressCountry") or ""
+                        if locality or country:
+                            extracted["detected_location"] = f"{locality}, {country}".strip(", ")
+                        desc = js_data.get("description", "")
+                        if desc:
+                            clean_desc = BeautifulSoup(desc, "html.parser").get_text(separator="\n", strip=True)
+                            if len(clean_desc) > 300:
+                                extracted["text"] = clean_desc[:6000]
+                                break
+                except Exception:
+                    pass
 
-            if req_parts:
-                extracted["text"] = "\n".join(req_parts)[:2500]
-            else:
-                lis = [li.get_text(strip=True) for li in soup.find_all("li")]
-                if lis:
-                    extracted["text"] = "\n".join(lis[:30])[:2500]
-                else:
-                    extracted["text"] = soup.get_text(separator="\n", strip=True)[:2500]
+            # 2. Extract visible location indicators from HTML elements
+            if extracted["detected_location"] == "Unspecified":
+                loc_candidates = []
+                for tag in soup.find_all(["span", "div", "p", "li"], class_=re.compile(r"locat|workplace|city|country", re.I)):
+                    txt = tag.get_text(strip=True)
+                    if 2 < len(txt) < 60:
+                        loc_candidates.append(txt)
+                if loc_candidates:
+                    extracted["detected_location"] = " / ".join(loc_candidates[:2])
+
+            # 3. Clean page and extract comprehensive text if not found via JSON-LD
+            if not extracted["text"]:
+                # Strip clutter
+                for elem in soup(["script", "style", "nav", "footer", "header", "noscript", "svg"]):
+                    elem.decompose()
+
+                body_text = soup.get_text(separator="\n", strip=True)
+                lines = [line.strip() for line in body_text.splitlines() if len(line.strip()) > 3]
+                clean_content = "\n".join(lines)
+                extracted["text"] = clean_content[:6000]
 
     except Exception:
         pass
@@ -367,49 +390,49 @@ def fetch_job_details(job):
     return job
 
 
-# --- Strict 4-Way Batch AI Evaluation ---
+# --- Strict 4-Way Batch AI Verification with Gemini ---
 
 def batch_verify_jobs_with_ai(jobs_batch):
     """
-    Evaluates up to 10-12 candidate jobs in a single structured Gemini prompt.
+    Evaluates candidate jobs in batches with full context (up to 5,000 characters per job).
     Evaluates 4 mandatory criteria:
-    1. is_single_specific_job: MUST be a distinct individual job vacancy with actual job description.
-       (STRICTLY REJECTS category lobbies, search query result pages, general CV submission pages, blogs).
+    1. is_single_specific_job: MUST be a distinct individual job vacancy.
     2. is_tech_role: Software Engineering, AI/ML, Data Science, Algorithms, Junior MLOps, Software Automation.
-       (STRICTLY REJECTS Customer Success, Operations, Technical Support, Sales, Marketing, HR, Finance, Manual QA).
-    3. is_0_2_yoe: 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, No experience).
-       (STRICTLY REJECTS positions requiring 3+ years).
-    4. is_israel: Located in Israel (Tel Aviv, Haifa, Herzliya, etc., or Israeli HQ without foreign office).
-       (STRICTLY REJECTS foreign offices like Bangkok, London, NYC, Poland, India).
+       (REJECTS Customer Success, Technical Support, Operations, Sales, Marketing, HR, Manual QA, pure DevOps).
+    3. is_0_2_yoe: MUST accept 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, 0-2 YOE).
+       (STRICTLY REJECTS any position that requires 3+, 4+, or 5+ years of experience).
+    4. is_israel: MUST be located in Israel (Tel Aviv, Haifa, Herzliya, etc., or Remote Israel).
+       (STRICTLY REJECTS any foreign location such as Germany, Walldorf, Berlin, Bangkok, London, New York).
     """
     items_text = []
     for idx, j in enumerate(jobs_batch, 1):
         snippet = (j.get("requirements_text") or j.get("context_snippet") or "No description snippet available").strip()
         loc = j.get("page_location", "Unspecified")
         items_text.append(
-            f"--- Job #{idx} ---\n"
+            f"=== Job #{idx} ===\n"
             f"Company: {j['company']}\n"
             f"Title: {j['title']}\n"
             f"URL: {j['url']}\n"
             f"Detected Page Location: {loc}\n"
-            f"Content Sample:\n{snippet[:1200]}\n"
+            f"Full Page Content Sample:\n{snippet[:4500]}\n"
         )
 
     prompt = (
         "You are an expert technical hiring validator for the Israeli high-tech ecosystem.\n"
-        "Evaluate each of the following candidate links strictly based on 4 mandatory criteria:\n\n"
+        "Carefully read the FULL text of each job posting below, paying close attention to the requirements section "
+        "and location specifications, and evaluate each posting based on 4 mandatory criteria:\n\n"
         "1. Single Specific Job Vacancy (is_single_specific_job):\n"
-        "   - MUST be an actual, individual, open job vacancy posting with a distinct description.\n"
-        "   - STRICTLY REJECT: Category lobbies, search results pages (e.g. search?search=), recruitment agency general hubs (e.g. /jobslobby/, /categories/), generic 'Send CV / Join Talent Pool' forms, or informational articles.\n\n"
+        "   - MUST be an actual, individual, open job vacancy posting with a concrete description.\n"
+        "   - STRICTLY REJECT: Category lobbies, search results pages, recruitment agency general hubs, generic 'Send CV / Join Talent Pool' forms.\n\n"
         "2. Tech Software Role (is_tech_role):\n"
         "   - MUST be Software Development (Backend, Frontend, Fullstack, Mobile), AI/ML, Data Science, Algorithms, Junior MLOps, or Software Automation.\n"
         "   - STRICTLY REJECT: Customer Success (CSM), Operations / Supply, Technical Support, Helpdesk, Sales, Marketing, Recruiting/HR, Finance, Manual QA, or pure DevOps.\n\n"
         "3. Experience Level 0-2 YOE (is_0_2_yoe):\n"
         "   - MUST accept 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, 0-2 YOE, or no experience required).\n"
-        "   - STRICTLY REJECT: Any posting that explicitly demands a strict minimum of 3+ years of professional industry experience.\n\n"
+        "   - STRICTLY REJECT: Any posting that mentions or demands 3+, 4+, 5+ years of professional experience (e.g. 'At least 5 years of experience', '3+ years with Python').\n\n"
         "4. Israel Location (is_israel):\n"
         "   - MUST be located in Israel (Tel Aviv, Haifa, Herzliya, Jerusalem, etc., Hybrid, Remote Israel, or an Israeli company with no foreign office mentioned).\n"
-        "   - STRICTLY REJECT: Any position located outside Israel (e.g. Bangkok, London, New York, Poland, India, Germany, etc.).\n\n"
+        "   - STRICTLY REJECT: Any position located outside Israel (e.g. Germany, Walldorf, Berlin, Potsdam, Bangkok, London, New York, Poland, India, etc., or having (m/f/d)).\n\n"
         "Candidate Postings:\n"
         f"{''.join(items_text)}\n"
         "A job is APPROVED only if ALL FOUR criteria are strictly TRUE.\n\n"
@@ -425,7 +448,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
         '      "approved": true/false,\n'
         '      "experience_summary": "e.g. 0-1 YOE Junior Backend",\n'
         '      "detected_city": "e.g. Tel Aviv / Israel",\n'
-        '      "rejection_reason": "e.g. Category lobby / Not single job / Technical Support / Outside Israel"\n'
+        '      "rejection_reason": "e.g. Requires 5+ years of experience / Located in Germany (Walldorf) / Support role"\n'
         "    }\n"
         "  ]\n"
         "}"
@@ -440,7 +463,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
     }
 
     try:
-        data = call_gemini_with_retries(payload, timeout=35)
+        data = call_gemini_with_retries(payload, timeout=40)
         raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
         parsed = json.loads(raw_text)
         return parsed.get("evaluations", [])
@@ -489,7 +512,6 @@ def export_to_excel(confirmed_jobs, unreached_companies, filepath):
                 uc.get("reason", "Requires manual check")
             ])
 
-    # Auto-fit column widths
     for sheet in wb.worksheets:
         for col in sheet.columns:
             max_len = max(len(str(cell.value or '')) for cell in col)
@@ -591,7 +613,7 @@ def main():
 
     # --- STAGE 2: Parallel Page Details Fetching ---
     if unique_candidates:
-        print(f"\n=== STAGE 2: Parallel Fetching Job Details ({len(unique_candidates)} jobs) ===")
+        print(f"\n=== STAGE 2: Parallel Deep Fetching Job Details ({len(unique_candidates)} jobs) ===")
         with ThreadPoolExecutor(max_workers=8) as executor:
             fetched_candidates = list(executor.map(fetch_job_details, unique_candidates))
 
