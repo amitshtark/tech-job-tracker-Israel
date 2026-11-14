@@ -1,7 +1,9 @@
 .env
-master_companies_with_referrals.*
-*.xlsx
+master_companies_with_referrals.json
+master_companies_with_referrals.xlsx
+master_companies.json
 progress_checkpoint.json
+new_jobs_*.xlsx
 __pycache__/
 *.pyc
 .DS_Store
