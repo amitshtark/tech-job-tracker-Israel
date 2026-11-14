@@ -593,6 +593,97 @@
       display: block;
       flex-shrink: 0;
     }
+
+    .btn-referrals {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      padding: 7px 12px;
+    }
+
+    .btn-referrals:hover {
+      background: var(--bg-hover);
+    }
+
+    .btn-referrals.has-data {
+      border-color: #BBF7D0;
+      background: var(--status-green-bg);
+      color: var(--status-green);
+    }
+
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      max-width: 440px;
+      width: 100%;
+      padding: 22px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .modal-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .modal-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+
+    .modal-status {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.86rem;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .btn-danger-outline {
+      background: transparent;
+      color: var(--status-red);
+      border: 1px solid #FECDD3;
+    }
+
+    .btn-danger-outline:hover {
+      background: var(--status-red-bg);
+    }
+
   </style>
 </head>
 <body>
@@ -616,6 +707,13 @@
       </div>
 
       <div class="header-actions">
+        <button id="referralsBtn" class="btn btn-referrals" title="טעינת רפרלים אישיים בדפדפן בלבד">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+          <span id="referralsBtnText">רפרלים אישיים</span>
+        </button>
         <button id="refreshBtn" class="btn btn-refresh" title="רענן נתונים">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="23 4 23 10 17 10"></polyline>
@@ -759,6 +857,31 @@
 
   </main>
 
+  <!-- Private Referrals Modal -->
+  <div id="referralsModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title">רפרלים אישיים (פרטי בדפדפן בלבד)</div>
+        <button id="closeModalBtn" class="btn btn-icon" title="סגור">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p class="modal-desc">
+        טען פעם אחת את הקובץ <code>master_companies_with_referrals.json</code> מהמחשב שלך.
+        המידע נשמר מקומית ב-<code>localStorage</code> של הדפדפן בלבד, לא עולה ל-GitHub, ומצליב אוטומטית את שמות הרפרלים בכל כניסה לאתר.
+      </p>
+      <div id="referralsStatus" class="modal-status">טרם נטען קובץ רפרלים אישי</div>
+      <input type="file" id="referralsFileInput" accept=".json" style="display: none;">
+      <div class="modal-actions">
+        <button id="uploadReferralsBtn" class="btn btn-primary">בחר קובץ JSON מהמחשב</button>
+        <button id="clearReferralsBtn" class="btn btn-danger-outline" style="display: none;">נקה רפרלים</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div id="toast" class="toast"></div>
 
@@ -766,6 +889,7 @@
     let allJobs = [];
     let currentTab = 'new';
     let userStates = JSON.parse(localStorage.getItem('job_tracker_states') || '{}');
+    let privateReferrals = JSON.parse(localStorage.getItem('job_tracker_referrals') || '{}');
 
     const jobsGrid = document.getElementById('jobsGrid');
     const searchInput = document.getElementById('searchInput');
@@ -855,8 +979,9 @@
         if (q && !fullText.includes(q)) return false;
 
         if (refFilter !== 'all') {
-          const type = (job.referral_type || '').toLowerCase();
-          const contact = (job.referral_contact || '').toLowerCase();
+          const refInfo = getJobReferral(job);
+          const type = refInfo.type.toLowerCase();
+          const contact = refInfo.contact.toLowerCase();
           if (refFilter === 'personal' && !type.includes('אישי') && !contact.includes('אישי')) return false;
           if (refFilter === 'dana' && !contact.includes('דנה') && !type.includes('דנה')) return false;
           if (refFilter === 'direct' && !type.includes('ישיר')) return false;
@@ -893,8 +1018,9 @@
       jobsGrid.innerHTML = filtered.map(job => {
         const h = computeHash(job.company, job.title, job.url);
         const state = userStates[h]?.status || 'new';
-        const contact = job.referral_contact || 'הגשה ישירה';
-        const refType = job.referral_type || 'הגשה ישירה';
+        const refInfo = getJobReferral(job);
+        const contact = refInfo.contact;
+        const refType = refInfo.type;
         const initial = (job.company || '?').trim().charAt(0);
 
         let pillClass = 'ref-direct';
@@ -1066,6 +1192,94 @@
       showToast('הנתונים רועננו');
     });
 
+    function getJobReferral(job) {
+      const key = (job.company || '').trim().toLowerCase();
+      const priv = privateReferrals[key];
+      if (priv && priv.contact) {
+        return { contact: priv.contact, type: priv.type || 'הגשה ישירה' };
+      }
+      return {
+        contact: job.referral_contact || 'הגשה ישירה',
+        type: job.referral_type || 'הגשה ישירה'
+      };
+    }
+
+    function updateReferralsUI() {
+      const count = Object.keys(privateReferrals).length;
+      const btn = document.getElementById('referralsBtn');
+      const btnText = document.getElementById('referralsBtnText');
+      const statusEl = document.getElementById('referralsStatus');
+      const clearBtn = document.getElementById('clearReferralsBtn');
+
+      if (count > 0) {
+        btn.classList.add('has-data');
+        btnText.textContent = `רפרלים (${count})`;
+        statusEl.textContent = `נטענו ${count} חברות עם מיפוי רפרל פרטי בדפדפן.`;
+        clearBtn.style.display = 'inline-flex';
+      } else {
+        btn.classList.remove('has-data');
+        btnText.textContent = 'רפרלים אישיים';
+        statusEl.textContent = 'טרם נטען קובץ רפרלים אישי.';
+        clearBtn.style.display = 'none';
+      }
+    }
+
+    const referralsModal = document.getElementById('referralsModal');
+    const referralsFileInput = document.getElementById('referralsFileInput');
+
+    document.getElementById('referralsBtn').addEventListener('click', () => {
+      updateReferralsUI();
+      referralsModal.classList.add('open');
+    });
+    document.getElementById('closeModalBtn').addEventListener('click', () => {
+      referralsModal.classList.remove('open');
+    });
+    referralsModal.addEventListener('click', (e) => {
+      if (e.target === referralsModal) referralsModal.classList.remove('open');
+    });
+    document.getElementById('uploadReferralsBtn').addEventListener('click', () => {
+      referralsFileInput.click();
+    });
+    document.getElementById('clearReferralsBtn').addEventListener('click', () => {
+      privateReferrals = {};
+      localStorage.removeItem('job_tracker_referrals');
+      updateReferralsUI();
+      renderJobs();
+      showToast('מיפוי הרפרלים האישי נוקה מהדפדפן');
+    });
+    referralsFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        try {
+          const parsed = JSON.parse(ev.target.result);
+          if (!Array.isArray(parsed)) throw new Error('Expected JSON array');
+          const map = {};
+          parsed.forEach(item => {
+            const name = (item.name || item.company || '').trim().toLowerCase();
+            if (name && item.referral_contact) {
+              map[name] = {
+                contact: item.referral_contact,
+                type: item.referral_type || 'הגשה ישירה'
+              };
+            }
+          });
+          privateReferrals = map;
+          localStorage.setItem('job_tracker_referrals', JSON.stringify(privateReferrals));
+          updateReferralsUI();
+          renderJobs();
+          referralsModal.classList.remove('open');
+          showToast(`נטענו ${Object.keys(map).length} חברות רפרל לדפדפן בהצלחה`);
+        } catch (err) {
+          showToast('שגיאה בקריאת הקובץ — ודא שזהו קובץ JSON תקין');
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+      e.target.value = '';
+    });
+
+    updateReferralsUI();
     fetchJobs();
   </script>
 </body>

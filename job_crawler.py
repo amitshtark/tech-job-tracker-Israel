@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
 """
-Autonomous Israeli Tech Job Crawler (v3.2 - Full Context & Deep Extraction).
+Autonomous Israeli Tech Job Crawler (v3.3 - Config-Driven & Deep Context).
 
-Key Upgrades:
-1. Deep Context Window (No Truncation):
-   - Extracted text expanded from 1,200 to 5,500+ characters per job.
-   - Strips noisy nav/footer/script elements to feed AI pure job descriptions and requirements.
-   - Catches experience requirements (e.g. "5+ years") even when located at the very bottom of the page.
-2. Structured Metadata Sniffer (Schema.org / JSON-LD):
-   - Inspects `application/ld+json` for `JobPosting` data (locates official `addressCountry`, `addressLocality`).
-3. European / German Job Disqualification:
-   - Identifies gender equality indicators like `(m/f/d)`, `(m/w/d)`, `(d/m/w)` to reject European postings.
-4. High-Speed Parallel Scraping & Batch AI:
-   - ThreadPoolExecutor across 336 companies.
-   - 4-Way strict AI verification (Single Job, Tech Role, 0-2 YOE, Strictly Israel).
-5. Referral Mapping & State Tracking:
-   - Keeps track of seen jobs in `seen_jobs.json`.
+Key Features:
+1. Config-Driven Preferences (`config.json`):
+   - Reads `min_yoe`, `max_yoe`, `location`, `target_roles`, `excluded_roles`, and `include_student_and_graduate`.
+   - Dynamically adapts both pre-filtering and Gemini AI evaluation to `config.json` without touching Python code.
+2. Deep Context Window & JSON-LD Metadata:
+   - Extracts up to 5,500+ chars of clean job text and parses Schema.org `JobPosting` metadata.
+3. High-Speed Parallel Scraping & Batch AI:
+   - ThreadPoolExecutor across 336 companies (~2 minutes total).
+   - 4-Way strict AI verification (Single Job, Target Role, YOE Range, Target Location).
+4. Referral Mapping & State Tracking:
+   - Keeps track of seen jobs in `seen_jobs.json` and exports daily Excel reports.
 """
 
 import os
@@ -25,7 +22,7 @@ import json
 import time
 import hashlib
 from datetime import datetime
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from dotenv import load_dotenv
@@ -45,12 +42,43 @@ elif os.path.exists(os.path.join(BASE_DIR, "master_companies.json")):
 else:
     MASTER_FILE = os.path.join(BASE_DIR, "companies_registry_public.json")
 
+CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
 SEEN_JOBS_FILE = os.path.join(BASE_DIR, "seen_jobs.json")
 CHECKPOINT_FILE = os.path.join(BASE_DIR, "progress_checkpoint.json")
 OUTPUT_EXCEL = os.path.join(BASE_DIR, f"new_jobs_{datetime.now().strftime('%Y%m%d')}.xlsx")
 
 MODEL_NAME = os.getenv("GEMINI_MODEL", "gemini-flash-lite-latest").strip()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip().strip('"').strip("'")
+
+DEFAULT_CONFIG = {
+    "min_yoe": 0,
+    "max_yoe": 2,
+    "location": "Israel",
+    "include_student_and_graduate": True,
+    "target_roles": [
+        "Software Development",
+        "Backend",
+        "Frontend",
+        "Fullstack",
+        "Mobile",
+        "AI/ML",
+        "Data Science",
+        "Algorithms",
+        "MLOps",
+        "Software Automation"
+    ],
+    "excluded_roles": [
+        "Manual QA",
+        "DevOps",
+        "Customer Success",
+        "Operations",
+        "Technical Support",
+        "Sales",
+        "Marketing",
+        "HR",
+        "Finance"
+    ]
+}
 
 HEADERS = {
     "User-Agent": (
@@ -62,15 +90,43 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9,he;q=0.8",
 }
 
-# --- Strict Deterministic Regex Rules ---
 
-# European / German labor law gender identifiers
+def load_json(filepath, default_val):
+    if os.path.exists(filepath):
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            print(f"[!] Error loading {filepath}: {e}")
+    return default_val
+
+
+def save_json(filepath, data):
+    with open(filepath, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def load_user_config():
+    raw = load_json(CONFIG_FILE, {})
+    cfg = DEFAULT_CONFIG.copy()
+    if isinstance(raw, dict):
+        for k in DEFAULT_CONFIG:
+            if k in raw and raw[k] is not None:
+                cfg[k] = raw[k]
+    return cfg
+
+
+USER_CONFIG = load_user_config()
+TARGET_LOCATION = str(USER_CONFIG.get("location", "Israel")).strip() or "Israel"
+IS_ISRAEL_TARGET = TARGET_LOCATION.lower() in ("israel", "ישראל")
+
+# --- Strict Deterministic Regex Rules (Config-Aware) ---
+
 EUROPE_GENDER_REGEX = re.compile(
     r"\b(m/f/d|m/w/d|d/m/w|m/f/x|w/m/d)\b",
     re.IGNORECASE
 )
 
-# Explicit Foreign Locations in Title or URL (Instant Rejection)
 FOREIGN_LOCATION_REGEX = re.compile(
     r"\b(bangkok|thailand|singapore|australia|sydney|melbourne|london|uk\b|united kingdom|"
     r"germany|deutschland|berlin|munich|walldorf|potsdam|frankfurt|dresden|hamburg|"
@@ -81,7 +137,6 @@ FOREIGN_LOCATION_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Definite Israel Locations
 ISRAEL_LOCATION_REGEX = re.compile(
     r"\b(israel|ישראל|tel[\s\-_]+aviv|תל[\s\-_]+אביב|haifa|חיפה|herzliya|הרצליה|jerusalem|ירושלים|"
     r"beer[\s\-_]+sheva|באר[\s\-_]+שבע|petah[\s\-_]+tikva|פתח[\s\-_]+תקווה|raanana|רעננה|rehovot|רחובות|"
@@ -90,7 +145,6 @@ ISRAEL_LOCATION_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Reject Non-Job, Search, and Category URLs
 NON_JOB_URL_PATTERNS = re.compile(
     r"("
     r"[?&]search="
@@ -115,24 +169,6 @@ AGENCY_CATEGORY_REGEX = re.compile(
     re.IGNORECASE
 )
 
-# Reject Non-Tech Roles, Senior Levels, and Support
-REJECT_TITLE_REGEX = re.compile(
-    r"\b("
-    r"customer success|csm\b|support engineer|support specialist|it support|helpdesk|technical support|"
-    r"operations|supply chain|logistics|procurement|supply operation|"
-    r"sales|account executive|bdr\b|sdr\b|business development|"
-    r"marketing|content writer|growth|copywriter|seo\b|"
-    r"recruiter|talent acquisition|hr\b|human resources|finance|payroll|accounting|legal|counsel|"
-    r"office manager|administrative|receptionist|executive assistant|"
-    r"qa\b|manual tester|qc\b|quality assurance|"
-    r"devops|sre\b|infrastructure engineer|sysadmin|system administrator|"
-    r"vp\b|director|chief|head of|lead\b|principal|staff\b|architect|manager\b|"
-    r"senior|sr\b|expert|"
-    r"מדריך|קורס|הכשרה|הכשרות|סדנה|טיפים|איך להצליח"
-    r")\b",
-    re.IGNORECASE
-)
-
 NAV_EXCLUDE_REGEX = re.compile(
     r"^(developer zone|developer portal|developer community|developer guide|developer hub|"
     r"developers|for developers|developer docs|documentation|api documentation|resources|"
@@ -140,35 +176,77 @@ NAV_EXCLUDE_REGEX = re.compile(
     re.IGNORECASE
 )
 
-CANDIDATE_TITLE_REGEX = re.compile(
-    r"\b("
-    r"software|developer|engineer|fullstack|full-stack|backend|back-end|frontend|front-end|"
-    r"ai\b|ml\b|machine learning|deep learning|data scientist|data science|data analyst|algorithms?|"
-    r"computer vision|nlp\b|mlops|embedded|firmware|python|java\b|c\+\+|golang|react|node|"
-    r"automation|tools developer|"
-    r"product engineer|"
-    r"intern\b|internship|student|graduate|grad\b|junior|entry[\s\-_]*level"
-    r")\b",
-    re.IGNORECASE
-)
+
+def build_reject_title_regex(cfg):
+    excluded_lower = " ".join(str(x).lower() for x in cfg.get("excluded_roles", []))
+    max_yoe = int(cfg.get("max_yoe", 2))
+
+    patterns = [
+        r"legal", r"counsel", r"office manager", r"administrative",
+        r"receptionist", r"executive assistant", r"payroll", r"accounting",
+        r"מדריך", r"קורס", r"הכשרה", r"הכשרות", r"סדנה", r"טיפים", r"איך להצליח"
+    ]
+
+    if "customer success" in excluded_lower or "csm" in excluded_lower:
+        patterns.extend([r"customer success", r"csm\b"])
+    if "support" in excluded_lower:
+        patterns.extend([r"support engineer", r"support specialist", r"it support", r"helpdesk", r"technical support"])
+    if "operations" in excluded_lower:
+        patterns.extend([r"operations", r"supply chain", r"logistics", r"procurement", r"supply operation"])
+    if "sales" in excluded_lower:
+        patterns.extend([r"sales", r"account executive", r"bdr\b", r"sdr\b", r"business development"])
+    if "marketing" in excluded_lower:
+        patterns.extend([r"marketing", r"content writer", r"growth", r"copywriter", r"seo\b"])
+    if "hr" in excluded_lower or "recruiter" in excluded_lower:
+        patterns.extend([r"recruiter", r"talent acquisition", r"hr\b", r"human resources"])
+    if "finance" in excluded_lower:
+        patterns.append(r"finance")
+    if "qa" in excluded_lower:
+        patterns.extend([r"qa\b", r"manual tester", r"qc\b", r"quality assurance"])
+    if "devops" in excluded_lower:
+        patterns.extend([r"devops", r"sre\b", r"infrastructure engineer", r"sysadmin", r"system administrator"])
+
+    if max_yoe <= 2:
+        patterns.extend([
+            r"vp\b", r"director", r"chief", r"head of", r"lead\b",
+            r"principal", r"staff\b", r"architect", r"manager\b", r"senior", r"sr\b", r"expert"
+        ])
+
+    return re.compile(r"\b(" + "|".join(patterns) + r")\b", re.IGNORECASE)
+
+
+def build_candidate_title_regex(cfg):
+    base_keywords = [
+        r"software", r"developer", r"engineer", r"fullstack", r"full-stack",
+        r"backend", r"back-end", r"frontend", r"front-end",
+        r"ai\b", r"ml\b", r"machine learning", r"deep learning",
+        r"data scientist", r"data science", r"data analyst", r"algorithms?",
+        r"computer vision", r"nlp\b", r"mlops", r"embedded", r"firmware",
+        r"python", r"java\b", r"c\+\+", r"golang", r"react", r"node",
+        r"automation", r"tools developer", r"product engineer"
+    ]
+
+    if cfg.get("include_student_and_graduate", True):
+        base_keywords.extend([r"intern\b", r"internship", r"student", r"graduate", r"grad\b"])
+
+    if int(cfg.get("max_yoe", 2)) <= 2:
+        base_keywords.extend([r"junior", r"entry[\s\-_]*level"])
+
+    for role in cfg.get("target_roles", []):
+        tokens = re.findall(r"[a-zA-Z0-9\+\-#]+", str(role).lower())
+        for tok in tokens:
+            if len(tok) >= 2:
+                base_keywords.append(re.escape(tok))
+
+    unique_keywords = list(dict.fromkeys(base_keywords))
+    return re.compile(r"\b(" + "|".join(unique_keywords) + r")\b", re.IGNORECASE)
+
+
+REJECT_TITLE_REGEX = build_reject_title_regex(USER_CONFIG)
+CANDIDATE_TITLE_REGEX = build_candidate_title_regex(USER_CONFIG)
 
 
 # --- Helper Functions ---
-
-def load_json(filepath, default_val):
-    if os.path.exists(filepath):
-        try:
-            with open(filepath, "r", encoding="utf-8") as f:
-                return json.load(f)
-        except Exception as e:
-            print(f"[!] Error loading {filepath}: {e}")
-    return default_val
-
-
-def save_json(filepath, data):
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(data, f, indent=2, ensure_ascii=False)
-
 
 def compute_job_hash(company, title, url):
     normalized = f"{company.strip().lower()}::{title.strip().lower()}::{url.strip().lower()}"
@@ -217,6 +295,7 @@ def call_gemini_with_retries(payload, timeout=40):
 def test_gemini_preflight():
     print("=" * 60)
     print(f" [*] PRE-FLIGHT CHECK: Testing Gemini AI ({MODEL_NAME})...")
+    print(f" [*] Active Config: YOE {USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} | Location: {TARGET_LOCATION}")
     print("=" * 60)
 
     if not GEMINI_API_KEY:
@@ -245,16 +324,13 @@ def is_title_candidate(title, url=""):
         return False
     if AGENCY_CATEGORY_REGEX.search(url):
         return False
-    # Reject German / European gender markers (e.g. m/f/d)
-    if EUROPE_GENDER_REGEX.search(t):
-        return False
-    # Reject explicit foreign locations in URL or Title immediately
-    if FOREIGN_LOCATION_REGEX.search(f"{t} {url}") and not ISRAEL_LOCATION_REGEX.search(f"{t} {url}"):
-        return False
-    # Reject non-tech and senior roles
+    if IS_ISRAEL_TARGET:
+        if EUROPE_GENDER_REGEX.search(t):
+            return False
+        if FOREIGN_LOCATION_REGEX.search(f"{t} {url}") and not ISRAEL_LOCATION_REGEX.search(f"{t} {url}"):
+            return False
     if REJECT_TITLE_REGEX.search(t):
         return False
-    # Accept candidates matching tech keywords or entry levels
     if CANDIDATE_TITLE_REGEX.search(t):
         return True
     return False
@@ -263,8 +339,8 @@ def is_title_candidate(title, url=""):
 def scrape_single_company(company_info):
     name = company_info["name"]
     url = (
-        company_info.get("official_scrape_url") or 
-        company_info.get("career_url") or 
+        company_info.get("official_scrape_url") or
+        company_info.get("career_url") or
         company_info.get("link", "")
     ).strip()
 
@@ -295,10 +371,10 @@ def scrape_single_company(company_info):
             full_url = urljoin(url, href)
             if is_title_candidate(title, full_url):
                 parent_context = a.parent.get_text(separator=" ", strip=True) if a.parent else ""
-                
-                # If parent context mentions a foreign location without Israel, skip
-                if (FOREIGN_LOCATION_REGEX.search(parent_context) or EUROPE_GENDER_REGEX.search(parent_context)) and not ISRAEL_LOCATION_REGEX.search(parent_context):
-                    continue
+
+                if IS_ISRAEL_TARGET:
+                    if (FOREIGN_LOCATION_REGEX.search(parent_context) or EUROPE_GENDER_REGEX.search(parent_context)) and not ISRAEL_LOCATION_REGEX.search(parent_context):
+                        continue
 
                 found_candidates.append({
                     "company": name,
@@ -320,12 +396,6 @@ def scrape_single_company(company_info):
 
 
 def fetch_job_details(job):
-    """
-    Fetches comprehensive job page details:
-    1. Extracts Schema.org JobPosting structured JSON-LD (country, locality, title, requirements).
-    2. Strips noisy nav/footer/script elements to isolate the actual job posting body.
-    3. Retains up to 6,000 characters of clean text to ensure bottom-of-page requirements are fully captured.
-    """
     url = job["url"]
     extracted = {
         "text": "",
@@ -337,7 +407,6 @@ def fetch_job_details(job):
         if r.status_code == 200:
             soup = BeautifulSoup(r.text, "html.parser")
 
-            # 1. Try to find Schema.org structured JobPosting metadata
             for script_tag in soup.find_all("script", type="application/ld+json"):
                 try:
                     js_data = json.loads(script_tag.string or "{}")
@@ -361,7 +430,6 @@ def fetch_job_details(job):
                 except Exception:
                     pass
 
-            # 2. Extract visible location indicators from HTML elements
             if extracted["detected_location"] == "Unspecified":
                 loc_candidates = []
                 for tag in soup.find_all(["span", "div", "p", "li"], class_=re.compile(r"locat|workplace|city|country", re.I)):
@@ -371,9 +439,7 @@ def fetch_job_details(job):
                 if loc_candidates:
                     extracted["detected_location"] = " / ".join(loc_candidates[:2])
 
-            # 3. Clean page and extract comprehensive text if not found via JSON-LD
             if not extracted["text"]:
-                # Strip clutter
                 for elem in soup(["script", "style", "nav", "footer", "header", "noscript", "svg"]):
                     elem.decompose()
 
@@ -390,20 +456,28 @@ def fetch_job_details(job):
     return job
 
 
-# --- Strict 4-Way Batch AI Verification with Gemini ---
+# --- Strict 4-Way Config-Driven Batch AI Evaluation ---
 
 def batch_verify_jobs_with_ai(jobs_batch):
-    """
-    Evaluates candidate jobs in batches with full context (up to 5,000 characters per job).
-    Evaluates 4 mandatory criteria:
-    1. is_single_specific_job: MUST be a distinct individual job vacancy.
-    2. is_tech_role: Software Engineering, AI/ML, Data Science, Algorithms, Junior MLOps, Software Automation.
-       (REJECTS Customer Success, Technical Support, Operations, Sales, Marketing, HR, Manual QA, pure DevOps).
-    3. is_0_2_yoe: MUST accept 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, 0-2 YOE).
-       (STRICTLY REJECTS any position that requires 3+, 4+, or 5+ years of experience).
-    4. is_israel: MUST be located in Israel (Tel Aviv, Haifa, Herzliya, etc., or Remote Israel).
-       (STRICTLY REJECTS any foreign location such as Germany, Walldorf, Berlin, Bangkok, London, New York).
-    """
+    min_yoe = int(USER_CONFIG.get("min_yoe", 0))
+    max_yoe = int(USER_CONFIG.get("max_yoe", 2))
+    target_roles_str = ", ".join(USER_CONFIG.get("target_roles", []))
+    excluded_roles_str = ", ".join(USER_CONFIG.get("excluded_roles", []))
+    include_students = USER_CONFIG.get("include_student_and_graduate", True)
+
+    student_clause = (
+        "including Junior, Graduate, Student Developer, Intern, or Entry Level roles"
+        if include_students else
+        "excluding Student/Intern roles unless they meet the full-time YOE range"
+    )
+
+    location_clause = (
+        f"MUST be located in {TARGET_LOCATION} (Tel Aviv, Haifa, Herzliya, Jerusalem, etc., Hybrid, Remote {TARGET_LOCATION}, or an Israeli company with no foreign office mentioned). "
+        f"STRICTLY REJECT any position located outside {TARGET_LOCATION} (e.g. Germany, Walldorf, Berlin, Bangkok, London, New York, Poland, India, or having (m/f/d))."
+        if IS_ISRAEL_TARGET else
+        f"MUST match the target location: {TARGET_LOCATION}."
+    )
+
     items_text = []
     for idx, j in enumerate(jobs_batch, 1):
         snippet = (j.get("requirements_text") or j.get("context_snippet") or "No description snippet available").strip()
@@ -418,21 +492,20 @@ def batch_verify_jobs_with_ai(jobs_batch):
         )
 
     prompt = (
-        "You are an expert technical hiring validator for the Israeli high-tech ecosystem.\n"
+        "You are an expert technical hiring validator.\n"
         "Carefully read the FULL text of each job posting below, paying close attention to the requirements section "
         "and location specifications, and evaluate each posting based on 4 mandatory criteria:\n\n"
         "1. Single Specific Job Vacancy (is_single_specific_job):\n"
         "   - MUST be an actual, individual, open job vacancy posting with a concrete description.\n"
         "   - STRICTLY REJECT: Category lobbies, search results pages, recruitment agency general hubs, generic 'Send CV / Join Talent Pool' forms.\n\n"
-        "2. Tech Software Role (is_tech_role):\n"
-        "   - MUST be Software Development (Backend, Frontend, Fullstack, Mobile), AI/ML, Data Science, Algorithms, Junior MLOps, or Software Automation.\n"
-        "   - STRICTLY REJECT: Customer Success (CSM), Operations / Supply, Technical Support, Helpdesk, Sales, Marketing, Recruiting/HR, Finance, Manual QA, or pure DevOps.\n\n"
-        "3. Experience Level 0-2 YOE (is_0_2_yoe):\n"
-        "   - MUST accept 0 to 2 years of experience (Junior, Graduate, Student Developer, Entry Level, 0-2 YOE, or no experience required).\n"
-        "   - STRICTLY REJECT: Any posting that mentions or demands 3+, 4+, 5+ years of professional experience (e.g. 'At least 5 years of experience', '3+ years with Python').\n\n"
-        "4. Israel Location (is_israel):\n"
-        "   - MUST be located in Israel (Tel Aviv, Haifa, Herzliya, Jerusalem, etc., Hybrid, Remote Israel, or an Israeli company with no foreign office mentioned).\n"
-        "   - STRICTLY REJECT: Any position located outside Israel (e.g. Germany, Walldorf, Berlin, Potsdam, Bangkok, London, New York, Poland, India, etc., or having (m/f/d)).\n\n"
+        "2. Target Role Match (is_target_role):\n"
+        f"   - MUST match one of these target roles: {target_roles_str}.\n"
+        f"   - STRICTLY REJECT these excluded roles: {excluded_roles_str}.\n\n"
+        f"3. Experience Level {min_yoe}-{max_yoe} YOE (is_matching_yoe):\n"
+        f"   - MUST accept candidates within {min_yoe} to {max_yoe} years of experience ({student_clause}).\n"
+        f"   - STRICTLY REJECT any posting whose minimum required experience is strictly greater than {max_yoe} years (e.g. '{max_yoe + 1}+ years').\n\n"
+        f"4. Target Location (is_matching_location):\n"
+        f"   - {location_clause}\n\n"
         "Candidate Postings:\n"
         f"{''.join(items_text)}\n"
         "A job is APPROVED only if ALL FOUR criteria are strictly TRUE.\n\n"
@@ -442,13 +515,13 @@ def batch_verify_jobs_with_ai(jobs_batch):
         "    {\n"
         '      "job_index": 1,\n'
         '      "is_single_specific_job": true/false,\n'
-        '      "is_tech_role": true/false,\n'
-        '      "is_0_2_yoe": true/false,\n'
-        '      "is_israel": true/false,\n'
+        '      "is_target_role": true/false,\n'
+        '      "is_matching_yoe": true/false,\n'
+        '      "is_matching_location": true/false,\n'
         '      "approved": true/false,\n'
-        '      "experience_summary": "e.g. 0-1 YOE Junior Backend",\n'
-        '      "detected_city": "e.g. Tel Aviv / Israel",\n'
-        '      "rejection_reason": "e.g. Requires 5+ years of experience / Located in Germany (Walldorf) / Support role"\n'
+        f'      "experience_summary": "e.g. {min_yoe}-{max_yoe} YOE summary",\n'
+        f'      "detected_city": "e.g. Tel Aviv / {TARGET_LOCATION}",\n'
+        '      "rejection_reason": "short explanation if rejected"\n'
         "    }\n"
         "  ]\n"
         "}"
@@ -489,15 +562,16 @@ def export_to_excel(confirmed_jobs, unreached_companies, filepath):
         "תאריך גילוי"
     ])
 
+    default_exp_label = f"{USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} YOE (AI Verified)"
     for nj in confirmed_jobs:
         ws1.append([
             nj["company"],
             nj["title"],
             nj.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
             nj.get("referral_type", "הגשה ישירה"),
-            nj.get("location", "Israel"),
+            nj.get("location", TARGET_LOCATION),
             nj["url"],
-            nj.get("experience", "0-2 YOE (AI Verified)"),
+            nj.get("experience", default_exp_label),
             nj.get("discovered_at", datetime.now().strftime("%Y-%m-%d"))
         ])
 
@@ -600,7 +674,6 @@ def main():
     print(f"\n[Stage 1 Summary] Successful: {len(companies) - len(failed_companies)} | Un-scraped/LinkedIn: {len(failed_companies)}")
     print(f"[*] Total candidate links collected: {len(direct_candidates)}")
 
-    # Deduplicate candidate links against seen_hashes
     unique_candidates = []
     candidate_hashes = set()
     for cand in direct_candidates:
@@ -623,6 +696,8 @@ def main():
         batches = [fetched_candidates[i:i + batch_size] for i in range(0, len(fetched_candidates), batch_size)]
         print(f"[*] Grouped into {len(batches)} batches of up to {batch_size} jobs each.\n")
 
+        default_exp_label = f"{USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} YOE (AI Verified)"
+
         for b_idx, batch in enumerate(batches, 1):
             print(f"[*] Sending Batch {b_idx}/{len(batches)} ({len(batch)} jobs) to Gemini...")
             evaluations = batch_verify_jobs_with_ai(batch)
@@ -634,9 +709,9 @@ def main():
                 h = compute_job_hash(job["company"], job["title"], job["url"])
 
                 if ev and ev.get("approved"):
-                    location = ev.get("detected_city") or "Israel"
-                    exp_sum = ev.get("experience_summary") or "0-2 YOE (AI Verified)"
-                    
+                    location = ev.get("detected_city") or TARGET_LOCATION
+                    exp_sum = ev.get("experience_summary") or default_exp_label
+
                     entry = {
                         "company": job["company"],
                         "title": job["title"],

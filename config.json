@@ -1,0 +1,29 @@
+{
+  "min_yoe": 0,
+  "max_yoe": 2,
+  "location": "Israel",
+  "include_student_and_graduate": true,
+  "target_roles": [
+    "Software Development",
+    "Backend",
+    "Frontend",
+    "Fullstack",
+    "Mobile",
+    "AI/ML",
+    "Data Science",
+    "Algorithms",
+    "MLOps",
+    "Software Automation"
+  ],
+  "excluded_roles": [
+    "Manual QA",
+    "DevOps",
+    "Customer Success",
+    "Operations",
+    "Technical Support",
+    "Sales",
+    "Marketing",
+    "HR",
+    "Finance"
+  ]
+}
