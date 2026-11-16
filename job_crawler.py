@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 """
-Autonomous Israeli Tech Job Crawler (v3.3 - Config-Driven & Deep Context).
+Autonomous Israeli Tech Job Crawler (v4.0 - Hybrid ATS API + Playwright + Strict YOE Guard).
 
-Key Features:
-1. Config-Driven Preferences (`config.json`):
-   - Reads `min_yoe`, `max_yoe`, `location`, `target_roles`, `excluded_roles`, and `include_student_and_graduate`.
-   - Dynamically adapts both pre-filtering and Gemini AI evaluation to `config.json` without touching Python code.
-2. Deep Context Window & JSON-LD Metadata:
-   - Extracts up to 5,500+ chars of clean job text and parses Schema.org `JobPosting` metadata.
-3. High-Speed Parallel Scraping & Batch AI:
-   - ThreadPoolExecutor across 336 companies (~2 minutes total).
-   - 4-Way strict AI verification (Single Job, Target Role, YOE Range, Target Location).
-4. Referral Mapping & State Tracking:
-   - Keeps track of seen jobs in `seen_jobs.json` and exports daily Excel reports.
+Key Upgrades:
+1. Hybrid Scraping Engine:
+   - Direct ATS JSON APIs (Greenhouse, Lever, Ashby) for 100% structured data, location, and full descriptions.
+   - Fast parallel `requests` for standard HTML career pages (extracting card titles even behind "Read More" links).
+   - Optional Playwright Headless Chromium fallback for JS-rendered SPAs (Wix, Workday, React sites) when `requests` fails.
+2. Strict Anti-Guessing & Minimum-YOE Guard:
+   - NEVER sends empty/missing job descriptions to AI (minimum 150 chars required, zero blind title guessing).
+   - Deterministic `has_excessive_min_yoe()` filter: keeps ranges like "1-3 years" or "2-3 years" (min <= max_yoe),
+     while strictly rejecting postings whose minimum required experience is >= max_yoe + 1 (e.g. "3+ years", "3-5 years", "at least 3 years").
+3. High-Precision Small-Batch AI Verification:
+   - Evaluates batches of 4 jobs at a time with full clean text (up to 6,000 chars) so requirements are never lost in the middle.
+4. Config-Driven (`config.json`) & Referral-Aware:
+   - Reads `min_yoe`, `max_yoe`, `location`, `target_roles`, `excluded_roles`, `include_student_and_graduate`.
 """
 
 import os
@@ -22,7 +24,7 @@ import json
 import time
 import hashlib
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from dotenv import load_dotenv
@@ -31,6 +33,12 @@ load_dotenv()
 import requests
 from bs4 import BeautifulSoup
 import openpyxl
+
+try:
+    from playwright.sync_api import sync_playwright
+    PLAYWRIGHT_AVAILABLE = True
+except ImportError:
+    PLAYWRIGHT_AVAILABLE = False
 
 # --- Paths & Configuration ---
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -176,6 +184,11 @@ NAV_EXCLUDE_REGEX = re.compile(
     re.IGNORECASE
 )
 
+GENERIC_CTA_REGEX = re.compile(
+    r"^(read more|learn more|apply now|apply|view job|see details|more details|details|לפרטים|הגש מועמדות|למשרה|קרא עוד)$",
+    re.IGNORECASE
+)
+
 
 def build_reject_title_regex(cfg):
     excluded_lower = " ".join(str(x).lower() for x in cfg.get("excluded_roles", []))
@@ -246,6 +259,38 @@ REJECT_TITLE_REGEX = build_reject_title_regex(USER_CONFIG)
 CANDIDATE_TITLE_REGEX = build_candidate_title_regex(USER_CONFIG)
 
 
+def has_excessive_min_yoe(text, max_allowed_yoe):
+    """
+    Checks if the job text explicitly requires a minimum number of years > max_allowed_yoe.
+    - Allows ranges like '1-3 years' or '2-4 years' (because minimum is <= 2).
+    - Rejects '3+ years', '3-5 years', 'at least 3 years', 'minimum 3 years', '4+ years of experience', etc.
+    """
+    if not text:
+        return False
+
+    # Match English and Hebrew minimum-experience patterns:
+    # e.g., "3+ years", "3-5 years", "at least 3 years", "minimum of 4 years", "לפחות 3 שנות ניסיון", "3+ שנים"
+    pattern = re.compile(
+        r"(?:at\s+least|minimum(?:\s+of)?|min\.?|לפחות)?\s*"
+        r"(\d{1,2})\s*(?:\+|(?:\s*[-–—to]+\s*\d{1,2}))?\s*"
+        r"(?:years?|yrs?|שנים|שנות)\s*(?:of)?\s*(?:experience|industry|hands-on|ניסיון)?",
+        re.IGNORECASE
+    )
+
+    for match in pattern.finditer(text):
+        full_phrase = match.group(0).lower()
+        min_years = int(match.group(1))
+        # Ignore company age / founding references like "25 years of experience in insurance"
+        if "company" in full_phrase or "founded" in full_phrase or "industry leader" in full_phrase:
+            continue
+        # Only trigger if it clearly refers to experience or has a '+' / range / 'at least' / 'minimum'
+        has_qualifier = any(q in full_phrase for q in ["+", "-", "–", "—", "to", "at least", "minimum", "min", "לפחות", "experience", "ניסיון"])
+        if has_qualifier and min_years > max_allowed_yoe and min_years <= 15:
+            return True, match.group(0).strip()
+
+    return False
+
+
 # --- Helper Functions ---
 
 def compute_job_hash(company, title, url):
@@ -253,7 +298,7 @@ def compute_job_hash(company, title, url):
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:16]
 
 
-def call_gemini_with_retries(payload, timeout=40):
+def call_gemini_with_retries(payload, timeout=45):
     if not GEMINI_API_KEY:
         raise RuntimeError("GEMINI_API_KEY is missing from environment or .env file!")
 
@@ -296,6 +341,7 @@ def test_gemini_preflight():
     print("=" * 60)
     print(f" [*] PRE-FLIGHT CHECK: Testing Gemini AI ({MODEL_NAME})...")
     print(f" [*] Active Config: YOE {USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} | Location: {TARGET_LOCATION}")
+    print(f" [*] Playwright Headless Fallback: {'ENABLED' if PLAYWRIGHT_AVAILABLE else 'DISABLED'}")
     print("=" * 60)
 
     if not GEMINI_API_KEY:
@@ -312,7 +358,122 @@ def test_gemini_preflight():
     return True
 
 
-# --- Scraping Logic ---
+# --- ATS API Direct Scrapers ---
+
+def try_ats_api_scrape(company_info, url):
+    """
+    Detects Greenhouse, Lever, or Ashby URLs and queries their official public JSON APIs directly.
+    Returns (handled: bool, candidates: list)
+    """
+    name = company_info["name"]
+    parsed = urlparse(url)
+    host = parsed.netloc.lower()
+    path_parts = [p for p in parsed.path.split("/") if p]
+
+    # 1. Greenhouse API
+    if "greenhouse.io" in host and path_parts:
+        board = path_parts[0]
+        api_url = f"https://boards-api.greenhouse.io/v1/boards/{board}/jobs?content=true"
+        try:
+            r = requests.get(api_url, timeout=10)
+            if r.status_code == 200:
+                jobs_data = r.json().get("jobs", [])
+                candidates = []
+                for j in jobs_data:
+                    title = j.get("title", "")
+                    loc = (j.get("location") or {}).get("name", "Unspecified")
+                    job_url = j.get("absolute_url", "")
+                    if not is_title_candidate(title, job_url):
+                        continue
+                    if IS_ISRAEL_TARGET and FOREIGN_LOCATION_REGEX.search(loc) and not ISRAEL_LOCATION_REGEX.search(loc):
+                        continue
+                    raw_html = j.get("content", "")
+                    clean_text = BeautifulSoup(raw_html, "html.parser").get_text(separator="\n", strip=True)
+                    candidates.append({
+                        "company": name,
+                        "title": title,
+                        "url": job_url,
+                        "context_snippet": f"{title} - {loc}",
+                        "requirements_text": clean_text[:6000],
+                        "page_location": loc,
+                        "referral_contact": company_info.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
+                        "referral_type": company_info.get("referral_type", "הגשה ישירה")
+                    })
+                return True, candidates
+        except Exception:
+            pass
+
+    # 2. Lever API
+    if "jobs.lever.co" in host and path_parts:
+        slug = path_parts[0]
+        api_url = f"https://api.lever.co/v0/postings/{slug}?mode=json"
+        try:
+            r = requests.get(api_url, timeout=10)
+            if r.status_code == 200:
+                jobs_data = r.json()
+                candidates = []
+                for j in jobs_data:
+                    title = j.get("text", "")
+                    loc = (j.get("categories") or {}).get("location", "Unspecified")
+                    job_url = j.get("hostedUrl", "")
+                    if not is_title_candidate(title, job_url):
+                        continue
+                    if IS_ISRAEL_TARGET and FOREIGN_LOCATION_REGEX.search(loc) and not ISRAEL_LOCATION_REGEX.search(loc):
+                        continue
+                    desc = j.get("descriptionPlain", "") + "\n" + "\n".join(
+                        lst.get("text", "") + "\n" + BeautifulSoup(lst.get("content", ""), "html.parser").get_text("\n", strip=True)
+                        for lst in j.get("lists", [])
+                    )
+                    candidates.append({
+                        "company": name,
+                        "title": title,
+                        "url": job_url,
+                        "context_snippet": f"{title} - {loc}",
+                        "requirements_text": desc.strip()[:6000],
+                        "page_location": loc,
+                        "referral_contact": company_info.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
+                        "referral_type": company_info.get("referral_type", "הגשה ישירה")
+                    })
+                return True, candidates
+        except Exception:
+            pass
+
+    # 3. Ashby API
+    if "jobs.ashbyhq.com" in host and path_parts:
+        slug = path_parts[0]
+        api_url = f"https://api.ashbyhq.com/posting-api/job-board/{slug}"
+        try:
+            r = requests.get(api_url, timeout=10)
+            if r.status_code == 200:
+                jobs_data = r.json().get("jobs", [])
+                candidates = []
+                for j in jobs_data:
+                    title = j.get("title", "")
+                    loc = j.get("location", "Unspecified")
+                    job_url = j.get("jobUrl", "")
+                    if not is_title_candidate(title, job_url):
+                        continue
+                    if IS_ISRAEL_TARGET and FOREIGN_LOCATION_REGEX.search(loc) and not ISRAEL_LOCATION_REGEX.search(loc):
+                        continue
+                    desc = j.get("descriptionPlain", "") or BeautifulSoup(j.get("descriptionHtml", ""), "html.parser").get_text("\n", strip=True)
+                    candidates.append({
+                        "company": name,
+                        "title": title,
+                        "url": job_url,
+                        "context_snippet": f"{title} - {loc}",
+                        "requirements_text": desc.strip()[:6000],
+                        "page_location": loc,
+                        "referral_contact": company_info.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
+                        "referral_type": company_info.get("referral_type", "הגשה ישירה")
+                    })
+                return True, candidates
+        except Exception:
+            pass
+
+    return False, []
+
+
+# --- HTML Scraping Logic ---
 
 def is_title_candidate(title, url=""):
     t = title.strip()
@@ -336,6 +497,49 @@ def is_title_candidate(title, url=""):
     return False
 
 
+def extract_candidates_from_soup(soup, base_url, company_info):
+    name = company_info["name"]
+    links = soup.find_all("a", href=True)
+    found_candidates = []
+
+    for a in links:
+        raw_title = a.get_text(separator=" ", strip=True)
+        href = a["href"].strip()
+        if not href or href.startswith("#") or href.startswith("javascript:"):
+            continue
+
+        title = raw_title
+        parent_context = a.parent.get_text(separator=" ", strip=True) if a.parent else ""
+
+        # If link text is just a generic CTA like "Read More" / "Apply", inspect nearby heading in parent card
+        if GENERIC_CTA_REGEX.match(title) and a.parent:
+            heading = a.parent.find(["h1", "h2", "h3", "h4", "strong"])
+            if heading:
+                title = heading.get_text(separator=" ", strip=True)
+            elif a.parent.parent:
+                heading = a.parent.parent.find(["h1", "h2", "h3", "h4", "strong"])
+                if heading:
+                    title = heading.get_text(separator=" ", strip=True)
+                    parent_context = a.parent.parent.get_text(separator=" ", strip=True)
+
+        full_url = urljoin(base_url, href)
+        if is_title_candidate(title, full_url):
+            if IS_ISRAEL_TARGET:
+                if (FOREIGN_LOCATION_REGEX.search(parent_context) or EUROPE_GENDER_REGEX.search(parent_context)) and not ISRAEL_LOCATION_REGEX.search(parent_context):
+                    continue
+
+            found_candidates.append({
+                "company": name,
+                "title": title,
+                "url": full_url,
+                "context_snippet": parent_context[:300],
+                "referral_contact": company_info.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
+                "referral_type": company_info.get("referral_type", "הגשה ישירה")
+            })
+
+    return found_candidates
+
+
 def scrape_single_company(company_info):
     name = company_info["name"]
     url = (
@@ -349,6 +553,11 @@ def scrape_single_company(company_info):
     if "linkedin.com/in/" in url or "linkedin.com/company/" in url:
         return name, False, [], "LinkedIn profile/company page (direct outreach recommended)", company_info
 
+    # Try direct ATS JSON API first (Greenhouse, Lever, Ashby)
+    ats_handled, ats_candidates = try_ats_api_scrape(company_info, url)
+    if ats_handled:
+        return name, True, ats_candidates, "ATS API scrape successful", company_info
+
     try:
         resp = requests.get(url, headers=HEADERS, timeout=8)
         if resp.status_code in [403, 429, 503]:
@@ -359,34 +568,10 @@ def scrape_single_company(company_info):
             return name, False, [], "Cloudflare bot challenge detected", company_info
 
         soup = BeautifulSoup(resp.text, "html.parser")
-        links = soup.find_all("a", href=True)
-
-        found_candidates = []
-        for a in links:
-            title = a.get_text(separator=" ", strip=True)
-            href = a["href"].strip()
-            if not href or href.startswith("#") or href.startswith("javascript:"):
-                continue
-
-            full_url = urljoin(url, href)
-            if is_title_candidate(title, full_url):
-                parent_context = a.parent.get_text(separator=" ", strip=True) if a.parent else ""
-
-                if IS_ISRAEL_TARGET:
-                    if (FOREIGN_LOCATION_REGEX.search(parent_context) or EUROPE_GENDER_REGEX.search(parent_context)) and not ISRAEL_LOCATION_REGEX.search(parent_context):
-                        continue
-
-                found_candidates.append({
-                    "company": name,
-                    "title": title,
-                    "url": full_url,
-                    "context_snippet": parent_context[:300],
-                    "referral_contact": company_info.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
-                    "referral_type": company_info.get("referral_type", "הגשה ישירה")
-                })
+        found_candidates = extract_candidates_from_soup(soup, url, company_info)
 
         body_len = len(soup.get_text(strip=True))
-        if len(found_candidates) == 0 and body_len < 400:
+        if len(found_candidates) == 0 and body_len < 600:
             return name, False, [], "Client-side rendered SPA (requires JS/browser)", company_info
 
         return name, True, found_candidates, "Scrape successful", company_info
@@ -395,65 +580,158 @@ def scrape_single_company(company_info):
         return name, False, [], f"Network exception: {type(e).__name__}", company_info
 
 
-def fetch_job_details(job):
-    url = job["url"]
-    extracted = {
-        "text": "",
-        "detected_location": "Unspecified"
-    }
+def scrape_spa_with_playwright(failed_list, companies_by_name):
+    """Uses Headless Chromium to render JS-heavy career pages that failed static requests."""
+    if not PLAYWRIGHT_AVAILABLE or not failed_list:
+        return [], failed_list
+
+    retryable = [
+        f for f in failed_list
+        if "SPA" in f.get("reason", "") or "403" in f.get("reason", "")
+    ]
+    non_retryable = [f for f in failed_list if f not in retryable]
+
+    if not retryable:
+        return [], failed_list
+
+    print(f"\n=== STAGE 1B: Headless Browser (Playwright) Fallback ({len(retryable)} JS/protected sites) ===")
+    recovered_candidates = []
+    still_failed = list(non_retryable)
 
     try:
-        r = requests.get(url, headers=HEADERS, timeout=7)
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(user_agent=HEADERS["User-Agent"])
+            page = context.new_page()
+
+            for item in retryable:
+                c_name = item["name"]
+                url = item["link"]
+                c_info = companies_by_name.get(c_name, {"name": c_name})
+                try:
+                    page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                    page.wait_for_timeout(2500)
+                    html = page.content()
+                    soup = BeautifulSoup(html, "html.parser")
+                    cands = extract_candidates_from_soup(soup, url, c_info)
+                    if cands:
+                        recovered_candidates.extend(cands)
+                        print(f"  [+] Playwright recovered {len(cands)} candidates from {c_name}")
+                    else:
+                        still_failed.append(item)
+                except Exception:
+                    still_failed.append(item)
+
+            browser.close()
+    except Exception as exc:
+        print(f"  [!] Playwright stage error: {exc}")
+        return recovered_candidates, failed_list
+
+    return recovered_candidates, still_failed
+
+
+def extract_clean_text_from_soup(soup):
+    extracted_text = ""
+    detected_loc = "Unspecified"
+
+    for script_tag in soup.find_all("script", type="application/ld+json"):
+        try:
+            js_data = json.loads(script_tag.string or "{}")
+            if isinstance(js_data, list):
+                js_data = js_data[0] if js_data else {}
+            if js_data.get("@type") == "JobPosting":
+                loc_obj = js_data.get("jobLocation", {})
+                if isinstance(loc_obj, list):
+                    loc_obj = loc_obj[0] if loc_obj else {}
+                addr = loc_obj.get("address", {})
+                locality = addr.get("addressLocality") or ""
+                country = addr.get("addressCountry") or ""
+                if locality or country:
+                    detected_loc = f"{locality}, {country}".strip(", ")
+                desc = js_data.get("description", "")
+                if desc:
+                    clean_desc = BeautifulSoup(desc, "html.parser").get_text(separator="\n", strip=True)
+                    if len(clean_desc) > 200:
+                        extracted_text = clean_desc[:6000]
+                        break
+        except Exception:
+            pass
+
+    if detected_loc == "Unspecified":
+        loc_candidates = []
+        for tag in soup.find_all(["span", "div", "p", "li"], class_=re.compile(r"locat|workplace|city|country", re.I)):
+            txt = tag.get_text(strip=True)
+            if 2 < len(txt) < 60:
+                loc_candidates.append(txt)
+        if loc_candidates:
+            detected_loc = " / ".join(loc_candidates[:2])
+
+    if not extracted_text:
+        for elem in soup(["script", "style", "nav", "footer", "noscript", "svg"]):
+            elem.decompose()
+        body_text = soup.get_text(separator="\n", strip=True)
+        lines = [line.strip() for line in body_text.splitlines() if len(line.strip()) > 3]
+        extracted_text = "\n".join(lines)[:6000]
+
+    return extracted_text, detected_loc
+
+
+def fetch_job_details(job):
+    # If ATS API already populated full requirements text, keep it!
+    if len(job.get("requirements_text", "")) >= 200:
+        return job
+
+    url = job["url"]
+    extracted_text = ""
+    detected_loc = job.get("page_location", "Unspecified")
+
+    try:
+        r = requests.get(url, headers=HEADERS, timeout=8)
         if r.status_code == 200:
             soup = BeautifulSoup(r.text, "html.parser")
-
-            for script_tag in soup.find_all("script", type="application/ld+json"):
-                try:
-                    js_data = json.loads(script_tag.string or "{}")
-                    if isinstance(js_data, list):
-                        js_data = js_data[0] if js_data else {}
-                    if js_data.get("@type") == "JobPosting":
-                        loc_obj = js_data.get("jobLocation", {})
-                        if isinstance(loc_obj, list):
-                            loc_obj = loc_obj[0] if loc_obj else {}
-                        addr = loc_obj.get("address", {})
-                        locality = addr.get("addressLocality") or ""
-                        country = addr.get("addressCountry") or ""
-                        if locality or country:
-                            extracted["detected_location"] = f"{locality}, {country}".strip(", ")
-                        desc = js_data.get("description", "")
-                        if desc:
-                            clean_desc = BeautifulSoup(desc, "html.parser").get_text(separator="\n", strip=True)
-                            if len(clean_desc) > 300:
-                                extracted["text"] = clean_desc[:6000]
-                                break
-                except Exception:
-                    pass
-
-            if extracted["detected_location"] == "Unspecified":
-                loc_candidates = []
-                for tag in soup.find_all(["span", "div", "p", "li"], class_=re.compile(r"locat|workplace|city|country", re.I)):
-                    txt = tag.get_text(strip=True)
-                    if 2 < len(txt) < 60:
-                        loc_candidates.append(txt)
-                if loc_candidates:
-                    extracted["detected_location"] = " / ".join(loc_candidates[:2])
-
-            if not extracted["text"]:
-                for elem in soup(["script", "style", "nav", "footer", "header", "noscript", "svg"]):
-                    elem.decompose()
-
-                body_text = soup.get_text(separator="\n", strip=True)
-                lines = [line.strip() for line in body_text.splitlines() if len(line.strip()) > 3]
-                clean_content = "\n".join(lines)
-                extracted["text"] = clean_content[:6000]
-
+            extracted_text, detected_loc = extract_clean_text_from_soup(soup)
     except Exception:
         pass
 
-    job["requirements_text"] = extracted["text"]
-    job["page_location"] = extracted["detected_location"]
+    job["requirements_text"] = extracted_text
+    job["page_location"] = detected_loc
     return job
+
+
+def fetch_missing_details_with_playwright(jobs_list):
+    """For candidate jobs where static requests returned empty/JS shell, render with Playwright."""
+    if not PLAYWRIGHT_AVAILABLE:
+        return jobs_list
+
+    missing = [j for j in jobs_list if len(j.get("requirements_text", "")) < 150]
+    if not missing:
+        return jobs_list
+
+    print(f"[*] Rendering {len(missing)} JS job pages with Playwright to read full requirements...")
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            context = browser.new_context(user_agent=HEADERS["User-Agent"])
+            page = context.new_page()
+
+            for job in missing:
+                try:
+                    page.goto(job["url"], wait_until="domcontentloaded", timeout=15000)
+                    page.wait_for_timeout(2000)
+                    soup = BeautifulSoup(page.content(), "html.parser")
+                    txt, loc = extract_clean_text_from_soup(soup)
+                    if len(txt) > len(job.get("requirements_text", "")):
+                        job["requirements_text"] = txt
+                    if loc != "Unspecified":
+                        job["page_location"] = loc
+                except Exception:
+                    pass
+
+            browser.close()
+    except Exception as exc:
+        print(f"  [!] Playwright job detail fetch error: {exc}")
+
+    return jobs_list
 
 
 # --- Strict 4-Way Config-Driven Batch AI Evaluation ---
@@ -480,7 +758,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
 
     items_text = []
     for idx, j in enumerate(jobs_batch, 1):
-        snippet = (j.get("requirements_text") or j.get("context_snippet") or "No description snippet available").strip()
+        snippet = j.get("requirements_text", "").strip()
         loc = j.get("page_location", "Unspecified")
         items_text.append(
             f"=== Job #{idx} ===\n"
@@ -488,7 +766,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
             f"Title: {j['title']}\n"
             f"URL: {j['url']}\n"
             f"Detected Page Location: {loc}\n"
-            f"Full Page Content Sample:\n{snippet[:4500]}\n"
+            f"Full Job Description & Requirements:\n{snippet[:5500]}\n"
         )
 
     prompt = (
@@ -503,7 +781,8 @@ def batch_verify_jobs_with_ai(jobs_batch):
         f"   - STRICTLY REJECT these excluded roles: {excluded_roles_str}.\n\n"
         f"3. Experience Level {min_yoe}-{max_yoe} YOE (is_matching_yoe):\n"
         f"   - MUST accept candidates within {min_yoe} to {max_yoe} years of experience ({student_clause}).\n"
-        f"   - STRICTLY REJECT any posting whose minimum required experience is strictly greater than {max_yoe} years (e.g. '{max_yoe + 1}+ years').\n\n"
+        f"   - Ranges whose MINIMUM is <= {max_yoe} (such as '1-3 years' or '2-3 years') ARE ALLOWED.\n"
+        f"   - STRICTLY REJECT any posting whose MINIMUM required experience is >= {max_yoe + 1} years (e.g. '3+ years', '3-5 years', 'at least 3 years', '4+ years', '5+ years').\n\n"
         f"4. Target Location (is_matching_location):\n"
         f"   - {location_clause}\n\n"
         "Candidate Postings:\n"
@@ -536,7 +815,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
     }
 
     try:
-        data = call_gemini_with_retries(payload, timeout=40)
+        data = call_gemini_with_retries(payload, timeout=45)
         raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
         parsed = json.loads(raw_text)
         return parsed.get("evaluations", [])
@@ -604,6 +883,7 @@ def main():
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Loading companies registry: {os.path.basename(MASTER_FILE)}...")
 
     companies = load_json(MASTER_FILE, [])
+    companies_by_name = {c["name"]: c for c in companies}
     seen_jobs = load_json(SEEN_JOBS_FILE, [])
     seen_hashes = {compute_job_hash(j["company"], j["title"], j["url"]) for j in seen_jobs}
 
@@ -622,7 +902,7 @@ def main():
     if scraped_set:
         print(f"[*] Resuming from checkpoint: {len(scraped_set)}/{len(companies)} processed, {len(confirmed_new_jobs)} jobs found.")
 
-    # --- STAGE 1: Parallel Deterministic Scrape ---
+    # --- STAGE 1: Parallel Deterministic & ATS API Scrape ---
     remaining_companies = [c for c in companies if c["name"] not in scraped_set]
 
     if remaining_companies:
@@ -669,6 +949,14 @@ def main():
                     save_json(CHECKPOINT_FILE, checkpoint)
                     print(f"  -> Progress: {completed_count}/{len(remaining_companies)} companies scraped ({len(direct_candidates)} candidates found)...")
 
+        # STAGE 1B: Playwright Headless Fallback for JS/SPA sites
+        recovered, failed_companies = scrape_spa_with_playwright(failed_companies, companies_by_name)
+        if recovered:
+            direct_candidates.extend(recovered)
+            checkpoint["failed_companies"] = failed_companies
+            checkpoint["pending_candidates"] = direct_candidates
+            save_json(CHECKPOINT_FILE, checkpoint)
+
         export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
 
     print(f"\n[Stage 1 Summary] Successful: {len(companies) - len(failed_companies)} | Un-scraped/LinkedIn: {len(failed_companies)}")
@@ -684,57 +972,78 @@ def main():
 
     print(f"[*] Brand-new unseen candidates to process: {len(unique_candidates)}")
 
-    # --- STAGE 2: Parallel Page Details Fetching ---
+    # --- STAGE 2: Parallel Page Details Fetching + Playwright + Deterministic YOE Guard ---
     if unique_candidates:
-        print(f"\n=== STAGE 2: Parallel Deep Fetching Job Details ({len(unique_candidates)} jobs) ===")
+        print(f"\n=== STAGE 2: Deep Fetching Job Details ({len(unique_candidates)} jobs) ===")
         with ThreadPoolExecutor(max_workers=8) as executor:
             fetched_candidates = list(executor.map(fetch_job_details, unique_candidates))
 
-        # --- STAGE 3: Strict 4-Way Batch AI Verification with Gemini ---
-        print(f"\n=== STAGE 3: Strict Batch AI Verification with Gemini ({len(fetched_candidates)} jobs) ===")
-        batch_size = 10
-        batches = [fetched_candidates[i:i + batch_size] for i in range(0, len(fetched_candidates), batch_size)]
-        print(f"[*] Grouped into {len(batches)} batches of up to {batch_size} jobs each.\n")
+        fetched_candidates = fetch_missing_details_with_playwright(fetched_candidates)
 
-        default_exp_label = f"{USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} YOE (AI Verified)"
+        max_allowed_yoe = int(USER_CONFIG.get("max_yoe", 2))
+        ai_ready_candidates = []
 
-        for b_idx, batch in enumerate(batches, 1):
-            print(f"[*] Sending Batch {b_idx}/{len(batches)} ({len(batch)} jobs) to Gemini...")
-            evaluations = batch_verify_jobs_with_ai(batch)
+        for job in fetched_candidates:
+            txt = job.get("requirements_text", "").strip()
+            # Strict Anti-Guessing Rule: Reject if description could not be extracted
+            if len(txt) < 150:
+                print(f"  [X] SKIPPED (No readable description): {job['company']} - {job['title']}")
+                continue
+            # Strict Minimum-YOE Regex Guard (keeps 1-3, rejects 3+, 3-5, 4+, 5+)
+            excessive = has_excessive_min_yoe(txt, max_allowed_yoe)
+            if excessive:
+                print(f"  [X] REJECTED (Min YOE > {max_allowed_yoe}: '{excessive[1]}'): {job['company']} - {job['title']}")
+                continue
+            ai_ready_candidates.append(job)
 
-            eval_map = {ev.get("job_index"): ev for ev in evaluations}
+        print(f"[*] Candidates passing description & YOE pre-checks for AI review: {len(ai_ready_candidates)}")
 
-            for idx, job in enumerate(batch, 1):
-                ev = eval_map.get(idx)
-                h = compute_job_hash(job["company"], job["title"], job["url"])
+        # --- STAGE 3: High-Precision Small-Batch AI Verification ---
+        if ai_ready_candidates:
+            print(f"\n=== STAGE 3: Precision Batch AI Verification ({len(ai_ready_candidates)} jobs) ===")
+            batch_size = 4
+            batches = [ai_ready_candidates[i:i + batch_size] for i in range(0, len(ai_ready_candidates), batch_size)]
+            print(f"[*] Grouped into {len(batches)} batches of up to {batch_size} jobs each.\n")
 
-                if ev and ev.get("approved"):
-                    location = ev.get("detected_city") or TARGET_LOCATION
-                    exp_sum = ev.get("experience_summary") or default_exp_label
+            default_exp_label = f"{USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} YOE (AI Verified)"
 
-                    entry = {
-                        "company": job["company"],
-                        "title": job["title"],
-                        "referral_contact": job.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
-                        "referral_type": job.get("referral_type", "הגשה ישירה"),
-                        "location": location,
-                        "url": job["url"],
-                        "experience": exp_sum,
-                        "discovered_at": datetime.now().isoformat()
-                    }
-                    confirmed_new_jobs.append(entry)
-                    seen_jobs.append(entry)
-                    seen_hashes.add(h)
-                    print(f"  [✓] APPROVED: {job['company']} - {job['title']} [{location}] -> [Referral: {entry['referral_contact']}]")
-                else:
-                    reason = ev.get("rejection_reason") if ev else "Unconfirmed by AI"
-                    print(f"  [X] REJECTED: {job['company']} - {job['title']} (Reason: {reason})")
+            for b_idx, batch in enumerate(batches, 1):
+                print(f"[*] Sending Batch {b_idx}/{len(batches)} ({len(batch)} jobs) to Gemini...")
+                evaluations = batch_verify_jobs_with_ai(batch)
 
-            checkpoint["confirmed_jobs"] = confirmed_new_jobs
-            checkpoint["pending_candidates"] = []
-            save_json(CHECKPOINT_FILE, checkpoint)
-            save_json(SEEN_JOBS_FILE, seen_jobs)
-            export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
+                eval_map = {ev.get("job_index"): ev for ev in evaluations}
+
+                for idx, job in enumerate(batch, 1):
+                    ev = eval_map.get(idx)
+                    h = compute_job_hash(job["company"], job["title"], job["url"])
+
+                    if ev and ev.get("approved"):
+                        location = ev.get("detected_city") or TARGET_LOCATION
+                        exp_sum = ev.get("experience_summary") or default_exp_label
+
+                        entry = {
+                            "company": job["company"],
+                            "title": job["title"],
+                            "referral_contact": job.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
+                            "referral_type": job.get("referral_type", "הגשה ישירה"),
+                            "location": location,
+                            "url": job["url"],
+                            "experience": exp_sum,
+                            "discovered_at": datetime.now().isoformat()
+                        }
+                        confirmed_new_jobs.append(entry)
+                        seen_jobs.append(entry)
+                        seen_hashes.add(h)
+                        print(f"  [✓] APPROVED: {job['company']} - {job['title']} [{location}] -> [Referral: {entry['referral_contact']}]")
+                    else:
+                        reason = ev.get("rejection_reason") if ev else "Unconfirmed by AI"
+                        print(f"  [X] REJECTED: {job['company']} - {job['title']} (Reason: {reason})")
+
+                checkpoint["confirmed_jobs"] = confirmed_new_jobs
+                checkpoint["pending_candidates"] = []
+                save_json(CHECKPOINT_FILE, checkpoint)
+                save_json(SEEN_JOBS_FILE, seen_jobs)
+                export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
 
     # --- STAGE 4: Finalization ---
     save_json(SEEN_JOBS_FILE, seen_jobs)
