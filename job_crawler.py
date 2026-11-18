@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 """
-Autonomous Israeli Tech Job Crawler (v4.0 - Hybrid ATS API + Playwright + Strict YOE Guard).
+Autonomous Israeli Tech Job Crawler (v4.1 - Clean Link Filtering, Fast Playwright & 429 Circuit Breaker).
 
 Key Upgrades:
-1. Hybrid Scraping Engine:
-   - Direct ATS JSON APIs (Greenhouse, Lever, Ashby) for 100% structured data, location, and full descriptions.
-   - Fast parallel `requests` for standard HTML career pages (extracting card titles even behind "Read More" links).
-   - Optional Playwright Headless Chromium fallback for JS-rendered SPAs (Wix, Workday, React sites) when `requests` fails.
-2. Strict Anti-Guessing & Minimum-YOE Guard:
-   - NEVER sends empty/missing job descriptions to AI (minimum 150 chars required, zero blind title guessing).
-   - Deterministic `has_excessive_min_yoe()` filter: keeps ranges like "1-3 years" or "2-3 years" (min <= max_yoe),
-     while strictly rejecting postings whose minimum required experience is >= max_yoe + 1 (e.g. "3+ years", "3-5 years", "at least 3 years").
-3. High-Precision Small-Batch AI Verification:
-   - Evaluates batches of 4 jobs at a time with full clean text (up to 6,000 chars) so requirements are never lost in the middle.
-4. Config-Driven (`config.json`) & Referral-Aware:
-   - Reads `min_yoe`, `max_yoe`, `location`, `target_roles`, `excluded_roles`, `include_student_and_graduate`.
+1. Clean Navigation & Marketing Exclusion:
+   - Strips `<nav>` and `<footer>` before collecting links in Stage 1.
+   - Rejects product/marketing/podcast/glossary URLs and titles (eliminates NVIDIA/NICE/Cyera/Cato product pages).
+   - Requires an explicit job-role noun (Engineer, Developer, Scientist, Student, Intern, etc.) or job-posting URL.
+2. Hybrid Scraping Engine:
+   - Direct ATS JSON APIs (Greenhouse, Lever, Ashby).
+   - Fast parallel `requests` for standard HTML career pages.
+   - Optimized Playwright Headless Chromium fallback (blocks images/CSS/fonts, SPA-focused, capped per run).
+3. Smart 429 Rate Limiting & Circuit Breaker (No Model Fallback):
+   - Batch size 8 with proactive 5s delay between Gemini calls to stay under RPM/TPM limits.
+   - Waits 65s on HTTP 429 so the per-minute quota window resets cleanly.
+   - Circuit Breaker: Stops AI stage immediately after 3 consecutive 429 batch failures, saving progress safely.
+4. Strict YOE & Anti-Guessing Guard:
+   - Rejects pages with < 150 chars description and postings requiring min YOE > config max_yoe (allows 1-3, rejects 3+, 3-5).
 """
 
 import os
@@ -99,6 +101,11 @@ HEADERS = {
 }
 
 
+class GeminiRateLimitError(RuntimeError):
+    """Raised when Gemini API returns HTTP 429 repeatedly."""
+    pass
+
+
 def load_json(filepath, default_val):
     if os.path.exists(filepath):
         try:
@@ -160,12 +167,19 @@ NON_JOB_URL_PATTERNS = re.compile(
     r"|searchresults"
     r"|/jobslobby/"
     r"|/categories/"
-    r"|/all-jobs/"
-    r"|/all_jobs/"
-    r"|/alljobs"
+    r"|/all-jobs/|/all_jobs/|/alljobs"
     r"|/career-opportunities/students-internship"
-    r"|developer-zone|developer_zone|developers|documentation|/docs/|/blog/|/resources/|/community/|/about/|/contact/|/news/"
+    r"|developer-zone|developer_zone|documentation|/docs/|/blog/|/resources/|/community/"
+    r"|/about/|/about-us/|/contact/|/news/|/press/"
+    r"|/product/|/products/|/solutions/|/platform/|/glossary/|/podcast/|/events/|/webinars/"
+    r"|/case-studies/|/customers/|/partners/|/academy/|/whitepaper|/privacy|/terms"
+    r"|youtube\.com|youtu\.be|mailto:"
     r")",
+    re.IGNORECASE
+)
+
+JOB_URL_HINT_REGEX = re.compile(
+    r"(/jobs?/|/careers?/|/positions?/|/openings?/|/vacancies/|greenhouse\.io|lever\.co|ashbyhq\.com|comeet\.com|workdayjobs\.com)",
     re.IGNORECASE
 )
 
@@ -180,12 +194,26 @@ AGENCY_CATEGORY_REGEX = re.compile(
 NAV_EXCLUDE_REGEX = re.compile(
     r"^(developer zone|developer portal|developer community|developer guide|developer hub|"
     r"developers|for developers|developer docs|documentation|api documentation|resources|"
-    r"community|blog|news|about us|contact us|sign in|log in|sign up|products|solutions|privacy policy|terms|view all jobs|search jobs)$",
+    r"community|blog|news|about us|contact us|sign in|log in|sign up|products|solutions|"
+    r"privacy policy|terms|view all jobs|search jobs|ai|software|data|mobile|careers)$",
+    re.IGNORECASE
+)
+
+MARKETING_TITLE_REGEX = re.compile(
+    r"\b(podcast|whitepaper|glossary|webinar|case study|case studies|press release|newsletter|"
+    r"privacy policy|data privacy|terms of use|solutions?|platform|suite|accelerator module|"
+    r"graphics cards?|conference|read article|watch now|learn more about)\b",
     re.IGNORECASE
 )
 
 GENERIC_CTA_REGEX = re.compile(
     r"^(read more|learn more|apply now|apply|view job|see details|more details|details|לפרטים|הגש מועמדות|למשרה|קרא עוד)$",
+    re.IGNORECASE
+)
+
+ROLE_NOUN_REGEX = re.compile(
+    r"\b(developer|engineer|scientist|analyst|programmer|architect|specialist|researcher|"
+    r"intern\b|internship|student|graduate|grad\b|מפתח|מפתחת|מתכנת|מתכנתת|מהנדס|מהנדסת|סטודנט|סטודנטית|בוגר|בוגרת)\b",
     re.IGNORECASE
 )
 
@@ -221,8 +249,8 @@ def build_reject_title_regex(cfg):
 
     if max_yoe <= 2:
         patterns.extend([
-            r"vp\b", r"director", r"chief", r"head of", r"lead\b",
-            r"principal", r"staff\b", r"architect", r"manager\b", r"senior", r"sr\b", r"expert"
+            r"vp\b", r"director", r"chief", r"head of", r"lead\b", r"leader\b",
+            r"principal", r"staff\b", r"architect", r"manager\b", r"senior", r"sr\b", r"expert", r"ראש צוות"
         ])
 
     return re.compile(r"\b(" + "|".join(patterns) + r")\b", re.IGNORECASE)
@@ -262,14 +290,12 @@ CANDIDATE_TITLE_REGEX = build_candidate_title_regex(USER_CONFIG)
 def has_excessive_min_yoe(text, max_allowed_yoe):
     """
     Checks if the job text explicitly requires a minimum number of years > max_allowed_yoe.
-    - Allows ranges like '1-3 years' or '2-4 years' (because minimum is <= 2).
+    - Allows ranges like '1-3 years' or '2-4 years' (because minimum is <= max_allowed_yoe).
     - Rejects '3+ years', '3-5 years', 'at least 3 years', 'minimum 3 years', '4+ years of experience', etc.
     """
     if not text:
         return False
 
-    # Match English and Hebrew minimum-experience patterns:
-    # e.g., "3+ years", "3-5 years", "at least 3 years", "minimum of 4 years", "לפחות 3 שנות ניסיון", "3+ שנים"
     pattern = re.compile(
         r"(?:at\s+least|minimum(?:\s+of)?|min\.?|לפחות)?\s*"
         r"(\d{1,2})\s*(?:\+|(?:\s*[-–—to]+\s*\d{1,2}))?\s*"
@@ -280,10 +306,8 @@ def has_excessive_min_yoe(text, max_allowed_yoe):
     for match in pattern.finditer(text):
         full_phrase = match.group(0).lower()
         min_years = int(match.group(1))
-        # Ignore company age / founding references like "25 years of experience in insurance"
         if "company" in full_phrase or "founded" in full_phrase or "industry leader" in full_phrase:
             continue
-        # Only trigger if it clearly refers to experience or has a '+' / range / 'at least' / 'minimum'
         has_qualifier = any(q in full_phrase for q in ["+", "-", "–", "—", "to", "at least", "minimum", "min", "לפחות", "experience", "ניסיון"])
         if has_qualifier and min_years > max_allowed_yoe and min_years <= 15:
             return True, match.group(0).strip()
@@ -306,7 +330,7 @@ def call_gemini_with_retries(payload, timeout=45):
         "https://generativelanguage.googleapis.com/v1beta/"
         f"models/{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
     )
-    max_attempts = 5
+    max_attempts = 3
 
     for attempt in range(1, max_attempts + 1):
         try:
@@ -315,22 +339,32 @@ def call_gemini_with_retries(payload, timeout=45):
                 return res.json()
 
             print(f"    [!] Gemini HTTP {res.status_code} ({attempt}/{max_attempts})")
-            if res.status_code not in (408, 429, 500, 502, 503, 504):
+            if res.status_code == 429:
+                if attempt == max_attempts:
+                    raise GeminiRateLimitError("HTTP 429 rate/quota limit")
+                wait_time = 65
+                print(f"        Rate limit hit. Waiting {wait_time}s for window reset...")
+                time.sleep(wait_time)
+                continue
+
+            if res.status_code not in (408, 500, 502, 503, 504):
                 print(f"        Details: {res.text[:200]}")
                 raise RuntimeError(f"Non-retryable HTTP {res.status_code}")
 
             if attempt == max_attempts:
                 break
 
-            wait_time = min(4 * (2 ** (attempt - 1)), 45)
+            wait_time = min(5 * (2 ** (attempt - 1)), 20)
             print(f"        Retrying in {wait_time}s...")
             time.sleep(wait_time)
 
+        except GeminiRateLimitError:
+            raise
         except requests.exceptions.RequestException as exc:
             print(f"    [!] Gemini network error ({attempt}/{max_attempts}): {exc}")
             if attempt == max_attempts:
                 raise RuntimeError("Gemini API unreachable after retries") from exc
-            wait_time = min(4 * (2 ** (attempt - 1)), 45)
+            wait_time = min(5 * (2 ** (attempt - 1)), 20)
             print(f"        Retrying in {wait_time}s...")
             time.sleep(wait_time)
 
@@ -361,10 +395,6 @@ def test_gemini_preflight():
 # --- ATS API Direct Scrapers ---
 
 def try_ats_api_scrape(company_info, url):
-    """
-    Detects Greenhouse, Lever, or Ashby URLs and queries their official public JSON APIs directly.
-    Returns (handled: bool, candidates: list)
-    """
     name = company_info["name"]
     parsed = urlparse(url)
     host = parsed.netloc.lower()
@@ -481,6 +511,8 @@ def is_title_candidate(title, url=""):
         return False
     if NAV_EXCLUDE_REGEX.match(t):
         return False
+    if MARKETING_TITLE_REGEX.search(t):
+        return False
     if NON_JOB_URL_PATTERNS.search(url):
         return False
     if AGENCY_CATEGORY_REGEX.search(url):
@@ -492,13 +524,21 @@ def is_title_candidate(title, url=""):
             return False
     if REJECT_TITLE_REGEX.search(t):
         return False
-    if CANDIDATE_TITLE_REGEX.search(t):
-        return True
-    return False
+    if not CANDIDATE_TITLE_REGEX.search(t):
+        return False
+    # Require either an explicit job-role noun in title OR a job-like URL path
+    if not (ROLE_NOUN_REGEX.search(t) or JOB_URL_HINT_REGEX.search(url)):
+        return False
+    return True
 
 
 def extract_candidates_from_soup(soup, base_url, company_info):
     name = company_info["name"]
+
+    # Remove navigation menus and footers to prevent collecting product/marketing links
+    for tag in soup(["nav", "footer", "script", "style", "noscript"]):
+        tag.decompose()
+
     links = soup.find_all("a", href=True)
     found_candidates = []
 
@@ -511,7 +551,6 @@ def extract_candidates_from_soup(soup, base_url, company_info):
         title = raw_title
         parent_context = a.parent.get_text(separator=" ", strip=True) if a.parent else ""
 
-        # If link text is just a generic CTA like "Read More" / "Apply", inspect nearby heading in parent card
         if GENERIC_CTA_REGEX.match(title) and a.parent:
             heading = a.parent.find(["h1", "h2", "h3", "h4", "strong"])
             if heading:
@@ -553,7 +592,6 @@ def scrape_single_company(company_info):
     if "linkedin.com/in/" in url or "linkedin.com/company/" in url:
         return name, False, [], "LinkedIn profile/company page (direct outreach recommended)", company_info
 
-    # Try direct ATS JSON API first (Greenhouse, Lever, Ashby)
     ats_handled, ats_candidates = try_ats_api_scrape(company_info, url)
     if ats_handled:
         return name, True, ats_candidates, "ATS API scrape successful", company_info
@@ -568,9 +606,9 @@ def scrape_single_company(company_info):
             return name, False, [], "Cloudflare bot challenge detected", company_info
 
         soup = BeautifulSoup(resp.text, "html.parser")
+        body_len = len(soup.get_text(strip=True))
         found_candidates = extract_candidates_from_soup(soup, url, company_info)
 
-        body_len = len(soup.get_text(strip=True))
         if len(found_candidates) == 0 and body_len < 600:
             return name, False, [], "Client-side rendered SPA (requires JS/browser)", company_info
 
@@ -580,21 +618,30 @@ def scrape_single_company(company_info):
         return name, False, [], f"Network exception: {type(e).__name__}", company_info
 
 
+def _setup_fast_playwright_page(context):
+    page = context.new_page()
+    # Block heavy assets (images, stylesheets, fonts, media) for 4x faster rendering
+    page.route(
+        "**/*",
+        lambda route: route.abort()
+        if route.request.resource_type in ("image", "stylesheet", "font", "media")
+        else route.continue_()
+    )
+    return page
+
+
 def scrape_spa_with_playwright(failed_list, companies_by_name):
-    """Uses Headless Chromium to render JS-heavy career pages that failed static requests."""
+    """Uses Headless Chromium ONLY on SPA sites (not 403 WAF blocks) with fast asset blocking."""
     if not PLAYWRIGHT_AVAILABLE or not failed_list:
         return [], failed_list
 
-    retryable = [
-        f for f in failed_list
-        if "SPA" in f.get("reason", "") or "403" in f.get("reason", "")
-    ]
-    non_retryable = [f for f in failed_list if f not in retryable]
+    retryable = [f for f in failed_list if "SPA" in f.get("reason", "")]
+    non_retryable = [f for f in failed_list if "SPA" not in f.get("reason", "")]
 
     if not retryable:
         return [], failed_list
 
-    print(f"\n=== STAGE 1B: Headless Browser (Playwright) Fallback ({len(retryable)} JS/protected sites) ===")
+    print(f"\n=== STAGE 1B: Headless Browser (Playwright) Fallback ({len(retryable)} JS SPA sites) ===")
     recovered_candidates = []
     still_failed = list(non_retryable)
 
@@ -602,17 +649,16 @@ def scrape_spa_with_playwright(failed_list, companies_by_name):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             context = browser.new_context(user_agent=HEADERS["User-Agent"])
-            page = context.new_page()
+            page = _setup_fast_playwright_page(context)
 
             for item in retryable:
                 c_name = item["name"]
                 url = item["link"]
                 c_info = companies_by_name.get(c_name, {"name": c_name})
                 try:
-                    page.goto(url, wait_until="domcontentloaded", timeout=15000)
-                    page.wait_for_timeout(2500)
-                    html = page.content()
-                    soup = BeautifulSoup(html, "html.parser")
+                    page.goto(url, wait_until="domcontentloaded", timeout=10000)
+                    page.wait_for_timeout(1500)
+                    soup = BeautifulSoup(page.content(), "html.parser")
                     cands = extract_candidates_from_soup(soup, url, c_info)
                     if cands:
                         recovered_candidates.extend(cands)
@@ -677,7 +723,6 @@ def extract_clean_text_from_soup(soup):
 
 
 def fetch_job_details(job):
-    # If ATS API already populated full requirements text, keep it!
     if len(job.get("requirements_text", "")) >= 200:
         return job
 
@@ -698,12 +743,12 @@ def fetch_job_details(job):
     return job
 
 
-def fetch_missing_details_with_playwright(jobs_list):
-    """For candidate jobs where static requests returned empty/JS shell, render with Playwright."""
+def fetch_missing_details_with_playwright(jobs_list, max_pages=40):
+    """For candidate jobs where static requests returned empty/JS shell, render with Playwright (capped for speed)."""
     if not PLAYWRIGHT_AVAILABLE:
         return jobs_list
 
-    missing = [j for j in jobs_list if len(j.get("requirements_text", "")) < 150]
+    missing = [j for j in jobs_list if len(j.get("requirements_text", "")) < 150][:max_pages]
     if not missing:
         return jobs_list
 
@@ -712,12 +757,12 @@ def fetch_missing_details_with_playwright(jobs_list):
         with sync_playwright() as p:
             browser = p.chromium.launch(headless=True)
             context = browser.new_context(user_agent=HEADERS["User-Agent"])
-            page = context.new_page()
+            page = _setup_fast_playwright_page(context)
 
             for job in missing:
                 try:
-                    page.goto(job["url"], wait_until="domcontentloaded", timeout=15000)
-                    page.wait_for_timeout(2000)
+                    page.goto(job["url"], wait_until="domcontentloaded", timeout=10000)
+                    page.wait_for_timeout(1500)
                     soup = BeautifulSoup(page.content(), "html.parser")
                     txt, loc = extract_clean_text_from_soup(soup)
                     if len(txt) > len(job.get("requirements_text", "")):
@@ -766,7 +811,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
             f"Title: {j['title']}\n"
             f"URL: {j['url']}\n"
             f"Detected Page Location: {loc}\n"
-            f"Full Job Description & Requirements:\n{snippet[:5500]}\n"
+            f"Full Job Description & Requirements:\n{snippet[:3500]}\n"
         )
 
     prompt = (
@@ -814,14 +859,10 @@ def batch_verify_jobs_with_ai(jobs_batch):
         }
     }
 
-    try:
-        data = call_gemini_with_retries(payload, timeout=45)
-        raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-        parsed = json.loads(raw_text)
-        return parsed.get("evaluations", [])
-    except Exception as e:
-        print(f"    [!] Error during batch AI verification: {e}")
-        return []
+    data = call_gemini_with_retries(payload, timeout=45)
+    raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+    parsed = json.loads(raw_text)
+    return parsed.get("evaluations", [])
 
 
 # --- Excel Generation ---
@@ -949,7 +990,6 @@ def main():
                     save_json(CHECKPOINT_FILE, checkpoint)
                     print(f"  -> Progress: {completed_count}/{len(remaining_companies)} companies scraped ({len(direct_candidates)} candidates found)...")
 
-        # STAGE 1B: Playwright Headless Fallback for JS/SPA sites
         recovered, failed_companies = scrape_spa_with_playwright(failed_companies, companies_by_name)
         if recovered:
             direct_candidates.extend(recovered)
@@ -978,18 +1018,16 @@ def main():
         with ThreadPoolExecutor(max_workers=8) as executor:
             fetched_candidates = list(executor.map(fetch_job_details, unique_candidates))
 
-        fetched_candidates = fetch_missing_details_with_playwright(fetched_candidates)
+        fetched_candidates = fetch_missing_details_with_playwright(fetched_candidates, max_pages=40)
 
         max_allowed_yoe = int(USER_CONFIG.get("max_yoe", 2))
         ai_ready_candidates = []
 
         for job in fetched_candidates:
             txt = job.get("requirements_text", "").strip()
-            # Strict Anti-Guessing Rule: Reject if description could not be extracted
             if len(txt) < 150:
                 print(f"  [X] SKIPPED (No readable description): {job['company']} - {job['title']}")
                 continue
-            # Strict Minimum-YOE Regex Guard (keeps 1-3, rejects 3+, 3-5, 4+, 5+)
             excessive = has_excessive_min_yoe(txt, max_allowed_yoe)
             if excessive:
                 print(f"  [X] REJECTED (Min YOE > {max_allowed_yoe}: '{excessive[1]}'): {job['company']} - {job['title']}")
@@ -998,18 +1036,35 @@ def main():
 
         print(f"[*] Candidates passing description & YOE pre-checks for AI review: {len(ai_ready_candidates)}")
 
-        # --- STAGE 3: High-Precision Small-Batch AI Verification ---
+        # --- STAGE 3: Precision Batch AI Verification with 429 Circuit Breaker ---
         if ai_ready_candidates:
             print(f"\n=== STAGE 3: Precision Batch AI Verification ({len(ai_ready_candidates)} jobs) ===")
-            batch_size = 4
+            batch_size = 8
             batches = [ai_ready_candidates[i:i + batch_size] for i in range(0, len(ai_ready_candidates), batch_size)]
             print(f"[*] Grouped into {len(batches)} batches of up to {batch_size} jobs each.\n")
 
             default_exp_label = f"{USER_CONFIG['min_yoe']}-{USER_CONFIG['max_yoe']} YOE (AI Verified)"
+            consecutive_429 = 0
 
             for b_idx, batch in enumerate(batches, 1):
+                if b_idx > 1:
+                    time.sleep(5)  # Proactive rate-limit pacing
+
                 print(f"[*] Sending Batch {b_idx}/{len(batches)} ({len(batch)} jobs) to Gemini...")
-                evaluations = batch_verify_jobs_with_ai(batch)
+                try:
+                    evaluations = batch_verify_jobs_with_ai(batch)
+                    consecutive_429 = 0
+                except GeminiRateLimitError:
+                    consecutive_429 += 1
+                    print(f"    [!] Batch {b_idx} failed due to HTTP 429 ({consecutive_429}/3 consecutive limit errors).")
+                    if consecutive_429 >= 3:
+                        print("\n[!] CIRCUIT BREAKER TRIGGERED: Gemini quota exhausted (3 consecutive 429s).")
+                        print("[*] Stopping AI stage safely to preserve confirmed jobs and avoid wasting runner time.")
+                        break
+                    continue
+                except Exception as exc:
+                    print(f"    [!] Error during batch AI verification: {exc}")
+                    continue
 
                 eval_map = {ev.get("job_index"): ev for ev in evaluations}
 
