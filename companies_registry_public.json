@@ -1623,5 +1623,20 @@
     "name": "חברת בינת bynet software",
     "career_url": "https://www.bynet.co.il/career/",
     "category": "Core Tech / R&D"
+  },
+  {
+    "name": "Applied Materials",
+    "career_url": "https://jobs.appliedmaterials.com/location/israel-jobs/95/294640/2",
+    "category": "Semiconductors"
+  },
+  {
+    "name": "airSlate",
+    "career_url": "https://www.airslate.com/careers",
+    "category": "SaaS / Automation"
+  },
+  {
+    "name": "Jazz",
+    "career_url": "https://www.comeet.com/jobs/jazz/6A.009",
+    "category": "Cybersecurity"
   }
 ]
