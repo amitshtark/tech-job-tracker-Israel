@@ -978,5 +978,55 @@
     "url": "https://opisoft.com/career/data-analyst-python-data-quality/",
     "experience": "Entry level / no specific multi-year minimum experience stated",
     "discovered_at": "2026-11-21T13:51:48.857882"
+  },
+  {
+    "company": "apple",
+    "title": "MS.c/Ph.D Process Engineering Intern, Camera Modules",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Herzliya, Israel",
+    "url": "https://jobs.apple.com/en-il/details/200694502-0865/ms-c-ph-d-process-engineering-intern-camera-modules?team=HRDWR",
+    "experience": "M.Sc./Ph.D. student internship (0-2 YOE)",
+    "discovered_at": "2026-11-22T13:43:21.477495"
+  },
+  {
+    "company": "Nisha Group",
+    "title": "Fullstack Software Developer",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "תל אביב / ישראל",
+    "url": "https://www.nisha.co.il/job/11995/",
+    "experience": "ללא ניסיון (0 YOE)",
+    "discovered_at": "2026-11-22T13:43:56.329868"
+  },
+  {
+    "company": "Palantir Israel",
+    "title": "Backend Software Engineer - Defense",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.lever.co/palantir/1345438c-ebfc-4fa5-b545-30c1414f317c",
+    "experience": "Backend Software Engineer opening suitable for junior/entry level or general SWE",
+    "discovered_at": "2026-11-22T13:44:12.196598"
+  },
+  {
+    "company": "Palantir Israel",
+    "title": "Backend Software Engineer - Defense",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.lever.co/palantir/a8174f9c-6f46-46b4-8e15-d1ff9e37c9eb",
+    "experience": "Backend Software Engineer opening",
+    "discovered_at": "2026-11-22T13:44:12.196615"
+  },
+  {
+    "company": "Palantir Israel",
+    "title": "Forward Deployed Engineer - Mixed Reality",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Israel",
+    "url": "https://jobs.lever.co/palantir/96a0ce26-cf84-4fa8-934b-acc4363620b2",
+    "experience": "Forward Deployed Engineer opening",
+    "discovered_at": "2026-11-22T13:44:12.196629"
   }
 ]
