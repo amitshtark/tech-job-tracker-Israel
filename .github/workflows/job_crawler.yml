@@ -37,8 +37,8 @@ jobs:
             if [ -f seen_jobs.json ]; then
               return
             fi
-            legacy_commit="$(git log -1 --all --format=%H -- seen_jobs.json)"
-            if [ -n "$legacy_commit" ]; then
+            legacy_commit="$(git log -1 --all --diff-filter=AM --format=%H -- seen_jobs.json)"
+            if [ -n "$legacy_commit" ] && git cat-file -e "$legacy_commit:seen_jobs.json" 2>/dev/null; then
               git show "$legacy_commit:seen_jobs.json" > seen_jobs.json
             else
               printf '[]\n' > seen_jobs.json
