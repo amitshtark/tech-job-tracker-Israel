@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -29,6 +31,36 @@ jobs:
           pip install -r requirements.txt
           playwright install chromium
 
+      - name: Restore Seen Jobs from Data Branch
+        run: |
+          restore_legacy_seen_jobs() {
+            if [ -f seen_jobs.json ]; then
+              return
+            fi
+            legacy_commit="$(git log -1 --all --format=%H -- seen_jobs.json)"
+            if [ -n "$legacy_commit" ]; then
+              git show "$legacy_commit:seen_jobs.json" > seen_jobs.json
+            else
+              printf '[]\n' > seen_jobs.json
+            fi
+          }
+
+          if git ls-remote --exit-code --heads origin data >/dev/null; then
+            git fetch origin data
+            if git cat-file -e origin/data:seen_jobs.json 2>/dev/null; then
+              git show origin/data:seen_jobs.json > seen_jobs.json
+            else
+              restore_legacy_seen_jobs
+            fi
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then
+              echo "Failed to check whether the data branch exists."
+              exit "$status"
+            fi
+            restore_legacy_seen_jobs
+          fi
+
       - name: Run Job Crawler
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -36,12 +68,30 @@ jobs:
         run: |
           python job_crawler.py
 
-      - name: Commit and Push Updated Seen Jobs
+      - name: Commit and Push Seen Jobs to Data Branch
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add seen_jobs.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update seen jobs database [skip ci]" && git pull --rebase origin main && git push origin main)
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          data_worktree="$RUNNER_TEMP/seen-jobs-data"
+          if git show-ref --verify --quiet refs/remotes/origin/data; then
+            git worktree add --detach "$data_worktree" refs/remotes/origin/data
+          else
+            git worktree add --detach "$data_worktree" HEAD
+            git -C "$data_worktree" switch --orphan data
+          fi
+
+          cp seen_jobs.json "$data_worktree/seen_jobs.json"
+          git -C "$data_worktree" config user.name "github-actions[bot]"
+          git -C "$data_worktree" config user.email "github-actions[bot]@users.noreply.github.com"
+          git -C "$data_worktree" add -f seen_jobs.json
+          if git -C "$data_worktree" diff --cached --quiet; then
+            echo "Seen jobs database has no changes."
+          else
+            git -C "$data_worktree" commit -m "Auto-update seen jobs database [skip ci]"
+            git -C "$data_worktree" push origin HEAD:refs/heads/data
+          fi
+          git worktree remove --force "$data_worktree"
 
       - name: Upload Daily Excel Report
         uses: actions/upload-artifact@v4

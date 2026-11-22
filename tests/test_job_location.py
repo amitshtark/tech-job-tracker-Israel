@@ -1,9 +1,12 @@
 import json
+import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from bs4 import BeautifulSoup
 
+import job_crawler
 from job_crawler import (
     batch_verify_jobs_with_ai,
     extract_candidates_from_soup,
@@ -15,6 +18,22 @@ from job_crawler import (
 
 
 class JobLocationTests(unittest.TestCase):
+    def test_config_local_json_overrides_config_json(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            config_path = Path(temp_dir, "config.json")
+            local_config_path = Path(temp_dir, "config.local.json")
+            config_path.write_text(json.dumps({"location": "Germany", "max_yoe": 5}), encoding="utf-8")
+            local_config_path.write_text(json.dumps({"location": "Israel"}), encoding="utf-8")
+
+            with (
+                patch.object(job_crawler, "BASE_DIR", temp_dir),
+                patch.object(job_crawler, "CONFIG_FILE", str(config_path)),
+            ):
+                config = job_crawler.load_user_config()
+
+        self.assertEqual(config["location"], "Israel")
+        self.assertEqual(config["max_yoe"], job_crawler.DEFAULT_CONFIG["max_yoe"])
+
     def test_reported_palantir_jobs_do_not_pass_israel_location_gate(self):
         observed_jobs = {
             "https://jobs.lever.co/palantir/1345438c-ebfc-4fa5-b545-30c1414f317c": "Washington, D.C.",

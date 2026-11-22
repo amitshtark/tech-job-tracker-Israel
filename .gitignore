@@ -1,4 +1,6 @@
 .env
+config.local.json
+seen_jobs.json
 master_companies_with_referrals.json
 master_companies_with_referrals.xlsx
 master_companies.json

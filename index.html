@@ -922,10 +922,33 @@
 
     async function fetchJobs() {
       try {
-        const resp = await fetch('seen_jobs.json?t=' + Date.now());
-        if (!resp.ok) throw new Error('Could not load seen_jobs.json');
-        const data = await resp.json();
-        allJobs = Array.isArray(data) ? data.slice().reverse() : [];
+        const urls = [];
+        const githubPagesUser = window.location.hostname.match(/^([^.]+)\.github\.io$/i);
+        const repository = window.location.pathname.split('/').filter(Boolean)[0];
+        if (githubPagesUser && repository) {
+          urls.push(
+            `https://raw.githubusercontent.com/${githubPagesUser[1]}/${repository}/data/seen_jobs.json?t=${Date.now()}`
+          );
+        }
+        urls.push('seen_jobs.json?t=' + Date.now());
+
+        let data = null;
+        let lastError = null;
+        for (const url of urls) {
+          try {
+            const resp = await fetch(url);
+            if (!resp.ok) throw new Error(`Could not load ${url}`);
+            const fetchedData = await resp.json();
+            if (!Array.isArray(fetchedData)) throw new Error(`Invalid job data from ${url}`);
+            data = fetchedData;
+            break;
+          } catch (err) {
+            lastError = err;
+            console.warn('Could not load jobs from ' + url + ':', err);
+          }
+        }
+        if (data === null) throw lastError || new Error('Could not load seen_jobs.json');
+        allJobs = data.slice().reverse();
         updateCounts();
         renderJobs();
       } catch (err) {

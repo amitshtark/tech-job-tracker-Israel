@@ -122,7 +122,9 @@ def save_json(filepath, data):
 
 
 def load_user_config():
-    raw = load_json(CONFIG_FILE, {})
+    local_config_file = os.path.join(BASE_DIR, "config.local.json")
+    config_file = local_config_file if os.path.exists(local_config_file) else CONFIG_FILE
+    raw = load_json(config_file, {})
     cfg = DEFAULT_CONFIG.copy()
     if isinstance(raw, dict):
         for k in DEFAULT_CONFIG:
