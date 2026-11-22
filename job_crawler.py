@@ -160,6 +160,40 @@ ISRAEL_LOCATION_REGEX = re.compile(
     re.IGNORECASE
 )
 
+
+def has_explicit_target_location(location):
+    """Return whether a location field explicitly identifies the configured Israel target."""
+    if not IS_ISRAEL_TARGET:
+        return True
+    return bool(ISRAEL_LOCATION_REGEX.search(str(location or "")))
+
+
+def is_explicit_non_target_location(location):
+    """Only treat a populated location field as a deterministic location rejection."""
+    normalized_location = str(location or "").strip()
+    if not normalized_location or normalized_location.lower() == "unspecified":
+        return False
+    return not has_explicit_target_location(normalized_location)
+
+
+def extract_explicit_target_location(text):
+    if not IS_ISRAEL_TARGET:
+        return "Unspecified"
+    match = ISRAEL_LOCATION_REGEX.search(str(text or ""))
+    return match.group(0) if match else "Unspecified"
+
+
+def is_complete_ai_approval(evaluation):
+    required_flags = (
+        "approved",
+        "is_single_specific_job",
+        "is_target_role",
+        "is_matching_yoe",
+        "is_matching_location",
+    )
+    return all(evaluation.get(flag) is True for flag in required_flags)
+
+
 NON_JOB_URL_PATTERNS = re.compile(
     r"("
     r"[?&]search="
@@ -550,6 +584,7 @@ def extract_candidates_from_soup(soup, base_url, company_info):
 
         title = raw_title
         parent_context = a.parent.get_text(separator=" ", strip=True) if a.parent else ""
+        page_location = "Unspecified"
 
         if GENERIC_CTA_REGEX.match(title) and a.parent:
             heading = a.parent.find(["h1", "h2", "h3", "h4", "strong"])
@@ -560,6 +595,19 @@ def extract_candidates_from_soup(soup, base_url, company_info):
                 if heading:
                     title = heading.get_text(separator=" ", strip=True)
                     parent_context = a.parent.parent.get_text(separator=" ", strip=True)
+
+        container = a.parent
+        for _ in range(3):
+            if container is None:
+                break
+            context = container.get_text(separator=" ", strip=True)
+            if len(context) > 800:
+                break
+            page_location = extract_explicit_target_location(context)
+            if page_location != "Unspecified":
+                parent_context = context
+                break
+            container = container.parent
 
         full_url = urljoin(base_url, href)
         if is_title_candidate(title, full_url):
@@ -572,6 +620,7 @@ def extract_candidates_from_soup(soup, base_url, company_info):
                 "title": title,
                 "url": full_url,
                 "context_snippet": parent_context[:300],
+                "page_location": page_location,
                 "referral_contact": company_info.get("referral_contact", "הגשה ישירה באתר (ללא רפרל)"),
                 "referral_type": company_info.get("referral_type", "הגשה ישירה")
             })
@@ -682,16 +731,37 @@ def extract_clean_text_from_soup(soup):
 
     for script_tag in soup.find_all("script", type="application/ld+json"):
         try:
-            js_data = json.loads(script_tag.string or "{}")
-            if isinstance(js_data, list):
-                js_data = js_data[0] if js_data else {}
-            if js_data.get("@type") == "JobPosting":
+            jsonld_data = json.loads(script_tag.string or "{}")
+            if isinstance(jsonld_data, dict) and isinstance(jsonld_data.get("@graph"), list):
+                jsonld_nodes = jsonld_data["@graph"]
+            elif isinstance(jsonld_data, list):
+                jsonld_nodes = jsonld_data
+            else:
+                jsonld_nodes = [jsonld_data]
+
+            for js_data in jsonld_nodes:
+                if not isinstance(js_data, dict):
+                    continue
+                job_types = js_data.get("@type", [])
+                if isinstance(job_types, str):
+                    job_types = [job_types]
+                if "JobPosting" not in job_types:
+                    continue
+
                 loc_obj = js_data.get("jobLocation", {})
                 if isinstance(loc_obj, list):
                     loc_obj = loc_obj[0] if loc_obj else {}
+                if not isinstance(loc_obj, dict):
+                    loc_obj = {}
                 addr = loc_obj.get("address", {})
+                if not isinstance(addr, dict):
+                    addr = {}
                 locality = addr.get("addressLocality") or ""
                 country = addr.get("addressCountry") or ""
+                if isinstance(country, dict):
+                    country = country.get("name") or country.get("identifier") or ""
+                if str(country).upper() in ("IL", "ISR"):
+                    country = "Israel"
                 if locality or country:
                     detected_loc = f"{locality}, {country}".strip(", ")
                 desc = js_data.get("description", "")
@@ -700,6 +770,8 @@ def extract_clean_text_from_soup(soup):
                     if len(clean_desc) > 200:
                         extracted_text = clean_desc[:6000]
                         break
+            if extracted_text:
+                break
         except Exception:
             pass
 
@@ -734,7 +806,9 @@ def fetch_job_details(job):
         r = requests.get(url, headers=HEADERS, timeout=8)
         if r.status_code == 200:
             soup = BeautifulSoup(r.text, "html.parser")
-            extracted_text, detected_loc = extract_clean_text_from_soup(soup)
+            extracted_text, extracted_loc = extract_clean_text_from_soup(soup)
+            if extracted_loc != "Unspecified":
+                detected_loc = extracted_loc
     except Exception:
         pass
 
@@ -795,8 +869,11 @@ def batch_verify_jobs_with_ai(jobs_batch):
     )
 
     location_clause = (
-        f"MUST be located in {TARGET_LOCATION} (Tel Aviv, Haifa, Herzliya, Jerusalem, etc., Hybrid, Remote {TARGET_LOCATION}, or an Israeli company with no foreign office mentioned). "
-        f"STRICTLY REJECT any position located outside {TARGET_LOCATION} (e.g. Germany, Walldorf, Berlin, Bangkok, London, New York, Poland, India, or having (m/f/d))."
+        f"If Detected Page Location explicitly names a location outside {TARGET_LOCATION}, reject the job. "
+        f"If it is Unspecified, evaluate the job's own title, URL, and description for location evidence such as {TARGET_LOCATION}, "
+        "an Israeli city, Hebrew text, or a .co.il domain. Approve only when the posting itself supports a location in Israel; "
+        "if that evidence is absent or ambiguous, reject. "
+        "Never infer location from the company name, registry label, headquarters, other job postings, or the absence of a foreign location."
         if IS_ISRAEL_TARGET else
         f"MUST match the target location: {TARGET_LOCATION}."
     )
@@ -1028,6 +1105,12 @@ def main():
             if len(txt) < 150:
                 print(f"  [X] SKIPPED (No readable description): {job['company']} - {job['title']}")
                 continue
+            if is_explicit_non_target_location(job.get("page_location")):
+                print(
+                    f"  [X] REJECTED (Explicit non-{TARGET_LOCATION} job location: "
+                    f"'{job.get('page_location', 'Unspecified')}'): {job['company']} - {job['title']}"
+                )
+                continue
             excessive = has_excessive_min_yoe(txt, max_allowed_yoe)
             if excessive:
                 print(f"  [X] REJECTED (Min YOE > {max_allowed_yoe}: '{excessive[1]}'): {job['company']} - {job['title']}")
@@ -1072,7 +1155,7 @@ def main():
                     ev = eval_map.get(idx)
                     h = compute_job_hash(job["company"], job["title"], job["url"])
 
-                    if ev and ev.get("approved"):
+                    if ev and is_complete_ai_approval(ev):
                         location = ev.get("detected_city") or TARGET_LOCATION
                         exp_sum = ev.get("experience_summary") or default_exp_label
 
@@ -1091,7 +1174,13 @@ def main():
                         seen_hashes.add(h)
                         print(f"  [✓] APPROVED: {job['company']} - {job['title']} [{location}] -> [Referral: {entry['referral_contact']}]")
                     else:
-                        reason = ev.get("rejection_reason") if ev else "Unconfirmed by AI"
+                        if ev:
+                            reason = (
+                                ev.get("rejection_reason")
+                                or "Required approval criteria were not all explicitly true"
+                            )
+                        else:
+                            reason = "Unconfirmed by AI"
                         print(f"  [X] REJECTED: {job['company']} - {job['title']} (Reason: {reason})")
 
                 checkpoint["confirmed_jobs"] = confirmed_new_jobs
