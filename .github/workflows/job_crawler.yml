@@ -31,7 +31,7 @@ jobs:
           pip install -r requirements.txt
           playwright install chromium
 
-      - name: Restore Seen Jobs from Data Branch
+      - name: Restore Runtime Data from Data Branch
         run: |
           restore_legacy_seen_jobs() {
             if [ -f seen_jobs.json ]; then
@@ -52,6 +52,9 @@ jobs:
             else
               restore_legacy_seen_jobs
             fi
+            if git cat-file -e origin/data:audit_report.json 2>/dev/null; then
+              git show origin/data:audit_report.json > audit_report.json
+            fi
           else
             status=$?
             if [ "$status" -ne 2 ]; then
@@ -68,12 +71,12 @@ jobs:
         run: |
           python job_crawler.py
 
-      - name: Commit and Push Seen Jobs to Data Branch
+      - name: Commit and Push Runtime Data to Data Branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          data_worktree="$RUNNER_TEMP/seen-jobs-data"
+          data_worktree="$RUNNER_TEMP/job-crawler-data"
           if git show-ref --verify --quiet refs/remotes/origin/data; then
             git worktree add --detach "$data_worktree" refs/remotes/origin/data
           else
@@ -82,13 +85,14 @@ jobs:
           fi
 
           cp seen_jobs.json "$data_worktree/seen_jobs.json"
+          cp audit_report.json "$data_worktree/audit_report.json"
           git -C "$data_worktree" config user.name "github-actions[bot]"
           git -C "$data_worktree" config user.email "github-actions[bot]@users.noreply.github.com"
-          git -C "$data_worktree" add -f seen_jobs.json
+          git -C "$data_worktree" add -f seen_jobs.json audit_report.json
           if git -C "$data_worktree" diff --cached --quiet; then
-            echo "Seen jobs database has no changes."
+            echo "Runtime data has no changes."
           else
-            git -C "$data_worktree" commit -m "Auto-update seen jobs database [skip ci]"
+            git -C "$data_worktree" commit -m "Auto-update crawler runtime data [skip ci]"
             git -C "$data_worktree" push origin HEAD:refs/heads/data
           fi
           git worktree remove --force "$data_worktree"

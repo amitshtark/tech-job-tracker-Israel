@@ -1,6 +1,8 @@
 .env
 config.local.json
 seen_jobs.json
+audit_report.json
+run_diagnostics.json
 master_companies_with_referrals.json
 master_companies_with_referrals.xlsx
 master_companies.json

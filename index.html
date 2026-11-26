@@ -611,6 +611,17 @@
       color: var(--status-green);
     }
 
+    .btn-audit {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+      padding: 7px 12px;
+    }
+
+    .btn-audit:hover {
+      background: var(--bg-hover);
+    }
+
     .modal-backdrop {
       display: none;
       position: fixed;
@@ -634,6 +645,91 @@
       width: 100%;
       padding: 22px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .audit-modal-card {
+      max-width: 900px;
+      max-height: min(90vh, 900px);
+      overflow-y: auto;
+    }
+
+    .audit-content {
+      display: grid;
+      gap: 16px;
+      color: var(--text-primary);
+    }
+
+    .audit-section {
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      background: var(--bg-surface);
+    }
+
+    .audit-section h3 {
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+    }
+
+    .audit-meta {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      margin-bottom: 12px;
+    }
+
+    .audit-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 8px;
+    }
+
+    .audit-metric {
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 9px 10px;
+    }
+
+    .audit-metric strong {
+      display: block;
+      font-size: 1.15rem;
+    }
+
+    .audit-metric span {
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+    }
+
+    .audit-list {
+      display: grid;
+      gap: 8px;
+      padding-inline-start: 20px;
+    }
+
+    .audit-list li,
+    .audit-empty {
+      font-size: 0.88rem;
+      overflow-wrap: anywhere;
+    }
+
+    .audit-link {
+      color: var(--ig-blue-hover);
+      text-decoration: none;
+    }
+
+    .audit-link:hover {
+      text-decoration: underline;
+    }
+
+    .audit-job {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 9px;
+      margin-top: 9px;
+    }
+
+    .audit-error {
+      color: var(--status-red);
+      font-weight: 600;
     }
 
     .modal-header {
@@ -707,6 +803,16 @@
       </div>
 
       <div class="header-actions">
+        <button id="auditBtn" class="btn btn-audit" title="הצגת דוח הבקרה של הריצה האחרונה">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19V5"></path>
+            <path d="M4 19h17"></path>
+            <rect x="7" y="12" width="3" height="4" rx="1"></rect>
+            <rect x="13" y="8" width="3" height="8" rx="1"></rect>
+            <rect x="19" y="4" width="3" height="12" rx="1"></rect>
+          </svg>
+          <span>דוח בקרה</span>
+        </button>
         <button id="referralsBtn" class="btn btn-referrals" title="טעינת רפרלים אישיים בדפדפן בלבד">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -882,6 +988,24 @@
     </div>
   </div>
 
+  <!-- Run Diagnostics and AI Audit Modal -->
+  <div id="auditModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="auditModalTitle">
+    <div class="modal-card audit-modal-card">
+      <div class="modal-header">
+        <div id="auditModalTitle" class="modal-title">דוח בקרה</div>
+        <button id="closeAuditModalBtn" class="btn btn-icon" title="סגור" aria-label="סגור">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div id="auditReportContent" class="audit-content">
+        <p class="audit-empty">טוען דוח בקרה...</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div id="toast" class="toast"></div>
 
@@ -897,6 +1021,8 @@
     const roleFilter = document.getElementById('roleFilter');
     const toast = document.getElementById('toast');
     const refreshBtn = document.getElementById('refreshBtn');
+    const auditModal = document.getElementById('auditModal');
+    const auditReportContent = document.getElementById('auditReportContent');
 
     function computeHash(company, title, url) {
       const str = `${(company || '').trim().toLowerCase()}::${(title || '').trim().toLowerCase()}::${(url || '').trim().toLowerCase()}`;
@@ -966,6 +1092,131 @@
           </div>
         `;
       }
+    }
+
+    async function fetchAuditReport() {
+      const urls = [];
+      const githubPagesUser = window.location.hostname.match(/^([^.]+)\.github\.io$/i);
+      const repository = window.location.pathname.split('/').filter(Boolean)[0];
+      if (githubPagesUser && repository) {
+        urls.push(
+          `https://raw.githubusercontent.com/${githubPagesUser[1]}/${repository}/data/audit_report.json?t=${Date.now()}`
+        );
+      }
+      urls.push('audit_report.json?t=' + Date.now());
+
+      let lastError = null;
+      for (const url of urls) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`Could not load ${url}`);
+          const report = await response.json();
+          if (!report || typeof report !== 'object' || Array.isArray(report)) {
+            throw new Error(`Invalid audit report from ${url}`);
+          }
+          return report.last_run || report;
+        } catch (error) {
+          lastError = error;
+          console.warn('Could not load audit report from ' + url + ':', error);
+        }
+      }
+      throw lastError || new Error('Could not load audit_report.json');
+    }
+
+    function safeHttpUrl(value) {
+      try {
+        const url = new URL(value, window.location.href);
+        return ['http:', 'https:'].includes(url.protocol) ? url.href : '';
+      } catch (error) {
+        return '';
+      }
+    }
+
+    function auditMetric(value, label) {
+      return `<div class="audit-metric"><strong>${escapeHtml(String(value ?? 0))}</strong><span>${escapeHtml(label)}</span></div>`;
+    }
+
+    function renderAuditReport(report) {
+      const companies = report.companies || {};
+      const filtering = report.filtering || {};
+      const ai = report.ai || {};
+      const methods = companies.scrape_methods || {};
+      const failures = companies.failure_breakdown || {};
+      const recommendations = Array.isArray(report.recommendations) ? report.recommendations : [];
+      const broken404 = Array.isArray(companies.broken_404) ? companies.broken_404 : [];
+      const demoted = Array.isArray(report.demoted_false_positives) ? report.demoted_false_positives : [];
+      const runDate = report.timestamp ? new Date(report.timestamp).toLocaleString('he-IL') : 'לא ידוע';
+      const auditStatus = report.audit_status || 'לא זמין';
+      const runStatus = report.status || 'לא ידוע';
+      const breakerStatus = ai.circuit_breaker_triggered ? 'הופעל' : 'לא הופעל';
+
+      const failureItems = Object.entries(failures).map(([reason, count]) =>
+        `<li>${escapeHtml(reason)}: ${escapeHtml(String(count))}</li>`
+      ).join('');
+      const brokenItems = broken404.map(company => {
+        const href = safeHttpUrl(company.url || '');
+        const companyName = escapeHtml(company.name || 'חברה לא ידועה');
+        const urlContent = href
+          ? `<a class="audit-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(company.url)}</a>`
+          : escapeHtml(company.url || 'ללא כתובת');
+        return `<li><strong>${companyName}</strong> — ${urlContent}</li>`;
+      }).join('');
+      const demotedItems = demoted.map(job =>
+        `<li class="audit-job"><strong>${escapeHtml(job.company || '')} — ${escapeHtml(job.title || '')}</strong>
+          <div>${escapeHtml(job.reason || 'נדחתה בבדיקה השנייה')}</div>
+          <a class="audit-link" href="${escapeHtml(safeHttpUrl(job.url || ''))}" target="_blank" rel="noopener noreferrer">${escapeHtml(job.url || '')}</a>
+        </li>`
+      ).join('');
+      const recommendationItems = recommendations.map(item => `<li>${escapeHtml(item)}</li>`).join('');
+      const failureBreakdown = failureItems || '<li class="audit-empty">לא נרשמו כשלי סריקה.</li>';
+      const brokenList = brokenItems || '<li class="audit-empty">לא נמצאו כתובות 404.</li>';
+      const demotedList = demotedItems || '<li class="audit-empty">לא זוהו חיוביים שגויים.</li>';
+      const recommendationsList = recommendationItems || '<li class="audit-empty">לא התקבלו המלצות.</li>';
+
+      auditReportContent.innerHTML = `
+        <section class="audit-section">
+          <h3>מצב הריצה</h3>
+          <p class="audit-meta">ריצה אחרונה: ${escapeHtml(runDate)} · סטטוס ריצה: ${escapeHtml(runStatus)}
+            · סטטוס ביקורת: ${escapeHtml(auditStatus)}
+            · מפסק 429: ${escapeHtml(breakerStatus)}</p>
+          ${report.audit_error ? `<p class="audit-meta audit-error">${escapeHtml(report.audit_error)}</p>` : ''}
+          ${report.audit_note ? `<p class="audit-meta">${escapeHtml(report.audit_note)}</p>` : ''}
+          <div class="audit-metrics">
+            ${auditMetric(`${companies.successful_scrapes || 0} / ${companies.total || 0}`, 'חברות נסרקו בהצלחה')}
+            ${auditMetric(companies.failed_scrapes || 0, 'סריקות שנכשלו')}
+            ${auditMetric(methods.ats_api || 0, 'סריקות ATS API')}
+            ${auditMetric(methods.html || 0, 'סריקות HTML')}
+            ${auditMetric(methods.playwright || 0, 'סריקות Playwright')}
+            ${auditMetric(filtering.candidate_links_found || 0, 'קישורי משרות שנמצאו')}
+            ${auditMetric(filtering.unseen_candidates || 0, 'מועמדות חדשות')}
+            ${auditMetric(filtering.skipped_short_description || 0, 'תיאור קצר מ-150 תווים')}
+            ${auditMetric(filtering.rejected_excessive_min_yoe || 0, 'נדחו לפי שנות ניסיון')}
+            ${auditMetric(filtering.rejected_location_gate || 0, 'נדחו לפי מיקום')}
+            ${auditMetric(filtering.playwright_detail_fetch_cap_hits || 0, 'עברו את מכסת Playwright')}
+            ${auditMetric(ai.batches_sent || 0, 'קבוצות שנשלחו ל-AI')}
+            ${auditMetric(ai.http_429_count || 0, 'תגובות 429')}
+            ${auditMetric(ai.final_approved_count || 0, 'משרות שאושרו סופית')}
+          </div>
+        </section>
+        <section class="audit-section">
+          <h3>כשלים לפי סיבה</h3>
+          <ul class="audit-list">${failureBreakdown}</ul>
+        </section>
+        <section class="audit-section">
+          <h3>מסקנות AI</h3>
+          <p>${escapeHtml(report.conclusions || 'לא נוצרו מסקנות AI לריצה זו.')}</p>
+          <h3>המלצות</h3>
+          <ul class="audit-list">${recommendationsList}</ul>
+        </section>
+        <section class="audit-section">
+          <h3>חיוביים שגויים שהוסרו בבדיקה השנייה (${demoted.length})</h3>
+          <ul class="audit-list">${demotedList}</ul>
+        </section>
+        <section class="audit-section">
+          <h3>חברות עם קישור 404 (${broken404.length})</h3>
+          <ul class="audit-list">${brokenList}</ul>
+        </section>
+      `;
     }
 
     function updateCounts() {
@@ -1205,6 +1456,28 @@
 
     document.querySelectorAll('.tab-btn, .stat-card').forEach(el => {
       el.addEventListener('click', () => setTab(el.dataset.tab));
+    });
+
+    document.getElementById('auditBtn').addEventListener('click', async () => {
+      auditModal.classList.add('open');
+      auditReportContent.innerHTML = '<p class="audit-empty">טוען דוח בקרה...</p>';
+      try {
+        const report = await fetchAuditReport();
+        renderAuditReport(report);
+      } catch (error) {
+        auditReportContent.innerHTML = `
+          <section class="audit-section">
+            <p class="audit-error">לא ניתן לטעון את audit_report.json.</p>
+            <p class="audit-meta">${escapeHtml(error.message || String(error))}</p>
+          </section>
+        `;
+      }
+    });
+    document.getElementById('closeAuditModalBtn').addEventListener('click', () => {
+      auditModal.classList.remove('open');
+    });
+    auditModal.addEventListener('click', event => {
+      if (event.target === auditModal) auditModal.classList.remove('open');
     });
 
     searchInput.addEventListener('input', renderJobs);

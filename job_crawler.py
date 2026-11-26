@@ -54,6 +54,7 @@ else:
 
 CONFIG_FILE = os.path.join(BASE_DIR, "config.json")
 SEEN_JOBS_FILE = os.path.join(BASE_DIR, "seen_jobs.json")
+AUDIT_REPORT_FILE = os.path.join(BASE_DIR, "audit_report.json")
 CHECKPOINT_FILE = os.path.join(BASE_DIR, "progress_checkpoint.json")
 OUTPUT_EXCEL = os.path.join(BASE_DIR, f"new_jobs_{datetime.now().strftime('%Y%m%d')}.xlsx")
 
@@ -103,7 +104,10 @@ HEADERS = {
 
 class GeminiRateLimitError(RuntimeError):
     """Raised when Gemini API returns HTTP 429 repeatedly."""
-    pass
+
+    def __init__(self, message, count=0):
+        super().__init__(message)
+        self.count = count
 
 
 def load_json(filepath, default_val):
@@ -119,6 +123,150 @@ def load_json(filepath, default_val):
 def save_json(filepath, data):
     with open(filepath, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def new_run_diagnostics(total_companies):
+    return {
+        "timestamp": datetime.now().isoformat(),
+        "status": "running",
+        "companies": {
+            "total": total_companies,
+            "successful_scrapes": 0,
+            "failed_scrapes": 0,
+            "scrape_methods": {
+                "ats_api": 0,
+                "html": 0,
+                "playwright": 0,
+                "unknown": 0,
+            },
+            "failure_breakdown": {},
+            "broken_404": [],
+        },
+        "filtering": {
+            "candidate_links_found": 0,
+            "unseen_candidates": 0,
+            "skipped_short_description": 0,
+            "rejected_excessive_min_yoe": 0,
+            "rejected_location_gate": 0,
+            "playwright_detail_fetch_cap_hits": 0,
+        },
+        "ai": {
+            "batches_sent": 0,
+            "http_429_count": 0,
+            "circuit_breaker_triggered": False,
+            "approved_jobs": [],
+            "rejected_sample": [],
+            "final_approved_count": 0,
+        },
+        "demoted_false_positives": [],
+        "conclusions": "",
+        "recommendations": [],
+    }
+
+
+def record_company_scrape(diagnostics, name, url, success, reason="", method="unknown"):
+    companies = diagnostics["companies"]
+    if success:
+        companies["successful_scrapes"] += 1
+        method_counts = companies["scrape_methods"]
+        method_counts[method if method in method_counts else "unknown"] += 1
+        return
+
+    companies["failed_scrapes"] += 1
+    reason_lower = str(reason).lower()
+    if "404" in reason_lower:
+        category = "404"
+    elif "403" in reason_lower:
+        category = "403"
+    elif "429" in reason_lower:
+        category = "429"
+    elif "linkedin" in reason_lower:
+        category = "LinkedIn"
+    elif "spa" in reason_lower or "client-side rendered" in reason_lower:
+        category = "SPA"
+    elif "timeout" in reason_lower:
+        category = "Timeout"
+    else:
+        category = str(reason or "Unknown")
+    breakdown = companies["failure_breakdown"]
+    breakdown[category] = breakdown.get(category, 0) + 1
+    if category == "404":
+        companies["broken_404"].append({"name": name, "url": url})
+
+
+def record_rejected_candidate(diagnostics, job, stage, reason):
+    ai_diagnostics = diagnostics["ai"]
+    sample = ai_diagnostics["rejected_sample"]
+    if len(sample) >= 10:
+        return
+    sample.append({
+        "company": job.get("company", ""),
+        "title": job.get("title", ""),
+        "url": job.get("url", ""),
+        "location": job.get("page_location", job.get("location", "Unspecified")),
+        "rejection_stage": stage,
+        "reason": str(reason),
+    })
+
+
+def record_playwright_detail_cap(diagnostics, eligible_count, max_pages):
+    cap_hits = max(0, eligible_count - max_pages)
+    diagnostics["filtering"]["playwright_detail_fetch_cap_hits"] = cap_hits
+    return cap_hits
+
+
+def apply_second_judge_results(confirmed_new_jobs, seen_jobs, approved_jobs, audit_result):
+    judgments = {
+        item.get("job_index"): item
+        for item in audit_result.get("second_judge", [])
+        if isinstance(item, dict)
+    }
+    demoted = []
+    demoted_hashes = set()
+    for index, job in enumerate(approved_jobs, 1):
+        judgment = judgments.get(index)
+        if judgment and is_complete_ai_approval(judgment):
+            continue
+
+        flags = (
+            "is_single_specific_job",
+            "is_target_role",
+            "is_matching_yoe",
+            "is_matching_location",
+        )
+        failed_checks = [flag for flag in flags if not judgment or judgment.get(flag) is not True]
+        reason = (judgment or {}).get("reason") or (judgment or {}).get("rejection_reason")
+        if not reason:
+            reason = (
+                "Second judge did not return a validation"
+                if not judgment else
+                "Second judge rejected: " + ", ".join(failed_checks or ["approved was not true"])
+            )
+        demoted.append({**job, "reason": str(reason), "failed_checks": failed_checks})
+        demoted_hashes.add(compute_job_hash(job["company"], job["title"], job["url"]))
+
+    if demoted_hashes:
+        confirmed_new_jobs[:] = [
+            job for job in confirmed_new_jobs
+            if compute_job_hash(job["company"], job["title"], job["url"]) not in demoted_hashes
+        ]
+        seen_jobs[:] = [
+            job for job in seen_jobs
+            if compute_job_hash(job["company"], job["title"], job["url"]) not in demoted_hashes
+        ]
+    return demoted
+
+
+def add_confirmed_jobs_to_seen(confirmed_new_jobs, seen_jobs):
+    seen_hashes = {
+        compute_job_hash(job["company"], job["title"], job["url"])
+        for job in seen_jobs
+    }
+    for job in confirmed_new_jobs:
+        job_hash = compute_job_hash(job["company"], job["title"], job["url"])
+        if job_hash not in seen_hashes:
+            seen_jobs.append(job)
+            seen_hashes.add(job_hash)
 
 
 def load_user_config():
@@ -367,6 +515,7 @@ def call_gemini_with_retries(payload, timeout=45):
         f"models/{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
     )
     max_attempts = 3
+    rate_limit_count = 0
 
     for attempt in range(1, max_attempts + 1):
         try:
@@ -376,8 +525,9 @@ def call_gemini_with_retries(payload, timeout=45):
 
             print(f"    [!] Gemini HTTP {res.status_code} ({attempt}/{max_attempts})")
             if res.status_code == 429:
+                rate_limit_count += 1
                 if attempt == max_attempts:
-                    raise GeminiRateLimitError("HTTP 429 rate/quota limit")
+                    raise GeminiRateLimitError("HTTP 429 rate/quota limit", count=rate_limit_count)
                 wait_time = 65
                 print(f"        Rate limit hit. Waiting {wait_time}s for window reset...")
                 time.sleep(wait_time)
@@ -639,34 +789,34 @@ def scrape_single_company(company_info):
     ).strip()
 
     if not url:
-        return name, False, [], "Missing career URL", company_info
+        return name, False, [], "Missing career URL", company_info, "unknown"
     if "linkedin.com/in/" in url or "linkedin.com/company/" in url:
-        return name, False, [], "LinkedIn profile/company page (direct outreach recommended)", company_info
+        return name, False, [], "LinkedIn profile/company page (direct outreach recommended)", company_info, "unknown"
 
     ats_handled, ats_candidates = try_ats_api_scrape(company_info, url)
     if ats_handled:
-        return name, True, ats_candidates, "ATS API scrape successful", company_info
+        return name, True, ats_candidates, "ATS API scrape successful", company_info, "ats_api"
 
     try:
         resp = requests.get(url, headers=HEADERS, timeout=8)
         if resp.status_code in [403, 429, 503]:
-            return name, False, [], f"Blocked by server (HTTP {resp.status_code})", company_info
+            return name, False, [], f"Blocked by server (HTTP {resp.status_code})", company_info, "unknown"
         if resp.status_code != 200:
-            return name, False, [], f"HTTP error {resp.status_code}", company_info
+            return name, False, [], f"HTTP error {resp.status_code}", company_info, "unknown"
         if "challenge-running" in resp.text or "cf-browser-verification" in resp.text:
-            return name, False, [], "Cloudflare bot challenge detected", company_info
+            return name, False, [], "Cloudflare bot challenge detected", company_info, "unknown"
 
         soup = BeautifulSoup(resp.text, "html.parser")
         body_len = len(soup.get_text(strip=True))
         found_candidates = extract_candidates_from_soup(soup, url, company_info)
 
         if len(found_candidates) == 0 and body_len < 600:
-            return name, False, [], "Client-side rendered SPA (requires JS/browser)", company_info
+            return name, False, [], "Client-side rendered SPA (requires JS/browser)", company_info, "unknown"
 
-        return name, True, found_candidates, "Scrape successful", company_info
+        return name, True, found_candidates, "Scrape successful", company_info, "html"
 
     except requests.exceptions.RequestException as e:
-        return name, False, [], f"Network exception: {type(e).__name__}", company_info
+        return name, False, [], f"Network exception: {type(e).__name__}", company_info, "unknown"
 
 
 def _setup_fast_playwright_page(context):
@@ -819,12 +969,15 @@ def fetch_job_details(job):
     return job
 
 
-def fetch_missing_details_with_playwright(jobs_list, max_pages=40):
+def fetch_missing_details_with_playwright(jobs_list, max_pages=40, diagnostics=None):
     """For candidate jobs where static requests returned empty/JS shell, render with Playwright (capped for speed)."""
     if not PLAYWRIGHT_AVAILABLE:
         return jobs_list
 
-    missing = [j for j in jobs_list if len(j.get("requirements_text", "")) < 150][:max_pages]
+    eligible = [j for j in jobs_list if len(j.get("requirements_text", "")) < 150]
+    if diagnostics is not None:
+        record_playwright_detail_cap(diagnostics, len(eligible), max_pages)
+    missing = eligible[:max_pages]
     if not missing:
         return jobs_list
 
@@ -944,6 +1097,52 @@ def batch_verify_jobs_with_ai(jobs_batch):
     return parsed.get("evaluations", [])
 
 
+def audit_run_with_ai(diagnostics, config=None):
+    config = config or USER_CONFIG
+    audit_input = {
+        "config": {
+            "min_yoe": config.get("min_yoe", 0),
+            "max_yoe": config.get("max_yoe", 2),
+            "location": config.get("location", TARGET_LOCATION),
+            "target_roles": config.get("target_roles", []),
+            "excluded_roles": config.get("excluded_roles", []),
+            "include_student_and_graduate": config.get("include_student_and_graduate", True),
+        },
+        "funnel": diagnostics,
+    }
+    prompt = (
+        "You are auditing one job-crawler run. Perform two tasks using only the supplied data.\n"
+        "1. Second-judge EVERY job in funnel.ai.approved_jobs. Strictly verify it is one specific vacancy, "
+        "matches config.target_roles and not config.excluded_roles, meets the configured minimum/maximum "
+        "years-of-experience range, and matches config.location based on evidence in the job itself. "
+        "Do not infer location from a company name. Return exactly one second_judge item per approved job, "
+        "with its 1-based job_index, the four boolean flags is_single_specific_job, is_target_role, "
+        "is_matching_yoe, is_matching_location, approved (true only when all checks pass), and a concise reason.\n"
+        "2. Analyze funnel counts and the rejected sample for likely false negatives and bottlenecks. "
+        "Return a concise Hebrew conclusions string and 2-4 concrete, actionable recommendations in Hebrew. "
+        "Recommendations should cite observed evidence where possible; distinguish a measured issue from a hypothesis.\n"
+        "Output only valid JSON with this shape:\n"
+        '{"second_judge":[{"job_index":1,"is_single_specific_job":true,"is_target_role":true,'
+        '"is_matching_yoe":true,"is_matching_location":true,"approved":true,"reason":""}],'
+        '"conclusions":"...", "recommendations":["..."]}\n'
+        "Audit input:\n"
+        f"{json.dumps(audit_input, ensure_ascii=False)}"
+    )
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {
+            "temperature": 0.0,
+            "responseMimeType": "application/json",
+        },
+    }
+    response = call_gemini_with_retries(payload, timeout=60)
+    raw_text = response["candidates"][0]["content"]["parts"][0]["text"].strip()
+    parsed = json.loads(raw_text)
+    if not isinstance(parsed, dict):
+        raise ValueError("Gemini audit response must be a JSON object")
+    return parsed
+
+
 # --- Excel Generation ---
 
 def export_to_excel(confirmed_jobs, unreached_companies, filepath):
@@ -1018,6 +1217,47 @@ def main():
     confirmed_new_jobs = checkpoint.get("confirmed_jobs", [])
     failed_companies = checkpoint.get("failed_companies", [])
     direct_candidates = checkpoint.get("pending_candidates", [])
+    approved_audit_jobs = checkpoint.get("approved_audit_jobs", [])
+    if confirmed_new_jobs and not approved_audit_jobs:
+        approved_audit_jobs = [
+            {
+                "company": job["company"],
+                "title": job["title"],
+                "url": job["url"],
+                "location": job.get("location", "Unspecified"),
+                "experience": job.get("experience", ""),
+                "text_snippet": "",
+            }
+            for job in confirmed_new_jobs
+        ]
+
+    diagnostics = new_run_diagnostics(len(companies))
+    diagnostics["ai"]["approved_jobs"] = approved_audit_jobs
+    diagnostics["ai"]["final_approved_count"] = len(confirmed_new_jobs)
+
+    failures_by_name = {item.get("name"): item for item in failed_companies}
+    scrape_methods = checkpoint.get("scrape_methods", {})
+    company_results = {}
+    for company_name in scraped_set:
+        prior_failure = failures_by_name.get(company_name)
+        if prior_failure:
+            company_results[company_name] = {
+                "success": False,
+                "method": "unknown",
+                "reason": prior_failure.get("reason", "Unknown"),
+                "url": prior_failure.get("link", ""),
+            }
+        else:
+            company_results[company_name] = {
+                "success": True,
+                "method": scrape_methods.get(company_name, "unknown"),
+                "reason": "",
+                "url": (
+                    companies_by_name.get(company_name, {}).get("official_scrape_url")
+                    or companies_by_name.get(company_name, {}).get("career_url")
+                    or companies_by_name.get(company_name, {}).get("link", "")
+                ),
+            }
 
     if scraped_set:
         print(f"[*] Resuming from checkpoint: {len(scraped_set)}/{len(companies)} processed, {len(confirmed_new_jobs)} jobs found.")
@@ -1039,11 +1279,22 @@ def main():
                 c = future_to_company[future]
                 completed_count += 1
                 try:
-                    c_name, success, jobs, reason, c_info = future.result()
+                    c_name, success, jobs, reason, c_info, method = future.result()
+                    company_url = (
+                        c_info.get("official_scrape_url")
+                        or c_info.get("career_url")
+                        or c_info.get("link", "")
+                    )
+                    company_results[c_name] = {
+                        "success": success,
+                        "method": method,
+                        "reason": reason,
+                        "url": company_url,
+                    }
                     if not success:
                         failed_companies.append({
                             "name": c_name,
-                            "link": c_info.get("career_url") or c_info.get("link", ""),
+                            "link": company_url,
                             "referral_contact": c_info.get("referral_contact", ""),
                             "reason": reason
                         })
@@ -1054,9 +1305,16 @@ def main():
                     scraped_set.add(c["name"])
 
                 except Exception as exc:
+                    company_url = c.get("official_scrape_url") or c.get("career_url") or c.get("link", "")
+                    company_results[c["name"]] = {
+                        "success": False,
+                        "method": "unknown",
+                        "reason": f"Execution error: {exc}",
+                        "url": company_url,
+                    }
                     failed_companies.append({
                         "name": c["name"],
-                        "link": c.get("career_url") or c.get("link", ""),
+                        "link": company_url,
                         "referral_contact": c.get("referral_contact", ""),
                         "reason": f"Execution error: {exc}"
                     })
@@ -1066,20 +1324,58 @@ def main():
                     checkpoint["scraped_companies"] = list(scraped_set)
                     checkpoint["failed_companies"] = failed_companies
                     checkpoint["pending_candidates"] = direct_candidates
+                    checkpoint["scrape_methods"] = {
+                        name: result["method"]
+                        for name, result in company_results.items()
+                        if result["success"]
+                    }
                     save_json(CHECKPOINT_FILE, checkpoint)
                     print(f"  -> Progress: {completed_count}/{len(remaining_companies)} companies scraped ({len(direct_candidates)} candidates found)...")
 
         recovered, failed_companies = scrape_spa_with_playwright(failed_companies, companies_by_name)
         if recovered:
             direct_candidates.extend(recovered)
+            for company_name in {job["company"] for job in recovered}:
+                previous = company_results.get(company_name, {})
+                company_results[company_name] = {
+                    **previous,
+                    "success": True,
+                    "method": "playwright",
+                    "reason": "",
+                }
             checkpoint["failed_companies"] = failed_companies
             checkpoint["pending_candidates"] = direct_candidates
+            checkpoint["scrape_methods"] = {
+                name: result["method"]
+                for name, result in company_results.items()
+                if result["success"]
+            }
             save_json(CHECKPOINT_FILE, checkpoint)
 
         export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
 
-    print(f"\n[Stage 1 Summary] Successful: {len(companies) - len(failed_companies)} | Un-scraped/LinkedIn: {len(failed_companies)}")
+    diagnostics["companies"].update({
+        "successful_scrapes": 0,
+        "failed_scrapes": 0,
+        "failure_breakdown": {},
+        "broken_404": [],
+        "scrape_methods": {"ats_api": 0, "html": 0, "playwright": 0, "unknown": 0},
+    })
+    for company_name, result in company_results.items():
+        record_company_scrape(
+            diagnostics,
+            company_name,
+            result["url"],
+            result["success"],
+            result["reason"],
+            result["method"],
+        )
+    print(
+        f"\n[Stage 1 Summary] Successful: {diagnostics['companies']['successful_scrapes']} | "
+        f"Failed: {diagnostics['companies']['failed_scrapes']}"
+    )
     print(f"[*] Total candidate links collected: {len(direct_candidates)}")
+    diagnostics["filtering"]["candidate_links_found"] = len(direct_candidates)
 
     unique_candidates = []
     candidate_hashes = set()
@@ -1090,6 +1386,7 @@ def main():
             unique_candidates.append(cand)
 
     print(f"[*] Brand-new unseen candidates to process: {len(unique_candidates)}")
+    diagnostics["filtering"]["unseen_candidates"] = len(unique_candidates)
 
     # --- STAGE 2: Parallel Page Details Fetching + Playwright + Deterministic YOE Guard ---
     if unique_candidates:
@@ -1097,7 +1394,11 @@ def main():
         with ThreadPoolExecutor(max_workers=8) as executor:
             fetched_candidates = list(executor.map(fetch_job_details, unique_candidates))
 
-        fetched_candidates = fetch_missing_details_with_playwright(fetched_candidates, max_pages=40)
+        fetched_candidates = fetch_missing_details_with_playwright(
+            fetched_candidates,
+            max_pages=40,
+            diagnostics=diagnostics,
+        )
 
         max_allowed_yoe = int(USER_CONFIG.get("max_yoe", 2))
         ai_ready_candidates = []
@@ -1106,16 +1407,32 @@ def main():
             txt = job.get("requirements_text", "").strip()
             if len(txt) < 150:
                 print(f"  [X] SKIPPED (No readable description): {job['company']} - {job['title']}")
+                diagnostics["filtering"]["skipped_short_description"] += 1
+                record_rejected_candidate(diagnostics, job, "description_gate", "Description shorter than 150 characters")
                 continue
             if is_explicit_non_target_location(job.get("page_location")):
                 print(
                     f"  [X] REJECTED (Explicit non-{TARGET_LOCATION} job location: "
                     f"'{job.get('page_location', 'Unspecified')}'): {job['company']} - {job['title']}"
                 )
+                diagnostics["filtering"]["rejected_location_gate"] += 1
+                record_rejected_candidate(
+                    diagnostics,
+                    job,
+                    "location_gate",
+                    f"Explicit non-{TARGET_LOCATION} location: {job.get('page_location', 'Unspecified')}",
+                )
                 continue
             excessive = has_excessive_min_yoe(txt, max_allowed_yoe)
             if excessive:
                 print(f"  [X] REJECTED (Min YOE > {max_allowed_yoe}: '{excessive[1]}'): {job['company']} - {job['title']}")
+                diagnostics["filtering"]["rejected_excessive_min_yoe"] += 1
+                record_rejected_candidate(
+                    diagnostics,
+                    job,
+                    "experience_gate",
+                    f"Minimum YOE exceeds {max_allowed_yoe}: {excessive[1]}",
+                )
                 continue
             ai_ready_candidates.append(job)
 
@@ -1136,13 +1453,16 @@ def main():
                     time.sleep(5)  # Proactive rate-limit pacing
 
                 print(f"[*] Sending Batch {b_idx}/{len(batches)} ({len(batch)} jobs) to Gemini...")
+                diagnostics["ai"]["batches_sent"] += 1
                 try:
                     evaluations = batch_verify_jobs_with_ai(batch)
                     consecutive_429 = 0
-                except GeminiRateLimitError:
+                except GeminiRateLimitError as exc:
                     consecutive_429 += 1
+                    diagnostics["ai"]["http_429_count"] += exc.count
                     print(f"    [!] Batch {b_idx} failed due to HTTP 429 ({consecutive_429}/3 consecutive limit errors).")
                     if consecutive_429 >= 3:
+                        diagnostics["ai"]["circuit_breaker_triggered"] = True
                         print("\n[!] CIRCUIT BREAKER TRIGGERED: Gemini quota exhausted (3 consecutive 429s).")
                         print("[*] Stopping AI stage safely to preserve confirmed jobs and avoid wasting runner time.")
                         break
@@ -1172,8 +1492,17 @@ def main():
                             "discovered_at": datetime.now().isoformat()
                         }
                         confirmed_new_jobs.append(entry)
-                        seen_jobs.append(entry)
                         seen_hashes.add(h)
+                        approved_audit_job = {
+                            "company": job["company"],
+                            "title": job["title"],
+                            "url": job["url"],
+                            "location": location,
+                            "experience": exp_sum,
+                            "text_snippet": job.get("requirements_text", "")[:600],
+                        }
+                        approved_audit_jobs.append(approved_audit_job)
+                        diagnostics["ai"]["approved_jobs"] = approved_audit_jobs
                         print(f"  [✓] APPROVED: {job['company']} - {job['title']} [{location}] -> [Referral: {entry['referral_contact']}]")
                     else:
                         if ev:
@@ -1184,15 +1513,55 @@ def main():
                         else:
                             reason = "Unconfirmed by AI"
                         print(f"  [X] REJECTED: {job['company']} - {job['title']} (Reason: {reason})")
+                        record_rejected_candidate(diagnostics, job, "ai_verification", reason)
 
                 checkpoint["confirmed_jobs"] = confirmed_new_jobs
+                checkpoint["approved_audit_jobs"] = approved_audit_jobs
                 checkpoint["pending_candidates"] = []
                 save_json(CHECKPOINT_FILE, checkpoint)
-                save_json(SEEN_JOBS_FILE, seen_jobs)
                 export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
 
     # --- STAGE 4: Finalization ---
+    diagnostics["ai"]["final_approved_count"] = len(confirmed_new_jobs)
+    audit_result = None
+    if diagnostics["ai"]["circuit_breaker_triggered"]:
+        diagnostics["audit_status"] = "skipped_429_circuit_breaker"
+        diagnostics["audit_note"] = "AI audit skipped because the Gemini 429 circuit breaker was triggered."
+    else:
+        try:
+            audit_result = audit_run_with_ai(diagnostics)
+            diagnostics["conclusions"] = str(audit_result.get("conclusions", ""))
+            recommendations = audit_result.get("recommendations", [])
+            diagnostics["recommendations"] = [
+                str(item) for item in recommendations if isinstance(item, (str, int, float))
+            ][:4] if isinstance(recommendations, list) else []
+            diagnostics["demoted_false_positives"] = apply_second_judge_results(
+                confirmed_new_jobs,
+                seen_jobs,
+                approved_audit_jobs,
+                audit_result,
+            )
+            diagnostics["second_judge"] = audit_result.get("second_judge", [])
+            diagnostics["audit_status"] = "completed"
+        except Exception as exc:
+            diagnostics["audit_status"] = "error"
+            diagnostics["audit_error"] = f"{type(exc).__name__}: {exc}"
+            print(f"[!] AI audit failed: {diagnostics['audit_error']}")
+
+    diagnostics["ai"]["final_approved_count"] = len(confirmed_new_jobs)
+    diagnostics["timestamp"] = datetime.now().isoformat()
+    diagnostics["status"] = "completed"
+
+    # Newly approved jobs are persisted only after the second judge has had a chance to demote them.
+    add_confirmed_jobs_to_seen(confirmed_new_jobs, seen_jobs)
     save_json(SEEN_JOBS_FILE, seen_jobs)
+    audit_history = load_json(AUDIT_REPORT_FILE, {})
+    runs = audit_history.get("runs", []) if isinstance(audit_history, dict) else []
+    if not isinstance(runs, list):
+        runs = []
+    runs.append(diagnostics)
+    report = {"last_run": diagnostics, "runs": runs[-5:]}
+    save_json(AUDIT_REPORT_FILE, report)
     export_to_excel(confirmed_new_jobs, failed_companies, OUTPUT_EXCEL)
 
     if os.path.exists(CHECKPOINT_FILE):

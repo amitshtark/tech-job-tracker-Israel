@@ -8,16 +8,187 @@ from bs4 import BeautifulSoup
 
 import job_crawler
 from job_crawler import (
+    apply_second_judge_results,
+    add_confirmed_jobs_to_seen,
+    audit_run_with_ai,
     batch_verify_jobs_with_ai,
     extract_candidates_from_soup,
     extract_clean_text_from_soup,
     has_explicit_target_location,
     is_explicit_non_target_location,
     is_complete_ai_approval,
+    new_run_diagnostics,
+    record_company_scrape,
+    record_playwright_detail_cap,
+    record_rejected_candidate,
+    call_gemini_with_retries,
 )
 
 
 class JobLocationTests(unittest.TestCase):
+    def test_run_diagnostics_track_scrape_methods_failures_and_rejections(self):
+        diagnostics = new_run_diagnostics(2)
+        record_company_scrape(
+            diagnostics,
+            "Example",
+            "https://example.com/careers",
+            True,
+            method="ats_api",
+        )
+        record_company_scrape(
+            diagnostics,
+            "Broken",
+            "https://broken.example/jobs",
+            False,
+            reason="HTTP error 404",
+        )
+        record_rejected_candidate(
+            diagnostics,
+            {"company": "Example", "title": "Engineer", "url": "https://example.com/job"},
+            "description_gate",
+            "Description shorter than 150 characters",
+        )
+        self.assertEqual(record_playwright_detail_cap(diagnostics, 42, 40), 2)
+
+        self.assertEqual(diagnostics["companies"]["successful_scrapes"], 1)
+        self.assertEqual(diagnostics["companies"]["failed_scrapes"], 1)
+        self.assertEqual(diagnostics["companies"]["scrape_methods"]["ats_api"], 1)
+        self.assertEqual(diagnostics["companies"]["failure_breakdown"], {"404": 1})
+        self.assertEqual(
+            diagnostics["companies"]["broken_404"],
+            [{"name": "Broken", "url": "https://broken.example/jobs"}],
+        )
+        self.assertEqual(
+            diagnostics["ai"]["rejected_sample"][0]["rejection_stage"],
+            "description_gate",
+        )
+        self.assertEqual(diagnostics["filtering"]["playwright_detail_fetch_cap_hits"], 2)
+
+    def test_second_judge_removes_false_positive_before_seen_jobs_save(self):
+        false_positive = {
+            "company": "Example",
+            "title": "Senior Backend Engineer",
+            "url": "https://example.com/jobs/senior-backend",
+            "location": "Tel Aviv",
+            "experience": "5+ years",
+            "text_snippet": "Requires at least five years.",
+        }
+        valid_job = {
+            "company": "Example",
+            "title": "Backend Engineer",
+            "url": "https://example.com/jobs/backend",
+            "location": "Tel Aviv",
+            "experience": "0-2 years",
+        }
+        false_positive_hash = job_crawler.compute_job_hash(
+            false_positive["company"],
+            false_positive["title"],
+            false_positive["url"],
+        )
+        confirmed_new_jobs = [false_positive.copy(), valid_job.copy()]
+        seen_jobs = [{"company": "Existing", "title": "Engineer", "url": "https://example.com/old"}]
+        audit_result = {
+            "second_judge": [{
+                "job_index": 1,
+                "is_single_specific_job": True,
+                "is_target_role": True,
+                "is_matching_yoe": False,
+                "is_matching_location": True,
+                "approved": False,
+                "reason": "Requires more experience than configured",
+            }, {
+                "job_index": 2,
+                "is_single_specific_job": True,
+                "is_target_role": True,
+                "is_matching_yoe": True,
+                "is_matching_location": True,
+                "approved": True,
+                "reason": "",
+            }],
+        }
+
+        demoted = apply_second_judge_results(
+            confirmed_new_jobs,
+            seen_jobs,
+            [false_positive, valid_job],
+            audit_result,
+        )
+        add_confirmed_jobs_to_seen(confirmed_new_jobs, seen_jobs)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            seen_jobs_path = Path(temp_dir, "seen_jobs.json")
+            job_crawler.save_json(str(seen_jobs_path), seen_jobs)
+            saved_jobs = json.loads(seen_jobs_path.read_text(encoding="utf-8"))
+
+        self.assertEqual(confirmed_new_jobs, [valid_job])
+        self.assertEqual(len(demoted), 1)
+        self.assertEqual(demoted[0]["reason"], "Requires more experience than configured")
+        saved_hashes = {
+            job_crawler.compute_job_hash(item["company"], item["title"], item["url"])
+            for item in saved_jobs
+        }
+        self.assertNotIn(false_positive_hash, saved_hashes)
+        self.assertIn(
+            job_crawler.compute_job_hash(valid_job["company"], valid_job["title"], valid_job["url"]),
+            saved_hashes,
+        )
+
+    def test_gemini_rate_limit_error_tracks_exact_429_responses(self):
+        responses = [
+            type("Response", (), {"status_code": 429, "text": "rate limited"})(),
+            type("Response", (), {"status_code": 503, "text": "unavailable"})(),
+            type("Response", (), {"status_code": 429, "text": "rate limited"})(),
+        ]
+        with (
+            patch.object(job_crawler, "GEMINI_API_KEY", "test-key"),
+            patch.object(job_crawler.requests, "post", side_effect=responses),
+            patch.object(job_crawler.time, "sleep"),
+            self.assertRaises(job_crawler.GeminiRateLimitError) as raised,
+        ):
+            call_gemini_with_retries({"contents": []})
+
+        self.assertEqual(raised.exception.count, 2)
+
+    def test_ai_audit_makes_one_call_with_config_and_funnel_evidence(self):
+        response_body = {
+            "second_judge": [],
+            "conclusions": "נמצאו צווארי בקבוק.",
+            "recommendations": ["בדקו את מגבלת Playwright.", "תקנו קישורי 404."],
+        }
+        response = {
+            "candidates": [{
+                "content": {"parts": [{"text": json.dumps(response_body, ensure_ascii=False)}]}
+            }]
+        }
+        diagnostics = new_run_diagnostics(1)
+        diagnostics["ai"]["approved_jobs"] = [{
+            "company": "Example",
+            "title": "Backend Engineer",
+            "url": "https://example.com/job",
+            "location": "Tel Aviv",
+            "experience": "0-2 years",
+            "text_snippet": "Role text for second-judge verification",
+        }]
+        diagnostics["ai"]["rejected_sample"] = [{
+            "company": "Example",
+            "title": "Engineer",
+            "url": "https://example.com/other",
+            "rejection_stage": "description_gate",
+            "reason": "Description shorter than 150 characters",
+        }]
+
+        with patch("job_crawler.call_gemini_with_retries", return_value=response) as gemini_call:
+            result = audit_run_with_ai(
+                diagnostics,
+                {"min_yoe": 0, "max_yoe": 2, "location": "Israel", "target_roles": ["Backend"]},
+            )
+
+        self.assertEqual(result, response_body)
+        gemini_call.assert_called_once()
+        prompt = gemini_call.call_args.args[0]["contents"][0]["parts"][0]["text"]
+        self.assertIn("Role text for second-judge verification", prompt)
+        self.assertIn("Description shorter than 150 characters", prompt)
+        self.assertIn('"target_roles": ["Backend"]', prompt)
+
     def test_config_local_json_overrides_config_json(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             config_path = Path(temp_dir, "config.json")
