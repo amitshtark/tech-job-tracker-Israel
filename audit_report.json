@@ -1,0 +1,446 @@
+{
+  "last_run": {
+    "timestamp": "2026-11-26T16:11:59.638849",
+    "status": "completed",
+    "companies": {
+      "total": 328,
+      "successful_scrapes": 250,
+      "failed_scrapes": 78,
+      "scrape_methods": {
+        "ats_api": 5,
+        "html": 242,
+        "playwright": 3,
+        "unknown": 0
+      },
+      "failure_breakdown": {
+        "403": 24,
+        "Network exception: ConnectionError": 5,
+        "404": 16,
+        "429": 6,
+        "LinkedIn": 6,
+        "SPA": 10,
+        "Network exception: SSLError": 2,
+        "HTTP error 247": 1,
+        "Timeout": 4,
+        "HTTP error 400": 1,
+        "HTTP error 520": 1,
+        "HTTP error 491": 1,
+        "HTTP error 502": 1
+      },
+      "broken_404": [
+        {
+          "name": "Altshuler Shaham",
+          "url": "https://careers.topmatch.co.il/AltshulerShaham/"
+        },
+        {
+          "name": "Anodot",
+          "url": "https://www.anodot.com/careers/"
+        },
+        {
+          "name": "Cadence Israel",
+          "url": "https://cadence.wd1.myworkdayjobs.com/CADENCE"
+        },
+        {
+          "name": "Capow",
+          "url": "https://employer.dueto.io/capow/career-website/positions"
+        },
+        {
+          "name": "Dig",
+          "url": "https://employer.dueto.io/dig-ai/career-website/positions"
+        },
+        {
+          "name": "Habana Labs (Intel)",
+          "url": "https://habana.ai/careers/"
+        },
+        {
+          "name": "KPMG",
+          "url": "https://kpmg.co.il/technologyconsulting/careers/jobs"
+        },
+        {
+          "name": "Log-On Software",
+          "url": "https://www.log-on.com/careers"
+        },
+        {
+          "name": "matrix",
+          "url": "https://www.matrix.co.il/careers/"
+        },
+        {
+          "name": "Prelysis",
+          "url": "https://prelysis.com/careers/"
+        },
+        {
+          "name": "Run:ai",
+          "url": "https://www.run.ai/careers"
+        },
+        {
+          "name": "Speedata",
+          "url": "https://www.speedata.io/careers/"
+        },
+        {
+          "name": "Sony Semiconductor Israel",
+          "url": "https://www.sony-semicon.com/en/company/careers.html"
+        },
+        {
+          "name": "Teva",
+          "url": "https://www.tevapharm.com/careers/"
+        },
+        {
+          "name": "Tranzila",
+          "url": "https://www.tranzila.com/careers/"
+        },
+        {
+          "name": "Yad2",
+          "url": "https://employer.dueto.io/yad_2/career-website/positions"
+        }
+      ]
+    },
+    "filtering": {
+      "candidate_links_found": 235,
+      "unseen_candidates": 186,
+      "skipped_short_description": 4,
+      "rejected_excessive_min_yoe": 42,
+      "rejected_location_gate": 105,
+      "playwright_detail_fetch_cap_hits": 0
+    },
+    "ai": {
+      "batches_sent": 5,
+      "http_429_count": 0,
+      "circuit_breaker_triggered": false,
+      "approved_jobs": [
+        {
+          "company": "Applied Materials",
+          "title": "Algorithm Research Engineer",
+          "url": "https://jobs.appliedmaterials.com/job/rehovot/algorithm-research-engineer/95/99385682432",
+          "location": "Rehovot",
+          "experience": "Junior-friendly research engineering role",
+          "text_snippet": "Who We Are\nApplied Materials is the global leader in materials science and engineering solutions that are at the foundation of virtually every new semiconductor chip and advanced display in the world. The equipment that we create and service is essential to advancing AI and accelerating the commercialization of next-generation semiconductor chips. Join us and push the boundaries of materials science and engineering in a company at the foundation of the electronics industry. The work we do together advances the world’s technology.\nWhat We Offer\nLocation:\nRehovot,ISR\nYou’ll benefit from a suppor"
+        }
+      ],
+      "rejected_sample": [
+        {
+          "company": "AI21 Labs",
+          "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
+          "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/",
+          "location": "Tel Aviv",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 3+ years"
+        },
+        {
+          "company": "AllCloud",
+          "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
+          "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all",
+          "location": "București, RO",
+          "rejection_stage": "location_gate",
+          "reason": "Explicit non-Israel location: București, RO"
+        },
+        {
+          "company": "AllCloud",
+          "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
+          "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all",
+          "location": "Romania",
+          "rejection_stage": "location_gate",
+          "reason": "Explicit non-Israel location: Romania"
+        },
+        {
+          "company": "AllCloud",
+          "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+          "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
+          "location": "București, RO",
+          "rejection_stage": "location_gate",
+          "reason": "Explicit non-Israel location: București, RO"
+        },
+        {
+          "company": "AllCloud",
+          "title": "Forward Deployed Engineer Professional Services  ·  Full-time  ·  Intermediate",
+          "url": "https://allcloud.io/careers/co/romania/ED.57F/forward-deployed-engineer/all",
+          "location": "Romania",
+          "rejection_stage": "location_gate",
+          "reason": "Explicit non-Israel location: Romania"
+        },
+        {
+          "company": "apple",
+          "title": "PHY Firmware Design & Development Engineer",
+          "url": "https://jobs.apple.com/en-il/details/200696454-0881/phy-firmware-design-development-engineer?team=HRDWR",
+          "location": "Israel",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+        },
+        {
+          "company": "apple",
+          "title": "PHY Firmware Design & Development Engineer",
+          "url": "https://jobs.apple.com/en-il/details/200696454-0865/phy-firmware-design-development-engineer?team=HRDWR",
+          "location": "Herzliya",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+        },
+        {
+          "company": "apple",
+          "title": "VLSI Product Engineer",
+          "url": "https://jobs.apple.com/en-il/details/200695423-1451/vlsi-product-engineer?team=HRDWR",
+          "location": "Haifa",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+        },
+        {
+          "company": "apple",
+          "title": "VLSI Product Engineer",
+          "url": "https://jobs.apple.com/en-il/details/200695423-0865/vlsi-product-engineer?team=HRDWR",
+          "location": "Herzliya",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+        },
+        {
+          "company": "apple",
+          "title": "Embedded Engineer for the Silicon validation team",
+          "url": "https://jobs.apple.com/en-il/details/200694733-1451/embedded-engineer-for-the-silicon-validation-team?team=HRDWR",
+          "location": "Haifa",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: minimum of 3 years of"
+        }
+      ],
+      "final_approved_count": 1
+    },
+    "demoted_false_positives": [],
+    "conclusions": "ריצת הזחילה מציגה שיעור כישלונות גבוה יחסית בגירוד אתרים (78 שגיאות מתוך 328 חברות, בעיקר שגיאות 403 ו-404) המעיד על חסימות או קישורים שבורים. בנוסף, מנגנון הסינון פסל כמות משמעותית של משרות עקב הגבלת מיקום (105) ושנות ניסיון (42), אך נראה שמסנן שנות הניסיון פועל היטב מול משרות בכירות (כגון Apple).",
+    "recommendations": [
+      "יש לעדכן או להסיר כתובות URL שבורות ברשימת החברות (כגון Anodot, Cadence Israel וכו') המייצרות שגיאות 404.",
+      "מומלץ לשפר את טיפול ה-Scraping מול שגיאות 403 (כגון שימוש ב-Proxies או התאמת User-Agents) כדי להקטין את כשלונות הגירוד.",
+      "כדאי לבחון מחדש את שער המיקום (location_gate) כדי לוודא שמשרות רלוונטיות בישראל אינן נדחות בטעות, בהתחשב בכך ש-105 משרות נפסלו בשלב זה."
+    ],
+    "second_judge": [
+      {
+        "job_index": 1,
+        "is_single_specific_job": true,
+        "is_target_role": true,
+        "is_matching_yoe": true,
+        "is_matching_location": true,
+        "approved": true,
+        "reason": "The job is a specific Algorithm Research Engineer vacancy at Applied Materials, matching the target role, junior-friendly experience range (0-2 years), and located in Rehovot, Israel based on the text snippet."
+      }
+    ],
+    "audit_status": "completed"
+  },
+  "runs": [
+    {
+      "timestamp": "2026-11-26T16:11:59.638849",
+      "status": "completed",
+      "companies": {
+        "total": 328,
+        "successful_scrapes": 250,
+        "failed_scrapes": 78,
+        "scrape_methods": {
+          "ats_api": 5,
+          "html": 242,
+          "playwright": 3,
+          "unknown": 0
+        },
+        "failure_breakdown": {
+          "403": 24,
+          "Network exception: ConnectionError": 5,
+          "404": 16,
+          "429": 6,
+          "LinkedIn": 6,
+          "SPA": 10,
+          "Network exception: SSLError": 2,
+          "HTTP error 247": 1,
+          "Timeout": 4,
+          "HTTP error 400": 1,
+          "HTTP error 520": 1,
+          "HTTP error 491": 1,
+          "HTTP error 502": 1
+        },
+        "broken_404": [
+          {
+            "name": "Altshuler Shaham",
+            "url": "https://careers.topmatch.co.il/AltshulerShaham/"
+          },
+          {
+            "name": "Anodot",
+            "url": "https://www.anodot.com/careers/"
+          },
+          {
+            "name": "Cadence Israel",
+            "url": "https://cadence.wd1.myworkdayjobs.com/CADENCE"
+          },
+          {
+            "name": "Capow",
+            "url": "https://employer.dueto.io/capow/career-website/positions"
+          },
+          {
+            "name": "Dig",
+            "url": "https://employer.dueto.io/dig-ai/career-website/positions"
+          },
+          {
+            "name": "Habana Labs (Intel)",
+            "url": "https://habana.ai/careers/"
+          },
+          {
+            "name": "KPMG",
+            "url": "https://kpmg.co.il/technologyconsulting/careers/jobs"
+          },
+          {
+            "name": "Log-On Software",
+            "url": "https://www.log-on.com/careers"
+          },
+          {
+            "name": "matrix",
+            "url": "https://www.matrix.co.il/careers/"
+          },
+          {
+            "name": "Prelysis",
+            "url": "https://prelysis.com/careers/"
+          },
+          {
+            "name": "Run:ai",
+            "url": "https://www.run.ai/careers"
+          },
+          {
+            "name": "Speedata",
+            "url": "https://www.speedata.io/careers/"
+          },
+          {
+            "name": "Sony Semiconductor Israel",
+            "url": "https://www.sony-semicon.com/en/company/careers.html"
+          },
+          {
+            "name": "Teva",
+            "url": "https://www.tevapharm.com/careers/"
+          },
+          {
+            "name": "Tranzila",
+            "url": "https://www.tranzila.com/careers/"
+          },
+          {
+            "name": "Yad2",
+            "url": "https://employer.dueto.io/yad_2/career-website/positions"
+          }
+        ]
+      },
+      "filtering": {
+        "candidate_links_found": 235,
+        "unseen_candidates": 186,
+        "skipped_short_description": 4,
+        "rejected_excessive_min_yoe": 42,
+        "rejected_location_gate": 105,
+        "playwright_detail_fetch_cap_hits": 0
+      },
+      "ai": {
+        "batches_sent": 5,
+        "http_429_count": 0,
+        "circuit_breaker_triggered": false,
+        "approved_jobs": [
+          {
+            "company": "Applied Materials",
+            "title": "Algorithm Research Engineer",
+            "url": "https://jobs.appliedmaterials.com/job/rehovot/algorithm-research-engineer/95/99385682432",
+            "location": "Rehovot",
+            "experience": "Junior-friendly research engineering role",
+            "text_snippet": "Who We Are\nApplied Materials is the global leader in materials science and engineering solutions that are at the foundation of virtually every new semiconductor chip and advanced display in the world. The equipment that we create and service is essential to advancing AI and accelerating the commercialization of next-generation semiconductor chips. Join us and push the boundaries of materials science and engineering in a company at the foundation of the electronics industry. The work we do together advances the world’s technology.\nWhat We Offer\nLocation:\nRehovot,ISR\nYou’ll benefit from a suppor"
+          }
+        ],
+        "rejected_sample": [
+          {
+            "company": "AI21 Labs",
+            "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
+            "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/",
+            "location": "Tel Aviv",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 3+ years"
+          },
+          {
+            "company": "AllCloud",
+            "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          },
+          {
+            "company": "AllCloud",
+            "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Forward Deployed Engineer Professional Services  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/ED.57F/forward-deployed-engineer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "apple",
+            "title": "PHY Firmware Design & Development Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200696454-0881/phy-firmware-design-development-engineer?team=HRDWR",
+            "location": "Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "PHY Firmware Design & Development Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200696454-0865/phy-firmware-design-development-engineer?team=HRDWR",
+            "location": "Herzliya",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "VLSI Product Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200695423-1451/vlsi-product-engineer?team=HRDWR",
+            "location": "Haifa",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "VLSI Product Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200695423-0865/vlsi-product-engineer?team=HRDWR",
+            "location": "Herzliya",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "Embedded Engineer for the Silicon validation team",
+            "url": "https://jobs.apple.com/en-il/details/200694733-1451/embedded-engineer-for-the-silicon-validation-team?team=HRDWR",
+            "location": "Haifa",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: minimum of 3 years of"
+          }
+        ],
+        "final_approved_count": 1
+      },
+      "demoted_false_positives": [],
+      "conclusions": "ריצת הזחילה מציגה שיעור כישלונות גבוה יחסית בגירוד אתרים (78 שגיאות מתוך 328 חברות, בעיקר שגיאות 403 ו-404) המעיד על חסימות או קישורים שבורים. בנוסף, מנגנון הסינון פסל כמות משמעותית של משרות עקב הגבלת מיקום (105) ושנות ניסיון (42), אך נראה שמסנן שנות הניסיון פועל היטב מול משרות בכירות (כגון Apple).",
+      "recommendations": [
+        "יש לעדכן או להסיר כתובות URL שבורות ברשימת החברות (כגון Anodot, Cadence Israel וכו') המייצרות שגיאות 404.",
+        "מומלץ לשפר את טיפול ה-Scraping מול שגיאות 403 (כגון שימוש ב-Proxies או התאמת User-Agents) כדי להקטין את כשלונות הגירוד.",
+        "כדאי לבחון מחדש את שער המיקום (location_gate) כדי לוודא שמשרות רלוונטיות בישראל אינן נדחות בטעות, בהתחשב בכך ש-105 משרות נפסלו בשלב זה."
+      ],
+      "second_judge": [
+        {
+          "job_index": 1,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "The job is a specific Algorithm Research Engineer vacancy at Applied Materials, matching the target role, junior-friendly experience range (0-2 years), and located in Rehovot, Israel based on the text snippet."
+        }
+      ],
+      "audit_status": "completed"
+    }
+  ]
+}
