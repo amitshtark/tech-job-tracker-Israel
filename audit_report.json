@@ -1,31 +1,31 @@
 {
   "last_run": {
-    "timestamp": "2026-11-27T00:43:40.329372",
+    "timestamp": "2026-11-27T01:19:18.812950",
     "status": "completed",
     "companies": {
       "total": 324,
-      "successful_scrapes": 244,
-      "failed_scrapes": 80,
+      "successful_scrapes": 259,
+      "failed_scrapes": 65,
       "scrape_methods": {
         "ats_api": 5,
-        "html": 237,
+        "html": 252,
         "playwright": 2,
         "unknown": 0
       },
       "failure_breakdown": {
-        "403": 23,
+        "403": 25,
         "Network exception: ConnectionError": 5,
         "429": 11,
-        "SPA": 20,
         "LinkedIn": 6,
-        "Network exception: SSLError": 3,
+        "SPA": 5,
+        "Network exception: SSLError": 2,
         "HTTP error 247": 1,
         "HTTP error 400": 1,
         "Timeout": 3,
-        "HTTP error 202": 2,
-        "HTTP error 502": 1,
+        "HTTP error 520": 1,
         "404": 3,
-        "HTTP error 491": 1
+        "HTTP error 491": 1,
+        "HTTP error 502": 1
       },
       "broken_404": [
         {
@@ -43,33 +43,33 @@
       ]
     },
     "filtering": {
-      "candidate_links_found": 628,
-      "unseen_candidates": 538,
+      "candidate_links_found": 645,
+      "unseen_candidates": 577,
       "skipped_short_description": 6,
-      "rejected_excessive_min_yoe": 160,
-      "rejected_location_gate": 238,
+      "rejected_excessive_min_yoe": 153,
+      "rejected_location_gate": 293,
       "playwright_detail_fetch_cap_hits": 0
     },
     "ai": {
-      "batches_sent": 17,
+      "batches_sent": 16,
       "http_429_count": 0,
       "circuit_breaker_triggered": false,
       "approved_jobs": [
         {
-          "company": "PointFive",
-          "title": "Lead Endpoint Researcher Engineering Tel Aviv Hybrid Full-time",
-          "url": "https://www.pointfive.co/careers/6e1c4d79-a7c3-473d-bb25-c670dca0b3e4",
-          "location": "Tel Aviv, Israel",
-          "experience": "Junior/flexible or entry-to-mid level research role without a 3+ year minimum requirement.",
-          "text_snippet": "About PointFive\nPointFive finds the cost buried inside enterprise infrastructure, from the cloud to coding agents. We pioneered DeepWaste across cloud and data platforms, and we are now doing the same for AI token spend with TokenShift.\nFanatics, H&M, Hertz, Nubank, Citizens Bank and other Fortune 500 companies use PointFive to see and cut what their infrastructure and AI actually cost.\nWe have raised $96 million, most recently a\n$60 million Series B led by Accel\n. Engineering sits in Tel Aviv and our go-to-market team is focused on North America. PointFive Labs, our research arm, publishes or"
+          "company": "matrix",
+          "title": "מפתח/ת JAVA ג’וניור לחברה פיננסית גדולה",
+          "url": "https://www.matrix.co.il/jobs/משרה/%d7%9e%d7%a4%d7%aa%d7%97%d7%aa-java-%d7%92%d7%95%d7%a0%d7%99%d7%95%d7%a8-%d7%9c%d7%97%d7%91%d7%a8%d7%94-%d7%a4%d7%99%d7%a0%d7%a0%d7%a1%d7%99%d7%aa-%d7%92%d7%93%d7%95%d7%9c%d7%94/",
+          "location": "Ramat Gan / Gush Dan, Israel",
+          "experience": "Requires 2 years of experience in Java Spring Boot development (meets the 0-2 YOE range limit).",
+          "text_snippet": "מפתח/ת JAVA ג'וניור לחברה פיננסית גדולה | מטריקס משרות\nדלג לתוכן העמוד\nמפתח/ת JAVA ג’וניור לחברה פיננסית גדולה\nהוספת משרה למשרות שלי\n73867\nמפתח/ת JAVA ג’וניור לחברה פיננסית גדולה\nאיזור:\nגוש דן, השרון\nהתפקיד כולל פיתוח ותחזוקה של מערכות Java SpringBoot microservices, עבודה עם פרוטוקולי תקשורת שונים והכרות עם ארכיטקטורת API Gateway. במסגרת התפקיד נדרש ליווי תוצרים, כתיבת תיעוד ותמיכה בלקוחות בבדיקות, ניהול API, טיפול בתקלות ייצור ועבודה עם כלים לניהול תצורה.\nמשרה מלאה ברמת גן, היברידי\nפרטים נוספים\nדרישות:\nשנתיים ניסיון בפיתוח JAVA Spring Boot\nניסיון בעבודה עם מסדי נתונים (MongoDB, SQL)\nניסיון בע"
         },
         {
-          "company": "opisoft",
-          "title": "Senior Full Stack Software Engineer",
-          "url": "https://opisoft.com/career/senior-full-stack-software-engineer/",
-          "location": "Center District / Israel",
-          "experience": "2 years of experience in Full Stack development required",
-          "text_snippet": "××¨××× ×¨×¤××× ××××× ×××××¨ ×××¨×× ×××××¡ ××¤×ª×/×ª Senior Full Stack ×××§××ª ××¢×¨×××ª ×¨×¤×××××ª ××ª×§××××ª ×××¤×¡ ×××××××ª ×ª××××× ×¤××ª×× ××§×¦× ××§×¦×.\n××ª×¤×§×× ××©×× ×¤××ª×× Backend ×Ö¾Frontend, ×× ×××ª Microservices ××¢×××× ××¡×××××ª Cloud ×Ö¾On-Prem, ×ª×× ×©××××© ×××× ×××××××ª ×××©× ×××ª. ××¢×××× ××¦×××ª ××× ××××× ×××§, ××××××¨×ª ×¡×××¨×××¤ ××ª×× ××¨××× ×¨×¤××× ×××××, ×¢× ××©×¤×¢× ××©××¨× ×¢× ×××¦×¨×× ××©××¢××ª××× ××¢××× ×"
+          "company": "WeDev",
+          "title": "Junior QA Tester",
+          "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4652209101",
+          "location": "Holon",
+          "experience": "Junior role, entry-level",
+          "text_snippet": "<p><strong>Company Description</strong></p>\n<p>WeDev Technologies is a software development agency specializing in designing and developing complex web-based software solutions.</p>\n<p>Our company excels in 2 main areas:</p>\n<ul>\n<li>Building and maintaining eCommerce shops using the Shopify platform, where our company is one of the only Shopify-certified plus partners in Israel. Among our customers in this area you can find some of the biggest commerce brands in Israel and even the world, such as JDSports, mayven, GA-DE, Panda-zzz and more.</li>\n<li>Building and maintaining complex custom-dev"
         }
       ],
       "rejected_sample": [
@@ -154,14 +154,28 @@
           "reason": "Explicit non-Israel location: București, RO"
         }
       ],
-      "final_approved_count": 2
+      "final_approved_count": 1
     },
-    "demoted_false_positives": [],
-    "conclusions": "ריצת הזחילה סבלה מאחוז כישלונות גבוה יחסית בסקראפינג (80 מתוך 324 חברות), בעיקר עקב שגיאות 403, 429 ובעיות SPA. כמו כן, רוב המשרות נדחו בשל סינון מיקום (238) ודרישות ניסיון (160), מה שמצביע על כך שהגדרות התפקידים והחברות הנאספות אינן מותאמות מספיק לטווח הניסיון המבוקש (0-2 שנים), כיוון שרוב המשרות בשוק בכירות יותר.",
+    "demoted_false_positives": [
+      {
+        "company": "WeDev",
+        "title": "Junior QA Tester",
+        "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4652209101",
+        "location": "Holon",
+        "experience": "Junior role, entry-level",
+        "text_snippet": "<p><strong>Company Description</strong></p>\n<p>WeDev Technologies is a software development agency specializing in designing and developing complex web-based software solutions.</p>\n<p>Our company excels in 2 main areas:</p>\n<ul>\n<li>Building and maintaining eCommerce shops using the Shopify platform, where our company is one of the only Shopify-certified plus partners in Israel. Among our customers in this area you can find some of the biggest commerce brands in Israel and even the world, such as JDSports, mayven, GA-DE, Panda-zzz and more.</li>\n<li>Building and maintaining complex custom-dev",
+        "reason": "The job is a 'Junior QA Tester' role. According to config.excluded_roles, Manual QA is explicitly excluded, and QA does not match the target software development roles.",
+        "failed_checks": [
+          "is_target_role"
+        ]
+      }
+    ],
+    "conclusions": "ריצת הזחילה מציגה שיעור סינון גבוה מאוד בשערי ה-YOE והמיקום (153 נדחו עקב ניסיון עודף ו-293 עקב מיקום), מה מעיד על מיקוד סלקטיבי אך גם חשש לפספוס פוטנציאלי. בנוסף, נמצאה דליפה של משרת QA (תפקיד מודר של Manual QA / QA Tester) שאושרה בטעות למרות שהיא ברשימת החרגים. כמו כן, ישנו מספר ניכר של כשלי סריקה (65) ובמיוחד שגיאות 403 ו-429.",
     "recommendations": [
-      "יש לעדכן את רשימת החברות או מקורות המשרה כך שיכללו יותר חברות סטארט-אפ וגיוסי ג'וניורס, לאור כך ש-160 משרות נדחו עקב דרישת מינימום ניסיון הגבוהה מ-2 שנים.",
-      "יש לטפל בבעיות ה-403 וה-SPA בזחילה (למשל על ידי שימוש מורחב ב-Playwright או פתרונות עקיפת חסימה) כדי לצמצם את 80 הכשלונות מתוך 324 חברות.",
-      "מומלץ לחדד את שער הניתוח המוקדם של מיקום וניסיון לפני שליחת משרות למודל ה-AI, כדי לחסוך קריאות מיותרות ולשפר את יעילות הפאנל."
+      "יש לעדכן את אלגוריתם הסינון של ה-AI כך שיזהה ויפסול אוטומטית משרות QA (כדוגמת Junior QA Tester שנכנס בטעות) בהתאם לרשימת ה-excluded_roles.",
+      "יש לטפל ב-65 כשלי הסריקה, במיוחד ב-25 שגיאות ה-403 ו-11 שגיאות ה-429, על ידי הוספת מנגנוני Rate Limiting וסבב User-Agents כדי לצמצם חסימות אתרים.",
+      "מומלץ לבדוק את הגדרות ה-location_gate (שפסל 293 משרות) כדי לוודא שחברות בינלאומיות עם נציגות בישראל אינן נפסלות בטעות בגלל פורמט מיקום שאינו מזוהה כראוי.",
+      "יש לבחון מדגמית את 153 המשרות שנדחו בשל דרישת מינימום ניסיון (experience_gate) כדי לוודא ששגיאות חילוץ טקסטואליות אינן גורמות לפספוס משרות ג'וניור אמיתיות."
     ],
     "second_judge": [
       {
@@ -171,16 +185,16 @@
         "is_matching_yoe": true,
         "is_matching_location": true,
         "approved": true,
-        "reason": "Role matches target software/research engineering, location is Tel Aviv, Israel, experience is junior/flexible within 0-2 range."
+        "reason": "The job is a specific Java developer vacancy at Matrix, matches target roles (Software Development/Backend), requires 2 years of experience which fits the 0-2 range, and is located in Ramat Gan, Israel."
       },
       {
         "job_index": 2,
         "is_single_specific_job": true,
-        "is_target_role": true,
+        "is_target_role": false,
         "is_matching_yoe": true,
         "is_matching_location": true,
-        "approved": true,
-        "reason": "Senior Full Stack role requiring 2 years of experience, located in Israel (Center District), fitting the target role and max yoe criteria."
+        "approved": false,
+        "reason": "The job is a 'Junior QA Tester' role. According to config.excluded_roles, Manual QA is explicitly excluded, and QA does not match the target software development roles."
       }
     ],
     "audit_status": "completed"
@@ -589,6 +603,206 @@
           "is_matching_location": true,
           "approved": true,
           "reason": "Senior Full Stack role requiring 2 years of experience, located in Israel (Center District), fitting the target role and max yoe criteria."
+        }
+      ],
+      "audit_status": "completed"
+    },
+    {
+      "timestamp": "2026-11-27T01:19:18.812950",
+      "status": "completed",
+      "companies": {
+        "total": 324,
+        "successful_scrapes": 259,
+        "failed_scrapes": 65,
+        "scrape_methods": {
+          "ats_api": 5,
+          "html": 252,
+          "playwright": 2,
+          "unknown": 0
+        },
+        "failure_breakdown": {
+          "403": 25,
+          "Network exception: ConnectionError": 5,
+          "429": 11,
+          "LinkedIn": 6,
+          "SPA": 5,
+          "Network exception: SSLError": 2,
+          "HTTP error 247": 1,
+          "HTTP error 400": 1,
+          "Timeout": 3,
+          "HTTP error 520": 1,
+          "404": 3,
+          "HTTP error 491": 1,
+          "HTTP error 502": 1
+        },
+        "broken_404": [
+          {
+            "name": "Prelysis",
+            "url": "https://prelysis.com/careers/"
+          },
+          {
+            "name": "Sony Semiconductor Israel",
+            "url": "https://www.sony-semicon.com/en/company/careers.html"
+          },
+          {
+            "name": "Yad2",
+            "url": "https://employer.dueto.io/yad_2/career-website/positions"
+          }
+        ]
+      },
+      "filtering": {
+        "candidate_links_found": 645,
+        "unseen_candidates": 577,
+        "skipped_short_description": 6,
+        "rejected_excessive_min_yoe": 153,
+        "rejected_location_gate": 293,
+        "playwright_detail_fetch_cap_hits": 0
+      },
+      "ai": {
+        "batches_sent": 16,
+        "http_429_count": 0,
+        "circuit_breaker_triggered": false,
+        "approved_jobs": [
+          {
+            "company": "matrix",
+            "title": "מפתח/ת JAVA ג’וניור לחברה פיננסית גדולה",
+            "url": "https://www.matrix.co.il/jobs/משרה/%d7%9e%d7%a4%d7%aa%d7%97%d7%aa-java-%d7%92%d7%95%d7%a0%d7%99%d7%95%d7%a8-%d7%9c%d7%97%d7%91%d7%a8%d7%94-%d7%a4%d7%99%d7%a0%d7%a0%d7%a1%d7%99%d7%aa-%d7%92%d7%93%d7%95%d7%9c%d7%94/",
+            "location": "Ramat Gan / Gush Dan, Israel",
+            "experience": "Requires 2 years of experience in Java Spring Boot development (meets the 0-2 YOE range limit).",
+            "text_snippet": "מפתח/ת JAVA ג'וניור לחברה פיננסית גדולה | מטריקס משרות\nדלג לתוכן העמוד\nמפתח/ת JAVA ג’וניור לחברה פיננסית גדולה\nהוספת משרה למשרות שלי\n73867\nמפתח/ת JAVA ג’וניור לחברה פיננסית גדולה\nאיזור:\nגוש דן, השרון\nהתפקיד כולל פיתוח ותחזוקה של מערכות Java SpringBoot microservices, עבודה עם פרוטוקולי תקשורת שונים והכרות עם ארכיטקטורת API Gateway. במסגרת התפקיד נדרש ליווי תוצרים, כתיבת תיעוד ותמיכה בלקוחות בבדיקות, ניהול API, טיפול בתקלות ייצור ועבודה עם כלים לניהול תצורה.\nמשרה מלאה ברמת גן, היברידי\nפרטים נוספים\nדרישות:\nשנתיים ניסיון בפיתוח JAVA Spring Boot\nניסיון בעבודה עם מסדי נתונים (MongoDB, SQL)\nניסיון בע"
+          },
+          {
+            "company": "WeDev",
+            "title": "Junior QA Tester",
+            "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4652209101",
+            "location": "Holon",
+            "experience": "Junior role, entry-level",
+            "text_snippet": "<p><strong>Company Description</strong></p>\n<p>WeDev Technologies is a software development agency specializing in designing and developing complex web-based software solutions.</p>\n<p>Our company excels in 2 main areas:</p>\n<ul>\n<li>Building and maintaining eCommerce shops using the Shopify platform, where our company is one of the only Shopify-certified plus partners in Israel. Among our customers in this area you can find some of the biggest commerce brands in Israel and even the world, such as JDSports, mayven, GA-DE, Panda-zzz and more.</li>\n<li>Building and maintaining complex custom-dev"
+          }
+        ],
+        "rejected_sample": [
+          {
+            "company": "AI21 Labs",
+            "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
+            "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/",
+            "location": "Tel Aviv",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 3+ years"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Backend Developer Professional Services  ·  Full-time  ·  Senior",
+            "url": "https://allcloud.io/careers/co/israel/72.376/backend-developer/all",
+            "location": "Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of"
+          },
+          {
+            "company": "AllCloud",
+            "title": "D&A - Senior Data Engineer Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/israel/F2.F6D/da-senior-data-engineer/all",
+            "location": "Ra'anana, Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "AllCloud",
+            "title": "D&A - Senior Software Engineer GenAI Professional Services  ·  Full-time  ·  Senior",
+            "url": "https://allcloud.io/careers/co/israel/CC.271/da-senior-software-engineer-genai/all",
+            "location": "Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of"
+          },
+          {
+            "company": "AllCloud",
+            "title": "G&A - IT Specialist IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/israel/3B.47E/ga-it-specialist/all",
+            "location": "Ra'anana, Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "AllCloud",
+            "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          },
+          {
+            "company": "AllCloud",
+            "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Cloud Security Operations Specialist Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/romania/E9.476/cloud-security-operations-specialist/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "D&A - Senior ML Engineer Professional Services  ·  Full-time  ·  Senior",
+            "url": "https://allcloud.io/careers/co/romania/88.373/da-senior-ml-engineer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          }
+        ],
+        "final_approved_count": 1
+      },
+      "demoted_false_positives": [
+        {
+          "company": "WeDev",
+          "title": "Junior QA Tester",
+          "url": "https://job-boards.eu.greenhouse.io/wedev/jobs/4652209101",
+          "location": "Holon",
+          "experience": "Junior role, entry-level",
+          "text_snippet": "<p><strong>Company Description</strong></p>\n<p>WeDev Technologies is a software development agency specializing in designing and developing complex web-based software solutions.</p>\n<p>Our company excels in 2 main areas:</p>\n<ul>\n<li>Building and maintaining eCommerce shops using the Shopify platform, where our company is one of the only Shopify-certified plus partners in Israel. Among our customers in this area you can find some of the biggest commerce brands in Israel and even the world, such as JDSports, mayven, GA-DE, Panda-zzz and more.</li>\n<li>Building and maintaining complex custom-dev",
+          "reason": "The job is a 'Junior QA Tester' role. According to config.excluded_roles, Manual QA is explicitly excluded, and QA does not match the target software development roles.",
+          "failed_checks": [
+            "is_target_role"
+          ]
+        }
+      ],
+      "conclusions": "ריצת הזחילה מציגה שיעור סינון גבוה מאוד בשערי ה-YOE והמיקום (153 נדחו עקב ניסיון עודף ו-293 עקב מיקום), מה מעיד על מיקוד סלקטיבי אך גם חשש לפספוס פוטנציאלי. בנוסף, נמצאה דליפה של משרת QA (תפקיד מודר של Manual QA / QA Tester) שאושרה בטעות למרות שהיא ברשימת החרגים. כמו כן, ישנו מספר ניכר של כשלי סריקה (65) ובמיוחד שגיאות 403 ו-429.",
+      "recommendations": [
+        "יש לעדכן את אלגוריתם הסינון של ה-AI כך שיזהה ויפסול אוטומטית משרות QA (כדוגמת Junior QA Tester שנכנס בטעות) בהתאם לרשימת ה-excluded_roles.",
+        "יש לטפל ב-65 כשלי הסריקה, במיוחד ב-25 שגיאות ה-403 ו-11 שגיאות ה-429, על ידי הוספת מנגנוני Rate Limiting וסבב User-Agents כדי לצמצם חסימות אתרים.",
+        "מומלץ לבדוק את הגדרות ה-location_gate (שפסל 293 משרות) כדי לוודא שחברות בינלאומיות עם נציגות בישראל אינן נפסלות בטעות בגלל פורמט מיקום שאינו מזוהה כראוי.",
+        "יש לבחון מדגמית את 153 המשרות שנדחו בשל דרישת מינימום ניסיון (experience_gate) כדי לוודא ששגיאות חילוץ טקסטואליות אינן גורמות לפספוס משרות ג'וניור אמיתיות."
+      ],
+      "second_judge": [
+        {
+          "job_index": 1,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "The job is a specific Java developer vacancy at Matrix, matches target roles (Software Development/Backend), requires 2 years of experience which fits the 0-2 range, and is located in Ramat Gan, Israel."
+        },
+        {
+          "job_index": 2,
+          "is_single_specific_job": true,
+          "is_target_role": false,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": false,
+          "reason": "The job is a 'Junior QA Tester' role. According to config.excluded_roles, Manual QA is explicitly excluded, and QA does not match the target software development roles."
         }
       ],
       "audit_status": "completed"
