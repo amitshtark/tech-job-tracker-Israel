@@ -402,44 +402,6 @@ ROLE_NOUN_REGEX = re.compile(
 )
 
 
-def build_reject_title_regex(cfg):
-    excluded_lower = " ".join(str(x).lower() for x in cfg.get("excluded_roles", []))
-    max_yoe = int(cfg.get("max_yoe", 2))
-
-    patterns = [
-        r"legal", r"counsel", r"office manager", r"administrative",
-        r"receptionist", r"executive assistant", r"payroll", r"accounting",
-        r"מדריך", r"קורס", r"הכשרה", r"הכשרות", r"סדנה", r"טיפים", r"איך להצליח"
-    ]
-
-    if "customer success" in excluded_lower or "csm" in excluded_lower:
-        patterns.extend([r"customer success", r"csm\b"])
-    if "support" in excluded_lower:
-        patterns.extend([r"support engineer", r"support specialist", r"it support", r"helpdesk", r"technical support"])
-    if "operations" in excluded_lower:
-        patterns.extend([r"operations", r"supply chain", r"logistics", r"procurement", r"supply operation"])
-    if "sales" in excluded_lower:
-        patterns.extend([r"sales", r"account executive", r"bdr\b", r"sdr\b", r"business development"])
-    if "marketing" in excluded_lower:
-        patterns.extend([r"marketing", r"content writer", r"growth", r"copywriter", r"seo\b"])
-    if "hr" in excluded_lower or "recruiter" in excluded_lower:
-        patterns.extend([r"recruiter", r"talent acquisition", r"hr\b", r"human resources"])
-    if "finance" in excluded_lower:
-        patterns.append(r"finance")
-    if "qa" in excluded_lower:
-        patterns.extend([r"qa\b", r"manual tester", r"qc\b", r"quality assurance"])
-    if "devops" in excluded_lower:
-        patterns.extend([r"devops", r"sre\b", r"infrastructure engineer", r"sysadmin", r"system administrator"])
-
-    if max_yoe <= 2:
-        patterns.extend([
-            r"vp\b", r"director", r"chief", r"head of", r"lead\b", r"leader\b",
-            r"principal", r"staff\b", r"architect", r"manager\b", r"senior", r"sr\b", r"expert", r"ראש צוות"
-        ])
-
-    return re.compile(r"\b(" + "|".join(patterns) + r")\b", re.IGNORECASE)
-
-
 def build_candidate_title_regex(cfg):
     base_keywords = [
         r"software", r"developer", r"engineer", r"fullstack", r"full-stack",
@@ -467,7 +429,6 @@ def build_candidate_title_regex(cfg):
     return re.compile(r"\b(" + "|".join(unique_keywords) + r")\b", re.IGNORECASE)
 
 
-REJECT_TITLE_REGEX = build_reject_title_regex(USER_CONFIG)
 CANDIDATE_TITLE_REGEX = build_candidate_title_regex(USER_CONFIG)
 
 
@@ -703,14 +664,10 @@ def is_title_candidate(title, url=""):
         return False
     if AGENCY_CATEGORY_REGEX.search(url):
         return False
-    if IS_ISRAEL_TARGET:
-        if EUROPE_GENDER_REGEX.search(t):
-            return False
-        if FOREIGN_LOCATION_REGEX.search(f"{t} {url}") and not ISRAEL_LOCATION_REGEX.search(f"{t} {url}"):
-            return False
-    if REJECT_TITLE_REGEX.search(t):
-        return False
-    if not CANDIDATE_TITLE_REGEX.search(t):
+    if not (
+        CANDIDATE_TITLE_REGEX.search(t)
+        or (ROLE_NOUN_REGEX.search(t) and JOB_URL_HINT_REGEX.search(url))
+    ):
         return False
     # Require either an explicit job-role noun in title OR a job-like URL path
     if not (ROLE_NOUN_REGEX.search(t) or JOB_URL_HINT_REGEX.search(url)):
@@ -857,8 +814,8 @@ def scrape_spa_with_playwright(failed_list, companies_by_name):
                 url = item["link"]
                 c_info = companies_by_name.get(c_name, {"name": c_name})
                 try:
-                    page.goto(url, wait_until="domcontentloaded", timeout=10000)
-                    page.wait_for_timeout(1500)
+                    page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                    page.wait_for_timeout(3500)
                     soup = BeautifulSoup(page.content(), "html.parser")
                     cands = extract_candidates_from_soup(soup, url, c_info)
                     if cands:
@@ -969,7 +926,7 @@ def fetch_job_details(job):
     return job
 
 
-def fetch_missing_details_with_playwright(jobs_list, max_pages=40, diagnostics=None):
+def fetch_missing_details_with_playwright(jobs_list, max_pages=80, diagnostics=None):
     """For candidate jobs where static requests returned empty/JS shell, render with Playwright (capped for speed)."""
     if not PLAYWRIGHT_AVAILABLE:
         return jobs_list
@@ -991,7 +948,7 @@ def fetch_missing_details_with_playwright(jobs_list, max_pages=40, diagnostics=N
             for job in missing:
                 try:
                     page.goto(job["url"], wait_until="domcontentloaded", timeout=10000)
-                    page.wait_for_timeout(1500)
+                    page.wait_for_timeout(2500)
                     soup = BeautifulSoup(page.content(), "html.parser")
                     txt, loc = extract_clean_text_from_soup(soup)
                     if len(txt) > len(job.get("requirements_text", "")):
@@ -1396,7 +1353,7 @@ def main():
 
         fetched_candidates = fetch_missing_details_with_playwright(
             fetched_candidates,
-            max_pages=40,
+            max_pages=80,
             diagnostics=diagnostics,
         )
 

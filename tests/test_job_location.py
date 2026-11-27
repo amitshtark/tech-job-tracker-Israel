@@ -14,8 +14,10 @@ from job_crawler import (
     batch_verify_jobs_with_ai,
     extract_candidates_from_soup,
     extract_clean_text_from_soup,
+    has_excessive_min_yoe,
     has_explicit_target_location,
     is_explicit_non_target_location,
+    is_title_candidate,
     is_complete_ai_approval,
     new_run_diagnostics,
     record_company_scrape,
@@ -222,6 +224,34 @@ class JobLocationTests(unittest.TestCase):
         self.assertFalse(is_explicit_non_target_location(""))
         self.assertFalse(is_explicit_non_target_location("Unspecified"))
         self.assertFalse(is_explicit_non_target_location(" unspecified "))
+
+    def test_unspecified_page_location_passes_pre_ai_gate_but_foreign_location_does_not(self):
+        for location in ("", "Unspecified", " unspecified "):
+            with self.subTest(location=location):
+                self.assertFalse(is_explicit_non_target_location(location))
+
+        self.assertTrue(is_explicit_non_target_location("Washington, D.C."))
+        self.assertFalse(is_explicit_non_target_location("Tel Aviv, Israel"))
+
+    def test_yoe_filter_uses_range_minimum_and_keeps_uncertain_ranges_for_ai(self):
+        self.assertFalse(has_excessive_min_yoe("Requires 1-3 years of experience", 2))
+        self.assertFalse(has_excessive_min_yoe("Requires 2-3 years of experience", 2))
+        self.assertTrue(has_excessive_min_yoe("Requires 3-5 years of experience", 2))
+        self.assertTrue(has_excessive_min_yoe("Requires 3+ years of experience", 2))
+
+    def test_title_filter_keeps_valid_tech_roles_for_ai_verification(self):
+        self.assertTrue(is_title_candidate(
+            "Senior Backend Engineer",
+            "https://jobs.example.com/careers/backend-engineer",
+        ))
+        self.assertTrue(is_title_candidate(
+            "Security Engineer",
+            "https://jobs.example.com/jobs/security-engineer",
+        ))
+        self.assertTrue(is_title_candidate(
+            "Backend Engineer - Tel Aviv",
+            "https://jobs.example.com/jobs/backend-engineer",
+        ))
 
     def test_explicit_israel_location_still_passes(self):
         valid_israel_job = {
