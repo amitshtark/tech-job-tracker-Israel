@@ -1148,5 +1148,45 @@
     "url": "https://jobs.ashbyhq.com/Irregular/7e8a2432-0ed7-4fd7-8bcd-d0d89db663b3",
     "experience": "No minimum years requirement specified.",
     "discovered_at": "2026-11-27T12:25:22.470564"
+  },
+  {
+    "company": "Logica-it",
+    "title": "מפתח.ת Qlik sense (דיסקרטי) BI גוש דן",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "מרכז / גוש דן",
+    "url": "https://logica-it.com/jobs/21249/",
+    "experience": "at least 1 year of experience",
+    "discovered_at": "2026-11-27T13:41:06.231029"
+  },
+  {
+    "company": "Logica-it",
+    "title": "מפתח.ת לצוות ניהול זהויות וגישות (IAM) תוכנה גוש דן",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "גוש דן / ישראל",
+    "url": "https://logica-it.com/jobs/20887/",
+    "experience": "No explicit minimum years of experience required; entry to mid developer acceptable with SQL/Python/API skills.",
+    "discovered_at": "2026-11-27T13:41:13.918597"
+  },
+  {
+    "company": "SAP Israel",
+    "title": "Junior Developer and Data Analyst – SAP HANA Cloud Control Plane – Cost Optimization & TCO",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Ra'anana / Israel",
+    "url": "https://jobs.sap.com/en/jobs/744000164020899/junior-developer-and-data-analyst-sap-hana-cloud-control-plane-cost-optimization-tco/",
+    "experience": "Junior Developer and Data Analyst student position requiring minimum 1 year of relevant programming experience.",
+    "discovered_at": "2026-11-27T13:41:36.326317"
+  },
+  {
+    "company": "Irregular",
+    "title": "Cyber Researcher",
+    "referral_contact": "הגשה ישירה באתר (ללא רפרל)",
+    "referral_type": "הגשה ישירה",
+    "location": "Tel Aviv",
+    "url": "https://jobs.ashbyhq.com/Irregular/7a9dde60-14ab-4296-b355-63f2564263e0",
+    "experience": "No specific years of experience required",
+    "discovered_at": "2026-11-27T13:41:59.198145"
   }
 ]
