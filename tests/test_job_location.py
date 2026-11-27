@@ -19,6 +19,7 @@ from job_crawler import (
     is_explicit_non_target_location,
     is_title_candidate,
     is_complete_ai_approval,
+    should_reject_pre_ai_location,
     new_run_diagnostics,
     record_company_scrape,
     record_filter_rejection_sample,
@@ -286,6 +287,25 @@ class JobLocationTests(unittest.TestCase):
         self.assertTrue(is_explicit_non_target_location("Washington, D.C."))
         self.assertFalse(is_explicit_non_target_location("Tel Aviv, Israel"))
 
+    def test_dialog_hebrew_job_on_coil_with_noisy_location_passes_pre_ai_gate(self):
+        job = {
+            "company": "Dialog",
+            "title": "Dialog — מפתח Full Stack",
+            "url": "https://www.dialog.co.il/high-tech/jobs/software/full-stack-developer",
+            "page_location": "מספר משרה: 95400 / לינק ללכאן",
+        }
+
+        self.assertFalse(should_reject_pre_ai_location(job))
+
+    def test_pre_ai_location_gate_still_rejects_explicit_foreign_location_on_coil(self):
+        job = {
+            "title": "מפתח Full Stack",
+            "url": "https://www.dialog.co.il/jobs/full-stack",
+            "page_location": "Washington, D.C.",
+        }
+
+        self.assertTrue(should_reject_pre_ai_location(job))
+
     def test_yoe_filter_uses_range_minimum_and_keeps_uncertain_ranges_for_ai(self):
         self.assertFalse(has_excessive_min_yoe("Requires 1-3 years of experience", 2))
         self.assertFalse(has_excessive_min_yoe("Requires 2-3 years of experience", 2))
@@ -344,6 +364,19 @@ class JobLocationTests(unittest.TestCase):
         self.assertFalse(is_title_candidate(
             "Sales Engineer",
             "https://jobs.example.com/jobs/sales-engineer",
+        ))
+
+    def test_title_filter_rejects_non_technical_analyst_roles(self):
+        for title in ("Performance Analyst", "Decision Analyst"):
+            with self.subTest(title=title):
+                self.assertFalse(is_title_candidate(
+                    title,
+                    f"https://jobs.example.com/jobs/{title.lower().replace(' ', '-')}",
+                ))
+
+        self.assertTrue(is_title_candidate(
+            "Data Analyst",
+            "https://jobs.example.com/jobs/data-analyst",
         ))
 
     def test_seniority_yoe_checks_are_enforced_after_batch_ai_response(self):
@@ -516,6 +549,19 @@ class JobLocationTests(unittest.TestCase):
 
         self.assertEqual(page_location, "Ramat Gan, Israel")
         self.assertTrue(has_explicit_target_location(page_location))
+
+    def test_css_location_extraction_ignores_hebrew_job_metadata(self):
+        soup = BeautifulSoup(
+            """
+            <div class="job-location">מספר משרה: 95400 / לינק ללכאן</div>
+            <div class="location">### 12345</div>
+            """,
+            "html.parser",
+        )
+
+        _, page_location = extract_clean_text_from_soup(soup)
+
+        self.assertEqual(page_location, "Unspecified")
 
 
 if __name__ == "__main__":

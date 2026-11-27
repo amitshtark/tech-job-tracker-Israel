@@ -315,7 +315,7 @@ FOREIGN_LOCATION_REGEX = re.compile(
     r"\b(bangkok|thailand|singapore|australia|sydney|melbourne|london|uk\b|united kingdom|"
     r"germany|deutschland|berlin|munich|walldorf|potsdam|frankfurt|dresden|hamburg|"
     r"poland|warsaw|krakow|india|bangalore|bengaluru|hyderabad|pune|gurgaon|"
-    r"canada|toronto|vancouver|new[\s\-_]+york|nyc\b|san[\s\-_]+francisco|california|seattle|"
+    r"canada|toronto|vancouver|washington(?:[\s,]+d\.?c\.?)?|new[\s\-_]+york|nyc\b|san[\s\-_]+francisco|california|seattle|"
     r"chicago|austin|texas|boston|paris|france|amsterdam|netherlands|dublin|ireland|"
     r"tokyo|japan|spain|madrid|barcelona|brazil|mexico|colombia|philippines|vietnam)\b",
     re.IGNORECASE
@@ -343,6 +343,28 @@ def is_explicit_non_target_location(location):
     if not normalized_location or normalized_location.lower() == "unspecified":
         return False
     return not has_explicit_target_location(normalized_location)
+
+
+def has_hebrew_characters(value):
+    return bool(re.search(r"[\u0590-\u05ff]", str(value or "")))
+
+
+def should_reject_pre_ai_location(job):
+    page_location = str(job.get("page_location") or "").strip()
+    if not is_explicit_non_target_location(page_location):
+        return False
+    if not IS_ISRAEL_TARGET:
+        return True
+    if FOREIGN_LOCATION_REGEX.search(page_location):
+        return True
+
+    hostname = (urlparse(str(job.get("url") or "")).hostname or "").lower()
+    has_israeli_domain = hostname.endswith(".co.il")
+    contains_hebrew = (
+        has_hebrew_characters(job.get("title"))
+        or has_hebrew_characters(page_location)
+    )
+    return not (has_israeli_domain or contains_hebrew)
 
 
 def extract_explicit_target_location(text):
@@ -461,6 +483,11 @@ EXCLUDED_TITLE_PATTERNS = {
     "finance": r"\bfinance\b",
     "support": r"\b(?:support engineer|support specialist|technical support|it support|helpdesk)\b",
 }
+
+NON_TECH_ANALYST_TITLE_REGEX = re.compile(
+    r"\b(?:performance|decision|business|product|marketing|financial|sales)\s+analyst\b",
+    re.IGNORECASE,
+)
 
 SENIORITY_TITLE_REGEX = re.compile(
     r"\b(mid(?:[\s-]+level)?|senior|sr|lead|leader|principal|staff|architect|manager|director|vp|chief)\b|head\s+of|ראש צוות",
@@ -714,6 +741,8 @@ def is_title_candidate(title, url=""):
         return False
     if AGENCY_CATEGORY_REGEX.search(url):
         return False
+    if NON_TECH_ANALYST_TITLE_REGEX.search(t):
+        return False
     if is_excluded_role_title(t) or is_seniority_title(t):
         return False
     if not (
@@ -922,6 +951,10 @@ def scrape_spa_with_playwright(failed_list, companies_by_name, diagnostics=None)
 def extract_clean_text_from_soup(soup):
     extracted_text = ""
     detected_loc = "Unspecified"
+    location_ui_noise_regex = re.compile(
+        r"(?:מספר\s+משרה|לינק|\blink\b|\bjob\s*id\b|\bapply\b)",
+        re.IGNORECASE,
+    )
 
     for script_tag in soup.find_all("script", type="application/ld+json"):
         try:
@@ -973,7 +1006,12 @@ def extract_clean_text_from_soup(soup):
         loc_candidates = []
         for tag in soup.find_all(["span", "div", "p", "li"], class_=re.compile(r"locat|workplace|city|country", re.I)):
             txt = tag.get_text(strip=True)
-            if 2 < len(txt) < 60:
+            has_location_letters = re.search(r"[A-Za-z\u0590-\u05ff]", txt)
+            if (
+                2 < len(txt) < 60
+                and has_location_letters
+                and not location_ui_noise_regex.search(txt)
+            ):
                 loc_candidates.append(txt)
         if loc_candidates:
             detected_loc = " / ".join(loc_candidates[:2])
@@ -1513,7 +1551,7 @@ def main():
                 diagnostics["filtering"]["skipped_short_description"] += 1
                 record_rejected_candidate(diagnostics, job, "description_gate", "Description shorter than 150 characters")
                 continue
-            if is_explicit_non_target_location(job.get("page_location")):
+            if should_reject_pre_ai_location(job):
                 print(
                     f"  [X] REJECTED (Explicit non-{TARGET_LOCATION} job location: "
                     f"'{job.get('page_location', 'Unspecified')}'): {job['company']} - {job['title']}"
