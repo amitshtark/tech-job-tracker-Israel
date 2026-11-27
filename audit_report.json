@@ -1,92 +1,40 @@
 {
   "last_run": {
-    "timestamp": "2026-11-26T16:11:59.638849",
+    "timestamp": "2026-11-27T00:43:40.329372",
     "status": "completed",
     "companies": {
-      "total": 328,
-      "successful_scrapes": 250,
-      "failed_scrapes": 78,
+      "total": 324,
+      "successful_scrapes": 244,
+      "failed_scrapes": 80,
       "scrape_methods": {
         "ats_api": 5,
-        "html": 242,
-        "playwright": 3,
+        "html": 237,
+        "playwright": 2,
         "unknown": 0
       },
       "failure_breakdown": {
-        "403": 24,
+        "403": 23,
         "Network exception: ConnectionError": 5,
-        "404": 16,
-        "429": 6,
+        "429": 11,
+        "SPA": 20,
         "LinkedIn": 6,
-        "SPA": 10,
-        "Network exception: SSLError": 2,
+        "Network exception: SSLError": 3,
         "HTTP error 247": 1,
-        "Timeout": 4,
         "HTTP error 400": 1,
-        "HTTP error 520": 1,
-        "HTTP error 491": 1,
-        "HTTP error 502": 1
+        "Timeout": 3,
+        "HTTP error 202": 2,
+        "HTTP error 502": 1,
+        "404": 3,
+        "HTTP error 491": 1
       },
       "broken_404": [
-        {
-          "name": "Altshuler Shaham",
-          "url": "https://careers.topmatch.co.il/AltshulerShaham/"
-        },
-        {
-          "name": "Anodot",
-          "url": "https://www.anodot.com/careers/"
-        },
-        {
-          "name": "Cadence Israel",
-          "url": "https://cadence.wd1.myworkdayjobs.com/CADENCE"
-        },
-        {
-          "name": "Capow",
-          "url": "https://employer.dueto.io/capow/career-website/positions"
-        },
-        {
-          "name": "Dig",
-          "url": "https://employer.dueto.io/dig-ai/career-website/positions"
-        },
-        {
-          "name": "Habana Labs (Intel)",
-          "url": "https://habana.ai/careers/"
-        },
-        {
-          "name": "KPMG",
-          "url": "https://kpmg.co.il/technologyconsulting/careers/jobs"
-        },
-        {
-          "name": "Log-On Software",
-          "url": "https://www.log-on.com/careers"
-        },
-        {
-          "name": "matrix",
-          "url": "https://www.matrix.co.il/careers/"
-        },
         {
           "name": "Prelysis",
           "url": "https://prelysis.com/careers/"
         },
         {
-          "name": "Run:ai",
-          "url": "https://www.run.ai/careers"
-        },
-        {
-          "name": "Speedata",
-          "url": "https://www.speedata.io/careers/"
-        },
-        {
           "name": "Sony Semiconductor Israel",
           "url": "https://www.sony-semicon.com/en/company/careers.html"
-        },
-        {
-          "name": "Teva",
-          "url": "https://www.tevapharm.com/careers/"
-        },
-        {
-          "name": "Tranzila",
-          "url": "https://www.tranzila.com/careers/"
         },
         {
           "name": "Yad2",
@@ -95,25 +43,33 @@
       ]
     },
     "filtering": {
-      "candidate_links_found": 235,
-      "unseen_candidates": 186,
-      "skipped_short_description": 4,
-      "rejected_excessive_min_yoe": 42,
-      "rejected_location_gate": 105,
+      "candidate_links_found": 628,
+      "unseen_candidates": 538,
+      "skipped_short_description": 6,
+      "rejected_excessive_min_yoe": 160,
+      "rejected_location_gate": 238,
       "playwright_detail_fetch_cap_hits": 0
     },
     "ai": {
-      "batches_sent": 5,
+      "batches_sent": 17,
       "http_429_count": 0,
       "circuit_breaker_triggered": false,
       "approved_jobs": [
         {
-          "company": "Applied Materials",
-          "title": "Algorithm Research Engineer",
-          "url": "https://jobs.appliedmaterials.com/job/rehovot/algorithm-research-engineer/95/99385682432",
-          "location": "Rehovot",
-          "experience": "Junior-friendly research engineering role",
-          "text_snippet": "Who We Are\nApplied Materials is the global leader in materials science and engineering solutions that are at the foundation of virtually every new semiconductor chip and advanced display in the world. The equipment that we create and service is essential to advancing AI and accelerating the commercialization of next-generation semiconductor chips. Join us and push the boundaries of materials science and engineering in a company at the foundation of the electronics industry. The work we do together advances the world’s technology.\nWhat We Offer\nLocation:\nRehovot,ISR\nYou’ll benefit from a suppor"
+          "company": "PointFive",
+          "title": "Lead Endpoint Researcher Engineering Tel Aviv Hybrid Full-time",
+          "url": "https://www.pointfive.co/careers/6e1c4d79-a7c3-473d-bb25-c670dca0b3e4",
+          "location": "Tel Aviv, Israel",
+          "experience": "Junior/flexible or entry-to-mid level research role without a 3+ year minimum requirement.",
+          "text_snippet": "About PointFive\nPointFive finds the cost buried inside enterprise infrastructure, from the cloud to coding agents. We pioneered DeepWaste across cloud and data platforms, and we are now doing the same for AI token spend with TokenShift.\nFanatics, H&M, Hertz, Nubank, Citizens Bank and other Fortune 500 companies use PointFive to see and cut what their infrastructure and AI actually cost.\nWe have raised $96 million, most recently a\n$60 million Series B led by Accel\n. Engineering sits in Tel Aviv and our go-to-market team is focused on North America. PointFive Labs, our research arm, publishes or"
+        },
+        {
+          "company": "opisoft",
+          "title": "Senior Full Stack Software Engineer",
+          "url": "https://opisoft.com/career/senior-full-stack-software-engineer/",
+          "location": "Center District / Israel",
+          "experience": "2 years of experience in Full Stack development required",
+          "text_snippet": "××¨××× ×¨×¤××× ××××× ×××××¨ ×××¨×× ×××××¡ ××¤×ª×/×ª Senior Full Stack ×××§××ª ××¢×¨×××ª ×¨×¤×××××ª ××ª×§××××ª ×××¤×¡ ×××××××ª ×ª××××× ×¤××ª×× ××§×¦× ××§×¦×.\n××ª×¤×§×× ××©×× ×¤××ª×× Backend ×Ö¾Frontend, ×× ×××ª Microservices ××¢×××× ××¡×××××ª Cloud ×Ö¾On-Prem, ×ª×× ×©××××© ×××× ×××××××ª ×××©× ×××ª. ××¢×××× ××¦×××ª ××× ××××× ×××§, ××××××¨×ª ×¡×××¨×××¤ ××ª×× ××¨××× ×¨×¤××× ×××××, ×¢× ××©×¤×¢× ××©××¨× ×¢× ×××¦×¨×× ××©××¢××ª××× ××¢××× ×"
         }
       ],
       "rejected_sample": [
@@ -124,6 +80,38 @@
           "location": "Tel Aviv",
           "rejection_stage": "experience_gate",
           "reason": "Minimum YOE exceeds 2: 3+ years"
+        },
+        {
+          "company": "AllCloud",
+          "title": "Backend Developer Professional Services  ·  Full-time  ·  Senior",
+          "url": "https://allcloud.io/careers/co/israel/72.376/backend-developer/all",
+          "location": "Israel",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of"
+        },
+        {
+          "company": "AllCloud",
+          "title": "D&A - Senior Data Engineer Professional Services  ·  Full-time",
+          "url": "https://allcloud.io/careers/co/israel/F2.F6D/da-senior-data-engineer/all",
+          "location": "Ra'anana, Israel",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+        },
+        {
+          "company": "AllCloud",
+          "title": "D&A - Senior Software Engineer GenAI Professional Services  ·  Full-time  ·  Senior",
+          "url": "https://allcloud.io/careers/co/israel/CC.271/da-senior-software-engineer-genai/all",
+          "location": "Israel",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of"
+        },
+        {
+          "company": "AllCloud",
+          "title": "G&A - IT Specialist IT/IS  ·  Full-time  ·  Intermediate",
+          "url": "https://allcloud.io/careers/co/israel/3B.47E/ga-it-specialist/all",
+          "location": "Ra'anana, Israel",
+          "rejection_stage": "experience_gate",
+          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
         },
         {
           "company": "AllCloud",
@@ -143,69 +131,37 @@
         },
         {
           "company": "AllCloud",
-          "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
-          "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
-          "location": "București, RO",
-          "rejection_stage": "location_gate",
-          "reason": "Explicit non-Israel location: București, RO"
-        },
-        {
-          "company": "AllCloud",
-          "title": "Forward Deployed Engineer Professional Services  ·  Full-time  ·  Intermediate",
-          "url": "https://allcloud.io/careers/co/romania/ED.57F/forward-deployed-engineer/all",
+          "title": "Cloud Security Operations Specialist Professional Services  ·  Full-time",
+          "url": "https://allcloud.io/careers/co/romania/E9.476/cloud-security-operations-specialist/all",
           "location": "Romania",
           "rejection_stage": "location_gate",
           "reason": "Explicit non-Israel location: Romania"
         },
         {
-          "company": "apple",
-          "title": "PHY Firmware Design & Development Engineer",
-          "url": "https://jobs.apple.com/en-il/details/200696454-0881/phy-firmware-design-development-engineer?team=HRDWR",
-          "location": "Israel",
-          "rejection_stage": "experience_gate",
-          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          "company": "AllCloud",
+          "title": "D&A - Senior ML Engineer Professional Services  ·  Full-time  ·  Senior",
+          "url": "https://allcloud.io/careers/co/romania/88.373/da-senior-ml-engineer/all",
+          "location": "Romania",
+          "rejection_stage": "location_gate",
+          "reason": "Explicit non-Israel location: Romania"
         },
         {
-          "company": "apple",
-          "title": "PHY Firmware Design & Development Engineer",
-          "url": "https://jobs.apple.com/en-il/details/200696454-0865/phy-firmware-design-development-engineer?team=HRDWR",
-          "location": "Herzliya",
-          "rejection_stage": "experience_gate",
-          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
-        },
-        {
-          "company": "apple",
-          "title": "VLSI Product Engineer",
-          "url": "https://jobs.apple.com/en-il/details/200695423-1451/vlsi-product-engineer?team=HRDWR",
-          "location": "Haifa",
-          "rejection_stage": "experience_gate",
-          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
-        },
-        {
-          "company": "apple",
-          "title": "VLSI Product Engineer",
-          "url": "https://jobs.apple.com/en-il/details/200695423-0865/vlsi-product-engineer?team=HRDWR",
-          "location": "Herzliya",
-          "rejection_stage": "experience_gate",
-          "reason": "Minimum YOE exceeds 2: 5+ years of experience"
-        },
-        {
-          "company": "apple",
-          "title": "Embedded Engineer for the Silicon validation team",
-          "url": "https://jobs.apple.com/en-il/details/200694733-1451/embedded-engineer-for-the-silicon-validation-team?team=HRDWR",
-          "location": "Haifa",
-          "rejection_stage": "experience_gate",
-          "reason": "Minimum YOE exceeds 2: minimum of 3 years of"
+          "company": "AllCloud",
+          "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+          "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
+          "location": "București, RO",
+          "rejection_stage": "location_gate",
+          "reason": "Explicit non-Israel location: București, RO"
         }
       ],
-      "final_approved_count": 1
+      "final_approved_count": 2
     },
     "demoted_false_positives": [],
-    "conclusions": "ריצת הזחילה מציגה שיעור כישלונות גבוה יחסית בגירוד אתרים (78 שגיאות מתוך 328 חברות, בעיקר שגיאות 403 ו-404) המעיד על חסימות או קישורים שבורים. בנוסף, מנגנון הסינון פסל כמות משמעותית של משרות עקב הגבלת מיקום (105) ושנות ניסיון (42), אך נראה שמסנן שנות הניסיון פועל היטב מול משרות בכירות (כגון Apple).",
+    "conclusions": "ריצת הזחילה סבלה מאחוז כישלונות גבוה יחסית בסקראפינג (80 מתוך 324 חברות), בעיקר עקב שגיאות 403, 429 ובעיות SPA. כמו כן, רוב המשרות נדחו בשל סינון מיקום (238) ודרישות ניסיון (160), מה שמצביע על כך שהגדרות התפקידים והחברות הנאספות אינן מותאמות מספיק לטווח הניסיון המבוקש (0-2 שנים), כיוון שרוב המשרות בשוק בכירות יותר.",
     "recommendations": [
-      "יש לעדכן או להסיר כתובות URL שבורות ברשימת החברות (כגון Anodot, Cadence Israel וכו') המייצרות שגיאות 404.",
-      "מומלץ לשפר את טיפול ה-Scraping מול שגיאות 403 (כגון שימוש ב-Proxies או התאמת User-Agents) כדי להקטין את כשלונות הגירוד.",
-      "כדאי לבחון מחדש את שער המיקום (location_gate) כדי לוודא שמשרות רלוונטיות בישראל אינן נדחות בטעות, בהתחשב בכך ש-105 משרות נפסלו בשלב זה."
+      "יש לעדכן את רשימת החברות או מקורות המשרה כך שיכללו יותר חברות סטארט-אפ וגיוסי ג'וניורס, לאור כך ש-160 משרות נדחו עקב דרישת מינימום ניסיון הגבוהה מ-2 שנים.",
+      "יש לטפל בבעיות ה-403 וה-SPA בזחילה (למשל על ידי שימוש מורחב ב-Playwright או פתרונות עקיפת חסימה) כדי לצמצם את 80 הכשלונות מתוך 324 חברות.",
+      "מומלץ לחדד את שער הניתוח המוקדם של מיקום וניסיון לפני שליחת משרות למודל ה-AI, כדי לחסוך קריאות מיותרות ולשפר את יעילות הפאנל."
     ],
     "second_judge": [
       {
@@ -215,7 +171,16 @@
         "is_matching_yoe": true,
         "is_matching_location": true,
         "approved": true,
-        "reason": "The job is a specific Algorithm Research Engineer vacancy at Applied Materials, matching the target role, junior-friendly experience range (0-2 years), and located in Rehovot, Israel based on the text snippet."
+        "reason": "Role matches target software/research engineering, location is Tel Aviv, Israel, experience is junior/flexible within 0-2 range."
+      },
+      {
+        "job_index": 2,
+        "is_single_specific_job": true,
+        "is_target_role": true,
+        "is_matching_yoe": true,
+        "is_matching_location": true,
+        "approved": true,
+        "reason": "Senior Full Stack role requiring 2 years of experience, located in Israel (Center District), fitting the target role and max yoe criteria."
       }
     ],
     "audit_status": "completed"
@@ -438,6 +403,192 @@
           "is_matching_location": true,
           "approved": true,
           "reason": "The job is a specific Algorithm Research Engineer vacancy at Applied Materials, matching the target role, junior-friendly experience range (0-2 years), and located in Rehovot, Israel based on the text snippet."
+        }
+      ],
+      "audit_status": "completed"
+    },
+    {
+      "timestamp": "2026-11-27T00:43:40.329372",
+      "status": "completed",
+      "companies": {
+        "total": 324,
+        "successful_scrapes": 244,
+        "failed_scrapes": 80,
+        "scrape_methods": {
+          "ats_api": 5,
+          "html": 237,
+          "playwright": 2,
+          "unknown": 0
+        },
+        "failure_breakdown": {
+          "403": 23,
+          "Network exception: ConnectionError": 5,
+          "429": 11,
+          "SPA": 20,
+          "LinkedIn": 6,
+          "Network exception: SSLError": 3,
+          "HTTP error 247": 1,
+          "HTTP error 400": 1,
+          "Timeout": 3,
+          "HTTP error 202": 2,
+          "HTTP error 502": 1,
+          "404": 3,
+          "HTTP error 491": 1
+        },
+        "broken_404": [
+          {
+            "name": "Prelysis",
+            "url": "https://prelysis.com/careers/"
+          },
+          {
+            "name": "Sony Semiconductor Israel",
+            "url": "https://www.sony-semicon.com/en/company/careers.html"
+          },
+          {
+            "name": "Yad2",
+            "url": "https://employer.dueto.io/yad_2/career-website/positions"
+          }
+        ]
+      },
+      "filtering": {
+        "candidate_links_found": 628,
+        "unseen_candidates": 538,
+        "skipped_short_description": 6,
+        "rejected_excessive_min_yoe": 160,
+        "rejected_location_gate": 238,
+        "playwright_detail_fetch_cap_hits": 0
+      },
+      "ai": {
+        "batches_sent": 17,
+        "http_429_count": 0,
+        "circuit_breaker_triggered": false,
+        "approved_jobs": [
+          {
+            "company": "PointFive",
+            "title": "Lead Endpoint Researcher Engineering Tel Aviv Hybrid Full-time",
+            "url": "https://www.pointfive.co/careers/6e1c4d79-a7c3-473d-bb25-c670dca0b3e4",
+            "location": "Tel Aviv, Israel",
+            "experience": "Junior/flexible or entry-to-mid level research role without a 3+ year minimum requirement.",
+            "text_snippet": "About PointFive\nPointFive finds the cost buried inside enterprise infrastructure, from the cloud to coding agents. We pioneered DeepWaste across cloud and data platforms, and we are now doing the same for AI token spend with TokenShift.\nFanatics, H&M, Hertz, Nubank, Citizens Bank and other Fortune 500 companies use PointFive to see and cut what their infrastructure and AI actually cost.\nWe have raised $96 million, most recently a\n$60 million Series B led by Accel\n. Engineering sits in Tel Aviv and our go-to-market team is focused on North America. PointFive Labs, our research arm, publishes or"
+          },
+          {
+            "company": "opisoft",
+            "title": "Senior Full Stack Software Engineer",
+            "url": "https://opisoft.com/career/senior-full-stack-software-engineer/",
+            "location": "Center District / Israel",
+            "experience": "2 years of experience in Full Stack development required",
+            "text_snippet": "××¨××× ×¨×¤××× ××××× ×××××¨ ×××¨×× ×××××¡ ××¤×ª×/×ª Senior Full Stack ×××§××ª ××¢×¨×××ª ×¨×¤×××××ª ××ª×§××××ª ×××¤×¡ ×××××××ª ×ª××××× ×¤××ª×× ××§×¦× ××§×¦×.\n××ª×¤×§×× ××©×× ×¤××ª×× Backend ×Ö¾Frontend, ×× ×××ª Microservices ××¢×××× ××¡×××××ª Cloud ×Ö¾On-Prem, ×ª×× ×©××××© ×××× ×××××××ª ×××©× ×××ª. ××¢×××× ××¦×××ª ××× ××××× ×××§, ××××××¨×ª ×¡×××¨×××¤ ××ª×× ××¨××× ×¨×¤××× ×××××, ×¢× ××©×¤×¢× ××©××¨× ×¢× ×××¦×¨×× ××©××¢××ª××× ××¢××× ×"
+          }
+        ],
+        "rejected_sample": [
+          {
+            "company": "AI21 Labs",
+            "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
+            "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/",
+            "location": "Tel Aviv",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 3+ years"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Backend Developer Professional Services  ·  Full-time  ·  Senior",
+            "url": "https://allcloud.io/careers/co/israel/72.376/backend-developer/all",
+            "location": "Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of"
+          },
+          {
+            "company": "AllCloud",
+            "title": "D&A - Senior Data Engineer Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/israel/F2.F6D/da-senior-data-engineer/all",
+            "location": "Ra'anana, Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "AllCloud",
+            "title": "D&A - Senior Software Engineer GenAI Professional Services  ·  Full-time  ·  Senior",
+            "url": "https://allcloud.io/careers/co/israel/CC.271/da-senior-software-engineer-genai/all",
+            "location": "Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of"
+          },
+          {
+            "company": "AllCloud",
+            "title": "G&A - IT Specialist IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/israel/3B.47E/ga-it-specialist/all",
+            "location": "Ra'anana, Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "AllCloud",
+            "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          },
+          {
+            "company": "AllCloud",
+            "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Cloud Security Operations Specialist Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/romania/E9.476/cloud-security-operations-specialist/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "D&A - Senior ML Engineer Professional Services  ·  Full-time  ·  Senior",
+            "url": "https://allcloud.io/careers/co/romania/88.373/da-senior-ml-engineer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          }
+        ],
+        "final_approved_count": 2
+      },
+      "demoted_false_positives": [],
+      "conclusions": "ריצת הזחילה סבלה מאחוז כישלונות גבוה יחסית בסקראפינג (80 מתוך 324 חברות), בעיקר עקב שגיאות 403, 429 ובעיות SPA. כמו כן, רוב המשרות נדחו בשל סינון מיקום (238) ודרישות ניסיון (160), מה שמצביע על כך שהגדרות התפקידים והחברות הנאספות אינן מותאמות מספיק לטווח הניסיון המבוקש (0-2 שנים), כיוון שרוב המשרות בשוק בכירות יותר.",
+      "recommendations": [
+        "יש לעדכן את רשימת החברות או מקורות המשרה כך שיכללו יותר חברות סטארט-אפ וגיוסי ג'וניורס, לאור כך ש-160 משרות נדחו עקב דרישת מינימום ניסיון הגבוהה מ-2 שנים.",
+        "יש לטפל בבעיות ה-403 וה-SPA בזחילה (למשל על ידי שימוש מורחב ב-Playwright או פתרונות עקיפת חסימה) כדי לצמצם את 80 הכשלונות מתוך 324 חברות.",
+        "מומלץ לחדד את שער הניתוח המוקדם של מיקום וניסיון לפני שליחת משרות למודל ה-AI, כדי לחסוך קריאות מיותרות ולשפר את יעילות הפאנל."
+      ],
+      "second_judge": [
+        {
+          "job_index": 1,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "Role matches target software/research engineering, location is Tel Aviv, Israel, experience is junior/flexible within 0-2 range."
+        },
+        {
+          "job_index": 2,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "Senior Full Stack role requiring 2 years of experience, located in Israel (Center District), fitting the target role and max yoe criteria."
         }
       ],
       "audit_status": "completed"
