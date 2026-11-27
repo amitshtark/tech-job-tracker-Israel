@@ -21,9 +21,12 @@ from job_crawler import (
     is_complete_ai_approval,
     new_run_diagnostics,
     record_company_scrape,
+    record_filter_rejection_sample,
     record_playwright_detail_cap,
     record_rejected_candidate,
     call_gemini_with_retries,
+    is_excluded_role_title,
+    is_seniority_title,
 )
 
 
@@ -65,6 +68,56 @@ class JobLocationTests(unittest.TestCase):
             "description_gate",
         )
         self.assertEqual(diagnostics["filtering"]["playwright_detail_fetch_cap_hits"], 2)
+
+    def test_diagnostics_record_location_yoe_and_spa_samples_up_to_five(self):
+        diagnostics = new_run_diagnostics(1)
+        for index in range(7):
+            record_filter_rejection_sample(
+                diagnostics,
+                "location_rejected_sample",
+                {"company": f"Company {index}", "title": "Engineer", "page_location": "US", "url": f"https://x/{index}"},
+            )
+            record_filter_rejection_sample(
+                diagnostics,
+                "yoe_rejected_sample",
+                {"company": f"Company {index}", "title": "Engineer", "matched_phrase": "3+ years", "url": f"https://x/{index}"},
+            )
+            record_filter_rejection_sample(
+                diagnostics,
+                "spa_failures_sample",
+                {"company": f"Company {index}", "url": f"https://x/{index}", "reason": "Timeout"},
+            )
+
+        self.assertEqual(len(diagnostics["location_rejected_sample"]), 5)
+        self.assertEqual(len(diagnostics["yoe_rejected_sample"]), 5)
+        self.assertEqual(len(diagnostics["spa_failures_sample"]), 5)
+        self.assertEqual(diagnostics["location_rejected_sample"][0]["page_location"], "US")
+        self.assertEqual(diagnostics["yoe_rejected_sample"][0]["matched_phrase"], "3+ years")
+
+    def test_stage_one_retries_http_429_once_with_rotated_user_agent(self):
+        rate_limited = type("Response", (), {"status_code": 429})()
+        ok_response = type(
+            "Response",
+            (),
+            {"status_code": 200, "text": f"<html><body>{'Career information. ' * 40}</body></html>"},
+        )()
+        with (
+            patch("job_crawler.try_ats_api_scrape", return_value=(False, [])),
+            patch("job_crawler.requests.get", side_effect=[rate_limited, ok_response]) as get,
+            patch("job_crawler.time.sleep") as sleep,
+        ):
+            result = job_crawler.scrape_single_company({
+                "name": "Example",
+                "career_url": "https://example.com/careers",
+            })
+
+        self.assertTrue(result[1])
+        self.assertEqual(get.call_count, 2)
+        sleep.assert_called_once_with(3)
+        self.assertNotEqual(
+            get.call_args_list[0].kwargs["headers"]["User-Agent"],
+            get.call_args_list[1].kwargs["headers"]["User-Agent"],
+        )
 
     def test_second_judge_removes_false_positive_before_seen_jobs_save(self):
         false_positive = {
@@ -239,19 +292,130 @@ class JobLocationTests(unittest.TestCase):
         self.assertTrue(has_excessive_min_yoe("Requires 3-5 years of experience", 2))
         self.assertTrue(has_excessive_min_yoe("Requires 3+ years of experience", 2))
 
-    def test_title_filter_keeps_valid_tech_roles_for_ai_verification(self):
+    def test_title_filter_rejects_seniority_and_configured_excluded_roles(self):
+        for title in ("Senior Backend Engineer", "Lead Software Engineer"):
+            with self.subTest(title=title):
+                self.assertTrue(is_seniority_title(title))
+                self.assertFalse(is_title_candidate(
+                    title,
+                    "https://jobs.example.com/careers/backend-engineer",
+                ))
+
+        self.assertFalse(is_title_candidate(
+            "Junior QA Tester",
+            "https://jobs.example.com/careers/qa-tester",
+        ))
+        self.assertTrue(is_excluded_role_title("Junior QA Tester"))
+        self.assertFalse(is_title_candidate(
+            "Technical Support Engineer",
+            "https://jobs.example.com/jobs/support-engineer",
+        ))
+
+    def test_title_filter_keeps_non_senior_tech_roles_for_ai_verification(self):
         self.assertTrue(is_title_candidate(
-            "Senior Backend Engineer",
+            "Backend Engineer",
+            "https://jobs.example.com/careers/backend-engineer",
+        ))
+        self.assertFalse(is_seniority_title("Backend Engineer"))
+        self.assertTrue(is_title_candidate(
+            "Junior Backend Engineer",
             "https://jobs.example.com/careers/backend-engineer",
         ))
         self.assertTrue(is_title_candidate(
-            "Security Engineer",
-            "https://jobs.example.com/jobs/security-engineer",
+            "Software Engineer",
+            "https://jobs.example.com/jobs/software-engineer",
         ))
         self.assertTrue(is_title_candidate(
             "Backend Engineer - Tel Aviv",
             "https://jobs.example.com/jobs/backend-engineer",
         ))
+        self.assertFalse(is_title_candidate(
+            "Senior QA Engineer",
+            "https://jobs.example.com/jobs/qa-engineer",
+        ))
+        self.assertFalse(is_title_candidate(
+            "DevOps Engineer",
+            "https://jobs.example.com/jobs/devops-engineer",
+        ))
+        self.assertFalse(is_title_candidate(
+            "Customer Success Engineer",
+            "https://jobs.example.com/jobs/customer-success-engineer",
+        ))
+        self.assertFalse(is_title_candidate(
+            "Sales Engineer",
+            "https://jobs.example.com/jobs/sales-engineer",
+        ))
+
+    def test_seniority_yoe_checks_are_enforced_after_batch_ai_response(self):
+        response = {
+            "candidates": [{
+                "content": {
+                    "parts": [{
+                        "text": json.dumps({
+                            "evaluations": [{
+                                "job_index": 1,
+                                "approved": True,
+                                "is_single_specific_job": True,
+                                "is_target_role": True,
+                                "is_matching_yoe": True,
+                                "is_matching_location": True,
+                            }]
+                        })
+                    }]
+                }
+            }]
+        }
+        with (
+            patch.object(job_crawler, "USER_CONFIG", {
+                **job_crawler.USER_CONFIG,
+                "max_yoe": 2,
+            }),
+            patch("job_crawler.call_gemini_with_retries", return_value=response) as gemini_call,
+        ):
+            evaluations = batch_verify_jobs_with_ai([{
+                "company": "Example",
+                "title": "Senior Backend Engineer",
+                "url": "https://example.com/jobs/senior-backend",
+                "requirements_text": "B.Sc. and Python required.",
+            }])
+
+        prompt = gemini_call.call_args.args[0]["contents"][0]["parts"][0]["text"]
+        self.assertIn("is_matching_yoe to true", prompt)
+        self.assertIn("STRICTLY REJECT titles", prompt)
+        self.assertFalse(evaluations[0]["approved"])
+        self.assertFalse(evaluations[0]["is_matching_yoe"])
+
+    def test_ai_prompts_treat_unspecified_minimum_as_matching_and_seniority_as_rejected(self):
+        audit_response = {
+            "candidates": [{
+                "content": {"parts": [{"text": json.dumps({
+                    "second_judge": [{
+                        "job_index": 1,
+                        "is_single_specific_job": True,
+                        "is_target_role": True,
+                        "is_matching_yoe": True,
+                        "is_matching_location": True,
+                        "approved": True,
+                        "reason": "",
+                    }],
+                    "recommendations": [],
+                })}]}
+            }]
+        }
+        with patch("job_crawler.call_gemini_with_retries", return_value=audit_response) as gemini_call:
+            result = audit_run_with_ai(
+                {"ai": {"approved_jobs": [{
+                    "company": "Example",
+                    "title": "Lead Backend Engineer",
+                    "url": "https://example.com/job",
+                }]}},
+                {"min_yoe": 0, "max_yoe": 2, "location": "Israel", "target_roles": ["Backend"]},
+            )
+        prompt = gemini_call.call_args.args[0]["contents"][0]["parts"][0]["text"]
+        self.assertIn("strictly reject any title indicating", prompt)
+        self.assertIn("treat it as matching 0-2 YOE", prompt)
+        self.assertFalse(result["second_judge"][0]["approved"])
+        self.assertFalse(result["second_judge"][0]["is_matching_yoe"])
 
     def test_explicit_israel_location_still_passes(self):
         valid_israel_job = {

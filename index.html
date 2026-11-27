@@ -1145,6 +1145,9 @@
       const recommendations = Array.isArray(report.recommendations) ? report.recommendations : [];
       const broken404 = Array.isArray(companies.broken_404) ? companies.broken_404 : [];
       const demoted = Array.isArray(report.demoted_false_positives) ? report.demoted_false_positives : [];
+      const locationRejected = Array.isArray(report.location_rejected_sample) ? report.location_rejected_sample : [];
+      const yoeRejected = Array.isArray(report.yoe_rejected_sample) ? report.yoe_rejected_sample : [];
+      const spaFailures = Array.isArray(report.spa_failures_sample) ? report.spa_failures_sample : [];
       const runDate = report.timestamp ? new Date(report.timestamp).toLocaleString('he-IL') : 'לא ידוע';
       const auditStatus = report.audit_status || 'לא זמין';
       const runStatus = report.status || 'לא ידוע';
@@ -1172,6 +1175,45 @@
       const brokenList = brokenItems || '<li class="audit-empty">לא נמצאו כתובות 404.</li>';
       const demotedList = demotedItems || '<li class="audit-empty">לא זוהו חיוביים שגויים.</li>';
       const recommendationsList = recommendationItems || '<li class="audit-empty">לא התקבלו המלצות.</li>';
+      const sampleLink = value => {
+        const href = safeHttpUrl(value || '');
+        return href
+          ? `<a class="audit-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(value)}</a>`
+          : escapeHtml(value || 'ללא כתובת');
+      };
+      const locationSampleSection = locationRejected.length ? `
+        <section class="audit-section">
+          <h3>דוגמאות שנדחו לפי מיקום (${locationRejected.length})</h3>
+          <ul class="audit-list">${locationRejected.map(item => `
+            <li><strong>${escapeHtml(item.company || '')} — ${escapeHtml(item.title || '')}</strong>
+              <div>מיקום: ${escapeHtml(item.page_location || 'לא צוין')}</div>
+              <div>${sampleLink(item.url)}</div>
+            </li>
+          `).join('')}</ul>
+        </section>
+      ` : '';
+      const yoeSampleSection = yoeRejected.length ? `
+        <section class="audit-section">
+          <h3>דוגמאות שנדחו לפי שנות ניסיון (${yoeRejected.length})</h3>
+          <ul class="audit-list">${yoeRejected.map(item => `
+            <li><strong>${escapeHtml(item.company || '')} — ${escapeHtml(item.title || '')}</strong>
+              <div>ביטוי שזוהה: ${escapeHtml(item.matched_phrase || '')}</div>
+              <div>${sampleLink(item.url)}</div>
+            </li>
+          `).join('')}</ul>
+        </section>
+      ` : '';
+      const spaFailureSection = spaFailures.length ? `
+        <section class="audit-section">
+          <h3>דוגמאות לכשלי SPA (${spaFailures.length})</h3>
+          <ul class="audit-list">${spaFailures.map(item => `
+            <li><strong>${escapeHtml(item.company || '')}</strong>
+              <div>${escapeHtml(item.reason || 'לא נמצאו קישורי משרות לאחר הרינדור')}</div>
+              <div>${sampleLink(item.url)}</div>
+            </li>
+          `).join('')}</ul>
+        </section>
+      ` : '';
 
       auditReportContent.innerHTML = `
         <section class="audit-section">
@@ -1216,6 +1258,9 @@
           <h3>חברות עם קישור 404 (${broken404.length})</h3>
           <ul class="audit-list">${brokenList}</ul>
         </section>
+        ${locationSampleSection}
+        ${yoeSampleSection}
+        ${spaFailureSection}
       `;
     }
 

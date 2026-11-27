@@ -150,6 +150,9 @@ def new_run_diagnostics(total_companies):
             "rejected_location_gate": 0,
             "playwright_detail_fetch_cap_hits": 0,
         },
+        "location_rejected_sample": [],
+        "yoe_rejected_sample": [],
+        "spa_failures_sample": [],
         "ai": {
             "batches_sent": 0,
             "http_429_count": 0,
@@ -207,6 +210,22 @@ def record_rejected_candidate(diagnostics, job, stage, reason):
         "rejection_stage": stage,
         "reason": str(reason),
     })
+
+
+def record_filter_rejection_sample(diagnostics, sample_key, item):
+    sample = diagnostics[sample_key]
+    if len(sample) < 5:
+        sample.append(item)
+
+
+def record_spa_failure(diagnostics, company, url, reason):
+    if diagnostics is None:
+        return
+    record_filter_rejection_sample(
+        diagnostics,
+        "spa_failures_sample",
+        {"company": company, "url": url, "reason": str(reason)},
+    )
 
 
 def record_playwright_detail_cap(diagnostics, eligible_count, max_pages):
@@ -430,6 +449,37 @@ def build_candidate_title_regex(cfg):
 
 
 CANDIDATE_TITLE_REGEX = build_candidate_title_regex(USER_CONFIG)
+
+EXCLUDED_TITLE_PATTERNS = {
+    "qa": r"\b(?:qa|quality assurance|manual tester|qa tester)\b",
+    "devops": r"\b(?:devops|sre)\b",
+    "customer success": r"\b(?:customer success|csm)\b",
+    "operations": r"\b(?:operations|supply chain|logistics|procurement)\b",
+    "sales": r"\b(?:sales|account executive|business development|bdr|sdr)\b",
+    "marketing": r"\b(?:marketing|content writer|growth|copywriter|seo)\b",
+    "hr": r"\b(?:hr|human resources|recruiter|talent acquisition)\b",
+    "finance": r"\bfinance\b",
+    "support": r"\b(?:support engineer|support specialist|technical support|it support|helpdesk)\b",
+}
+
+SENIORITY_TITLE_REGEX = re.compile(
+    r"\b(mid(?:[\s-]+level)?|senior|sr|lead|leader|principal|staff|architect|manager|director|vp|chief)\b|head\s+of|ראש צוות",
+    re.IGNORECASE,
+)
+
+
+def is_seniority_title(title, max_yoe=None):
+    max_yoe = int(USER_CONFIG.get("max_yoe", 2) if max_yoe is None else max_yoe)
+    return max_yoe <= 2 and bool(SENIORITY_TITLE_REGEX.search(str(title or "")))
+
+
+def is_excluded_role_title(title, cfg=None):
+    cfg = cfg or USER_CONFIG
+    excluded = " ".join(str(role).lower() for role in cfg.get("excluded_roles", []))
+    for role, pattern in EXCLUDED_TITLE_PATTERNS.items():
+        if role in excluded and re.search(pattern, str(title or ""), re.IGNORECASE):
+            return True
+    return False
 
 
 def has_excessive_min_yoe(text, max_allowed_yoe):
@@ -664,6 +714,8 @@ def is_title_candidate(title, url=""):
         return False
     if AGENCY_CATEGORY_REGEX.search(url):
         return False
+    if is_excluded_role_title(t) or is_seniority_title(t):
+        return False
     if not (
         CANDIDATE_TITLE_REGEX.search(t)
         or (ROLE_NOUN_REGEX.search(t) and JOB_URL_HINT_REGEX.search(url))
@@ -756,6 +808,17 @@ def scrape_single_company(company_info):
 
     try:
         resp = requests.get(url, headers=HEADERS, timeout=8)
+        if resp.status_code == 429:
+            time.sleep(3)
+            rotated_headers = {
+                **HEADERS,
+                "User-Agent": (
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_6) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/122.0.0.0 Safari/537.36"
+                ),
+            }
+            resp = requests.get(url, headers=rotated_headers, timeout=8)
         if resp.status_code in [403, 429, 503]:
             return name, False, [], f"Blocked by server (HTTP {resp.status_code})", company_info, "unknown"
         if resp.status_code != 200:
@@ -788,15 +851,24 @@ def _setup_fast_playwright_page(context):
     return page
 
 
-def scrape_spa_with_playwright(failed_list, companies_by_name):
+def scrape_spa_with_playwright(failed_list, companies_by_name, diagnostics=None):
     """Uses Headless Chromium ONLY on SPA sites (not 403 WAF blocks) with fast asset blocking."""
-    if not PLAYWRIGHT_AVAILABLE or not failed_list:
+    if not failed_list:
         return [], failed_list
 
     retryable = [f for f in failed_list if "SPA" in f.get("reason", "")]
     non_retryable = [f for f in failed_list if "SPA" not in f.get("reason", "")]
 
     if not retryable:
+        return [], failed_list
+    if not PLAYWRIGHT_AVAILABLE:
+        for item in retryable:
+            record_spa_failure(
+                diagnostics,
+                item.get("name", ""),
+                item.get("link", ""),
+                "Playwright is unavailable",
+            )
         return [], failed_list
 
     print(f"\n=== STAGE 1B: Headless Browser (Playwright) Fallback ({len(retryable)} JS SPA sites) ===")
@@ -815,6 +887,10 @@ def scrape_spa_with_playwright(failed_list, companies_by_name):
                 c_info = companies_by_name.get(c_name, {"name": c_name})
                 try:
                     page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=5000)
+                    except Exception:
+                        pass
                     page.wait_for_timeout(3500)
                     soup = BeautifulSoup(page.content(), "html.parser")
                     cands = extract_candidates_from_soup(soup, url, c_info)
@@ -823,12 +899,21 @@ def scrape_spa_with_playwright(failed_list, companies_by_name):
                         print(f"  [+] Playwright recovered {len(cands)} candidates from {c_name}")
                     else:
                         still_failed.append(item)
-                except Exception:
+                        record_spa_failure(diagnostics, c_name, url, "No job links found after rendering")
+                except Exception as exc:
                     still_failed.append(item)
+                    record_spa_failure(diagnostics, c_name, url, f"{type(exc).__name__}: {exc}")
 
             browser.close()
     except Exception as exc:
         print(f"  [!] Playwright stage error: {exc}")
+        for item in retryable:
+            record_spa_failure(
+                diagnostics,
+                item.get("name", ""),
+                item.get("link", ""),
+                f"Playwright stage error: {type(exc).__name__}: {exc}",
+            )
         return recovered_candidates, failed_list
 
     return recovered_candidates, still_failed
@@ -1003,6 +1088,17 @@ def batch_verify_jobs_with_ai(jobs_batch):
             f"Full Job Description & Requirements:\n{snippet[:3500]}\n"
         )
 
+    yoe_guidance = (
+        "   - Because max_yoe is 2 or less, STRICTLY REJECT titles indicating mid/senior/leadership seniority "
+        "(Mid-level, Senior, Sr, Lead, Leader, Staff, Principal, Manager, Architect, Director, Head of, VP, Chief, ראש צוות), "
+        "even when the description states no years requirement.\n"
+        "   - For a non-senior technical posting that does not state any minimum years requirement "
+        "(for example it lists only a degree or skills such as B.Sc., Python, or React), set "
+        "is_matching_yoe to true for the configured 0-2 YOE range; do not reject it for missing a year count.\n\n"
+        if max_yoe <= 2 else
+        "   - If a non-senior technical posting does not state a minimum number of years, do not reject it "
+        "for missing that information; use the other experience evidence against the configured range.\n\n"
+    )
     prompt = (
         "You are an expert technical hiring validator.\n"
         "Carefully read the FULL text of each job posting below, paying close attention to the requirements section "
@@ -1017,6 +1113,7 @@ def batch_verify_jobs_with_ai(jobs_batch):
         f"   - MUST accept candidates within {min_yoe} to {max_yoe} years of experience ({student_clause}).\n"
         f"   - Ranges whose MINIMUM is <= {max_yoe} (such as '1-3 years' or '2-3 years') ARE ALLOWED.\n"
         f"   - STRICTLY REJECT any posting whose MINIMUM required experience is >= {max_yoe + 1} years (e.g. '3+ years', '3-5 years', 'at least 3 years', '4+ years', '5+ years').\n\n"
+        f"{yoe_guidance}"
         f"4. Target Location (is_matching_location):\n"
         f"   - {location_clause}\n\n"
         "Candidate Postings:\n"
@@ -1051,7 +1148,22 @@ def batch_verify_jobs_with_ai(jobs_batch):
     data = call_gemini_with_retries(payload, timeout=45)
     raw_text = data["candidates"][0]["content"]["parts"][0]["text"].strip()
     parsed = json.loads(raw_text)
-    return parsed.get("evaluations", [])
+    evaluations = parsed.get("evaluations", [])
+    if max_yoe <= 2:
+        for index, job in enumerate(jobs_batch, 1):
+            if not is_seniority_title(job.get("title", ""), max_yoe):
+                continue
+            evaluation = next(
+                (item for item in evaluations if item.get("job_index") == index),
+                None,
+            )
+            if evaluation is not None:
+                evaluation["is_matching_yoe"] = False
+                evaluation["approved"] = False
+                evaluation["rejection_reason"] = (
+                    "Title indicates seniority above the configured experience range"
+                )
+    return evaluations
 
 
 def audit_run_with_ai(diagnostics, config=None):
@@ -1067,6 +1179,17 @@ def audit_run_with_ai(diagnostics, config=None):
         },
         "funnel": diagnostics,
     }
+    max_yoe = int(config.get("max_yoe", 2))
+    seniority_and_yoe_guidance = (
+        "When config.max_yoe is 2 or less, strictly reject any title indicating mid/senior/leadership "
+        "seniority (Mid-level, Senior, Sr, Lead, Leader, Staff, Principal, Manager, Architect, Director, Head of, VP, "
+        "Chief, ראש צוות), even if no years count appears in the description. For a non-senior tech posting "
+        "with no stated minimum years requirement, treat it as matching 0-2 YOE (is_matching_yoe: true); "
+        "do not reject merely because it lists only a degree or skills such as B.Sc., Python, or React.\n"
+        if max_yoe <= 2 else
+        "For a non-senior technical posting with no stated minimum years requirement, do not reject it "
+        "merely because it lists only a degree or technical skills.\n"
+    )
     prompt = (
         "You are auditing one job-crawler run. Perform two tasks using only the supplied data.\n"
         "1. Second-judge EVERY job in funnel.ai.approved_jobs. Strictly verify it is one specific vacancy, "
@@ -1075,6 +1198,7 @@ def audit_run_with_ai(diagnostics, config=None):
         "Do not infer location from a company name. Return exactly one second_judge item per approved job, "
         "with its 1-based job_index, the four boolean flags is_single_specific_job, is_target_role, "
         "is_matching_yoe, is_matching_location, approved (true only when all checks pass), and a concise reason.\n"
+        f"{seniority_and_yoe_guidance}"
         "2. Analyze funnel counts and the rejected sample for likely false negatives and bottlenecks. "
         "Return a concise Hebrew conclusions string and 2-4 concrete, actionable recommendations in Hebrew. "
         "Recommendations should cite observed evidence where possible; distinguish a measured issue from a hypothesis.\n"
@@ -1097,6 +1221,24 @@ def audit_run_with_ai(diagnostics, config=None):
     parsed = json.loads(raw_text)
     if not isinstance(parsed, dict):
         raise ValueError("Gemini audit response must be a JSON object")
+    if max_yoe <= 2:
+        judgments = parsed.get("second_judge", [])
+        for index, job in enumerate(diagnostics.get("ai", {}).get("approved_jobs", []), 1):
+            if not is_seniority_title(job.get("title", ""), max_yoe):
+                continue
+            judgment = next(
+                (
+                    item for item in judgments
+                    if isinstance(item, dict) and item.get("job_index") == index
+                ),
+                None,
+            )
+            if judgment is not None:
+                judgment["is_matching_yoe"] = False
+                judgment["approved"] = False
+                judgment["reason"] = (
+                    "Title indicates seniority above the configured experience range"
+                )
     return parsed
 
 
@@ -1289,7 +1431,11 @@ def main():
                     save_json(CHECKPOINT_FILE, checkpoint)
                     print(f"  -> Progress: {completed_count}/{len(remaining_companies)} companies scraped ({len(direct_candidates)} candidates found)...")
 
-        recovered, failed_companies = scrape_spa_with_playwright(failed_companies, companies_by_name)
+        recovered, failed_companies = scrape_spa_with_playwright(
+            failed_companies,
+            companies_by_name,
+            diagnostics=diagnostics,
+        )
         if recovered:
             direct_candidates.extend(recovered)
             for company_name in {job["company"] for job in recovered}:
@@ -1373,6 +1519,16 @@ def main():
                     f"'{job.get('page_location', 'Unspecified')}'): {job['company']} - {job['title']}"
                 )
                 diagnostics["filtering"]["rejected_location_gate"] += 1
+                record_filter_rejection_sample(
+                    diagnostics,
+                    "location_rejected_sample",
+                    {
+                        "company": job.get("company", ""),
+                        "title": job.get("title", ""),
+                        "page_location": job.get("page_location", ""),
+                        "url": job.get("url", ""),
+                    },
+                )
                 record_rejected_candidate(
                     diagnostics,
                     job,
@@ -1384,6 +1540,16 @@ def main():
             if excessive:
                 print(f"  [X] REJECTED (Min YOE > {max_allowed_yoe}: '{excessive[1]}'): {job['company']} - {job['title']}")
                 diagnostics["filtering"]["rejected_excessive_min_yoe"] += 1
+                record_filter_rejection_sample(
+                    diagnostics,
+                    "yoe_rejected_sample",
+                    {
+                        "company": job.get("company", ""),
+                        "title": job.get("title", ""),
+                        "matched_phrase": excessive[1],
+                        "url": job.get("url", ""),
+                    },
+                )
                 record_rejected_candidate(
                     diagnostics,
                     job,

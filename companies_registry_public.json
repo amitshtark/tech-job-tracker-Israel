@@ -1175,11 +1175,6 @@
     "category": "Core Tech / R&D"
   },
   {
-    "name": "Prelysis",
-    "career_url": "https://prelysis.com/careers/",
-    "category": "Core Tech / R&D"
-  },
-  {
     "name": "Prologic",
     "career_url": "https://www.prologic.co.il/High-tech-jobs",
     "category": "Core Tech / R&D"
@@ -1343,11 +1338,6 @@
     "name": "SodaStream",
     "career_url": "https://www.pepsicojobs.com/main/jobs?keywords=sodastream",
     "category": "Core Tech / R&D"
-  },
-  {
-    "name": "Sony Semiconductor Israel",
-    "career_url": "https://www.sony-semicon.com/en/company/careers.html",
-    "category": "Cellular IoT / Chipsets"
   },
   {
     "name": "Speedata",
@@ -1565,11 +1555,6 @@
     "category": "Core Tech / R&D"
   },
   {
-    "name": "Yad2",
-    "career_url": "https://employer.dueto.io/yad_2/career-website/positions",
-    "category": "Core Tech / R&D"
-  },
-  {
     "name": "yael group",
     "career_url": "https://yaelgroup.com/jobs/",
     "category": "Core Tech / R&D"
@@ -1618,5 +1603,90 @@
     "name": "Jazz",
     "career_url": "https://www.comeet.com/jobs/jazz/6A.009",
     "category": "Cybersecurity"
+  },
+  {
+    "name": "Forter",
+    "career_url": "https://job-boards.greenhouse.io/forter",
+    "category": "Fintech / Fraud"
+  },
+  {
+    "name": "Similarweb",
+    "career_url": "https://job-boards.greenhouse.io/similarweb",
+    "category": "Data & Analytics"
+  },
+  {
+    "name": "Verbit",
+    "career_url": "https://verbit.ai/careers/",
+    "category": "AI / Speech"
+  },
+  {
+    "name": "Elementor",
+    "career_url": "https://www.comeet.com/jobs/Elementor/A3.00F",
+    "category": "Web Platform"
+  },
+  {
+    "name": "Qodo",
+    "career_url": "https://www.comeet.com/jobs/qodo/B8.00B",
+    "category": "Developer Tools / AI"
+  },
+  {
+    "name": "Coralogix",
+    "career_url": "https://coralogix.com/careers/",
+    "category": "Observability / AI"
+  },
+  {
+    "name": "groundcover",
+    "career_url": "https://www.comeet.com/jobs/groundcover/88.008",
+    "category": "Observability / eBPF"
+  },
+  {
+    "name": "Zenity",
+    "career_url": "https://www.comeet.com/jobs/zenity/19.000",
+    "category": "AI Security"
+  },
+  {
+    "name": "BigID",
+    "career_url": "https://job-boards.greenhouse.io/bigid",
+    "category": "Data Security"
+  },
+  {
+    "name": "Guesty",
+    "career_url": "https://www.guesty.com/careers/",
+    "category": "PropTech / SaaS"
+  },
+  {
+    "name": "Datarails",
+    "career_url": "https://job-boards.greenhouse.io/datarails",
+    "category": "Fintech / AI"
+  },
+  {
+    "name": "Bluevine",
+    "career_url": "https://job-boards.greenhouse.io/bluevineisrael",
+    "category": "Fintech"
+  },
+  {
+    "name": "Nebius",
+    "career_url": "https://job-boards.greenhouse.io/nebius",
+    "category": "AI Cloud"
+  },
+  {
+    "name": "BeyondTrust",
+    "career_url": "https://job-boards.greenhouse.io/beyondtrust",
+    "category": "Cybersecurity"
+  },
+  {
+    "name": "Snappy",
+    "career_url": "https://jobs.ashbyhq.com/Snappy",
+    "category": "SaaS"
+  },
+  {
+    "name": "Novidea",
+    "career_url": "https://jobs.ashbyhq.com/novidea",
+    "category": "InsurTech"
+  },
+  {
+    "name": "Irregular",
+    "career_url": "https://jobs.ashbyhq.com/Irregular",
+    "category": "AI Security"
   }
 ]
