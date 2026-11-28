@@ -1,40 +1,39 @@
 {
   "last_run": {
-    "timestamp": "2026-11-27T15:47:21.991299",
+    "timestamp": "2026-11-28T00:52:10.478152",
     "status": "completed",
     "companies": {
       "total": 338,
-      "successful_scrapes": 273,
-      "failed_scrapes": 65,
+      "successful_scrapes": 277,
+      "failed_scrapes": 61,
       "scrape_methods": {
         "ats_api": 15,
-        "html": 256,
-        "playwright": 2,
+        "html": 257,
+        "playwright": 5,
         "unknown": 0
       },
       "failure_breakdown": {
-        "403": 27,
+        "403": 26,
         "Network exception: ConnectionError": 5,
         "LinkedIn": 6,
-        "429": 10,
-        "SPA": 5,
+        "429": 7,
         "Network exception: SSLError": 2,
+        "SPA": 5,
         "HTTP error 247": 1,
         "Timeout": 4,
         "HTTP error 400": 1,
-        "HTTP error 520": 1,
+        "HTTP error 202": 2,
         "HTTP error 500": 1,
-        "HTTP error 491": 1,
-        "HTTP error 502": 1
+        "HTTP error 491": 1
       },
       "broken_404": []
     },
     "filtering": {
-      "candidate_links_found": 391,
-      "unseen_candidates": 326,
-      "skipped_short_description": 3,
-      "rejected_excessive_min_yoe": 116,
-      "rejected_location_gate": 90,
+      "candidate_links_found": 413,
+      "unseen_candidates": 348,
+      "skipped_short_description": 4,
+      "rejected_excessive_min_yoe": 128,
+      "rejected_location_gate": 98,
       "playwright_detail_fetch_cap_hits": 0
     },
     "location_rejected_sample": [
@@ -137,33 +136,25 @@
           "company": "Logica-it",
           "title": "מפתח/ת בדיקות אוטומציה תוכנה השפלה",
           "url": "https://logica-it.com/jobs/21444/",
-          "location": "רחובות",
-          "experience": "2 years experience required in automation testing",
+          "location": "Rehovot",
+          "experience": "At least 2 years experience",
           "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמפתח/ת בדיקות אוטומציה\nמספר משרה:\n21444\nהשפלה\nדרוש/ה מפתח/ת בדיקות אוטומציה (QA Automation Developer)\nמשרה מלאה, רחובות קו רכבת , יום אחד מהבית\nלארגון מוביל דרוש/ה מפתח/ת בדיקות אוטומציה מנוסה להובלת תחום האוטומציה ופיתוח תשתיות בדיקה מתקדמות.\nתאור\nפיתוח והטמעת בדיקות אוטומטיות באמצעות Playwright\nכתיבת תסריטי בדיקות וביצוע בדיקות רגרסיה\nעבודה מול בסיסי נתונים Oracle וכתיבת שאילתות SQL\nפיתוח ותחזוקה של Oracle PL/SQL\nעבודה בסביבת CI/CD ו-GitHub\nדרישות חובה:\nלפחות 2 שנות ניסיון בפיתוח אוטומציה עם Pla"
         },
         {
-          "company": "BeyondTrust",
-          "title": "Junior Software Development Engineer - Fix Term Contract",
-          "url": "https://job-boards.greenhouse.io/beyondtrust/jobs/8279053",
+          "company": "Logica-it",
+          "title": "מפתח/ת ABAP SAP גוש דן",
+          "url": "https://logica-it.com/jobs/21374/",
           "location": "Tel Aviv",
           "experience": "2+ years experience",
-          "text_snippet": "<p>BeyondTrust is a place where you can bring your purpose to life through the work that you do, creating a safer world through our cyber security SaaS portfolio.</p>\n<p>Our culture of flexibility, trust, and continual learning means you will be recognized for your growth, and for the impact you make on our success. You will be surrounded by people who challenge, support, and inspire you to be the best version of yourself.</p>\n<p><u>The Role</u></p>\n<p>As a Junior Software Development Engineer, you will be crucial in launching and supporting Entitle - BeyondTrust’s Just-In-Time Access Manageme"
+          "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמפתח/ת ABAP\nמספר משרה:\n21374\nגוש דן\nדרושים | מפתחי/ות ABAP\nמשרה מלאה , תל אביב\nאנו מחפשים מפתחי/ות ABAP מנוסים/ות\nתאור התפקיד\nפיתוח ותחזוקת מערכות SAP מורכבות\n• פיתוח ממשקים ואינטגרציות\n• עבודה מול מיישמים, מנתחי מערכות וצוותי פיתוח\n• השתלבות בפרויקטים מתקדמים בסביבת SAP\nדרישות\nניסיון של שנתיים ומעלה בפיתוח ABAP\n• ניסיון בעבודה בסביבת SAP\n• יכולת עבודה עצמאית ובצוות\nיתרון\n• SAP S/4HANA\n• SAPUI5 / Web Dynpro\n• CDS Views, Eclipse, HANA Studio\n• SAP PI/PO\n• SAP Fiori\n• RAP Framework\nחזרה לרשימת המשרו"
         },
         {
-          "company": "Irregular",
-          "title": "Technical Policy Researcher",
-          "url": "https://jobs.ashbyhq.com/Irregular/69966779-e3e7-4ffa-a691-329b86dbf53d",
-          "location": "Tel Aviv",
-          "experience": "Entry/mid level research role without strict multi-year minimum experience requirements specified.",
-          "text_snippet": "About Irregular\nIrregular is the first frontier security lab with the mission of protecting the world in the time of increasingly capable and sophisticated AI systems. We build next-generation defenses through high-fidelity research platforms that simulate and monitor real-world AI security scenarios.\n\nAs AI systems become more powerful, we focus on staying ahead of emerging threats and vulnerabilities, ensuring these transformative technologies can be deployed safely and securely.\n\n\nAbout the Role\nAs a Technical Policy researcher at Irregular, you'll tackle some of the biggest and most comple"
-        },
-        {
-          "company": "Irregular",
-          "title": "AI Researcher",
-          "url": "https://jobs.ashbyhq.com/Irregular/e00583a3-5fa9-4133-8d8d-5751e8f2e103",
-          "location": "Tel Aviv",
-          "experience": "AI research role requiring strong machine learning experience and publication track record, but no strict minimum years requirement.",
-          "text_snippet": "About Irregular\nIrregular is the first frontier security lab with the mission of protecting the world in the time of increasingly capable and sophisticated AI systems. We build next-generation defenses through high-fidelity research platforms that simulate and monitor real-world AI security scenarios.\n\nAs AI systems become more powerful, we focus on staying ahead of emerging threats and vulnerabilities, ensuring these transformative technologies can be deployed safely and securely.\n\nAbout the Role\nAs an AI researcher at Irregular, you'll be at the forefront of researching advanced frontier mod"
+          "company": "Logica-it",
+          "title": "מתכנת/ת COBOL אחראי מערכת – משרה 4157 תוכנה גוש דן",
+          "url": "https://logica-it.com/jobs/21189/",
+          "location": "Rishon LeZion",
+          "experience": "At least 2 years experience",
+          "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמתכנת/ת COBOL אחראי מערכת – משרה 4157\nמספר משרה:\n21189\nגוש דן השפלה\nדרוש/ה מפתח/ת\nCOBOL Mainframe\n– אחראי/ת מערכת\nראשון לציון | היברידי\nלארגון פיננסי מוביל דרוש/ה מפתח/ת\nCOBOL\nלהשתלבות בצוות האחראי על מערכות ליבה קריטיות ותהליכי עיבוד ליליים בסביבת\nMainframe\nהתפקיד משלב פיתוח תוכנה, אחריות על תהליכים עסקיים מקצה לקצה, תחזוקת מערכות והובלת פתרונות טכנולוגיים בסביבה בנקאית מורכבת\nתיאור\nהתפקיד\nאחריות מקצה לקצה\n(E2E)\nעל מערכות ליבה ותהליכים קריטיים בעיבוד הלילי\n(Batch)\nפיתוח תוכנה, ביצוע בדיקות, העברה"
         }
       ],
       "rejected_sample": [
@@ -248,61 +239,24 @@
           "reason": "Minimum YOE exceeds 2: 5+ years of experience"
         }
       ],
-      "final_approved_count": 1
+      "final_approved_count": 3
     },
-    "demoted_false_positives": [
-      {
-        "company": "Logica-it",
-        "title": "מפתח/ת בדיקות אוטומציה תוכנה השפלה",
-        "url": "https://logica-it.com/jobs/21444/",
-        "location": "רחובות",
-        "experience": "2 years experience required in automation testing",
-        "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמפתח/ת בדיקות אוטומציה\nמספר משרה:\n21444\nהשפלה\nדרוש/ה מפתח/ת בדיקות אוטומציה (QA Automation Developer)\nמשרה מלאה, רחובות קו רכבת , יום אחד מהבית\nלארגון מוביל דרוש/ה מפתח/ת בדיקות אוטומציה מנוסה להובלת תחום האוטומציה ופיתוח תשתיות בדיקה מתקדמות.\nתאור\nפיתוח והטמעת בדיקות אוטומטיות באמצעות Playwright\nכתיבת תסריטי בדיקות וביצוע בדיקות רגרסיה\nעבודה מול בסיסי נתונים Oracle וכתיבת שאילתות SQL\nפיתוח ותחזוקה של Oracle PL/SQL\nעבודה בסביבת CI/CD ו-GitHub\nדרישות חובה:\nלפחות 2 שנות ניסיון בפיתוח אוטומציה עם Pla",
-        "reason": "The role is 'מפתח/ת בדיקות אוטומציה' (Manual/Automation QA), which maps to excluded roles ('Manual QA' / general QA context overlapping excluded categories).",
-        "failed_checks": [
-          "is_target_role"
-        ]
-      },
-      {
-        "company": "Irregular",
-        "title": "Technical Policy Researcher",
-        "url": "https://jobs.ashbyhq.com/Irregular/69966779-e3e7-4ffa-a691-329b86dbf53d",
-        "location": "Tel Aviv",
-        "experience": "Entry/mid level research role without strict multi-year minimum experience requirements specified.",
-        "text_snippet": "About Irregular\nIrregular is the first frontier security lab with the mission of protecting the world in the time of increasingly capable and sophisticated AI systems. We build next-generation defenses through high-fidelity research platforms that simulate and monitor real-world AI security scenarios.\n\nAs AI systems become more powerful, we focus on staying ahead of emerging threats and vulnerabilities, ensuring these transformative technologies can be deployed safely and securely.\n\n\nAbout the Role\nAs a Technical Policy researcher at Irregular, you'll tackle some of the biggest and most comple",
-        "reason": "Technical Policy Researcher is not part of the target software development/engineering roles.",
-        "failed_checks": [
-          "is_target_role"
-        ]
-      },
-      {
-        "company": "Irregular",
-        "title": "AI Researcher",
-        "url": "https://jobs.ashbyhq.com/Irregular/e00583a3-5fa9-4133-8d8d-5751e8f2e103",
-        "location": "Tel Aviv",
-        "experience": "AI research role requiring strong machine learning experience and publication track record, but no strict minimum years requirement.",
-        "text_snippet": "About Irregular\nIrregular is the first frontier security lab with the mission of protecting the world in the time of increasingly capable and sophisticated AI systems. We build next-generation defenses through high-fidelity research platforms that simulate and monitor real-world AI security scenarios.\n\nAs AI systems become more powerful, we focus on staying ahead of emerging threats and vulnerabilities, ensuring these transformative technologies can be deployed safely and securely.\n\nAbout the Role\nAs an AI researcher at Irregular, you'll be at the forefront of researching advanced frontier mod",
-        "reason": "AI Researcher position requiring strong machine learning experience and publication track record exceeds the max 2 years of experience configured for junior/entry roles.",
-        "failed_checks": [
-          "is_matching_yoe"
-        ]
-      }
-    ],
-    "conclusions": "ריצת הזחילה סבלה מפערים משמעותיים בסינון המשרות: מתוך 4 משרות שאושרו על ידי ה-AI, רק אחת עמדה בפועל בכל קריטריוני התפקיד, הניסיון והמיקום. בנוסף, קיימים צווארי בקבוק טכניים כמו כישלונות רינדור ב-5 אתרי SPA, וכן 65 כישלונות שליפה (בעיקר שגיאות 403 ו-429) המצמצמים את צבר המועמדים הפוטנציאליים.",
+    "demoted_false_positives": [],
+    "conclusions": "ריצת הזחילה מציגה שיעור כישלונות גבוה יחסית בשלבי הסריקה (61 חברות נכשלו, מתוכן 26 שגיאות 403 ו-5 כשלונות ב-SPA), לצד סינון משמעותי של משרות עקב דרישות ניסיון (128) ומיקום (98). עם זאת, המשרות שאושרו עברו בהצלחה את כל תנאי הסף.",
     "recommendations": [
-      "יש להדק את פרומפט הסינון של ה-AI כדי למנוע אישור משרות שאינן נכללות ב-target_roles (כגון חוקרי מדיניות) או כאלו הדורשות ניסיון גבוה מהמוגדר (כמו חוקרי AI מתקדמים).",
-      "מומלץ לשפר את הטיפול באתרים מבוססי SPA (זוהו 5 כישלונות רינדור כמו ב-Elbit Systems ו-Humanz) באמצעות הפעלת Playwright או כלי עיבוד מתקדמים יותר.",
-      "יש ליישם מנגנון השהיה (Rate Limiting) והחלפת פרוקסי כדי לצמצם את 37 שגיאות ה-403 ו ה-429 המעידות על חסימת זוחלים."
+      "יש לטפל בשגיאות ה-403 (26 מקרים) ובבעיות ה-SPA (5 חברות כמו Elbit ו-Humanz) באמצעות עדכון כותרות User-Agent או שילוב פתרונות רינדור מתקדמים כדי למנוע אובדן פוטנציאלי של משרות.",
+      "מומלץ לבחון מחדש את רף ניסיון המינימום (שגרם ל-128 דחיות) כדי לוודא שחברות המציינות דרישות כלליות או דרישות עוטפות אינן מסננות שלא בצדק משרות שמתאימות לטווח 0-2 שנות ניסיון.",
+      "כדאי לשפר את מנגנון זיהוי המיקום עבור משרות בינלאומיות (כגון AllCloud ברומניה שנפסלו בצדק עקב מיקום מחוץ לישראל), כדי לייעל את שלב הסינון המוקדם."
     ],
     "second_judge": [
       {
         "job_index": 1,
         "is_single_specific_job": true,
-        "is_target_role": false,
+        "is_target_role": true,
         "is_matching_yoe": true,
         "is_matching_location": true,
-        "approved": false,
-        "reason": "The role is 'מפתח/ת בדיקות אוטומציה' (Manual/Automation QA), which maps to excluded roles ('Manual QA' / general QA context overlapping excluded categories)."
+        "approved": true,
+        "reason": "Matches target role (Software Automation), 2 years experience matches range 0-2, located in Rehovot/Israel."
       },
       {
         "job_index": 2,
@@ -311,216 +265,21 @@
         "is_matching_yoe": true,
         "is_matching_location": true,
         "approved": true,
-        "reason": "Junior Software Development Engineer matching target roles, 2+ years YOE (within 0-2 range), located in Tel Aviv."
+        "reason": "Matches target role (Backend / Software Development), 2+ years matches range 0-2, located in Tel Aviv/Israel."
       },
       {
         "job_index": 3,
         "is_single_specific_job": true,
-        "is_target_role": false,
+        "is_target_role": true,
         "is_matching_yoe": true,
         "is_matching_location": true,
-        "approved": false,
-        "reason": "Technical Policy Researcher is not part of the target software development/engineering roles."
-      },
-      {
-        "job_index": 4,
-        "is_single_specific_job": true,
-        "is_target_role": true,
-        "is_matching_yoe": false,
-        "is_matching_location": true,
-        "approved": false,
-        "reason": "AI Researcher position requiring strong machine learning experience and publication track record exceeds the max 2 years of experience configured for junior/entry roles."
+        "approved": true,
+        "reason": "Matches target role (Software Development), at least 2 years experience matches range 0-2, located in Rishon LeZion/Israel."
       }
     ],
     "audit_status": "completed"
   },
   "runs": [
-    {
-      "timestamp": "2026-11-27T00:43:40.329372",
-      "status": "completed",
-      "companies": {
-        "total": 324,
-        "successful_scrapes": 244,
-        "failed_scrapes": 80,
-        "scrape_methods": {
-          "ats_api": 5,
-          "html": 237,
-          "playwright": 2,
-          "unknown": 0
-        },
-        "failure_breakdown": {
-          "403": 23,
-          "Network exception: ConnectionError": 5,
-          "429": 11,
-          "SPA": 20,
-          "LinkedIn": 6,
-          "Network exception: SSLError": 3,
-          "HTTP error 247": 1,
-          "HTTP error 400": 1,
-          "Timeout": 3,
-          "HTTP error 202": 2,
-          "HTTP error 502": 1,
-          "404": 3,
-          "HTTP error 491": 1
-        },
-        "broken_404": [
-          {
-            "name": "Prelysis",
-            "url": "https://prelysis.com/careers/"
-          },
-          {
-            "name": "Sony Semiconductor Israel",
-            "url": "https://www.sony-semicon.com/en/company/careers.html"
-          },
-          {
-            "name": "Yad2",
-            "url": "https://employer.dueto.io/yad_2/career-website/positions"
-          }
-        ]
-      },
-      "filtering": {
-        "candidate_links_found": 628,
-        "unseen_candidates": 538,
-        "skipped_short_description": 6,
-        "rejected_excessive_min_yoe": 160,
-        "rejected_location_gate": 238,
-        "playwright_detail_fetch_cap_hits": 0
-      },
-      "ai": {
-        "batches_sent": 17,
-        "http_429_count": 0,
-        "circuit_breaker_triggered": false,
-        "approved_jobs": [
-          {
-            "company": "PointFive",
-            "title": "Lead Endpoint Researcher Engineering Tel Aviv Hybrid Full-time",
-            "url": "https://www.pointfive.co/careers/6e1c4d79-a7c3-473d-bb25-c670dca0b3e4",
-            "location": "Tel Aviv, Israel",
-            "experience": "Junior/flexible or entry-to-mid level research role without a 3+ year minimum requirement.",
-            "text_snippet": "About PointFive\nPointFive finds the cost buried inside enterprise infrastructure, from the cloud to coding agents. We pioneered DeepWaste across cloud and data platforms, and we are now doing the same for AI token spend with TokenShift.\nFanatics, H&M, Hertz, Nubank, Citizens Bank and other Fortune 500 companies use PointFive to see and cut what their infrastructure and AI actually cost.\nWe have raised $96 million, most recently a\n$60 million Series B led by Accel\n. Engineering sits in Tel Aviv and our go-to-market team is focused on North America. PointFive Labs, our research arm, publishes or"
-          },
-          {
-            "company": "opisoft",
-            "title": "Senior Full Stack Software Engineer",
-            "url": "https://opisoft.com/career/senior-full-stack-software-engineer/",
-            "location": "Center District / Israel",
-            "experience": "2 years of experience in Full Stack development required",
-            "text_snippet": "××¨××× ×¨×¤××× ××××× ×××××¨ ×××¨×× ×××××¡ ××¤×ª×/×ª Senior Full Stack ×××§××ª ××¢×¨×××ª ×¨×¤×××××ª ××ª×§××××ª ×××¤×¡ ×××××××ª ×ª××××× ×¤××ª×× ××§×¦× ××§×¦×.\n××ª×¤×§×× ××©×× ×¤××ª×× Backend ×Ö¾Frontend, ×× ×××ª Microservices ××¢×××× ××¡×××××ª Cloud ×Ö¾On-Prem, ×ª×× ×©××××© ×××× ×××××××ª ×××©× ×××ª. ××¢×××× ××¦×××ª ××× ××××× ×××§, ××××××¨×ª ×¡×××¨×××¤ ××ª×× ××¨××× ×¨×¤××× ×××××, ×¢× ××©×¤×¢× ××©××¨× ×¢× ×××¦×¨×× ××©××¢××ª××× ××¢××× ×"
-          }
-        ],
-        "rejected_sample": [
-          {
-            "company": "AI21 Labs",
-            "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
-            "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/",
-            "location": "Tel Aviv",
-            "rejection_stage": "experience_gate",
-            "reason": "Minimum YOE exceeds 2: 3+ years"
-          },
-          {
-            "company": "AllCloud",
-            "title": "Backend Developer Professional Services  ·  Full-time  ·  Senior",
-            "url": "https://allcloud.io/careers/co/israel/72.376/backend-developer/all",
-            "location": "Israel",
-            "rejection_stage": "experience_gate",
-            "reason": "Minimum YOE exceeds 2: 5+ years of"
-          },
-          {
-            "company": "AllCloud",
-            "title": "D&A - Senior Data Engineer Professional Services  ·  Full-time",
-            "url": "https://allcloud.io/careers/co/israel/F2.F6D/da-senior-data-engineer/all",
-            "location": "Ra'anana, Israel",
-            "rejection_stage": "experience_gate",
-            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
-          },
-          {
-            "company": "AllCloud",
-            "title": "D&A - Senior Software Engineer GenAI Professional Services  ·  Full-time  ·  Senior",
-            "url": "https://allcloud.io/careers/co/israel/CC.271/da-senior-software-engineer-genai/all",
-            "location": "Israel",
-            "rejection_stage": "experience_gate",
-            "reason": "Minimum YOE exceeds 2: 5+ years of"
-          },
-          {
-            "company": "AllCloud",
-            "title": "G&A - IT Specialist IT/IS  ·  Full-time  ·  Intermediate",
-            "url": "https://allcloud.io/careers/co/israel/3B.47E/ga-it-specialist/all",
-            "location": "Ra'anana, Israel",
-            "rejection_stage": "experience_gate",
-            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
-          },
-          {
-            "company": "AllCloud",
-            "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
-            "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all",
-            "location": "București, RO",
-            "rejection_stage": "location_gate",
-            "reason": "Explicit non-Israel location: București, RO"
-          },
-          {
-            "company": "AllCloud",
-            "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
-            "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all",
-            "location": "Romania",
-            "rejection_stage": "location_gate",
-            "reason": "Explicit non-Israel location: Romania"
-          },
-          {
-            "company": "AllCloud",
-            "title": "Cloud Security Operations Specialist Professional Services  ·  Full-time",
-            "url": "https://allcloud.io/careers/co/romania/E9.476/cloud-security-operations-specialist/all",
-            "location": "Romania",
-            "rejection_stage": "location_gate",
-            "reason": "Explicit non-Israel location: Romania"
-          },
-          {
-            "company": "AllCloud",
-            "title": "D&A - Senior ML Engineer Professional Services  ·  Full-time  ·  Senior",
-            "url": "https://allcloud.io/careers/co/romania/88.373/da-senior-ml-engineer/all",
-            "location": "Romania",
-            "rejection_stage": "location_gate",
-            "reason": "Explicit non-Israel location: Romania"
-          },
-          {
-            "company": "AllCloud",
-            "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
-            "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
-            "location": "București, RO",
-            "rejection_stage": "location_gate",
-            "reason": "Explicit non-Israel location: București, RO"
-          }
-        ],
-        "final_approved_count": 2
-      },
-      "demoted_false_positives": [],
-      "conclusions": "ריצת הזחילה סבלה מאחוז כישלונות גבוה יחסית בסקראפינג (80 מתוך 324 חברות), בעיקר עקב שגיאות 403, 429 ובעיות SPA. כמו כן, רוב המשרות נדחו בשל סינון מיקום (238) ודרישות ניסיון (160), מה שמצביע על כך שהגדרות התפקידים והחברות הנאספות אינן מותאמות מספיק לטווח הניסיון המבוקש (0-2 שנים), כיוון שרוב המשרות בשוק בכירות יותר.",
-      "recommendations": [
-        "יש לעדכן את רשימת החברות או מקורות המשרה כך שיכללו יותר חברות סטארט-אפ וגיוסי ג'וניורס, לאור כך ש-160 משרות נדחו עקב דרישת מינימום ניסיון הגבוהה מ-2 שנים.",
-        "יש לטפל בבעיות ה-403 וה-SPA בזחילה (למשל על ידי שימוש מורחב ב-Playwright או פתרונות עקיפת חסימה) כדי לצמצם את 80 הכשלונות מתוך 324 חברות.",
-        "מומלץ לחדד את שער הניתוח המוקדם של מיקום וניסיון לפני שליחת משרות למודל ה-AI, כדי לחסוך קריאות מיותרות ולשפר את יעילות הפאנל."
-      ],
-      "second_judge": [
-        {
-          "job_index": 1,
-          "is_single_specific_job": true,
-          "is_target_role": true,
-          "is_matching_yoe": true,
-          "is_matching_location": true,
-          "approved": true,
-          "reason": "Role matches target software/research engineering, location is Tel Aviv, Israel, experience is junior/flexible within 0-2 range."
-        },
-        {
-          "job_index": 2,
-          "is_single_specific_job": true,
-          "is_target_role": true,
-          "is_matching_yoe": true,
-          "is_matching_location": true,
-          "approved": true,
-          "reason": "Senior Full Stack role requiring 2 years of experience, located in Israel (Center District), fitting the target role and max yoe criteria."
-        }
-      ],
-      "audit_status": "completed"
-    },
     {
       "timestamp": "2026-11-27T01:19:18.812950",
       "status": "completed",
@@ -1760,6 +1519,286 @@
           "is_matching_location": true,
           "approved": false,
           "reason": "AI Researcher position requiring strong machine learning experience and publication track record exceeds the max 2 years of experience configured for junior/entry roles."
+        }
+      ],
+      "audit_status": "completed"
+    },
+    {
+      "timestamp": "2026-11-28T00:52:10.478152",
+      "status": "completed",
+      "companies": {
+        "total": 338,
+        "successful_scrapes": 277,
+        "failed_scrapes": 61,
+        "scrape_methods": {
+          "ats_api": 15,
+          "html": 257,
+          "playwright": 5,
+          "unknown": 0
+        },
+        "failure_breakdown": {
+          "403": 26,
+          "Network exception: ConnectionError": 5,
+          "LinkedIn": 6,
+          "429": 7,
+          "Network exception: SSLError": 2,
+          "SPA": 5,
+          "HTTP error 247": 1,
+          "Timeout": 4,
+          "HTTP error 400": 1,
+          "HTTP error 202": 2,
+          "HTTP error 500": 1,
+          "HTTP error 491": 1
+        },
+        "broken_404": []
+      },
+      "filtering": {
+        "candidate_links_found": 413,
+        "unseen_candidates": 348,
+        "skipped_short_description": 4,
+        "rejected_excessive_min_yoe": 128,
+        "rejected_location_gate": 98,
+        "playwright_detail_fetch_cap_hits": 0
+      },
+      "location_rejected_sample": [
+        {
+          "company": "AllCloud",
+          "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
+          "page_location": "București, RO",
+          "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all"
+        },
+        {
+          "company": "AllCloud",
+          "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
+          "page_location": "Romania",
+          "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all"
+        },
+        {
+          "company": "AllCloud",
+          "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+          "page_location": "București, RO",
+          "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all"
+        },
+        {
+          "company": "AllCloud",
+          "title": "Forward Deployed Engineer Professional Services  ·  Full-time  ·  Intermediate",
+          "page_location": "Romania",
+          "url": "https://allcloud.io/careers/co/romania/ED.57F/forward-deployed-engineer/all"
+        },
+        {
+          "company": "EY ISRAEL",
+          "title": "Learn about AI-empowered career experiences at EY",
+          "page_location": "Select your locationLocal sites / Select your location",
+          "url": "https://www.ey.com/en_gl/careers/ai"
+        }
+      ],
+      "yoe_rejected_sample": [
+        {
+          "company": "AI21 Labs",
+          "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
+          "matched_phrase": "3+ years",
+          "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/"
+        },
+        {
+          "company": "AllCloud",
+          "title": "G&A - IT Specialist IT/IS  ·  Full-time  ·  Intermediate",
+          "matched_phrase": "5+ years of experience",
+          "url": "https://allcloud.io/careers/co/israel/3B.47E/ga-it-specialist/all"
+        },
+        {
+          "company": "apple",
+          "title": "PHY Firmware Design & Development Engineer",
+          "matched_phrase": "5+ years of experience",
+          "url": "https://jobs.apple.com/en-il/details/200696454-0881/phy-firmware-design-development-engineer?team=HRDWR"
+        },
+        {
+          "company": "apple",
+          "title": "PHY Firmware Design & Development Engineer",
+          "matched_phrase": "5+ years of experience",
+          "url": "https://jobs.apple.com/en-il/details/200696454-0865/phy-firmware-design-development-engineer?team=HRDWR"
+        },
+        {
+          "company": "apple",
+          "title": "VLSI Product Engineer",
+          "matched_phrase": "5+ years of experience",
+          "url": "https://jobs.apple.com/en-il/details/200695423-1451/vlsi-product-engineer?team=HRDWR"
+        }
+      ],
+      "spa_failures_sample": [
+        {
+          "company": "Elbit Systems Ltd",
+          "url": "https://elbitsystemscareer.com/",
+          "reason": "No job links found after rendering"
+        },
+        {
+          "company": "Haat",
+          "url": "https://careers.haat.delivery/careers",
+          "reason": "No job links found after rendering"
+        },
+        {
+          "company": "Humanz",
+          "url": "https://www.humanz.com/careers/",
+          "reason": "No job links found after rendering"
+        },
+        {
+          "company": "Ness",
+          "url": "https://www.ness-tech.co.il/careers/",
+          "reason": "No job links found after rendering"
+        },
+        {
+          "company": "SB0",
+          "url": "https://sb0.tech/",
+          "reason": "No job links found after rendering"
+        }
+      ],
+      "ai": {
+        "batches_sent": 15,
+        "http_429_count": 0,
+        "circuit_breaker_triggered": false,
+        "approved_jobs": [
+          {
+            "company": "Logica-it",
+            "title": "מפתח/ת בדיקות אוטומציה תוכנה השפלה",
+            "url": "https://logica-it.com/jobs/21444/",
+            "location": "Rehovot",
+            "experience": "At least 2 years experience",
+            "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמפתח/ת בדיקות אוטומציה\nמספר משרה:\n21444\nהשפלה\nדרוש/ה מפתח/ת בדיקות אוטומציה (QA Automation Developer)\nמשרה מלאה, רחובות קו רכבת , יום אחד מהבית\nלארגון מוביל דרוש/ה מפתח/ת בדיקות אוטומציה מנוסה להובלת תחום האוטומציה ופיתוח תשתיות בדיקה מתקדמות.\nתאור\nפיתוח והטמעת בדיקות אוטומטיות באמצעות Playwright\nכתיבת תסריטי בדיקות וביצוע בדיקות רגרסיה\nעבודה מול בסיסי נתונים Oracle וכתיבת שאילתות SQL\nפיתוח ותחזוקה של Oracle PL/SQL\nעבודה בסביבת CI/CD ו-GitHub\nדרישות חובה:\nלפחות 2 שנות ניסיון בפיתוח אוטומציה עם Pla"
+          },
+          {
+            "company": "Logica-it",
+            "title": "מפתח/ת ABAP SAP גוש דן",
+            "url": "https://logica-it.com/jobs/21374/",
+            "location": "Tel Aviv",
+            "experience": "2+ years experience",
+            "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמפתח/ת ABAP\nמספר משרה:\n21374\nגוש דן\nדרושים | מפתחי/ות ABAP\nמשרה מלאה , תל אביב\nאנו מחפשים מפתחי/ות ABAP מנוסים/ות\nתאור התפקיד\nפיתוח ותחזוקת מערכות SAP מורכבות\n• פיתוח ממשקים ואינטגרציות\n• עבודה מול מיישמים, מנתחי מערכות וצוותי פיתוח\n• השתלבות בפרויקטים מתקדמים בסביבת SAP\nדרישות\nניסיון של שנתיים ומעלה בפיתוח ABAP\n• ניסיון בעבודה בסביבת SAP\n• יכולת עבודה עצמאית ובצוות\nיתרון\n• SAP S/4HANA\n• SAPUI5 / Web Dynpro\n• CDS Views, Eclipse, HANA Studio\n• SAP PI/PO\n• SAP Fiori\n• RAP Framework\nחזרה לרשימת המשרו"
+          },
+          {
+            "company": "Logica-it",
+            "title": "מתכנת/ת COBOL אחראי מערכת – משרה 4157 תוכנה גוש דן",
+            "url": "https://logica-it.com/jobs/21189/",
+            "location": "Rishon LeZion",
+            "experience": "At least 2 years experience",
+            "text_snippet": "- משרות טכנולוגיות - משרות הייטק - דרושים - חברת Logica-IT\nשלחו קורות חיים\nמשרות\nמשרות\nחיפוש משרה\nמתכנת/ת COBOL אחראי מערכת – משרה 4157\nמספר משרה:\n21189\nגוש דן השפלה\nדרוש/ה מפתח/ת\nCOBOL Mainframe\n– אחראי/ת מערכת\nראשון לציון | היברידי\nלארגון פיננסי מוביל דרוש/ה מפתח/ת\nCOBOL\nלהשתלבות בצוות האחראי על מערכות ליבה קריטיות ותהליכי עיבוד ליליים בסביבת\nMainframe\nהתפקיד משלב פיתוח תוכנה, אחריות על תהליכים עסקיים מקצה לקצה, תחזוקת מערכות והובלת פתרונות טכנולוגיים בסביבה בנקאית מורכבת\nתיאור\nהתפקיד\nאחריות מקצה לקצה\n(E2E)\nעל מערכות ליבה ותהליכים קריטיים בעיבוד הלילי\n(Batch)\nפיתוח תוכנה, ביצוע בדיקות, העברה"
+          }
+        ],
+        "rejected_sample": [
+          {
+            "company": "AI21 Labs",
+            "title": "Deep Learning Engineer Full-time Tel Aviv-Yafo",
+            "url": "https://www.ai21.com/careers/deep-learning-engineer/CC.372/",
+            "location": "Tel Aviv",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 3+ years"
+          },
+          {
+            "company": "AllCloud",
+            "title": "G&A - IT Specialist IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/israel/3B.47E/ga-it-specialist/all",
+            "location": "Ra'anana, Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "AllCloud",
+            "title": "AWS Connect Engineer (VoIP) Other  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/C3.57F/aws-connect-engineer-voip/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          },
+          {
+            "company": "AllCloud",
+            "title": "BI Developer IT/IS  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/ED.57D/bi-developer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Data Engineer (Hebrew Speaker) Professional Services  ·  Full-time",
+            "url": "https://allcloud.io/careers/co/romania/EC.379/data-engineer-hebrew-speaker/all",
+            "location": "București, RO",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: București, RO"
+          },
+          {
+            "company": "AllCloud",
+            "title": "Forward Deployed Engineer Professional Services  ·  Full-time  ·  Intermediate",
+            "url": "https://allcloud.io/careers/co/romania/ED.57F/forward-deployed-engineer/all",
+            "location": "Romania",
+            "rejection_stage": "location_gate",
+            "reason": "Explicit non-Israel location: Romania"
+          },
+          {
+            "company": "apple",
+            "title": "PHY Firmware Design & Development Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200696454-0881/phy-firmware-design-development-engineer?team=HRDWR",
+            "location": "Israel",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "PHY Firmware Design & Development Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200696454-0865/phy-firmware-design-development-engineer?team=HRDWR",
+            "location": "Herzliya",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "VLSI Product Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200695423-1451/vlsi-product-engineer?team=HRDWR",
+            "location": "Haifa",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          },
+          {
+            "company": "apple",
+            "title": "VLSI Product Engineer",
+            "url": "https://jobs.apple.com/en-il/details/200695423-0865/vlsi-product-engineer?team=HRDWR",
+            "location": "Herzliya",
+            "rejection_stage": "experience_gate",
+            "reason": "Minimum YOE exceeds 2: 5+ years of experience"
+          }
+        ],
+        "final_approved_count": 3
+      },
+      "demoted_false_positives": [],
+      "conclusions": "ריצת הזחילה מציגה שיעור כישלונות גבוה יחסית בשלבי הסריקה (61 חברות נכשלו, מתוכן 26 שגיאות 403 ו-5 כשלונות ב-SPA), לצד סינון משמעותי של משרות עקב דרישות ניסיון (128) ומיקום (98). עם זאת, המשרות שאושרו עברו בהצלחה את כל תנאי הסף.",
+      "recommendations": [
+        "יש לטפל בשגיאות ה-403 (26 מקרים) ובבעיות ה-SPA (5 חברות כמו Elbit ו-Humanz) באמצעות עדכון כותרות User-Agent או שילוב פתרונות רינדור מתקדמים כדי למנוע אובדן פוטנציאלי של משרות.",
+        "מומלץ לבחון מחדש את רף ניסיון המינימום (שגרם ל-128 דחיות) כדי לוודא שחברות המציינות דרישות כלליות או דרישות עוטפות אינן מסננות שלא בצדק משרות שמתאימות לטווח 0-2 שנות ניסיון.",
+        "כדאי לשפר את מנגנון זיהוי המיקום עבור משרות בינלאומיות (כגון AllCloud ברומניה שנפסלו בצדק עקב מיקום מחוץ לישראל), כדי לייעל את שלב הסינון המוקדם."
+      ],
+      "second_judge": [
+        {
+          "job_index": 1,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "Matches target role (Software Automation), 2 years experience matches range 0-2, located in Rehovot/Israel."
+        },
+        {
+          "job_index": 2,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "Matches target role (Backend / Software Development), 2+ years matches range 0-2, located in Tel Aviv/Israel."
+        },
+        {
+          "job_index": 3,
+          "is_single_specific_job": true,
+          "is_target_role": true,
+          "is_matching_yoe": true,
+          "is_matching_location": true,
+          "approved": true,
+          "reason": "Matches target role (Software Development), at least 2 years experience matches range 0-2, located in Rishon LeZion/Israel."
         }
       ],
       "audit_status": "completed"
